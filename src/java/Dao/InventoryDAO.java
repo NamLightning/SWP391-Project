@@ -66,8 +66,8 @@ public class InventoryDAO {
             ps.setInt(1, requestID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Inventory i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
-                list.add(c);
+                Inventory i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+                list.add(i);
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {
@@ -81,7 +81,7 @@ public class InventoryDAO {
             DBContext db = new DBContext();
             PreparedStatement statement;
             try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM Inventory WHERE SupportID=?";
+                String sql = "DELETE FROM Inventory WHERE InventoryID=?";
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, id);
                 statement.execute();
@@ -93,13 +93,13 @@ public class InventoryDAO {
     }
 
     public void updateInventory(Inventory i) {
-        String sql = " UPDATE Inventory\n" + "SET Response = ?\n" + "WHERE SupportID = ?";
+        String sql = " UPDATE Inventory\n" + "SET Quantity = ?\n" + "WHERE InventoryID = ?";
         DBContext db = new DBContext();
         try {
             Connection con = db.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, c.getResponse());
-            statement.setInt(2, c.getRequestID());
+            statement.setInt(1, i.getQuantity());
+            statement.setInt(2, i.getInventoryID());
             statement.execute();
             new DBContext().close(con, statement, null);
         } catch (Exception ex) {
