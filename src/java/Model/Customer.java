@@ -19,7 +19,27 @@ public class Customer {
     private String phoneNumber;
     private String address;
 
+    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
+    public Customer(int customerID, String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+        this.customerID = customerID;
         this.username = username;
         this.password = password;
         this.firstName = firstName;

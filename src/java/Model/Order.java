@@ -23,6 +23,14 @@ public class Order {
         this.totalAmount = totalAmount;
     }
 
+    public Order(int orderID, int customerID, double totalAmount, Date orderDate, String paymentStatus) {
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.totalAmount = totalAmount;
+        this.orderDate = orderDate;
+        this.paymentStatus = paymentStatus;
+    }
+
     public int getOrderID() {
         return orderID;
     }

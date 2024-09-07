@@ -5,45 +5,34 @@
  */
 package Model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Administrator
  */
 public class CustomerSupport {
-    private int requestID;
-    private String subject;
-    private String message;
-    private Date requestDate;
-    private String status;
-    private int assignTo;
-    
     private int supportID;
     private int employeeID;
-    private int contactID;
+    private int requestID;
     private String response;
 
-    public CustomerSupport(String subject, String message, int assignTo) {
-        this.subject = subject;
-        this.message = message;
-        this.assignTo = assignTo;
-    }
-
-    public CustomerSupport(int employeeID, int contactID, String response) {
-        this.employeeID = employeeID;
-        this.contactID = contactID;
+    public CustomerSupport(int requestID, String response) {
+        this.requestID = requestID;
         this.response = response;
     }
 
-    public CustomerSupport(String subject, String message, Date requestDate, String status, int assignTo) {
-        this.subject = subject;
-        this.message = message;
-        this.requestDate = requestDate;
-        this.status = status;
-        this.assignTo = assignTo;
+    public CustomerSupport(int employeeID, int requestID, String response) {
+        this.employeeID = employeeID;
+        this.requestID = requestID;
+        this.response = response;
     }
 
+    public CustomerSupport(int supportID, int employeeID, int requestID, String response) {
+        this.supportID = supportID;
+        this.employeeID = employeeID;
+        this.requestID = requestID;
+        this.response = response;
+    }
+    
     public int getSupportID() {
         return supportID;
     }
@@ -60,12 +49,12 @@ public class CustomerSupport {
         this.employeeID = employeeID;
     }
 
-    public int getContactID() {
-        return contactID;
+    public int getRequestID() {
+        return requestID;
     }
 
-    public void setContactID(int contactID) {
-        this.contactID = contactID;
+    public void setRequestID(int requestID) {
+        this.requestID = requestID;
     }
 
     public String getResponse() {
@@ -76,56 +65,8 @@ public class CustomerSupport {
         this.response = response;
     }
 
-    public int getRequestID() {
-        return requestID;
-    }
-
-    public void setRequestID(int requestID) {
-        this.requestID = requestID;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Date getRequestDate() {
-        return requestDate;
-    }
-
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getAssignTo() {
-        return assignTo;
-    }
-
-    public void setAssignTo(int assignTo) {
-        this.assignTo = assignTo;
-    }
-
     @Override
     public String toString() {
-        return "CustomerSupport{" + "requestID=" + requestID + ", subject=" + subject + ", message=" + message + ", requestDate=" + requestDate + ", status=" + status + ", assignTo=" + assignTo + ", supportID=" + supportID + ", employeeID=" + employeeID + ", contactID=" + contactID + ", response=" + response + '}';
+        return "CustomerSupport{" + "supportID=" + supportID + ", employeeID=" + employeeID + ", requestID=" + requestID + ", response=" + response + '}';
     }
 }

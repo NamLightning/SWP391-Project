@@ -18,13 +18,19 @@ public class Sales {
     private Date saleDate;
     private double totalRevenue;
 
+    public Sales(int productID, int quantitySold) {
+        this.productID = productID;
+        this.quantitySold = quantitySold;
+    }
+
     public Sales(int productID, int quantitySold, double totalRevenue) {
         this.productID = productID;
         this.quantitySold = quantitySold;
         this.totalRevenue = totalRevenue;
     }
 
-    public Sales(int productID, int quantitySold, Date saleDate, double totalRevenue) {
+    public Sales(int saleID, int productID, int quantitySold, Date saleDate, double totalRevenue) {
+        this.saleID = saleID;
         this.productID = productID;
         this.quantitySold = quantitySold;
         this.saleDate = saleDate;

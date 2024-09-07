@@ -21,6 +21,13 @@ public class Inventory {
         this.managerID = managerID;
     }
 
+    public Inventory(int inventoryID, int productID, int quantity, int managerID) {
+        this.inventoryID = inventoryID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.managerID = managerID;
+    }
+
     public int getInventoryID() {
         return inventoryID;
     }

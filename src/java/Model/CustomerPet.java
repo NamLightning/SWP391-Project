@@ -15,7 +15,19 @@ public class CustomerPet {
     private int assignTo;
     private String healthStatus;
 
+    public CustomerPet(int customerID, int assignTo) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+    }
+
     public CustomerPet(int customerID, int assignTo, String healthStatus) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+        this.healthStatus = healthStatus;
+    }
+
+    public CustomerPet(int customerPetID, int customerID, int assignTo, String healthStatus) {
+        this.customerPetID = customerPetID;
         this.customerID = customerID;
         this.assignTo = assignTo;
         this.healthStatus = healthStatus;

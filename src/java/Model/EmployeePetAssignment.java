@@ -13,14 +13,22 @@ import java.sql.Date;
  */
 public class EmployeePetAssignment {
     private int assignmentID;
-    private int doctorID;
+    private int employeeID;
     private int customerPetID;
     private Date assignmentDate;
     private String status;
 
-    public EmployeePetAssignment(int doctorID, int customerPetID) {
-        this.doctorID = doctorID;
+    public EmployeePetAssignment(int employeeID, int customerPetID) {
+        this.employeeID = employeeID;
         this.customerPetID = customerPetID;
+    }
+
+    public EmployeePetAssignment(int assignmentID, int employeeID, int customerPetID, Date assignmentDate, String status) {
+        this.assignmentID = assignmentID;
+        this.employeeID = employeeID;
+        this.customerPetID = customerPetID;
+        this.assignmentDate = assignmentDate;
+        this.status = status;
     }
 
     public int getAssignmentID() {
@@ -32,11 +40,11 @@ public class EmployeePetAssignment {
     }
 
     public int getDoctorID() {
-        return doctorID;
+        return employeeID;
     }
 
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
+    public void setDoctorID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public int getCustomerPetID() {
@@ -65,6 +73,6 @@ public class EmployeePetAssignment {
 
     @Override
     public String toString() {
-        return "EmployeePetAssignment{" + "assignmentID=" + assignmentID + ", doctorID=" + doctorID + ", customerPetID=" + customerPetID + ", assignmentDate=" + assignmentDate + ", status=" + status + '}';
+        return "EmployeePetAssignment{" + "assignmentID=" + assignmentID + ", employeeID=" + employeeID + ", customerPetID=" + customerPetID + ", assignmentDate=" + assignmentDate + ", status=" + status + '}';
     }
 }

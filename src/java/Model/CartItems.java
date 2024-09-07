@@ -21,6 +21,13 @@ public class CartItems {
         this.quantity = quantity;
     }
 
+    public CartItems(int cartItemID, int customerID, int productID, int quantity) {
+        this.cartItemID = cartItemID;
+        this.customerID = customerID;
+        this.productID = productID;
+        this.quantity = quantity;
+    }
+
     public int getCartItemID() {
         return cartItemID;
     }

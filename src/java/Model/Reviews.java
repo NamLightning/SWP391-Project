@@ -16,7 +16,21 @@ public class Reviews {
     private int ratingID;
     private String comments;
 
+    public Reviews(int customerID, int serviceID, int ratingID) {
+        this.customerID = customerID;
+        this.serviceID = serviceID;
+        this.ratingID = ratingID;
+    }
+
     public Reviews(int customerID, int serviceID, int ratingID, String comments) {
+        this.customerID = customerID;
+        this.serviceID = serviceID;
+        this.ratingID = ratingID;
+        this.comments = comments;
+    }
+
+    public Reviews(int reviewID, int customerID, int serviceID, int ratingID, String comments) {
+        this.reviewID = reviewID;
         this.customerID = customerID;
         this.serviceID = serviceID;
         this.ratingID = ratingID;

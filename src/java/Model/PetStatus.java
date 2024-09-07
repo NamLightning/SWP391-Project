@@ -10,27 +10,27 @@ package Model;
  * @author Administrator
  */
 public class PetStatus {
-    private int doctorID;
+    private int employeeID;
     private int customerPetID;
     private String healthStatus;
 
-    public PetStatus(int doctorID, int customerPetID) {
-        this.doctorID = doctorID;
-        this.customerPetID = customerPetID;
-    }
-
-    public PetStatus(int doctorID, int customerPetID, String healthStatus) {
-        this.doctorID = doctorID;
+    public PetStatus(int customerPetID, String healthStatus) {
         this.customerPetID = customerPetID;
         this.healthStatus = healthStatus;
     }
 
-    public int getDoctorID() {
-        return doctorID;
+    public PetStatus(int employeeID, int customerPetID, String healthStatus) {
+        this.employeeID = employeeID;
+        this.customerPetID = customerPetID;
+        this.healthStatus = healthStatus;
     }
 
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
+    public int getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
     public int getCustomerPetID() {
@@ -51,6 +51,6 @@ public class PetStatus {
 
     @Override
     public String toString() {
-        return "PetStatus{" + "doctorID=" + doctorID + ", customerPetID=" + customerPetID + ", healthStatus=" + healthStatus + '}';
+        return "PetStatus{" + "employeeID=" + employeeID + ", customerPetID=" + customerPetID + ", healthStatus=" + healthStatus + '}';
     }
 }

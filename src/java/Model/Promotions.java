@@ -36,6 +36,16 @@ public class Promotions {
         this.managerID = managerID;
     }
 
+    public Promotions(int promotionID, String promotionName, double discountPercent, Date startDate, Date endDate, int productID, int managerID) {
+        this.promotionID = promotionID;
+        this.promotionName = promotionName;
+        this.discountPercent = discountPercent;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.productID = productID;
+        this.managerID = managerID;
+    }
+
     public int getPromotionID() {
         return promotionID;
     }

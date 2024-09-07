@@ -17,6 +17,11 @@ public class Categories {
         this.categoryName = categoryName;
     }
 
+    public Categories(int categoryID, String categoryName) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+    }
+
     public int getCategoryID() {
         return categoryID;
     }

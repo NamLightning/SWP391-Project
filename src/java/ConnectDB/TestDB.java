@@ -5,6 +5,13 @@
  */
 package ConnectDB;
 
+import Dao.CustomerDAO;
+import Dao.EmployeeDAO;
+import Dao.ManagerDAO;
+import Model.Customer;
+import Model.Employee;
+import Model.Manager;
+
 
 /**
  *
@@ -12,6 +19,11 @@ package ConnectDB;
  */
 public class TestDB {
     public static void main(String[] args) {
-        
+        CustomerDAO customerDAO = new CustomerDAO();
+        customerDAO.registerCustomer(new Customer("nhatk", "123", "gog", "nhatk", "huuanton@gmail.com", "0903"));
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        employeeDAO.registerEmployee(new Employee("nam", "123", "hoang", "nam", "nam@gmail.com", "0904"));
+        ManagerDAO managerDAO = new ManagerDAO();
+        managerDAO.registerManager(new Manager("hung", "123", "nguyen", "hung", "hung@gmail.com", "0905"));
     }
 }

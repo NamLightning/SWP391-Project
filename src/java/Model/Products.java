@@ -13,16 +13,42 @@ public class Products {
     private int productID;
     private String productName;
     private String description;
+    private int price;
     private int stockQuantity;
     private int categoryID;
 
-    public Products(String productName, String description, int stockQuantity, int categoryID) {
+    public Products(String productName, int price, int stockQuantity, int categoryID) {
         this.productName = productName;
-        this.description = description;
+        this.price = price;
         this.stockQuantity = stockQuantity;
         this.categoryID = categoryID;
     }
 
+    public Products(String productName, String description, int price, int stockQuantity, int categoryID) {
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categoryID = categoryID;
+    }
+
+    public Products(int productID, String productName, String description, int price, int stockQuantity, int categoryID) {
+        this.productID = productID;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categoryID = categoryID;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    
     public int getProductID() {
         return productID;
     }

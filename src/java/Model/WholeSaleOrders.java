@@ -24,7 +24,8 @@ public class WholeSaleOrders {
         this.quantity = quantity;
     }
 
-    public WholeSaleOrders(int customerID, int productID, int quantity, Date orderDate) {
+    public WholeSaleOrders(int wholeSaleOrderID, int customerID, int productID, int quantity, Date orderDate) {
+        this.wholeSaleOrderID = wholeSaleOrderID;
         this.customerID = customerID;
         this.productID = productID;
         this.quantity = quantity;

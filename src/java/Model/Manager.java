@@ -27,6 +27,16 @@ public class Manager {
         this.phoneNumber = phoneNumber;
     }
 
+    public Manager(int managerID, String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+        this.managerID = managerID;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getManagerID() {
         return managerID;
     }

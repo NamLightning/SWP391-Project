@@ -24,7 +24,8 @@ public class Services {
         this.serviceDate = serviceDate;
     }
 
-    public Services(int customerID, String serviceName, Date serviceDate, String status) {
+    public Services(int serviceID, int customerID, String serviceName, Date serviceDate, String status) {
+        this.serviceID = serviceID;
         this.customerID = customerID;
         this.serviceName = serviceName;
         this.serviceDate = serviceDate;

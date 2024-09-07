@@ -23,6 +23,14 @@ public class OrderItem {
         this.price = price;
     }
 
+    public OrderItem(int orderItemID, int orderID, int productID, int quantity, double price) {
+        this.orderItemID = orderItemID;
+        this.orderID = orderID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     public int getOrderItemID() {
         return orderItemID;
     }

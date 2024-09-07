@@ -9,8 +9,8 @@ package Model;
  *
  * @author Administrator
  */
-public class Doctor {
-    private int doctorID;
+public abstract class Doctor {
+/*    private int doctorID;
     private String username;
     private String password;
     private String firstName;
@@ -87,4 +87,5 @@ public class Doctor {
     public String toString() {
         return "Doctor{" + "doctorID=" + doctorID + ", username=" + username + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + '}';
     }
+    */
 }

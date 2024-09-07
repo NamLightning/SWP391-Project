@@ -27,6 +27,16 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+        this.employeeID = employeeID;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public int getEmployeeID() {
         return employeeID;
     }

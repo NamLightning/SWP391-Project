@@ -20,7 +20,23 @@ public class Pets {
     private Date lastCheckedDate;
     private int employeeID;
 
+    public Pets(int managerID, String petName, String petType) {
+        this.managerID = managerID;
+        this.petName = petName;
+        this.petType = petType;
+    }
+
     public Pets(int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
+        this.managerID = managerID;
+        this.petName = petName;
+        this.petType = petType;
+        this.healthStatus = healthStatus;
+        this.lastCheckedDate = lastCheckedDate;
+        this.employeeID = employeeID;
+    }
+
+    public Pets(int petID, int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
+        this.petID = petID;
         this.managerID = managerID;
         this.petName = petName;
         this.petType = petType;

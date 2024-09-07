@@ -11,69 +11,41 @@ import java.sql.Date;
  *
  * @author Administrator
  */
-public class CustomerSupport {
+public class RequestSupport {
     private int requestID;
+    private int customerID;
     private String subject;
     private String message;
     private Date requestDate;
     private String status;
     private int assignTo;
-    
-    private int supportID;
-    private int employeeID;
-    private int contactID;
-    private String response;
 
-    public CustomerSupport(String subject, String message, int assignTo) {
+    public RequestSupport(String subject, String message) {
+        this.subject = subject;
+        this.message = message;
+    }
+
+    public RequestSupport(String subject, String message, int assignTo) {
         this.subject = subject;
         this.message = message;
         this.assignTo = assignTo;
     }
 
-    public CustomerSupport(int employeeID, int contactID, String response) {
-        this.employeeID = employeeID;
-        this.contactID = contactID;
-        this.response = response;
+    public RequestSupport(int customerID, String subject, String message, int assignTo) {
+        this.customerID = customerID;
+        this.subject = subject;
+        this.message = message;
+        this.assignTo = assignTo;
     }
 
-    public CustomerSupport(String subject, String message, Date requestDate, String status, int assignTo) {
+    public RequestSupport(int requestID, int customerID, String subject, String message, Date requestDate, String status, int assignTo) {
+        this.requestID = requestID;
+        this.customerID = customerID;
         this.subject = subject;
         this.message = message;
         this.requestDate = requestDate;
         this.status = status;
         this.assignTo = assignTo;
-    }
-
-    public int getSupportID() {
-        return supportID;
-    }
-
-    public void setSupportID(int supportID) {
-        this.supportID = supportID;
-    }
-
-    public int getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
-    }
-
-    public int getContactID() {
-        return contactID;
-    }
-
-    public void setContactID(int contactID) {
-        this.contactID = contactID;
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
     }
 
     public int getRequestID() {
@@ -82,6 +54,14 @@ public class CustomerSupport {
 
     public void setRequestID(int requestID) {
         this.requestID = requestID;
+    }
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public String getSubject() {
@@ -126,6 +106,6 @@ public class CustomerSupport {
 
     @Override
     public String toString() {
-        return "CustomerSupport{" + "requestID=" + requestID + ", subject=" + subject + ", message=" + message + ", requestDate=" + requestDate + ", status=" + status + ", assignTo=" + assignTo + ", supportID=" + supportID + ", employeeID=" + employeeID + ", contactID=" + contactID + ", response=" + response + '}';
+        return "RequestSupport{" + "requestID=" + requestID + ", customerID=" + customerID + ", subject=" + subject + ", message=" + message + ", requestDate=" + requestDate + ", status=" + status + ", assignTo=" + assignTo + '}';
     }
 }

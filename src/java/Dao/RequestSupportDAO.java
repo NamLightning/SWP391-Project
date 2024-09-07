@@ -5,11 +5,10 @@
  */
 package Dao;
 
-
 /**
  *
  * @author Administrator
  */
-public abstract class DoctorDAO {
+public class RequestSupportDAO {
     
 }

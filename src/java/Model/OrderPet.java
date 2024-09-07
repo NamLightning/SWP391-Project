@@ -21,6 +21,13 @@ public class OrderPet {
         this.price = price;
     }
 
+    public OrderPet(int orderPetID, int orderID, int productID, double price) {
+        this.orderPetID = orderPetID;
+        this.orderID = orderID;
+        this.productID = productID;
+        this.price = price;
+    }
+
     public int getOrderPetID() {
         return orderPetID;
     }
