@@ -56,14 +56,14 @@ public class EmployeePetAssignmentDAO {
         return list;
     }
     
-    public ArrayList<EmployeePetAssignment> findAllEmployeePetAssignmentByDate(int requestID) {
+    public ArrayList<EmployeePetAssignment> findAllEmployeePetAssignmentByDate(int date) {
         String query = "select * from EmployeePetAssignment\n"
                 + "where AssignmentDate = ?\n";
         ArrayList<EmployeePetAssignment> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, requestID);
+            ps.setInt(1, date);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 EmployeePetAssignment c = new EmployeePetAssignment(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDate(4), rs.getString(5));

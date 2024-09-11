@@ -20,6 +20,15 @@ public class Manager {
     private String avatar_name;
     private byte[] avatar_img;
 
+    public Manager(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public Manager(String username, String password, String firstName, String lastName, String email, String phoneNumber, String avatar_name, byte[] avatar_img) {
         this.username = username;
         this.password = password;

@@ -53,13 +53,12 @@ public class CategoriesDAO {
         return c;
     }
     
-    public ArrayList<Categories> getAllCategories(String categoryName) {
+    public ArrayList<Categories> getAllCategories() {
         String query = "select * from Categories\n";
         ArrayList<Categories> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, categoryName);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Categories c = new Categories(rs.getInt(1), rs.getString(2));

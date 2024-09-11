@@ -17,6 +17,17 @@ public class CustomerPet {
     private String avatar_name;
     private byte[] avatar_img;
 
+    public CustomerPet(int customerID, int assignTo) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+    }
+
+    public CustomerPet(int customerID, int assignTo, String healthStatus) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+        this.healthStatus = healthStatus;
+    }
+
     public CustomerPet(int customerID, int assignTo, String avatar_name, byte[] avatar_img) {
         this.customerID = customerID;
         this.assignTo = assignTo;

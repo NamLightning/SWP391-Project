@@ -6,10 +6,7 @@
 package Model;
 
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +23,12 @@ public class Pets {
     private int employeeID;
     private String avatar_name;
     private byte[] avatar_img;
+
+    public Pets(int managerID, String petName, String petType) {
+        this.managerID = managerID;
+        this.petName = petName;
+        this.petType = petType;
+    }
 
     public Pets(int managerID, String petName, String petType, String avatar_name, byte[] avatar_img) {
         this.managerID = managerID;

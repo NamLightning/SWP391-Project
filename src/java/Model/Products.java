@@ -13,13 +13,28 @@ public class Products {
     private int productID;
     private String productName;
     private String description;
-    private int price;
+    private double price;
     private int stockQuantity;
     private int categoryID;
     private String avatar_name;
     private byte[] avatar_img;
 
-    public Products(String productName, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Products(String productName, double price, int stockQuantity, int categoryID) {
+        this.productName = productName;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categoryID = categoryID;
+    }
+
+    public Products(String productName, String description, double price, int stockQuantity, int categoryID) {
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categoryID = categoryID;
+    }
+
+    public Products(String productName, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.price = price;
         this.stockQuantity = stockQuantity;
@@ -28,7 +43,7 @@ public class Products {
         this.avatar_img = avatar_img;
     }
 
-    public Products(String productName, String description, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Products(String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -38,7 +53,7 @@ public class Products {
         this.avatar_img = avatar_img;
     }
 
-    public Products(int productID, String productName, String description, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Products(int productID, String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productID = productID;
         this.productName = productName;
         this.description = description;
@@ -65,11 +80,11 @@ public class Products {
         this.avatar_img = avatar_img;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     

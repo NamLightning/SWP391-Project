@@ -21,6 +21,25 @@ public class Customer {
     private String avatar_name;
     private byte[] avatar_img;
 
+    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
     public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String avatar_name, byte[] avatar_img) {
         this.username = username;
         this.password = password;
