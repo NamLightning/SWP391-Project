@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  */
 public class ManagerDAO {
     public void registerManager(Manager m) {
-        String query = "insert into Managers(Username, [Password], FirstName, LastName, Email, PhoneNumb)\n"
-                + "values(?, ?, ?, ?, ?, ?)";
+        String query = "insert into Managers(Username, [Password], FirstName, LastName, Email, PhoneNumb, AvatarName, Avatar_Img)\n"
+                + "values(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -31,6 +31,8 @@ public class ManagerDAO {
             ps.setString(4, m.getLastName());
             ps.setString(5, m.getEmail());
             ps.setString(6, m.getPhoneNumber());
+            ps.setString(7, m.getAvatar_name());
+            ps.setBytes(8, m.getAvatar_img());
             ps.execute();
             new DBContext().close(conn, ps, null);
         } catch (Exception ex) {
@@ -48,7 +50,7 @@ public class ManagerDAO {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {
@@ -67,7 +69,7 @@ public class ManagerDAO {
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {
@@ -93,7 +95,7 @@ public class ManagerDAO {
     }
 
     public void updateManager(Manager m) {
-        String sql = " UPDATE Managers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?\n" + "WHERE ManagerID = ?";
+        String sql = " UPDATE Managers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE ManagerID = ?";
         DBContext db = new DBContext();
         try {
             Connection con = db.getConnection();
@@ -104,7 +106,9 @@ public class ManagerDAO {
             statement.setString(4, m.getLastName());
             statement.setString(5, m.getEmail());
             statement.setString(6, m.getPhoneNumber());
-            statement.setInt(7, m.getManagerID());
+            statement.setString(7, m.getAvatar_name());
+            statement.setBytes(8, m.getAvatar_img());
+            statement.setInt(9, m.getManagerID());
             statement.execute();
             new DBContext().close(con, statement, null);
         } catch (Exception ex) {
@@ -122,7 +126,7 @@ public class ManagerDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {

@@ -22,14 +22,16 @@ import java.util.logging.Logger;
  */
 public class CustomerPetDAO {
     public void registerCustomerPet(CustomerPet c) {
-        String query = "insert into CustomerPets(CustomerID, AssignedTo, HealthStatus)\n"
-                + "values(?, ?, ?)";
+        String query = "insert into CustomerPets(CustomerID, AssignedTo, HealthStatus, AvatarName, Avatar_Img)\n"
+                + "values(?, ?, ?, ?, ?)";
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, c.getCustomerID());
             ps.setInt(2, c.getAssignTo());
             ps.setString(3, c.getHealthStatus());
+            ps.setString(4, c.getAvatar_name());
+            ps.setBytes(5, c.getAvatar_img());
             ps.execute();
             new DBContext().close(conn, ps, null);
         } catch (Exception e) {
@@ -47,7 +49,7 @@ public class CustomerPetDAO {
             ps.setInt(1, customerID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                CustomerPet c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
+                CustomerPet c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getBytes(6));
                 list.add(c);
             }
             new DBContext().close(conn, ps, rs);
@@ -67,7 +69,7 @@ public class CustomerPetDAO {
             ps.setInt(1, assignedTo);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                CustomerPet c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
+                CustomerPet c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getBytes(6));
                 list.add(c);
             }
             new DBContext().close(conn, ps, rs);
@@ -94,13 +96,15 @@ public class CustomerPetDAO {
     }
 
     public void updateCustomerPet(CustomerPet c) {
-        String sql = " UPDATE CustomerPets\n" + "SET HealthStatus = ?\n" + "WHERE CustomerPetID = ?";
+        String sql = " UPDATE CustomerPets\n" + "SET HealthStatus = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE CustomerPetID = ?";
         DBContext db = new DBContext();
         try {
             Connection con = db.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, c.getHealthStatus());
-            statement.setInt(2, c.getCustomerPetID());
+            statement.setString(2, c.getAvatar_name());
+            statement.setBytes(3, c.getAvatar_img());
+            statement.setInt(4, c.getCustomerPetID());
             statement.execute();
             new DBContext().close(con, statement, null);
         } catch (Exception ex) {
@@ -118,7 +122,7 @@ public class CustomerPetDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
+                c = new CustomerPet(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getBytes(6));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {

@@ -21,8 +21,8 @@ import ConnectDB.DBContext;
  */
 public class CustomerDAO {
     public void registerCustomer(Customer c) {
-        String query = "insert into Customers(Username, [Password], FirstName, LastName, Email, PhoneNumb, address)\n"
-                + "values(?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into Customers(Username, [Password], FirstName, LastName, Email, PhoneNumb, address, AvatarName, Avatar_Img)\n"
+                + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -33,6 +33,8 @@ public class CustomerDAO {
             ps.setString(5, c.getEmail());
             ps.setString(6, c.getPhoneNumber());
             ps.setString(7, c.getAddress());
+            ps.setString(8, c.getAvatar_name());
+            ps.setBytes(9, c.getAvatar_img());
             ps.execute();
             new DBContext().close(conn, ps, null);
         } catch (Exception e) {
@@ -50,7 +52,7 @@ public class CustomerDAO {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {
@@ -69,7 +71,7 @@ public class CustomerDAO {
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {
@@ -95,7 +97,7 @@ public class CustomerDAO {
     }
 
     public void updateCustomer(Customer c) {
-        String sql = " UPDATE Customers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, address = ?\n" + "WHERE CustomerID = ?";
+        String sql = " UPDATE Customers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, address = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE CustomerID = ?";
         DBContext db = new DBContext();
         try {
             Connection con = db.getConnection();
@@ -107,7 +109,9 @@ public class CustomerDAO {
             statement.setString(5, c.getEmail());
             statement.setString(6, c.getPhoneNumber());
             statement.setString(7, c.getAddress());
-            statement.setInt(8, c.getCustomerID());
+            statement.setString(8, c.getAvatar_name());
+            statement.setBytes(9, c.getAvatar_img());
+            statement.setInt(10, c.getCustomerID());
             statement.execute();
             new DBContext().close(con, statement, null);
         } catch (Exception ex) {
@@ -125,7 +129,7 @@ public class CustomerDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {

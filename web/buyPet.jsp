@@ -1,6 +1,6 @@
 <%-- 
-    Document   : petHygieneProduct
-    Created on : Sep 5, 2024, 6:04:13 PM
+    Document   : petPurchase
+    Created on : Sep 11, 2024, 5:33:05 PM
     Author     : Administrator
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pet Product</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Hello World!</h1>
     </body>
 </html>

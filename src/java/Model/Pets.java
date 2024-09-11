@@ -27,10 +27,12 @@ public class Pets {
     private String avatar_name;
     private byte[] avatar_img;
 
-    public Pets(int managerID, String petName, String petType) {
+    public Pets(int managerID, String petName, String petType, String avatar_name, byte[] avatar_img) {
         this.managerID = managerID;
         this.petName = petName;
         this.petType = petType;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
     public Pets(int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
@@ -52,7 +54,7 @@ public class Pets {
         this.avatar_img = avatar_img;
     }
 
-    public Pets(int petID, int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
+    public Pets(int petID, int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID, String avatar_name, byte[] avatar_img) {
         this.petID = petID;
         this.managerID = managerID;
         this.petName = petName;
@@ -60,6 +62,8 @@ public class Pets {
         this.healthStatus = healthStatus;
         this.lastCheckedDate = lastCheckedDate;
         this.employeeID = employeeID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
     
     public Pets(int petID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID, String avatar_name, byte[] avatar_img) {

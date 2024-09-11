@@ -16,29 +16,53 @@ public class Products {
     private int price;
     private int stockQuantity;
     private int categoryID;
+    private String avatar_name;
+    private byte[] avatar_img;
 
-    public Products(String productName, int price, int stockQuantity, int categoryID) {
+    public Products(String productName, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.categoryID = categoryID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
-    public Products(String productName, String description, int price, int stockQuantity, int categoryID) {
+    public Products(String productName, String description, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.description = description;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.categoryID = categoryID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
-    public Products(int productID, String productName, String description, int price, int stockQuantity, int categoryID) {
+    public Products(int productID, String productName, String description, int price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productID = productID;
         this.productName = productName;
         this.description = description;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.categoryID = categoryID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     public int getPrice() {
@@ -91,6 +115,6 @@ public class Products {
 
     @Override
     public String toString() {
-        return "Products{" + "productID=" + productID + ", productName=" + productName + ", description=" + description + ", stockQuantity=" + stockQuantity + ", categoryID=" + categoryID + '}';
+        return "Products{" + "productID=" + productID + ", productName=" + productName + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", categoryID=" + categoryID + ", avatar_name=" + avatar_name + ", avatar_img=" + avatar_img + '}';
     }
 }

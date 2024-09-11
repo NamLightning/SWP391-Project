@@ -20,8 +20,8 @@ import java.util.logging.Logger;
  */
 public class EmployeeDAO {
     public void registerEmployee(Employee e) {
-        String query = "insert into Employees(Username, [Password], FirstName, LastName, Email, PhoneNumb)\n"
-                + "values(?, ?, ?, ?, ?, ?)";
+        String query = "insert into Employees(Username, [Password], FirstName, LastName, Email, PhoneNumb, AvatarName, Avatar_Img)\n"
+                + "values(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -31,6 +31,8 @@ public class EmployeeDAO {
             ps.setString(4, e.getLastName());
             ps.setString(5, e.getEmail());
             ps.setString(6, e.getPhoneNumber());
+            ps.setString(7, e.getAvatar_name());
+            ps.setBytes(8, e.getAvatar_img());
             ps.execute();
             new DBContext().close(conn, ps, null);
         } catch (Exception ex) {
@@ -48,7 +50,7 @@ public class EmployeeDAO {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {
@@ -67,7 +69,7 @@ public class EmployeeDAO {
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {
@@ -93,7 +95,7 @@ public class EmployeeDAO {
     }
 
     public void updateEmployee(Employee e) {
-        String sql = " UPDATE Employees\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?\n" + "WHERE EmployeeID = ?";
+        String sql = " UPDATE Employees\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE EmployeeID = ?";
         DBContext db = new DBContext();
         try {
             Connection con = db.getConnection();
@@ -104,7 +106,9 @@ public class EmployeeDAO {
             statement.setString(4, e.getLastName());
             statement.setString(5, e.getEmail());
             statement.setString(6, e.getPhoneNumber());
-            statement.setInt(7, e.getEmployeeID());
+            statement.setString(7, e.getAvatar_name());
+            statement.setBytes(8, e.getAvatar_img());
+            statement.setInt(9, e.getEmployeeID());
             statement.execute();
             new DBContext().close(con, statement, null);
         } catch (Exception ex) {
@@ -122,7 +126,7 @@ public class EmployeeDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception ex) {

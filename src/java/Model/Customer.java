@@ -18,17 +18,21 @@ public class Customer {
     private String email;
     private String phoneNumber;
     private String address;
+    private String avatar_name;
+    private byte[] avatar_img;
 
-    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String avatar_name, byte[] avatar_img) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
-    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+    public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String avatar_name, byte[] avatar_img) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -36,9 +40,11 @@ public class Customer {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
-    public Customer(int customerID, String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+    public Customer(int customerID, String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String avatar_name, byte[] avatar_img) {
         this.customerID = customerID;
         this.username = username;
         this.password = password;
@@ -47,6 +53,24 @@ public class Customer {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     public int getCustomerID() {
