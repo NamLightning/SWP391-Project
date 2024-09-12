@@ -44,6 +44,11 @@
         <servlet-name>ImageServlet</servlet-name>
         <servlet-class>Controller.ImageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductControl</servlet-name>
+        <servlet-class>Controller.ProductControl</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -79,6 +84,10 @@
     <servlet-mapping>
         <servlet-name>ImageServlet</servlet-name>
         <url-pattern>/ImageServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductControl</servlet-name>
+        <url-pattern>/ProductControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

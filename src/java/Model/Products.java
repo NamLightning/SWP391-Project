@@ -19,6 +19,11 @@ public class Products {
     private String avatar_name;
     private byte[] avatar_img;
 
+    public Products(String avatar_name, byte[] avatar_img) {
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
     public Products(String productName, double price, int stockQuantity, int categoryID) {
         this.productName = productName;
         this.price = price;
