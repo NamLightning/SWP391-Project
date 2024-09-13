@@ -49,6 +49,14 @@
         <servlet-class>Controller.ProductControl</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
+    <servlet>
+        <servlet-name>WebSocketChatServer</servlet-name>
+        <servlet-class>Controller.WebSocketChatServer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientEndPoint</servlet-name>
+        <servlet-class>Controller.ClientEndPoint</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -88,6 +96,14 @@
     <servlet-mapping>
         <servlet-name>ProductControl</servlet-name>
         <url-pattern>/ProductControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WebSocketChatServer</servlet-name>
+        <url-pattern>/WebSocketChatServer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientEndPoint</servlet-name>
+        <url-pattern>/ClientEndPoint</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <title>Pet Product</title>
+        <script src="js/chat.js"></script>
     </head>
     <body>
         <main class="m-3">
@@ -45,7 +46,7 @@
             <nav aria-label="Navigation for products">
                 <ul class="pagination">
                     <c:if test="${currentPage != 1}">
-                        <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&&currentPage=${currentPage-1}">Previous</a>
+                        <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&currentPage=${currentPage-1}">Previous</a>
                         </li>
                     </c:if>
                     <c:forEach begin="1" end="${noOfPages}" var="i">
@@ -56,17 +57,18 @@
                                 </li>
                             </c:when>
                             <c:otherwise>
-                                <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&&currentPage=${i}">${i}</a>
+                                <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&currentPage=${i}">${i}</a>
                                 </li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                     <c:if test="${currentPage lt noOfPages}">
-                        <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&&currentPage=${currentPage+1}">Next</a>
+                        <li class="page-item"><a class="page-link" href="ProductControl?recordsPerPage=${recordsPerPage}&currentPage=${currentPage+1}">Next</a>
                         </li>
                     </c:if>
                 </ul>
             </nav>
+            <%@include file="includes/customerChatBox.jsp" %>
         </main>
     </body>
 </html>
