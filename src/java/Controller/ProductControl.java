@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -79,6 +80,7 @@ public class ProductControl extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "edit":
+                    pageValue(request);
                     editProduct(request, response);
                     break;
                 case "delete":
@@ -88,9 +90,7 @@ public class ProductControl extends HttpServlet {
                     break;
             }
         } else {
-//            ProductsDAO productDAO = new ProductsDAO();
-//            ArrayList<Products> list = productDAO.getAllProducts();
-//            request.setAttribute("productList", list);
+            pageValue(request);
             request.getRequestDispatcher("product.jsp").forward(request, response);
         }
     }
@@ -131,18 +131,23 @@ public class ProductControl extends HttpServlet {
                 Categories c = categoriesDAO.checkExist(id2);
                 String fileName = getImageName(request);
                 byte[] fileData = getImage(request);
-
                 p.setProductName(productName);
                 p.setDescription(productDesc);
                 p.setPrice(price2);
                 p.setStockQuantity(stock2);
                 p.setCategoryID(c.getCategoryID());
-                p.setAvatar_name(fileName);
-                p.setAvatar_img(fileData);
+                if (fileName != null) {
+                    p.setAvatar_name(fileName);
+                }
+                if (fileData != null) {
+                    p.setAvatar_img(fileData);
+                }
                 productsDAO.updateProduct(p);
-                response.sendRedirect("product.jsp");
+                pageValue(request);
+                request.getRequestDispatcher("product.jsp").forward(request, response);
                 break;
             case "Cancel":
+                pageValue(request);
                 request.getRequestDispatcher("product.jsp").forward(request, response);
                 break;
             default:
@@ -179,26 +184,58 @@ public class ProductControl extends HttpServlet {
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     private String getImageName(HttpServletRequest request) throws IOException, ServletException {
         Part filePart = request.getPart("image");
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        String fileName = null;
+        if (filePart != null) {
+            fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        }
         return fileName;
     }
 
     private byte[] getImage(HttpServletRequest request) throws IOException, ServletException {
         Part filePart = request.getPart("image");
-        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+        byte[] fileData = null;
+        if (filePart != null) {
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            if (!fileName.isEmpty()) {
+                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
+                File uploadDir = new File(uploadPath);
+                if (!uploadDir.exists()) {
+                    uploadDir.mkdir();
+                }
+                filePart.write(uploadPath + File.separator + fileName);
+                fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
+            }
         }
-        if (fileName != null && !fileName.isEmpty()) {
-            filePart.write(uploadPath + File.separator + fileName);
-        }
-        byte[] fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
         return fileData;
+    }
+
+    private void pageValue(HttpServletRequest request) {
+        int currentPage;
+        if (request.getParameter("currentPage") != null && !request.getParameter("currentPage").isEmpty()) {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        } else {
+            currentPage = 1;
+        }
+        int recordsPerPage;
+        if (request.getParameter("recordsPerPage") != null && !request.getParameter("recordsPerPage").isEmpty()) {
+            recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
+        } else {
+            recordsPerPage = 12;
+        }
+        ProductsDAO productsDAO = new ProductsDAO();
+        ArrayList<Products> products = productsDAO.getAllProducts(currentPage, recordsPerPage);
+        request.setAttribute("products", products);
+        int rows = productsDAO.getNumberOfRows();
+        int nOfPages = rows / recordsPerPage;
+        if (nOfPages % recordsPerPage > 0) {
+            nOfPages++;
+        }
+        request.setAttribute("noOfPages", nOfPages);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("recordsPerPage", recordsPerPage);
     }
 
 }

@@ -20,6 +20,8 @@
             <form action="ProductControl" method="POST" enctype="multipart/form-data">
                 <div>
                     <input id="productID" name="productID" type="hidden" value="${product.getProductID()}"><br>
+                    <input id="recordsPerPage" name="recordsPerPage" type="hidden" value="${recordsPerPage}"><br>
+                    <input id="currentPage" name="currentPage" type="hidden" value="${currentPage}"><br>
                     <div>
                         <img src="${reuse.loadImage(product.getAvatar_img())}" alt="..."><br>
                         <label>Upload Items Image:</label>

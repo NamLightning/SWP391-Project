@@ -57,6 +57,53 @@ public class ProductsDAO {
         }
         return list;
     }
+    
+    public ArrayList<Products> getAllProducts(int currentPage, int recordsPerPage) {
+        DBContext db = new DBContext();
+        ArrayList<Products> list = new ArrayList<>();
+        try {
+            Connection con = db.getConnection();
+            
+            int start = currentPage * recordsPerPage - recordsPerPage;
+            int end = recordsPerPage * currentPage;
+            String sql = "With prod AS\n"
+                    + "( SELECT *,\n"
+                    + "ROW_NUMBER() OVER (order by ProductID) as RowNumber \n"
+                    + "FROM Products )\n"
+                    + "select *\n"
+                    + "from prod\n"
+                    + "Where RowNumber Between ? and ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, start);
+            ps.setInt(2, end);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Products p = new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
+                list.add(p);
+            }
+            new DBContext().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    
+    public Integer getNumberOfRows() {
+        DBContext db = new DBContext();
+        Integer numOfRows = 0;
+        try {
+            Connection con = db.getConnection();
+            String sql = "SELECT * FROM Products";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                numOfRows++;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfRows;
+    }
 
     public Products findProductByProductName(String productName) {
         String query = "select * from Products\n"
