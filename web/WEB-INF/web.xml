@@ -57,6 +57,14 @@
         <servlet-name>ClientEndPoint</servlet-name>
         <servlet-class>Controller.ClientEndPoint</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewPasswordControl</servlet-name>
+        <servlet-class>Controller.NewPasswordControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateOtp</servlet-name>
+        <servlet-class>Controller.ValidateOtp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -104,6 +112,14 @@
     <servlet-mapping>
         <servlet-name>ClientEndPoint</servlet-name>
         <url-pattern>/ClientEndPoint</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPasswordControl</servlet-name>
+        <url-pattern>/NewPasswordControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidateOtp</servlet-name>
+        <url-pattern>/ValidateOtp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

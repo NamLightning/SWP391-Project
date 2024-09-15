@@ -7,15 +7,9 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Properties;
-import java.util.Random;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +21,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Administrator
  */
-public class ForgotPasswordControl extends HttpServlet {
+public class NewPasswordControl extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +42,10 @@ public class ForgotPasswordControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ForgotPasswordControl</title>");
+            out.println("<title>Servlet NewPasswordControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ForgotPasswordControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NewPasswordControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,52 +77,35 @@ public class ForgotPasswordControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+        HttpSession session = request.getSession();
+        String newPassword = request.getParameter("password");
+        String confPassword = request.getParameter("confPassword");
         RequestDispatcher dispatcher = null;
-        String otpvalue;
-        HttpSession mySession = request.getSession();
+        if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
-        if (email != null || !email.isEmpty()) {
-            // sending otp
-            otpvalue = String.format("%06d", new Random().nextInt(999999));
-
-            String to = email;// change accordingly
-            // Get the session object
-            Properties prop = new Properties();
-            prop.put("mail.smtp.host", "smtp.gmail.com");
-            prop.put("mail.smtp.port", "465");
-            prop.put("mail.smtp.auth", "true");
-            prop.put("mail.smtp.socketFactory.port", "465");
-            prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("sup135791113@gmail.com", "xpnt hqol ciaf eeim");// Put your email
-                    // id and
-                    // password here
-                }
-            });
-            // compose message
             try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("sup135791113@gmail.com"));// change accordingly
-//                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setRecipients(Message.RecipientType.TO, to);
-                message.setSubject("Hello");
-                message.setText("your OTP is: " + otpvalue);
-                // send message
-                Transport.send(message);
-                System.out.println("message sent successfully");
-            } catch (MessagingException e) {
-                throw new RuntimeException(e);
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=PetHub;encrypt=true;trustServerCertificate=true";
+                String user = "sa";
+                String pass = "abc123";
+                Connection con = DriverManager.getConnection(url, user, pass);
+                PreparedStatement pst = con.prepareStatement("update Customers set [Password] = ? where Email = ? ");
+
+                pst.setString(1, newPassword);
+                pst.setString(2, (String) session.getAttribute("email"));
+
+                int rowCount = pst.executeUpdate();
+                if (rowCount > 0) {
+                    request.setAttribute("status", "resetSuccess");
+                    dispatcher = request.getRequestDispatcher("login.jsp");
+                } else {
+                    request.setAttribute("status", "resetFailed");
+                    dispatcher = request.getRequestDispatcher("login.jsp");
+                }
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
-            request.setAttribute("message", "OTP is sent to your email id");
-            //request.setAttribute("connection", con);
-            mySession.setAttribute("otp", otpvalue);
-            mySession.setAttribute("email", email);
-            dispatcher.forward(request, response);
-            //request.setAttribute("status", "success");
         }
     }
 

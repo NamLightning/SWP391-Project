@@ -33,6 +33,5 @@ public class TestDB {
 //        categoriesDAO.registerCategories(new Categories("Food"));
         ProductsDAO productsDAO = new ProductsDAO();
         productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
-        System.out.println(productsDAO.getAllProducts(1, 12));
     }
 }

@@ -144,16 +144,16 @@ public class ProductControl extends HttpServlet {
                 }
                 productsDAO.updateProduct(p);
                 pageValue(request);
-                request.getRequestDispatcher("product.jsp").forward(request, response);
+                response.sendRedirect("ProductControl");
                 break;
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("product.jsp").forward(request, response);
+                request.getRequestDispatcher("ProductControl").forward(request, response);
                 break;
             default:
                 break;
         }
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+        request.getRequestDispatcher("ProductControl").forward(request, response);
     }
 
     /**
