@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,6 +40,58 @@ public class EmployeeDAO {
         } catch (Exception ex) {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static ArrayList<Employee> getAllEmployee() {
+        DBContext db = new DBContext();
+        ArrayList<Employee> oList = new ArrayList<>();
+        String sql = "Select * from Employees";
+        try {
+            Connection con = db.getConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                int employeeID = rs.getInt(1);
+                String username = rs.getString(2);
+                String password = rs.getString(3);
+                String firstName = rs.getString(4);
+                String lastName = rs.getString(5);
+                String email = rs.getString(6);
+                String phoneNumber = rs.getString(7);
+                String avatar_name = rs.getString(8);
+                byte[] avatar_img = rs.getBytes(9);
+                Employee p = new Employee(employeeID, username, password, firstName, lastName, email, phoneNumber, avatar_name, avatar_img);
+                oList.add(p);
+            }
+            db.close(con, statement, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return oList;
+    }
+
+    public static String getImage(int employeeID) {
+        String sql = "SELECT Avatar_Img FROM Employees WHERE id = ?";
+        DBContext db = new DBContext();
+        try {
+            Connection con = db.getConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, employeeID);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                // Get the image data from the result set
+                byte[] imageBytes = resultSet.getBytes("Avatar_Img");
+                if (imageBytes != null) {
+                    return Base64.getEncoder().encodeToString(imageBytes);
+                }
+            }
+            statement.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public Employee findEmployeeByUsername(String username) {
