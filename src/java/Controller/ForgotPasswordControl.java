@@ -112,8 +112,8 @@ public class ForgotPasswordControl extends HttpServlet {
                 message.setFrom(new InternetAddress("sup135791113@gmail.com"));// change accordingly
 //                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 message.setRecipients(Message.RecipientType.TO, to);
-                message.setSubject("Hello");
-                message.setText("your OTP is: " + otpvalue);
+                message.setSubject("Cài lại mật khẩu");
+                message.setText("Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\n Mã OTP của bạn là: " + otpvalue);
                 // send message
                 Transport.send(message);
                 System.out.println("message sent successfully");
