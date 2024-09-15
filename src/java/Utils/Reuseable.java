@@ -68,4 +68,36 @@ public class Reuseable {
         }
         return otpvalue;
     }
+    
+    public static void sendEmail(String fromEmail, String appPassword, String toEmail, String subject, String message) throws UnsupportedEncodingException {
+        if (toEmail != null || !toEmail.isEmpty()) {
+            Properties prop = new Properties();
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.port", "465");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.socketFactory.port", "465");
+            prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, appPassword);
+                }
+            });
+            try {
+                MimeMessage mimeMessage = new MimeMessage(session);
+                mimeMessage.setFrom(new InternetAddress(fromEmail));
+                mimeMessage.setRecipients(Message.RecipientType.TO, toEmail);
+                mimeMessage.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
+                MimeBodyPart messageBodyPart = new MimeBodyPart();
+                messageBodyPart.setContent(message, "text/html; charset=UTF-8");
+                Multipart multipart = new MimeMultipart();
+                multipart.addBodyPart(messageBodyPart);
+                mimeMessage.setContent(multipart);
+                Transport.send(mimeMessage);
+                System.out.println("message sent successfully");
+            } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
