@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Utils.Reuseable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Properties;
@@ -81,53 +82,16 @@ public class ForgotPasswordControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+        String toEmail = request.getParameter("email");
         RequestDispatcher dispatcher = null;
-        String otpvalue;
+        String otpvalue = Reuseable.sendOTPEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", toEmail, "Cài lại mật khẩu", "Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\n Mã OTP của bạn là: ");
         HttpSession mySession = request.getSession();
+        dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
+        request.setAttribute("message", "OTP is sent to your email id");
+        mySession.setAttribute("otp", otpvalue);
+        mySession.setAttribute("email", toEmail);
+        dispatcher.forward(request, response);
 
-        if (email != null || !email.isEmpty()) {
-            // sending otp
-            otpvalue = String.format("%06d", new Random().nextInt(999999));
-
-            String to = email;// change accordingly
-            // Get the session object
-            Properties prop = new Properties();
-            prop.put("mail.smtp.host", "smtp.gmail.com");
-            prop.put("mail.smtp.port", "465");
-            prop.put("mail.smtp.auth", "true");
-            prop.put("mail.smtp.socketFactory.port", "465");
-            prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("sup135791113@gmail.com", "xpnt hqol ciaf eeim");// Put your email
-                    // id and
-                    // password here
-                }
-            });
-            // compose message
-            try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("sup135791113@gmail.com"));// change accordingly
-//                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setRecipients(Message.RecipientType.TO, to);
-                message.setSubject("Cài lại mật khẩu");
-                message.setText("Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\n Mã OTP của bạn là: " + otpvalue);
-                // send message
-                Transport.send(message);
-                System.out.println("message sent successfully");
-            } catch (MessagingException e) {
-                throw new RuntimeException(e);
-            }
-            dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
-            request.setAttribute("message", "OTP is sent to your email id");
-            //request.setAttribute("connection", con);
-            mySession.setAttribute("otp", otpvalue);
-            mySession.setAttribute("email", email);
-            dispatcher.forward(request, response);
-            //request.setAttribute("status", "success");
-        }
     }
 
     /**
