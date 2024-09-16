@@ -12,6 +12,7 @@
     </head>   
     <%@include file="includes/header.jsp" %>
     <body>
+    <center>
         <div class="container">
             <div class="left-sidebar"></div>
             <div class="main-content">
@@ -110,6 +111,7 @@
         <div class="container-4">
             <div class="left-sidebar" style="background-color: #f8f9fa; width:15%; height: 20%;"></div>
             <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%px">
+                <center>
                 <div class="learn-more">
                     <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>
                     <div class="learn-more-content">
@@ -121,6 +123,7 @@
                         <button class="learn-more-button">Learn More</button>
                     </div>
                 </div>
+                </center>
             </div>
             <div class="right-sidebar" style="background-color: #f8f9fa;width:15%;height: 20%;"></div>
         </div>
@@ -223,6 +226,7 @@
             </div>
             <div class="right-sidebar" style="background-color: #ffffff;width:312px;height: 721px;"></div>
         </div>
-    </body>
-    <%@include file="includes/footer.jsp" %>
+    </center>
+</body>
+<%@include file="includes/footer.jsp" %>
 </html>
