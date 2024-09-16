@@ -10,7 +10,7 @@
                         <span>+84 357572079</span>
                     </div>
                 </div>
-                <div class="location-info"style="padding-right:5px;">
+                <div class="location-info">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0459a1766085384576accced4da0e6d1e8a5e9e88191f8dad13bb1d757e0fe77?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="icon" />
                     <span>FPT Plaza, Ngu Hanh Son District, Da Nang</span>
                 </div>
@@ -31,7 +31,7 @@
                     <li class="nav-item"><a href="#contact-us">Contact Us</a></li>
                 </ul>
                 <form class="search-container">
-                    <input type="text" id="search-input" class="search-input" placeholder="  Search products...">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search products...">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f54504702ed8a70ca94c77306304e000bffd092436dcd387934a645a88007bc1?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Search Icon" class="search-icon">
                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon">
                 </form>
@@ -40,5 +40,3 @@
     </div>
     <div class="right-sidebar"></div>
 </div>
-
-

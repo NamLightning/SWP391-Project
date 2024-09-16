@@ -2,33 +2,33 @@
     display: flex;
     flex: 1;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
 }
 
 .header {
     display: grid;
     grid-template-rows: auto auto;
-    width: 100%;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
+    align-items: center;
 }
 
 .top-bar {
     display: grid;
+    width: 100%;
+    height: auto;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    background: #f8f9fa;
-    padding-top: 10px;
+    background-color: #f8f9fa;
     color: #000;
     font: 100 16px/1 Poppins, sans-serif;
-}
-
-.left-sidebar, .right-sidebar {
-    width: 287px;
-    background-color: #f8f9fa; 
+    padding-top: 0.5%;
 }
 
 .main-content {
-    flex: 1; 
+    flex: 1;
     background-color: #ffffff;
+    width:
 }
 
 .location-info, .contact-info, .user-profile {
@@ -60,18 +60,17 @@
     grid-template-columns: auto 1fr auto;
     align-items: center;
     background-color: #ffffff;
-    border-radius: 40px;
+    border-radius: 50px;
     box-shadow: 0 16px 12px rgba(0, 0, 0, 0.03);
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 0.7%;
+    margin-left: 0.5%;
+    width: 98%;
+    height: auto;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 8px;
     color: var(--Default-Black, #000);
     font: 700 20px Poppins, sans-serif;
 }
@@ -84,10 +83,11 @@
 .nav-menu {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 5%;
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .nav-item a {
