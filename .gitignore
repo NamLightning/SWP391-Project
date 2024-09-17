@@ -1,0 +1,8 @@
+/build/
+/dist/
+/nbproject/
+build.xml
+/.git/
+/web/META-INF/context.xml
+/src/conf/
+/src/conf/MANIFEST.MF
