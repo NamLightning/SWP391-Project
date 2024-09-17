@@ -111,8 +111,8 @@
 .search-input {
     border-radius: 20px;
     background-color: #f8f9fa;
-    width: 327px;
-    height: 40px;
+    width: 88%;
+    height: 44px;
     font: 400 16px/1 Poppins, sans-serif;
     border: none;
 }

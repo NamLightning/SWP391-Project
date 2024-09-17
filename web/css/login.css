@@ -1,0 +1,102 @@
+.sign-in-form {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    max-width: 30%;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+}
+
+.login-form-container {
+    background-color: #fff;
+    display: flex;
+    width: 130%;
+    height: 30%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-right: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-form-fields {
+    display: flex;
+    width: 100%;
+    max-width: 424px;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.google-login {
+    border-radius: 5px;
+    display: flex;
+    margin-top: 32px;
+    width: 100%;
+    align-items: center;
+    gap: 13px;
+    font-size: 14px;
+    color: #828282;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #e8e8e8;
+}
+
+.remember-me {
+    align-self: start;
+    display: flex;
+    margin-top: 8px;
+    align-items: start;
+    gap: 40px 222px;
+    font-size: 12px;
+    color: #a1a1a1;
+    font-weight: 400;
+    justify-content: start;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.checkbox-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 12px;
+    align-self: stretch;
+    margin: auto 0;
+}
+
+.checkbox-label {
+    align-self: stretch;
+    margin: auto 0;
+}
+
+.option-pass {
+    display: flex;
+    margin-top: 1%;
+    width: 100%;
+    max-width: 424px;
+    flex-direction: row;
+    justify-content: start;
+    gap: 45%;
+} 
+/*
+.forgot-link { 
+    color: #000; 
+    font-weight: 600; 
+    text-decoration: none; 
+}*/
+
+.signup-link { 
+    color: #000; 
+    font-weight: 600; 
+    text-decoration: none;
+}

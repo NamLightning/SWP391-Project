@@ -247,15 +247,15 @@ h3{
 }
 
 .learn-more-button {
-    width: 193px;
-    height: 60px;
+    width: 25%;
+    height: 20%;
     background-color: #000 !important;
     color: #fff !important;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 130%;
     font-weight: bold;
 }
 
