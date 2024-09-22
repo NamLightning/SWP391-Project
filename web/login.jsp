@@ -33,16 +33,12 @@
                             </button>
                         </header>
                         <p class="divider">
-                            <span>-------------</span> or Login with Email<span>-------------</span>
+                            <span>-------------</span> or Login with Username<span>-------------</span>
                         </p>
                         <div class="login-form-fields">
-                            <!--                    <div class="username-field">
-                                                        <label for="username">User name</label>
-                                                        <input type="username" id="username" class="username-input"required />
-                                                    </div>-->
-                            <div class="email-field">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" class="email-input" placeholder="mail@abc.com" required />
+                            <div class="username-field">
+                                <label for="username">Username</label>
+                                <input type="username" id="username" class="username-input"required />
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
@@ -53,15 +49,14 @@
                             <div class="option-pass">
                                 <div class="remember-me">
                                     <div class="checkbox-wrapper">
-                                        <input type="checkbox" id="remember-me" class="visually-hidden" />
+                                        <input type="checkbox" id="remember-me"/>
                                         <label for="remember-me" class="checkbox-label">
-                                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/bed70a242fd7de0c3dbc63aae576470c2b098c8ceebff69828201c59df6e4fc0?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="checkbox-icon" alt="" />
                                             Remember Me
                                         </label>
                                     </div>
                                 </div>
                                 <div class="forgot-pass" style="margin-top: 1.8%">
-                                    <a href="forgotPassword_ChangePass.jsp" class="other-link">Forgot Password!</a>
+                                    <a href="forgotPassword_EnterEmail.jsp" class="other-link">Forgot Password!</a>
                                 </div>
                             </div> 
                             <button type="submit" class="submit-button" style="margin-bottom: 10px;">Login</button>

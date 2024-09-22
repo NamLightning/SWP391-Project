@@ -46,7 +46,7 @@
                                         <p class="text-danger">${message}</p>
                                     </div>
                                     <div>
-                                        <button class="btn btn-primary fw-bold" type="submit">Send OTP</button>
+                                        <button href="forgotPassword_EnterCode.jsp" class="btn btn-primary fw-bold" type="submit">Send OTP</button>
                                     </div>
                                 </form>
                             </div>

@@ -1,3 +1,4 @@
+
 h3{
     padding-top: 10px;
     font-weight: 700;
@@ -247,15 +248,15 @@ h3{
 }
 
 .learn-more-button {
-    width: 25%;
-    height: 20%;
+    width: 193px;
+    height: 60px;
     background-color: #000 !important;
     color: #fff !important;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 130%;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -393,6 +394,3 @@ h3{
 .news-blog img:hover {
     transform: scale(1.05);
 }
-
-
-

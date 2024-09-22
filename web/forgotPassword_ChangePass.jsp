@@ -50,7 +50,7 @@
                                         </div>
                                         <p class="text-danger">${message}</p>  
                                         <div>
-                                            <button class="btn btn-primary fw-bold" type="submit">Confirm</button>
+                                            <button href="forgotPassword_Success.jsp"class="btn btn-primary fw-bold" type="submit">Confirm</button>
                                         </div>
 
                                     </form>

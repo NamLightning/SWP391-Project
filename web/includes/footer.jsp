@@ -1,6 +1,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <footer class="footer">
-    <center>
     <div class="footer-content">
         <div class="company-info">
             <div class="company-logo">
@@ -50,7 +49,7 @@
             <h2 class="section-title">Customer Service</h2>
             <ul class="section-links">
                 <li><a href="#" class="link-item">Contact Us</a></li>
-                <li><a href="#" class="link-item">Support</a></li>
+                <li><a href="#" class="link-item">About Us</a></li>
                 <li><a href="#" class="link-item">Shipping</a></li>
             </ul>
         </nav>
@@ -65,7 +64,6 @@
             </div>
         </section>
     </div>
-    </center>
     <center>
         <p class="copyright">@ Copyright PetHub 2024. Design by PetHubVN</p>
     </center>
