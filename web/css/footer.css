@@ -11,7 +11,7 @@
 
 .footer-content {
     display: flex;
-    width: 1270px;
+    width: 150%;
     height: 279px;
     align-items: flex-start;
     justify-content: space-between;

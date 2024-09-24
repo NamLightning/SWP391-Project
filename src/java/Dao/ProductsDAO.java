@@ -20,6 +20,15 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class ProductsDAO {
+    private static ProductsDAO productsDAO;
+    
+    public static ProductsDAO getInstance() {
+        if (productsDAO == null){
+            productsDAO = new ProductsDAO();
+        }
+        return productsDAO;
+    }
+    
     public void registerProduct(Products p) {
         String query = "insert into Products(ProductName, [Description], Price, StockQuantity, CategoryID, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?)";

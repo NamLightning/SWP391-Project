@@ -1,5 +1,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <footer class="footer">
+    <center>
     <div class="footer-content">
         <div class="company-info">
             <div class="company-logo">
@@ -64,6 +65,7 @@
             </div>
         </section>
     </div>
+    </center>
     <center>
         <p class="copyright">? Copyright PetHub 2024. Design by PetHubVN</p>
     </center>

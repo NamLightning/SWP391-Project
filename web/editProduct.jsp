@@ -26,6 +26,7 @@
                         <img src="${reuse.loadImage(product.getAvatar_img())}" alt="..."><br>
                         <label>Upload Items Image:</label>
                         <input type="file" name="image" id="image" accept="image/*"><br>
+                        <img id="preview" src="#" alt="Image Preview">
                     </div>
                     <div>
                         <p>Name: <input id="productName" name="productName" type="text" value="${product.getProductName()}"></p><br>
@@ -42,5 +43,6 @@
                 </div>
             </form>
         </div>
+        <script src="preview.js"></script>
     </body>
 </html>

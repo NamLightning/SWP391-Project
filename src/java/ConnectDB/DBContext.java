@@ -16,19 +16,21 @@ import java.sql.SQLException;
  * @author Administrator
  */
 public class DBContext implements DatabaseInfor{
+    private Connection conn = null;
 
     public DBContext() {
 
     }
 
     public Connection getConnection() {
-        Connection conn = null;
-        try {
-            Class.forName(driverName);
-            conn = DriverManager.getConnection(url, user, pass);
+        if (conn == null){
+            try {
+                Class.forName(driverName);
+                conn = DriverManager.getConnection(url, user, pass);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return conn;
     }

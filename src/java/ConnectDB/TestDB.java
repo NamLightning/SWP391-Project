@@ -31,7 +31,8 @@ public class TestDB {
 //        managerDAO.registerManager(new Manager("hung", "123", "nguyen", "hung", "hung@gmail.com", "0905"));
 //        CategoriesDAO categoriesDAO = new CategoriesDAO();
 //        categoriesDAO.registerCategories(new Categories("Food"));
-        ProductsDAO productsDAO = new ProductsDAO();
-        productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
+        ProductsDAO productsDAO = ProductsDAO.getInstance();
+//        productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
+        System.out.println(productsDAO.getAllProducts());
     }
 }

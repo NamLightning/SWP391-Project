@@ -4,17 +4,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
+        <link rel="stylesheet" href="bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
     </head>   
     <%@include file="includes/header.jsp" %>
     <body>
-
+    <center>
         <div class="container">
             <div class="left-sidebar"></div>
             <div class="main-content">
-                <div class="welcome-page" style="width: 1296px;height: 607px;margin: 0;">
+                <div class="welcome-page" style="width: 100%;height: 100%;margin: 0;">
                     <img src="images/welcome-img.png" alt="" class="welcome-image"/>
                     <div class="welcome-content">
                         <h1>A pet store with everything you need</h1>
@@ -93,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="feature-item">
-                                <img src="images/food3.jpg" alt="">
+                                <img src="images/food3.jpg" alt="" style="object-fit: contain;">
                                 <div class="feature-info">
                                     <h3>Premium Dog Food - Size XL</h3>
                                     <p style="margin:0; padding-top:10px;">699.000₫</p>
@@ -107,8 +109,9 @@
         </div>
 
         <div class="container-4">
-            <div class="left-sidebar" style="background-color: #f8f9fa; width:122px; height: 420px;"></div>
-            <div class="main-content-4" style="flex: 1;width: 1480px; height: 420px">
+            <div class="left-sidebar" style="background-color: #f8f9fa; width:15%; height: 20%;"></div>
+            <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%px">
+                <center>
                 <div class="learn-more">
                     <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>
                     <div class="learn-more-content">
@@ -120,8 +123,9 @@
                         <button class="learn-more-button">Learn More</button>
                     </div>
                 </div>
+                </center>
             </div>
-            <div class="right-sidebar" style="background-color: #f8f9fa;width:220px;height: 420px;"></div>
+            <div class="right-sidebar" style="background-color: #f8f9fa;width:15%;height: 20%;"></div>
         </div>
 
         <div class="container-5">
@@ -222,6 +226,7 @@
             </div>
             <div class="right-sidebar" style="background-color: #ffffff;width:312px;height: 721px;"></div>
         </div>
-    </body>
-    <%@include file="includes/footer.jsp" %>
+    </center>
+</body>
+<%@include file="includes/footer.jsp" %>
 </html>
