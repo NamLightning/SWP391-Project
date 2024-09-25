@@ -6,7 +6,7 @@
         <div class="main-content">
             <header class="header">
                 <div class="top-bar">
-                    <div class="contact-info">
+                    <div class="contact-info" style="margin-top: 0;">
                         <div class="phone-number">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2f9d63fab85b206bc10ae5040360353f1243581ebadde50d05aa9b213830e0d?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="icon" />
                             <span>+84 357572079</span>
@@ -27,13 +27,13 @@
                         <span>Pet Hub</span>
                     </div>
                     <ul class="nav-menu">
-                        <li class="nav-item"><a href="#items">Items</a></li>
-                        <li class="nav-item"><a href="#service">Service</a></li>
-                        <li class="nav-item"><a href="#news-blog">News & Blog</a></li>
-                        <li class="nav-item"><a href="#contact-us">Contact Us</a></li>
+                        <li class="nav-item"><a href="petFood.jsp">Items</a></li>
+                        <li class="nav-item"><a href="servicePage.jsp">Service</a></li>
+                        <li class="nav-item"><a href="news_blog.jsp">News & Blog</a></li>
+                        <li class="nav-item"><a href="contactUs.jsp">Contact Us</a></li>
                     </ul>
                     <form class="search-container">
-                        <input type="text" id="search-input" class="search-input" placeholder="  Search products...">
+                        <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f54504702ed8a70ca94c77306304e000bffd092436dcd387934a645a88007bc1?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Search Icon" class="search-icon">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon">
                     </form>
@@ -44,3 +44,4 @@
     </div>
     <center>
 </header>
+

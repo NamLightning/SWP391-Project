@@ -1,21 +1,24 @@
+
 .footer {
     background-image: url(https://cdn.builder.io/api/v1/image/assets/TEMP/92b2220caa44fdae32d49cd71b5a3bf58365983501e5fb49d2ff7422e1b5ccb2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b);
     align-self: stretch;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 72px 312px;
+    padding: 50px 150px;
     font-family: 'Poppins',sans-serif;
     background-color: #f8f9fa;
+    width: 150%;
 }
 
 .footer-content {
     display: flex;
-    width: 150%;
-    height: 279px;
-    align-items: flex-start;
+    width: 105%;
+    height: 260px;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    
 }
 
 .company-info {
@@ -83,7 +86,7 @@
     justify-content: flex-start;
     padding: 0;
     margin: 0;
-    
+
 }
 
 .link-item {
@@ -121,7 +124,7 @@
 
 .contact-info {
     display: flex;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     flex-direction: column;
     align-items: start;
 }
@@ -141,4 +144,3 @@
     object-fit: cover;
     z-index: -1;
 }
-
