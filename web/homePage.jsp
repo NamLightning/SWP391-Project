@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
     </head>   
-    <%@include file="includes/header.jsp" %>
     <body>
     <center>
+        <%@include file="includes/header.jsp" %>
         <div class="container">
             <div class="left-sidebar"></div>
             <div class="main-content">

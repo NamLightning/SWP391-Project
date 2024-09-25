@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/newsblog.css">
     </head>
-    <%@include file="includes/header.jsp" %>
     <body>
     <center>
+        <%@include file="includes/header.jsp" %>
         <div class="news-blog">
             <div class="news-title-image">
                 <section class="article-container">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </center>
+    <%@include file="includes/footer.jsp" %>
 </body>
-<%@include file="includes/footer.jsp" %>
 </html>
 

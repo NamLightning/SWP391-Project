@@ -8,17 +8,14 @@
     padding: 50px 150px;
     font-family: 'Poppins',sans-serif;
     background-color: #f8f9fa;
-    width: 150%;
+    width: 100%;
 }
 
 .footer-content {
     display: flex;
     width: 105%;
     height: 260px;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
+    gap: 4%;
 }
 
 .company-info {

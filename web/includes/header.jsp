@@ -24,13 +24,13 @@
                 <nav class="main-nav">
                     <div class="brand">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/414bc3aa4ba1b0e046c9120ca0cecefee610e27e98072a299dbc81848a1ae88c?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Pet Hub logo" class="brand-logo" />
-                        <span>Pet Hub</span>
+                        <a href="homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
                     </div>
                     <ul class="nav-menu">
                         <li class="nav-item"><a href="petFood.jsp">Items</a></li>
                         <li class="nav-item"><a href="servicePage.jsp">Service</a></li>
                         <li class="nav-item"><a href="news_blog.jsp">News & Blog</a></li>
-                        <li class="nav-item"><a href="contactUs.jsp">Contact Us</a></li>
+                        <li class="nav-item"><a href="contactUsPage.jsp">Contact Us</a></li>
                     </ul>
                     <form class="search-container">
                         <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">
@@ -40,7 +40,7 @@
                 </nav>
             </header>
         </div>
-        <div class="right-sidebar"></div>
+        <div class="left-sidebar"></div>
     </div>
     <center>
 </header>

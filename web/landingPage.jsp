@@ -10,13 +10,13 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
     </head>   
-    <%@include file="includes/header.jsp" %>
     <body>
     <center>
         <div class="container">
             <div class="left-sidebar"></div>
             <div class="main-content">
-                <div class="welcome-page" style="width: 100%;height: 100%;margin: 0;">
+                <%@include file="includes/header.jsp" %>
+                <div class="welcome-page" style="width: 100%;height: 80%;margin: 0;">
                     <img src="images/welcome-img.png" alt="" class="welcome-image"/>
                     <div class="welcome-content">
                         <h1>A pet store with everything you need</h1>

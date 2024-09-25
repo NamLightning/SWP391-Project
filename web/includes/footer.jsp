@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <footer class="footer">
-    <div class="footer-content">
+    <div class="footer-content" style="flex-wrap: inherit;">
         <div class="company-info">
             <div class="company-logo">
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c46910bf8319a8fd0b606954d0e1cc89c07d939f062c3915f8351e42b31718f?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="logo-image" />
