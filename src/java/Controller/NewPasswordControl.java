@@ -78,8 +78,8 @@ public class NewPasswordControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String newPassword = request.getParameter("password");
-        String confPassword = request.getParameter("confPassword");
+        String newPassword = request.getParameter("newPassword");
+        String confPassword = request.getParameter("confirmPassword");
         RequestDispatcher dispatcher = null;
         if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 
@@ -97,10 +97,10 @@ public class NewPasswordControl extends HttpServlet {
                 int rowCount = pst.executeUpdate();
                 if (rowCount > 0) {
                     request.setAttribute("status", "resetSuccess");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher = request.getRequestDispatcher("forgotPassword_Success.jsp");
                 } else {
                     request.setAttribute("status", "resetFailed");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher = request.getRequestDispatcher("forgotPassword_Success.jsp");
                 }
                 dispatcher.forward(request, response);
             } catch (Exception e) {

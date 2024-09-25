@@ -35,7 +35,7 @@
                                 <div class="card-body my-2 col-md-10">
                                     <h3 class="card-title ">Forgot Password</h3>
                                     <p>Please enter your new password to reset.</p>
-                                    <form action="Authentication_ChangePasswornd_ChangePassword_Servlet" method="post">
+                                    <form action="NewPasswordControl" method="post">
                                         <div class="form-group">
                                             <label for="new-password">New Password</label>
                                             <div class="input-container">
