@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Error Page</title>
+        <title>PetHub</title>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
     </head>

@@ -57,10 +57,11 @@ body{
 
 .abousus-image {
     width: 558px;
-    height: 508px;
+    height: 495px;
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .abousus-image img{

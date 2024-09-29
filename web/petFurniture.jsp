@@ -22,7 +22,7 @@
                     <ul class="category-list">
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFurniture.jsp">
+                                <input type="checkbox" class="checkbox" data-url="petFurniture.jsp" checked>
                                 Furniture
                             </label>
                             <span class="category-count">12</span>
@@ -43,7 +43,7 @@
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFood.jsp" checked>
+                                <input type="checkbox" class="checkbox" data-url="petFood.jsp">
                                 Food
                             </label>
                             <span class="category-count">12</span>
@@ -77,11 +77,11 @@
                 </header>
                 <div class="product-grid">
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d619b14574a9c931df4b715f58d9012fc5d94b3107d0eec2323d10bbabbd8657?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Dog Food" class="product-image">
+                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Premium Dog Food</h3>
-                                <p class="product-price">479.000₫</p>
+                                <h3 class="product-name">Dog House</h3>
+                                <p class="product-price">599.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
                                 <span class="heart-icon"></span>
@@ -89,10 +89,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b8e5b0af167cc3f1d689592dbf2d31494d4b0182b391b057907e8c8658276a?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Cat Food" class="product-image">
+                        <img src="images/fur2.jpg" alt="Cat House" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Premium Cat Food</h3>
+                                <h3 class="product-name">Cat House</h3>
                                 <p class="product-price">439.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -101,10 +101,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea319e275d827b55f396c0d7bf7e33c60fccccd43649d32ae9bf9755e65a13b6?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Food - Size M" class="product-image">
+                        <img src="images/fur3.jpg" alt="Dog Circle Bed" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Dog Food - Size M</h3>
+                                <h3 class="product-name">Dog Circle Bed</h3>
                                 <p class="product-price">299.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -113,10 +113,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd8b8567c6bcddc608b852c98edd966545950fab547cc981cfdeb1d14142ac71?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Pedigree" class="product-image">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/70ff6e5faeb5a6e53c3a987a6ce78c20923d86f8d5bf510348faa02702e245f3?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Long Bed" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Pedigree</h3>
+                                <h3 class="product-name">Dog Long Bed</h3>
                                 <p class="product-price">699.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -125,10 +125,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d73c5cea9b9e730c285c60d22f6ccca4cd602c5f162dc065b2e0a33d47af8296?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Brit Care" class="product-image">
+                        <img src="images/bowl2.jpg" alt="Cat Bowl" class="product-image" style="object-fit: contain;">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Brit Care</h3>
+                                <h3 class="product-name">Cat Bowl</h3>
                                 <p class="product-price">365.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -137,11 +137,11 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5ee623681f54d502b3adff05d151d617da6f4d8806473c2dec67438c5622f96?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Sajo Pet Food" class="product-image">
+                        <img src="images/fur6.jpg" alt="Cat Chair" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Sajo Pet Food</h3>
-                                <p class="product-price">345.000₫</p>
+                                <h3 class="product-name"h3>
+                                <p class="product-price">Cat Chair</345.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
                                 <span class="heart-icon"></span>
@@ -149,10 +149,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a677381e5270117ad340c66e647271f8603fc836065d1b4d03f27aa81088af4?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Royal Canin" class="product-image">
+                        <img src="images/fur7.jpg" alt="Cat Litter Tray" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Royal Canin</h3>
+                                <h3 class="product-name">Cat Litter Tray</h3>
                                 <p class="product-price">370.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -161,10 +161,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e88cf5c0c632038a2ec84c3402411a6870087a2d20a2bc7d50a6508a9bef91f9?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Nature's Gift" class="product-image">
+                        <img src="images/fur5.jpg" alt="Double Cat Bowl" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Nature's Gift</h3>
+                                <h3 class="product-name">Double Cat Bowl</h3>
                                 <p class="product-price">355.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -173,10 +173,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d72893c70f3afc6f2f5bd2e06d0ad727ef91f3ce28a6102f44d4bc65a7b4b9d?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Whiskas" class="product-image">
+                        <img src="images/fur9.jpg" alt="Cat Tree" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Whiskas</h3>
+                                <h3 class="product-name">Cat Tree</h3>
                                 <p class="product-price">1.299.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -185,10 +185,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="images/food10.jpg" alt="Bil Jac" class="product-image">
+                        <img src="images/fur10.png" alt="Dog Bath" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Bil Jac</h3>
+                                <h3 class="product-name">Dog Bath</h3>
                                 <p class="product-price">298.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -197,10 +197,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="images/food11.jpg" alt="Golden Gatos" class="product-image">
+                        <img src="images/fur11.jpg" alt="Cat Toy Tree" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Golden Gatos</h3>
+                                <h3 class="product-name">Cat Toy Tree</h3>
                                 <p class="product-price">339.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">
@@ -209,10 +209,10 @@
                         </div>
                     </article>
                     <article class="product-card">
-                        <img src="images/food12.jpg" alt="Nulo" class="product-image">
+                        <img src="images/bowl1.jpg" alt="Dog Bowl" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
-                                <h3 class="product-name">Nulo</h3>
+                                <h3 class="product-name">Dog Bowl</h3>
                                 <p class="product-price">375.000₫</p>
                             </div>
                             <button class="favorite-button" aria-label="Add to favorites">

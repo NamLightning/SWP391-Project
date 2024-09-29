@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <title>PetHub</title>
         <link rel="stylesheet" href="bootstrap/bootstrap.css">
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
@@ -39,7 +39,7 @@
                     <div class="category-menu">
                         <div class="category-container">
                             <div class="category-feature">
-                                <img src="images/cate-img1.png" alt="Furniture">
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67933fc965fa8324a2ac6ff73eb74d3ecb67e185dd12cf2837558db462b4bcd?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Furniture">
                                 <div class="category-info">
                                     <h3>Furniture</h3>
                                     <p style="margin:0; padding:0;">20 products</p>
@@ -110,7 +110,7 @@
 
         <div class="container-4">
             <div class="left-sidebar" style="background-color: #f8f9fa; width:15%; height: 20%;"></div>
-            <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%px">
+            <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%">
                 <center>
                 <div class="learn-more">
                     <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>
