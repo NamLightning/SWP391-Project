@@ -25,14 +25,14 @@
                             With dedication and passion, our team constantly strives to deliver the best experience for our customers. 
                             Let us accompany you in keeping your pets healthy and happy.
                         </p>
-                        <button class="response-button">Response</button>
+                        <button class="response-button" onclick="window.location.href='#form-feedback'">Response</button>
                     </div>
                 </div>
             </div>
             <div class="right-sidebar"></div><br>
         </div>
         <div class="left-sidebar"></div><br>
-        <section class="contact-section">
+        <section class="contact-section" id="form-feedback">
             <form class="contact-form">
                 <div class="form-inputs">
                     <div class="name-inputs">
@@ -84,6 +84,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.5848800259173!2d108.258449!3d15.9830405!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421162aa4e0c59%3A0x22c827eb74773719!2sFPT%20Plaza%202!5e0!3m2!1svi!2s!4v1727276665627!5m2!1svi!2s"height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </center>
+    <script src="js/manipulation.js"></script>
     <%@include file="includes/footer.jsp" %>
 </body>
 </html>

@@ -25,47 +25,48 @@
                                 <input type="checkbox" class="checkbox" data-url="petFurniture.jsp" checked>
                                 Furniture
                             </label>
-                            <span class="category-count">12</span>
+                            <span class="category-count" data-count="furniture"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
                                 <input type="checkbox" class="checkbox" data-url="petAccessories.jsp">
                                 Accessories
                             </label>
-                            <span class="category-count">12</span>
+                            <span class="category-count" data-count="accessories"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
                                 <input type="checkbox" class="checkbox" data-url="petClothing.jsp">
                                 Clothes
                             </label>
-                            <span class="category-count">12</span>
+                            <span class="category-count" data-count="clothes"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
                                 <input type="checkbox" class="checkbox" data-url="petFood.jsp">
                                 Food
                             </label>
-                            <span class="category-count">12</span>
+                            <span class="category-count" data-count="food"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
                                 <input type="checkbox" class="checkbox" data-url="error.jsp">
                                 Sale
                             </label>
-                            <span class="category-count">0</span>
+                            <span class="category-count" data-count="sale"></span>
                         </li>
                     </ul>
                     <script src="js/checkbox.js"></script>
                 </div>
-                <div class="filter-price">
-                    <h2 class="filter-title">Filter by Price</h2>
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/11203f8ff327f01bb3efc555f1a43e5cd777f15534e33d55a68fd125823bbdf3?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Price range slider" class="price-range">
-                    <div class="price-apply">
-                        <span class="price-value">Price: 50.000₫ - 1.000.000₫</span>
-                        <button class="apply-button">Apply</button>
+                <section class="filter-price-container">
+                    <h2 class="filter-price-title">Filter by Price</h2>
+                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="525000" aria-label="Price range slider">
+                    <div class="price-range-controls">
+                        <p style="margin:0;">Price: </p>
+                        <p id="priceDisplay" class="price-range-text">525.000₫</p>
+                        <button class="apply-button" aria-label="Apply price filter">Apply</button>
                     </div>
-                </div>
+                </section>
             </aside>
             <main class="product-section">
                 <header class="product-header">
@@ -234,5 +235,6 @@
         </section>
         <%@include file="includes/footer.jsp"%>
     </center>
+    <script src="js/price-sort.js"></script>
 </body>
 </html>

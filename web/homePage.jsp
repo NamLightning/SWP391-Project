@@ -24,7 +24,7 @@
                         <p>PetHub is more than just an online pet shop – it’s a place 
                             for pet parents who want nothing but the best for their pets.
                         </p>
-                        <button class="welcome-button">Shop Now</button>
+                        <button class="welcome-button" onclick="window.location.href='petFood.jsp'">Shop Now</button>
                     </div>
                 </div>
             </div>
@@ -117,10 +117,10 @@
                     <div class="learn-more-content">
                         <h1>The smarter way to shop for your pet</h1>
                         <br>
-                        <p>We are committed to having the best products
-                            1and ensuring the best quality for your pet.
+                        <p>We are committed to having the best service
+                            and ensuring the best quality for your pet.
                         </p>
-                        <button class="learn-more-button">Learn More</button>
+                        <button class="learn-more-button" onclick="window.location.href='servicePage.jsp'">Learn More</button>
                     </div>
                 </div>
                 </center>
@@ -131,7 +131,7 @@
         <div class="container-5">
             <div class="left-sidebar" style="background-color: #ffffff; width:312px; height: 1224px;"></div>
             <div class="main-content-5" style="flex: 1;width: 1296px; height: 1024px">
-                <div class="best-sell">
+                <div class="best-sell" id="best_seller">
                     <h1>Best Selling</h1>
                     <div class="best-sell-menu">
                         <div class="best-sell-container">
