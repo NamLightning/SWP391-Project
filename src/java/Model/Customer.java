@@ -19,6 +19,10 @@ public class Customer {
     private String phoneNumber;
     private String address;
 
+    public Customer() {
+    }
+
+    
     public Customer(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
         this.password = password;
@@ -48,6 +52,19 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
+
+    public Customer(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Customer(int customerID, String username, String email) {
+        this.customerID = customerID;
+        this.username = username;
+        this.email = email;
+    }
+    
+    
 
     public int getCustomerID() {
         return customerID;

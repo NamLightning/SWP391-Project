@@ -20,6 +20,47 @@ import ConnectDB.DBContext;
  * @author Administrator
  */
 public class CustomerDAO {
+    
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
+    public Customer checkLogin(String username, String password) {
+        try {
+            String query = "select * from Account where Username = ? and Password = ? ";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Customer a = new Customer(rs.getString(1), rs.getString(2));
+                return a;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+        public Customer findByEmail(Customer account) {
+        String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Account WHERE Email=?";
+        String check_email = account.getEmail();
+        Customer a = null;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sqlQuerry_find);
+            ps.setString(1, check_email);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                a = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3));
+            }
+            conn.close();
+        } catch (Exception e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return a;
+    }
+
     public void registerCustomer(Customer c) {
         String query = "insert into Customers(Username, [Password], FirstName, LastName, Email, PhoneNumb, address)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?)";
@@ -50,7 +91,7 @@ public class CustomerDAO {
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                c = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                c = new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {
@@ -132,5 +173,21 @@ public class CustomerDAO {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return c;
+    }
+    
+        public void addnewAccountWithGoogle(Customer account) {
+        String email = account.getEmail();
+        String sqlQuerry_add = "insert into Account(Username,Password,Email) values(?,?,?);";
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlQuerry_add);
+            ps.setString(1, account.getUsername());
+            ps.setString(2, account.getPassword());
+            ps.setString(3, email);
+            ps.execute();
+            conn.close();
+        } catch (Exception e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }
