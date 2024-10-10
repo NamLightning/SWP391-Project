@@ -1,0 +1,85 @@
+.sidebar {
+    width: 18%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 28px;
+}
+.logo {
+    width: 37px;
+    height: 37px;
+    object-fit: contain;
+}
+.bar-title {
+    color: #000;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.26px;
+}
+.sidebar-menu {
+    background-color: #fff;
+    box-shadow: 0 10px 60px rgba(226, 236, 249, 0.5);
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #97919b;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    padding: 11px 28px;
+    text-decoration: none;
+}
+.menu-item.active {
+    background-color: #5932ea;
+    color: #fff;
+    border-radius: 8px;
+}
+.menu-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 210%;
+    padding: 0 18px;
+}
+.user-info {
+    display: flex;
+    gap: 12px;
+}
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+.user-name {
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+}
+.user-role {
+    color: #757575;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 9px;
+}
+
+.greeting {
+    color: #000;
+    font-size: 24px;
+    font-weight: 1000;
+}

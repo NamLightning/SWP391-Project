@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -72,8 +73,14 @@
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
                     <div class="sort-dropdown">
+                        <select name="sort-drop">
+                            <option value="latest">Sort by latest</option>
+                            <option value="latest">Sort by latest</option>
+                            <option value="ascendant">Sort by price ascendant</option>
+                            <option value="descendant">Sort by price descendant</option>
+                        </select>
                         <span class="sort-text">Sort by latest</span>
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1882270c236b22b80043636c84381434c2ab08777c5cbbf7effae57b09c2e254?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dropdown icon" class="dropdown-icon">
+                        <!--<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1882270c236b22b80043636c84381434c2ab08777c5cbbf7effae57b09c2e254?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dropdown icon" class="dropdown-icon">-->
                     </div>
                 </header>
                 <div class="product-grid">
