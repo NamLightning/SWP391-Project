@@ -19,22 +19,24 @@
     <body>
     <center style="margin-right: 8%;">
         <section class="sign-up-form">
-            <div class="form-container">
+            <div class="form-container" style="padding-left: 5%">
                 <div class="form-content">
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
-                    <form class="form-wrapper">
+
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PRJ301-FinalProject/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force">
                         <header class="form-header">
                             <h1 class="form-title">Sign Up</h1>
                             <button class="google-signup">
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo"/>
                                 <span class="google-text">Sign Up with Google</span>
                             </button>
                         </header>
-                        <p class="divider">
-                            <span>-------------</span> or Sign Up with Email <span>-------------</span>
-                        </p>
+                    </a>
+                    <p class="divider" style="text-align:center;">
+                        <span>-------------</span> or Sign Up with Username <span>-------------</span>
+                    <form class="form-wrapper">
                         <div class="form-fields">
                             <div class="name-fields">
                                 <div class="name-field">
@@ -48,7 +50,7 @@
                             </div>
                             <div class="username-field">
                                 <label for="username">User name</label>
-                                <input type="username" id="username" class="username-input"required />
+                                <input type="text" name="username" id="username" class="username-input" required />
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
@@ -59,7 +61,7 @@
                             <div class="re-password-field">
                                 <div class="re-password-wrapper">
                                     <label for="re-password">Re-Password</label>
-                                    <input type="re-password" id="re-password" class="re-password-input" placeholder="*****************" required />
+                                    <input type="password" name="re-password" id="re-password" class="re-password-input" placeholder="*****************" required />
                                 </div>
                             </div>
                             <div class="phone-field">
@@ -72,7 +74,7 @@
                             </div>
                             <div class="address-field">
                                 <label for="address">Address</label>
-                                <input type="address" id="address" class="address-input" required />
+                                <input type="text" name="address" id="address" class="address-input" required />
                             </div>
                             <button type="submit" class="submit-button">Sign Up</button>
                         </div>

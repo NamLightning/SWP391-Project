@@ -1,4 +1,4 @@
-.manage-customer {
+.manage-container {
     background-color: #fafbff;
     overflow: hidden;
     padding: 28px 80px 0 0;
@@ -66,6 +66,7 @@
     color: #acacac;
     font-size: 14px;
     font-weight: 400;
+    margin: 0;
 }
 .stat-value {
     color: #333;

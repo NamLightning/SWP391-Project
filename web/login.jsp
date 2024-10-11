@@ -20,11 +20,12 @@
     <center style="margin-right: 8%;">
         <section class="sign-in-form" style="width:50%;">
             <div class="login-form-container">
-                <div class="form-content" style="height: 50%;">
+                <div class="form-content" style="height: 50%; padding-left: 10%">
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
-                    <form class="form-wrapper">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PRJ301-FinalProject/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force" 
+                       style="text-decoration: none; color: grey">
                         <header class="form-header">
                             <h1 class="form-title">Login</h1>
                             <button class="google-login">
@@ -32,18 +33,21 @@
                                 <span class="google-text">Continue with Google</span>
                             </button>
                         </header>
-                        <p class="divider">
-                            <span>-------------</span> or Login with Username<span>-------------</span>
-                        </p>
+                    </a>
+                    <p class="divider" style="text-align:center">
+                        <span>-------------</span> or Login with Email<span>-------------</span>
+                    </p>
+                    <form class="form-wrapper">
                         <div class="login-form-fields">
+                            <!--${message}-->
                             <div class="username-field">
                                 <label for="username">Username</label>
-                                <input type="username" id="username" class="username-input"required />
+                                <input type="text" name="username" id="username" class="username-input"/>
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
                                     <label for="password">Password</label>
-                                    <input type="password" id="password" class="password-input" placeholder="*****************" required />
+                                    <input type="password" name="password" id="password" class="password-input" placeholder="*****************"/>
                                 </div>
                             </div>
                             <div class="option-pass">
@@ -68,6 +72,7 @@
                             </center>
                         </div>
                     </form>
+
                 </div>
             </div>
         </section>
