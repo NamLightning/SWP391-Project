@@ -24,16 +24,15 @@
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
-
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PRJ301-FinalProject/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force">
-                        <header class="form-header">
+                    <header class="form-header">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PRJ301-FinalProject/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force">
                             <h1 class="form-title">Sign Up</h1>
                             <button class="google-signup">
                                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo"/>
                                 <span class="google-text">Sign Up with Google</span>
                             </button>
-                        </header>
-                    </a>
+                        </a>
+                    </header> 
                     <p class="divider" style="text-align:center;">
                         <span>-------------</span> or Sign Up with Username <span>-------------</span>
                     <form class="form-wrapper">
@@ -77,6 +76,12 @@
                                 <input type="text" name="address" id="address" class="address-input" required />
                             </div>
                             <button type="submit" class="submit-button">Sign Up</button>
+                            <center>
+                                <div class="login-prompt" style="margin-bottom: 30px;">
+                                    <span class="login-text">Already have account?</span>
+                                    <a href="login.jsp" class="other-link">Login</a>
+                                </div>
+                            </center>
                         </div>
                     </form>
                 </div>
