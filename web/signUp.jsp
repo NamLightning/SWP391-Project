@@ -24,55 +24,58 @@
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
+                    <header class="form-header">
+                        <h1 class="form-title">Sign Up</h1>
+                    </header>
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PetStore/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force">
+
+                        <button class="google-signup">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo"/>
+                            <span class="google-text">Sign Up with Google</span>
+                        </button>
+
+                    </a>
+                    <p class="divider" style="text-align:center;">
+                        <span>-------------</span> or Sign Up with Username <span>-------------</span>
                     <form class="form-wrapper">
-                        <header class="form-header">
-                            <h1 class="form-title">Sign Up</h1>
-                            <button class="google-signup">
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
-                                <span class="google-text">Sign Up with Google</span>
-                            </button>
-                        </header>
-                        <p class="divider">
-                            <span>-------------</span> or Sign Up with Email <span>-------------</span>
-                        </p>
                         <div class="form-fields">
                             <div class="name-fields">
                                 <div class="name-field">
-                                    <label for="first-name">First name</label>
+                                    <label>First name</label>
                                     <input type="text" id="first-name" class="input-field" required />
                                 </div>
                                 <div class="name-field">
-                                    <label for="second-name">Second name</label>
+                                    <label>Second name</label>
                                     <input type="text" id="second-name" class="input-field" required />
                                 </div>
                             </div>
                             <div class="username-field">
-                                <label for="username">User name</label>
-                                <input type="username" id="username" class="username-input"required />
+                                <label>User name</label>
+                                <input type="text" id="username" class="username-input" required />
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
-                                    <label for="password">Password</label>
+                                    <label>Password</label>
                                     <input type="password" id="password" class="password-input" placeholder="*****************" required />
                                 </div>
                             </div>
                             <div class="re-password-field">
                                 <div class="re-password-wrapper">
-                                    <label for="re-password">Re-Password</label>
-                                    <input type="re-password" id="re-password" class="re-password-input" placeholder="*****************" required />
+                                    <label>Re-Password</label>
+                                    <input type="password" id="re-password" class="re-password-input" placeholder="*****************" required />
                                 </div>
                             </div>
                             <div class="phone-field">
-                                <label for="phone-number">Phone number</label>
+                                <label>Phone number</label>
                                 <input type="tel" id="phone-number" class="input-field" required />
                             </div>
                             <div class="email-field">
-                                <label for="email">Email</label>
+                                <label>Email</label>
                                 <input type="email" id="email" class="email-input" placeholder="mail@abc.com" required />
                             </div>
                             <div class="address-field">
-                                <label for="address">Address</label>
-                                <input type="address" id="address" class="address-input" required />
+                                <label>Address</label>
+                                <input type="text" id="address" class="address-input" required />
                             </div>
                             <button type="submit" class="submit-button">Sign Up</button>
                         </div>

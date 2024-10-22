@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList, Model.Products"%>
+<%@page import="Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList, Model.Item"%>
 <jsp:useBean id="categories" class="Dao.CategoriesDAO" scope="page"/>
 <jsp:useBean id="reuse" class="Utils.Reuseable" scope="page"/>
 <!DOCTYPE html>

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Controller.AccountControl;
 
+import Dao.CustomerDAO;
+import Model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -70,7 +72,31 @@ public class SignUpControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("re-password");
+        String fname = request.getParameter("first-name");
+        String lname = request.getParameter("second-name");
+        String phone = request.getParameter("phone-number");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        if (!password.equals(repassword)) {
+            request.setAttribute("mess", "Please enter right your password");
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        } else {
+            CustomerDAO dao = new CustomerDAO();
+            Customer a = dao.findCustomerByUsername(username);
+            if (a == null) {
+                Customer c = new Customer(username, password, fname, lname, email, phone, address);
+                dao.registerCustomer(c);
+                request.setAttribute("messenger", "Sign up successfully!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+
+            } else {
+                request.setAttribute("mess", "Your Username has been existed");
+                request.getRequestDispatcher("signUp.jsp").forward(request, response);
+            }
+        }
     }
 
     /**

@@ -6,9 +6,9 @@
 package Controller;
 
 import Dao.CategoriesDAO;
-import Dao.ProductsDAO;
+import Dao.ItemDAO;
 import Model.Categories;
-import Model.Products;
+import Model.Item;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,7 +33,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
  * @author Administrator
  */
 @MultipartConfig
-public class ProductControl extends HttpServlet {
+public class ItemControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -110,7 +110,7 @@ public class ProductControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        ProductsDAO productsDAO = new ProductsDAO();
+        ItemDAO productsDAO = new ItemDAO();
         CategoriesDAO categoriesDAO = new CategoriesDAO();
 
         String productID = request.getParameter("productID").trim();
@@ -127,7 +127,7 @@ public class ProductControl extends HttpServlet {
         String submit = request.getParameter("submit");
         switch (submit) {
             case "Edit":
-                Products p = productsDAO.checkExist(id);
+                Item p = productsDAO.checkExist(id);
                 Categories c = categoriesDAO.checkExist(id2);
                 String fileName = getImageName(request);
                 byte[] fileData = getImage(request);
@@ -172,10 +172,10 @@ public class ProductControl extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String productID = request.getParameter("id").trim();
-        ProductsDAO productsDAO = new ProductsDAO();
+        ItemDAO productsDAO = new ItemDAO();
         CategoriesDAO categoriesDAO = new CategoriesDAO();
         ArrayList<Categories> list = categoriesDAO.getAllCategories();
-        Products product = productsDAO.checkExist(Integer.parseInt(productID));
+        Item product = productsDAO.checkExist(Integer.parseInt(productID));
         request.setAttribute("categoryList", list);
         request.setAttribute("product", product);
         request.getRequestDispatcher("editProduct.jsp").forward(request, response);
@@ -225,8 +225,8 @@ public class ProductControl extends HttpServlet {
         } else {
             recordsPerPage = 12;
         }
-        ProductsDAO productsDAO = new ProductsDAO();
-        ArrayList<Products> products = productsDAO.getAllProducts(currentPage, recordsPerPage);
+        ItemDAO productsDAO = new ItemDAO();
+        ArrayList<Item> products = productsDAO.getAllProducts(currentPage, recordsPerPage);
         request.setAttribute("products", products);
         int rows = productsDAO.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;

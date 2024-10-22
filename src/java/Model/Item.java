@@ -9,7 +9,7 @@ package Model;
  *
  * @author Administrator
  */
-public class Products {
+public class Item {
     private int productID;
     private String productName;
     private String description;
@@ -19,19 +19,19 @@ public class Products {
     private String avatar_name;
     private byte[] avatar_img;
 
-    public Products(String avatar_name, byte[] avatar_img) {
+    public Item(String avatar_name, byte[] avatar_img) {
         this.avatar_name = avatar_name;
         this.avatar_img = avatar_img;
     }
 
-    public Products(String productName, double price, int stockQuantity, int categoryID) {
+    public Item(String productName, double price, int stockQuantity, int categoryID) {
         this.productName = productName;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.categoryID = categoryID;
     }
 
-    public Products(String productName, String description, double price, int stockQuantity, int categoryID) {
+    public Item(String productName, String description, double price, int stockQuantity, int categoryID) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -39,7 +39,7 @@ public class Products {
         this.categoryID = categoryID;
     }
 
-    public Products(String productName, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Item(String productName, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.price = price;
         this.stockQuantity = stockQuantity;
@@ -48,7 +48,7 @@ public class Products {
         this.avatar_img = avatar_img;
     }
 
-    public Products(String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Item(String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productName = productName;
         this.description = description;
         this.price = price;
@@ -58,7 +58,7 @@ public class Products {
         this.avatar_img = avatar_img;
     }
 
-    public Products(int productID, String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
+    public Item(int productID, String productName, String description, double price, int stockQuantity, int categoryID, String avatar_name, byte[] avatar_img) {
         this.productID = productID;
         this.productName = productName;
         this.description = description;

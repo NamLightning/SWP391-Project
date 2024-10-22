@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,33 +25,37 @@
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
-                    <form class="form-wrapper">
-                        <header class="form-header">
-                            <h1 class="form-title">Login</h1>
-                            <button class="google-login">
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
-                                <span class="google-text">Continue with Google</span>
-                            </button>
-                        </header>
-                        <p class="divider">
-                            <span>-------------</span> or Login with Username<span>-------------</span>
-                        </p>
+                    <header class="form-header">
+                        <h1 class="form-title">Login</h1>
+                        <button class="google-login" onclick="location.href = 'https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PetStore/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force'">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
+                            <span class="google-text">Continue with Google</span>
+                        </button>
+                    </header>
+                    <p class="divider">
+                        <span>-------------</span> or Login with Username<span>-------------</span>
+                    </p>
+                    <c:if test="${not empty mess}">
+                        <p class="alert alert-danger" role="alert">${mess}</p>
+                    </c:if>
+                    <form class="form-wrapper" action="LoginControl" method="POST">
                         <div class="login-form-fields">
                             <div class="username-field">
-                                <label for="username">Username</label>
-                                <input type="username" id="username" class="username-input"required />
+                                <label>Username</label>
+                                <input type="text" name="username" id="username" class="username-input" required />
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" class="password-input" placeholder="*****************" required />
+                                    <label>Password</label>
+                                    <input type="password" name="password" id="password" class="password-input" placeholder="*****************" required />
                                 </div>
                             </div>
+
                             <div class="option-pass">
                                 <div class="remember-me">
                                     <div class="checkbox-wrapper">
-                                        <input type="checkbox" id="remember-me"/>
-                                        <label for="remember-me" class="checkbox-label">
+                                        <input type="checkbox" id="remember-me" value="1"/>
+                                        <label class="checkbox-label">
                                             Remember Me
                                         </label>
                                     </div>

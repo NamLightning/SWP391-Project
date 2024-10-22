@@ -9,12 +9,12 @@ import Dao.CategoriesDAO;
 import Dao.CustomerDAO;
 import Dao.EmployeeDAO;
 import Dao.ManagerDAO;
-import Dao.ProductsDAO;
+import Dao.ItemDAO;
 import Model.Categories;
 import Model.Customer;
 import Model.Employee;
 import Model.Manager;
-import Model.Products;
+import Model.Item;
 
 
 /**
@@ -31,8 +31,9 @@ public class TestDB {
 //        managerDAO.registerManager(new Manager("hung", "123", "nguyen", "hung", "hung@gmail.com", "0905"));
 //        CategoriesDAO categoriesDAO = new CategoriesDAO();
 //        categoriesDAO.registerCategories(new Categories("Food"));
-        ProductsDAO productsDAO = ProductsDAO.getInstance();
+        CustomerDAO customerDAO = new CustomerDAO();
+        ItemDAO productsDAO = ItemDAO.getInstance();
 //        productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
-        System.out.println(productsDAO.getAllProducts());
+        System.out.println(customerDAO.checkLogin("nhatk", "123"));
     }
 }

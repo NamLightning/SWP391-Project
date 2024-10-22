@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Controller.AccountControl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -70,7 +70,18 @@ public class ProfileControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+//        String customerID = request.getParameter("id").trim();
+        String fName = request.getParameter("newFname");
+        String lName = request.getParameter("newLname");
+        String email = request.getParameter("newEmail");
+        String phone = request.getParameter("newPhone_numb");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("repassword");
+        request.getRequestDispatcher("updateDriver.jsp").forward(request, response);
     }
 
     /**

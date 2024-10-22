@@ -3,20 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Controller.AccountControl;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Administrator
  */
-public class LogOutControl extends HttpServlet {
+public class NewPasswordControl extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +42,10 @@ public class LogOutControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LogOutControl</title>");            
+            out.println("<title>Servlet NewPasswordControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LogOutControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NewPasswordControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,7 +77,38 @@ public class LogOutControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        String newPassword = request.getParameter("newPassword");
+        String confPassword = request.getParameter("confirmPassword");
+        RequestDispatcher dispatcher = null;
+        if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
+
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=PetHub;encrypt=true;trustServerCertificate=true";
+                String user = "sa";
+                String pass = "abc123";
+                Connection con = DriverManager.getConnection(url, user, pass);
+                PreparedStatement pst = con.prepareStatement("update Customers set [Password] = ? where Email = ? ");
+
+                pst.setString(1, newPassword);
+                pst.setString(2, (String) session.getAttribute("email"));
+
+                int rowCount = pst.executeUpdate();
+                if (rowCount > 0) {
+                    request.setAttribute("status", "resetSuccess");
+                    dispatcher = request.getRequestDispatcher("forgotPassword_Success.jsp");
+                } else {
+                    request.setAttribute("status", "resetFailed");
+                    dispatcher = request.getRequestDispatcher("forgotPassword_Success.jsp");
+                }
+                con.close();
+                pst.close();
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
