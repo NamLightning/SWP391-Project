@@ -23,7 +23,7 @@ public class ManagerDAO {
         String query = "insert into Managers(Username, [Password], FirstName, LastName, Email, PhoneNumb, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?)";
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, m.getUsername());
             ps.setString(2, m.getPassword());
@@ -45,7 +45,7 @@ public class ManagerDAO {
                 + "where Username = ?\n";
         Manager m = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -64,7 +64,7 @@ public class ManagerDAO {
                 + "where PhoneNumb = ?\n";
         Manager m = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
@@ -82,7 +82,7 @@ public class ManagerDAO {
         try {
             DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
+            try (Connection con = DBContext.getConnection()) {
                 String sql = "DELETE FROM Managers WHERE ManagerID=?";
                 statement = con.prepareStatement(sql);
                 statement.setInt(1, id);
@@ -98,7 +98,7 @@ public class ManagerDAO {
         String sql = " UPDATE Managers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE ManagerID = ?";
         DBContext db = new DBContext();
         try {
-            Connection con = db.getConnection();
+            Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, m.getUsername());
             statement.setString(2, m.getPassword());
@@ -121,7 +121,7 @@ public class ManagerDAO {
                 + "where ManagerID = ?\n";
         Manager m = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

@@ -14,17 +14,18 @@ import java.util.logging.Logger;
 import Model.Customer;
 import ConnectDB.DBContext;
 
-
 /**
  *
  * @author Administrator
  */
 public class CustomerDAO {
+
     public void registerCustomer(Customer c) {
         String query = "insert into Customers(Username, [Password], FirstName, LastName, Email, PhoneNumb, address, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, c.getUsername());
             ps.setString(2, c.getPassword());
@@ -46,8 +47,9 @@ public class CustomerDAO {
         String query = "select * from Customers\n"
                 + "where Username = ?\n";
         Customer c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -60,13 +62,14 @@ public class CustomerDAO {
         }
         return c;
     }
-    
+
     public Customer findCustomerByPhoneNumb(String phoneNumb) {
         String query = "select * from Customers\n"
                 + "where PhoneNumb = ?\n";
         Customer c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
@@ -81,15 +84,14 @@ public class CustomerDAO {
     }
 
     public void deleteCustomer(int id) {
+        Connection con = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM Customers WHERE CustomerID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
+            con = DBContext.getConnection();
+            String sql = "DELETE FROM Customers WHERE CustomerID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,9 +100,9 @@ public class CustomerDAO {
 
     public void updateCustomer(Customer c) {
         String sql = " UPDATE Customers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, address = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE CustomerID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, c.getUsername());
             statement.setString(2, c.getPassword());
@@ -118,13 +120,14 @@ public class CustomerDAO {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Customer checkExist(int id) {
         String query = "select * from Customers\n"
                 + "where CustomerID = ?\n";
         Customer c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -137,11 +140,12 @@ public class CustomerDAO {
         }
         return c;
     }
-    
+
     public Customer checkLogin(String username, String password) {
+        Connection con = null;
         try {
             String query = "select * from Customers where Username = ? and [Password] = ?";
-            Connection con = new DBContext().getConnection();
+            con = DBContext.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, username);
             ps.setString(2, password);
@@ -154,13 +158,14 @@ public class CustomerDAO {
         }
         return null;
     }
-    
+
     public Customer findByEmail(Customer account) {
         String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Account WHERE Email=?";
         String check_email = account.getEmail();
         Customer a = null;
+        Connection con = null;
         try {
-            Connection con = new DBContext().getConnection();
+            con = DBContext.getConnection();
             PreparedStatement ps = con.prepareStatement(sqlQuerry_find);
             ps.setString(1, check_email);
             ResultSet rs = ps.executeQuery();
@@ -173,12 +178,12 @@ public class CustomerDAO {
         }
         return a;
     }
-    
+
     public void addnewAccountWithGoogle(Customer account) {
         String email = account.getEmail();
         String sqlQuerry_add = "insert into Account(Username,Password,Email) values(?,?,?);";
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlQuerry_add);
             ps.setString(1, account.getUsername());
             ps.setString(2, account.getPassword());

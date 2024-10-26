@@ -21,11 +21,13 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class EmployeeDAO {
+
     public void registerEmployee(Employee e) {
         String query = "insert into Employees(Username, [Password], FirstName, LastName, Email, PhoneNumb, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, e.getUsername());
             ps.setString(2, e.getPassword());
@@ -41,13 +43,13 @@ public class EmployeeDAO {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static ArrayList<Employee> getAllEmployee() {
-        DBContext db = new DBContext();
         ArrayList<Employee> oList = new ArrayList<>();
         String sql = "Select * from Employees";
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -63,7 +65,6 @@ public class EmployeeDAO {
                 Employee p = new Employee(employeeID, username, password, firstName, lastName, email, phoneNumber, avatar_name, avatar_img);
                 oList.add(p);
             }
-            db.close(con, statement, rs);
         } catch (Exception ex) {
             Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,9 +73,9 @@ public class EmployeeDAO {
 
     public static String getImage(int employeeID) {
         String sql = "SELECT Avatar_Img FROM Employees WHERE id = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, employeeID);
 
@@ -98,8 +99,9 @@ public class EmployeeDAO {
         String query = "select * from Employees\n"
                 + "where Username = ?\n";
         Employee e = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -112,13 +114,14 @@ public class EmployeeDAO {
         }
         return e;
     }
-    
+
     public Employee findEmployeeByPhoneNumb(String phoneNumb) {
         String query = "select * from Employees\n"
                 + "where PhoneNumb = ?\n";
         Employee e = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
@@ -133,15 +136,14 @@ public class EmployeeDAO {
     }
 
     public void deleteEmployee(int id) {
+        Connection con = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM Employees WHERE EmployeeID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
+            con = DBContext.getConnection();
+            String sql = "DELETE FROM Employees WHERE EmployeeID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -150,9 +152,9 @@ public class EmployeeDAO {
 
     public void updateEmployee(Employee e) {
         String sql = " UPDATE Employees\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE EmployeeID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, e.getUsername());
             statement.setString(2, e.getPassword());
@@ -169,13 +171,14 @@ public class EmployeeDAO {
             Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Employee checkExist(int id) {
         String query = "select * from Employees\n"
                 + "where EmployeeID = ?\n";
         Employee e = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

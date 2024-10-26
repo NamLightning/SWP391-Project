@@ -32,8 +32,9 @@ public class TestDB {
 //        CategoriesDAO categoriesDAO = new CategoriesDAO();
 //        categoriesDAO.registerCategories(new Categories("Food"));
         CustomerDAO customerDAO = new CustomerDAO();
+        CategoriesDAO categoriesDAO = new CategoriesDAO();
         ItemDAO productsDAO = ItemDAO.getInstance();
 //        productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
-        System.out.println(customerDAO.checkLogin("nhatk", "123"));
+        System.out.println(productsDAO.getNumberOfRows());
     }
 }

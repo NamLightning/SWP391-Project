@@ -68,7 +68,6 @@
                     </c:if>
                 </ul>
             </nav>
-            <%@include file="includes/customerChatBox.jsp" %>
         </main>
     </body>
 </html>

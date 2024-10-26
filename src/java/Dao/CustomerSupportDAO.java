@@ -15,17 +15,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author Administrator
  */
 public class CustomerSupportDAO {
+
     public void registerCustomerSupport(CustomerSupport c) {
         String query = "insert into CustomerSupport(EmployeeID, RequestID, Response)\n"
                 + "values(?, ?, ?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, c.getEmployeeID());
             ps.setInt(2, c.getRequestID());
@@ -41,8 +42,9 @@ public class CustomerSupportDAO {
         String query = "select * from CustomerSupport\n"
                 + "where employeeID = ?\n";
         ArrayList<CustomerSupport> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, employeeID);
             ResultSet rs = ps.executeQuery();
@@ -56,13 +58,14 @@ public class CustomerSupportDAO {
         }
         return list;
     }
-    
+
     public ArrayList<CustomerSupport> findAllCustomerSupportByRequestID(int requestID) {
         String query = "select * from CustomerSupport\n"
                 + "where RequestID = ?\n";
         ArrayList<CustomerSupport> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, requestID);
             ResultSet rs = ps.executeQuery();
@@ -78,15 +81,14 @@ public class CustomerSupportDAO {
     }
 
     public void deleteCustomerSupport(int id) {
+        Connection con = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM CustomerSupport WHERE SupportID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
+            con = DBContext.getConnection();
+            String sql = "DELETE FROM CustomerSupport WHERE SupportID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(CustomerSupportDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,9 +97,9 @@ public class CustomerSupportDAO {
 
     public void updateCustomerSupport(CustomerSupport c) {
         String sql = " UPDATE CustomerSupport\n" + "SET Response = ?\n" + "WHERE SupportID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, c.getResponse());
             statement.setInt(2, c.getRequestID());
@@ -107,13 +109,14 @@ public class CustomerSupportDAO {
             Logger.getLogger(CustomerSupportDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public CustomerSupport checkExist(int id) {
         String query = "select * from CustomerSupport\n"
                 + "where SupportID = ?\n";
         CustomerSupport c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

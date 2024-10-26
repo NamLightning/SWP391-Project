@@ -20,7 +20,7 @@ public class PetsDAO {
         ArrayList<Pets> oList = new ArrayList<>();
         String sql = "Select * from Pets";
         try {
-            Connection con = db.getConnection();
+            Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -47,7 +47,7 @@ public class PetsDAO {
         ArrayList<Pets> oList = new ArrayList<>();
         String sql = "Select * from Pets";
         try {
-            Connection con = db.getConnection();
+            Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -72,7 +72,7 @@ public class PetsDAO {
         String sql = " UPDATE Pets\n" + "SET AvatarName = ?, Avatar_Img=?\n" + "WHERE PetID = ?";
         DBContext db = new DBContext();
         try {
-            Connection con = db.getConnection();
+            Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, p.getAvatar_name());
             statement.setBytes(2, p.getAvatar_img());
@@ -89,7 +89,7 @@ public class PetsDAO {
         String sql = "SELECT Avatar_Img FROM Pets WHERE id = ?";
         DBContext db = new DBContext();
         try {
-            Connection con = db.getConnection();
+            Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, petID);
 
@@ -122,7 +122,7 @@ public class PetsDAO {
         Connection con;
 
         try {
-            con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, p.getPetID());
             statement.setString(2, p.getPetName());
@@ -143,7 +143,7 @@ public class PetsDAO {
         String sql = "DELETE FROM Pets WHERE PetID=?";
 
         try {
-            Connection conn = new DBContext().getConnection();
+            Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.execute();

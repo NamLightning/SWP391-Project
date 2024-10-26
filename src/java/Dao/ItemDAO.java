@@ -20,20 +20,22 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class ItemDAO {
+
     private static ItemDAO productsDAO;
-    
+
     public static ItemDAO getInstance() {
-        if (productsDAO == null){
+        if (productsDAO == null) {
             productsDAO = new ItemDAO();
         }
         return productsDAO;
     }
-    
+
     public void registerProduct(Item p) {
         String query = "insert into Products(ProductName, [Description], Price, StockQuantity, CategoryID, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, p.getProductName());
             ps.setString(2, p.getDescription());
@@ -43,36 +45,38 @@ public class ItemDAO {
             ps.setString(6, p.getAvatar_name());
             ps.setBytes(7, p.getAvatar_img());
             ps.execute();
-            new DBContext().close(conn, ps, null);
+            DBContext.GetInstance().close(conn, ps, null);
         } catch (Exception ex) {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public ArrayList<Item> getAllProducts() {
         String query = "select * from Products\n";
         ArrayList<Item> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Item p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
                 list.add(p);
             }
-            new DBContext().close(conn, ps, rs);
+            DBContext.GetInstance().close(conn, ps, rs);
         } catch (Exception e) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;
     }
-    
+
     public ArrayList<Item> getAllProducts(int currentPage, int recordsPerPage) {
-        DBContext db = new DBContext();
+
         ArrayList<Item> list = new ArrayList<>();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
-            
+            con = DBContext.getConnection();
+
             int start = currentPage * recordsPerPage - recordsPerPage;
             int end = recordsPerPage * currentPage;
             String sql = "With prod AS\n"
@@ -96,18 +100,19 @@ public class ItemDAO {
         }
         return list;
     }
-    
+
     public Integer getNumberOfRows() {
-        DBContext db = new DBContext();
         Integer numOfRows = 0;
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             String sql = "SELECT * FROM Products";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 numOfRows++;
             }
+            DBContext.GetInstance().close(con, ps, rs);
         } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -118,34 +123,36 @@ public class ItemDAO {
         String query = "select * from Products\n"
                 + "where ProductName = ?\n";
         Item p = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, productName);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
             }
-            new DBContext().close(conn, ps, rs);
+            DBContext.GetInstance().close(conn, ps, rs);
         } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
-    
+
     public Item findProductByCategory(int category) {
         String query = "select * from Products\n"
                 + "where CategoryID = ?\n";
         Item p = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, category);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
             }
-            new DBContext().close(conn, ps, rs);
+            DBContext.GetInstance().close(conn, ps, rs);
         } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -153,26 +160,25 @@ public class ItemDAO {
     }
 
     public void deleteProduct(int id) {
+        Connection conn = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM Products WHERE ProductID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
-            statement.close();
-        } catch (SQLException | NumberFormatException ex) {
+            Connection con = DBContext.getConnection();
+            String sql = "DELETE FROM Products WHERE ProductID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+            DBContext.GetInstance().close(conn, statement, null);
+        } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void updateProduct(Item p) {
         String sql = " UPDATE Products\n" + "SET ProductName = ?, [Description] = ?, Price = ?, StockQuantity = ?, CategoryID = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE ProductID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, p.getProductName());
             statement.setString(2, p.getDescription());
@@ -183,25 +189,26 @@ public class ItemDAO {
             statement.setBytes(7, p.getAvatar_img());
             statement.setInt(8, p.getProductID());
             statement.execute();
-            new DBContext().close(con, statement, null);
+            DBContext.GetInstance().close(con, statement, null);
         } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Item checkExist(int id) {
         String query = "select * from Products\n"
                 + "where ProductID = ?\n";
         Item p = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
             }
-            new DBContext().close(conn, ps, rs);
+            DBContext.GetInstance().close(conn, ps, rs);
         } catch (Exception ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

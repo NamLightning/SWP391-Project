@@ -20,11 +20,13 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class EmployeePetAssignmentDAO {
+
     public void registerEmployeePetAssignment(EmployeePetAssignment c) {
         String query = "insert into EmployeePetAssignment(EmployeeID, CustomerPetID, Status)\n"
                 + "values(?, ?, ?, ?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, c.getDoctorID());
             ps.setInt(2, c.getCustomerPetID());
@@ -40,8 +42,9 @@ public class EmployeePetAssignmentDAO {
         String query = "select * from EmployeePetAssignment\n"
                 + "where employeeID = ?\n";
         ArrayList<EmployeePetAssignment> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, employeeID);
             ResultSet rs = ps.executeQuery();
@@ -55,13 +58,14 @@ public class EmployeePetAssignmentDAO {
         }
         return list;
     }
-    
+
     public ArrayList<EmployeePetAssignment> findAllEmployeePetAssignmentByDate(int date) {
         String query = "select * from EmployeePetAssignment\n"
                 + "where AssignmentDate = ?\n";
         ArrayList<EmployeePetAssignment> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, date);
             ResultSet rs = ps.executeQuery();
@@ -77,15 +81,14 @@ public class EmployeePetAssignmentDAO {
     }
 
     public void deleteEmployeePetAssignment(int id) {
+        Connection con = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM EmployeePetAssignment WHERE AssignmentID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
+            con = DBContext.getConnection();
+            String sql = "DELETE FROM EmployeePetAssignment WHERE AssignmentID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(EmployeePetAssignmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,9 +97,9 @@ public class EmployeePetAssignmentDAO {
 
     public void updateEmployeePetAssignment(EmployeePetAssignment c) {
         String sql = " UPDATE EmployeePetAssignment\n" + "SET Status = ?\n" + "WHERE AssignmentID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = db.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, c.getStatus());
             statement.setInt(2, c.getAssignmentID());
@@ -106,13 +109,14 @@ public class EmployeePetAssignmentDAO {
             Logger.getLogger(EmployeePetAssignmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public EmployeePetAssignment checkExist(int id) {
         String query = "select * from EmployeePetAssignment\n"
                 + "where AssignmentID = ?\n";
         EmployeePetAssignment c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
