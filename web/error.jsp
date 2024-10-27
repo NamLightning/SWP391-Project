@@ -8,12 +8,12 @@
         <link rel="stylesheet" href="css/footer.css">
     </head>
     <body>
-        <%@include file="includes/header.jsp" %><br>
+        <%@include file="includes/header.jsp" %>
         <div class="container">
             <div class="main-content">
                 <center>
                     <div class="error-message">
-                        <h1>404<h1>
+                        <h1>404</h1>
                         <h2>OOPS! Not Found. Please go back...</h2>
                     </div>
                 </center>

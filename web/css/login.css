@@ -85,9 +85,9 @@
     width: 100%;
     max-width: 424px;
     flex-direction: row;
-    justify-content: start;
-    gap: 45%;
+    justify-content: space-between;
 } 
+
 /*
 .forgot-link { 
     color: #000; 

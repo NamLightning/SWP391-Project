@@ -13,7 +13,7 @@
                                 <span>+84 357572079</span>
                             </div>
                         </div>
-                        <div class="location-info"style="padding-right:5px;">
+                        <div class="location-info" style="padding-right:5px;">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0459a1766085384576accced4da0e6d1e8a5e9e88191f8dad13bb1d757e0fe77?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="icon" />
                             <span>FPT Plaza, Ngu Hanh Son District, Da Nang</span>
                         </div>              

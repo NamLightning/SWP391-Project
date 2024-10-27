@@ -54,12 +54,12 @@
                                 <div class="remember-me">
                                     <div class="checkbox-wrapper">
                                         <input type="checkbox" id="remember-me"/>
-                                        <label for="remember-me" class="checkbox-label">
+                                        <label for="remember-me" class="checkbox-label" style="width:100px;">
                                             Remember Me
                                         </label>
                                     </div>
                                 </div>
-                                <div class="forgot-pass" style="margin-top: 1.8%">
+                                <div class="forgot-pass" style="margin-top: 1.8%;">
                                     <a href="forgotPassword_EnterEmail.jsp" class="other-link">Forgot Password!</a>
                                 </div>
                             </div> 

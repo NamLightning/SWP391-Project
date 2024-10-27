@@ -4,14 +4,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/contactus.css">
     </head>
     <body>
-        <%@include file="includes/header.jsp" %>
+        <%@include file="includes/header.jsp"%>
     <center>
         <div class="container">
             <div class="left-sidebar"></div>
@@ -84,7 +83,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.5848800259173!2d108.258449!3d15.9830405!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421162aa4e0c59%3A0x22c827eb74773719!2sFPT%20Plaza%202!5e0!3m2!1svi!2s!4v1727276665627!5m2!1svi!2s"height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </center>
-    <script src="js/manipulation.js"></script>
+        <script src="<c:url value="/js/manipulation.js"/>"></script>
     <%@include file="includes/footer.jsp" %>
 </body>
 </html>

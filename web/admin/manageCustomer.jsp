@@ -5,98 +5,81 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <%@page import="Dao.CustomerDAO" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Page</title>
-        <link rel="stylesheet" href="../css/sidebar.css">
-        <link rel="stylesheet" href="../css/manageIndex.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Admin Dashboard</title>
+        <link rel="stylesheet" href="<c:url value="/css/managecus.css"/>">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
+
     <body>
-
-        <section class="manage-container">
-            <div class="layout-container">
-                <%@include file="../includes/sidebar.jsp"%>
-                <main class="main-content">
-                    <header class="header">
-                        <h2 class="greeting">Hello Admin 👋🏼,</h2>
-
-                    </header>
-                    <section class="stats-container">
-                        <div class="stat-card">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9ec7d05a46ccde9ccb5f9fc272047901ce874e51d77cba0f4ff3d680b2aec654?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="stat-icon">
-                            <div class="stat-info">
-                                <h3 class="stat-title">Total Customers</h3>
-                                <p class="stat-value">150</p>
-                                <p class="stat-change positive-change">
-                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cce45859924f456ea8384800fdc9eefa68e95228506c1fefd96599f03aa65d4e?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="change-icon">
-                                    <span>16% this month</span>
-                                </p>
-                            </div>
+        <div class="container">
+            <%@include file="../includes/sidebar.jsp"%>
+            <div class="main">
+                <div class="topbar">
+                    <div class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div class="user">
+                        <img src="#" alt="User profile picture">
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="customer-table">
+                        <div class="header">
+                            <h2 style="font-size: 20px;">All Customers</h2>
+                            <button class="vip-customer-btn" 
+                                    onclick="window.location.href='<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>
                         </div>
-                        <div class="stat-card">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0891f45d77b45371128215970071ddeb9a989aeb56bde614d3f47956a5ec7fe4?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="stat-icon">
-                            <div class="stat-info">
-                                <h3 class="stat-title">Members</h3>
-                                <p class="stat-value">63</p>
-                                <p class="stat-change negative-change">
-                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2a79006c34d61b9b2dd68bdbfdcf266a14b40e236067f637198a56e2e0df9a26?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="change-icon">
-                                    <span>1% this month</span>
-                                </p>
-                            </div>
+                        <div class="search-sort-bar">
+                            <input type="text" placeholder="Search customer..." class="search-input">
+                            <select class="sort-select">
+                                <option>Sort by Newest</option>
+                                <option>Sort by Oldest</option>
+                            </select>
                         </div>
-                        <div class="stat-card">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/23afe41930e43bacbb073f829e444ff254dd8a50d8f85481527ec196dd02a850?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="stat-icon">
-                            <div class="stat-info">
-                                <h3 class="stat-title">Active Now</h3>
-                                <p class="stat-value">23</p>
-                            </div>
+                        <div class="customer-table" style="font-size: 13px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Gender</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nguyen Thanh Phat</td>
+                                        <td>Male</td>
+                                        <td>0934 567 890</td>
+                                        <td>example@mail.com</td>
+                                        <td>Ho Chi Minh City</td>
+                                        <td><span class="status active">Active</span></td>
+                                    </tr> 
+                                </tbody>
+                            </table>
                         </div>
-                    </section>
-                    <section class="customer-table">
-                        <div class="table-header">
-                            <h2 class="table-title">All Customers</h2>
-                            <div class="table-actions">
-                                <form class="search-bar" role="search" style="margin:0;">
-                                    <label for="main-search" class="visually-hidden">Search</label>
-                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8b2dc3ba60109a9eda2de58d621c4511e56b2afbb7f63680d7c89a1dc900c24a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="search-icon">
-                                    <input type="search" id="main-search" class="search-input" placeholder="Search">
-                                </form>
-                                <select name="sort-cus">
-                                    <option name="newest" selected>Newest</option>
-                                    <option name="oldest">Oldest</option>
-                                </select>
-                            </div>
+                        <div class="pagination">
+                            <a href="#" class="pagination-item">&lt;</a>
+                            <a href="#" class="pagination-item active">1</a>
+                            <a href="#" class="pagination-item">2</a>
+                            <a href="#" class="pagination-item">3</a>
+                            <a href="#" class="pagination-item">4</a>
+                            <span class="pagination-item">...</span>
+                            <a href="#" class="pagination-item">&gt;</a>
                         </div>
-                        <table class="table-content">
-                            <thead>
-                                <tr>
-                                    <th>Customer Name</th>
-                                    <th>Gender</th>
-                                    <th>Phone Number</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-
-                        </table>
-                        <div class="table-footer">
-                            <p class="table-info">Showing data 1 to 8 of 256K entries</p>
-                            <nav class="pagination" aria-label="Customer table pagination">
-                                <a href="#" class="pagination-item" aria-label="Previous page">&lt;</a>
-                                <a href="#" class="pagination-item">1</a>
-                                <a href="#" class="pagination-item">2</a>
-                                <a href="#" class="pagination-item">3</a>
-                                <a href="#" class="pagination-item">4</a>
-                                <span class="pagination-item">...</span>
-                                <!--<a href="#" class="pagination-item"></a>-->
-                                <a href="#" class="pagination-item" aria-label="Next page">&gt;</a>
-                            </nav>
-                        </div>
-                    </section>
-                </main>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+        <script src="../js/sidebar.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="Model.Employee"%>
+<%@page import="Model.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<%@page import="Dao.EmployeeDAO" %>
+<%@page import="Dao.CustomerDAO" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
-        <link rel="stylesheet" href="<c:url value="/css/manageemp.css"/>">
+        <link rel="stylesheet" href="<c:url value="/css/managecus.css"/>">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -28,14 +28,14 @@
                     </div>
                 </div>
                 <div class="main-content">
-                    <div class="employee-table">
+                    <div class="customer-table">
                         <div class="header">
-                            <h2 style="font-size: 20px;">All Employees</h2>
-                            <button class="new-employee-btn" 
-                                    onclick="window.location.href='<c:url value="/admin/createEmployee.jsp"/>'">Create New Customer</button>
+                            <h2 style="font-size: 20px;">All VIP Customers</h2>
+                            <button class="vip-customer-btn" 
+                                    onclick="window.location.href='<c:url value="/admin/manageCustomer.jsp"/>'">View All Customer</button>
                         </div>
                         <div class="search-sort-bar">
-                            <input type="text" placeholder="Search employee..." class="search-input">
+                            <input type="text" placeholder="Search customer..." class="search-input">
                             <select class="sort-select">
                                 <option>Sort by Newest</option>
                                 <option>Sort by Oldest</option>
@@ -45,22 +45,22 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
+                                        <th>Customer Name</th>
                                         <th>Gender</th>
-                                        <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Position</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Rank</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>#12345128</td>
-                                        <td>Phan Anh Quan</td>
+                                        <td>Nguyen Thanh Phat</td>
                                         <td>Male</td>
-                                        <td>example@mail.com</td>
                                         <td>0934 567 890</td>
-                                        <td>Cashier</td>
+                                        <td>example@mail.com</td>
+                                        <td>Ho Chi Minh City</td>
+                                        <td>Silver</td>
                                     </tr> 
                                 </tbody>
                             </table>
