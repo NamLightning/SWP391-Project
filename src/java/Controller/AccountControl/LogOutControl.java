@@ -8,9 +8,11 @@ package Controller.AccountControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,18 +32,28 @@ public class LogOutControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LogOutControl</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LogOutControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
         }
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                // Check if the cookie is the one you want to delete
+                if (cookie.getName().equals("user")) {
+                    // Create a new cookie with the same name and set its max age to 0
+                    cookie.setMaxAge(0);
+                    // Set the cookie path to match the one that was set when the cookie was created
+                    cookie.setPath("/");
+                    // Add the cookie to the response to delete it
+                    response.addCookie(cookie);
+                }
+            }
+        }
+        request.getSession(true);
+//        CookieUtils.add("user", null, 0, response);
+//        CookieUtils.add("pass", null, 0, response);
+        response.sendRedirect("landingPage.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

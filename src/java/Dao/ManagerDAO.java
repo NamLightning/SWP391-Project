@@ -19,6 +19,7 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class ManagerDAO {
+
     public void registerManager(Manager m) {
         String query = "insert into Managers(Username, [Password], FirstName, LastName, Email, PhoneNumb, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -59,6 +60,26 @@ public class ManagerDAO {
         return m;
     }
     
+    public Manager checkLogin(String username, String password) {
+        Connection con = null;
+        Manager m = null;
+        try {
+            String query = "select * from Managers where Username = ? and [Password] = ?";
+            con = DBContext.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                m = new Manager(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
+            }
+            DBContext.GetInstance().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(ManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return m;
+    }
+
     public Manager findManagerByPhoneNumb(String phoneNumb) {
         String query = "select * from Managers\n"
                 + "where PhoneNumb = ?\n";
@@ -79,15 +100,14 @@ public class ManagerDAO {
     }
 
     public void deleteManager(int id) {
+        Connection con = null;
         try {
-            DBContext db = new DBContext();
             PreparedStatement statement;
-            try (Connection con = DBContext.getConnection()) {
-                String sql = "DELETE FROM Managers WHERE ManagerID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
+            con = DBContext.getConnection();
+            String sql = "DELETE FROM Managers WHERE ManagerID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(ManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,9 +116,9 @@ public class ManagerDAO {
 
     public void updateManager(Manager m) {
         String sql = " UPDATE Managers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE ManagerID = ?";
-        DBContext db = new DBContext();
+        Connection con = null;
         try {
-            Connection con = DBContext.getConnection();
+            con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, m.getUsername());
             statement.setString(2, m.getPassword());
@@ -115,7 +135,7 @@ public class ManagerDAO {
             Logger.getLogger(ManagerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Manager checkExist(int id) {
         String query = "select * from Managers\n"
                 + "where ManagerID = ?\n";

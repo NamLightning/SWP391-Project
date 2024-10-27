@@ -6,7 +6,11 @@
 package Controller.AccountControl;
 
 import Dao.CustomerDAO;
+import Dao.EmployeeDAO;
+import Dao.ManagerDAO;
 import Model.Customer;
+import Model.Employee;
+import Model.Manager;
 import Utils.CookieUtils;
 import google_context.GooglePojo;
 import google_context.GoogleUtils;
@@ -42,7 +46,7 @@ public class LoginControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
@@ -141,10 +145,14 @@ public class LoginControl extends HttpServlet {
                 String password = request.getParameter("password");
                 String remember = request.getParameter("remember-me");
                 HttpSession session = request.getSession();
-                CustomerDAO loginDAO = new CustomerDAO();
-                Customer a = loginDAO.checkLogin(username, password);
+                CustomerDAO customerDAO = new CustomerDAO();
+                EmployeeDAO employeeDAO = new EmployeeDAO();
+                ManagerDAO managerDAO = new ManagerDAO();
+                Customer a = customerDAO.checkLogin(username, password);
+                Employee e = employeeDAO.checkLogin(username, password);
+                Manager m = managerDAO.checkLogin(username, password);
                 System.out.println(username + password);
-                if (a == null) {
+                if (a == null && e == null && m == null) {
                     request.setAttribute("mess", "Wrong Username or Password");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
@@ -161,7 +169,15 @@ public class LoginControl extends HttpServlet {
                     CookieUtils.add("user", username, 24, response);
                     session.setAttribute("us", username.trim());
 //                    session.setAttribute("pw", password);
-                    request.getRequestDispatcher("homePage.jsp").forward(request, response);
+                    if (a != null) {
+                        request.getRequestDispatcher("homePage.jsp").forward(request, response);
+                    }
+                    if (e != null){
+                        request.getRequestDispatcher("petFood.jsp").forward(request, response);
+                    }
+                    if (m != null){
+                        request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+                    }
                 }
             }
         } catch (Exception e) {

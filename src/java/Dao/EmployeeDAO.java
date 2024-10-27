@@ -114,6 +114,26 @@ public class EmployeeDAO {
         }
         return e;
     }
+    
+    public Employee checkLogin(String username, String password) {
+        Connection con = null;
+        Employee e = null;
+        try {
+            String query = "select * from Employees where Username = ? and [Password] = ?";
+            con = DBContext.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                e = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getBytes(9));
+            }
+            DBContext.GetInstance().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
 
     public Employee findEmployeeByPhoneNumb(String phoneNumb) {
         String query = "select * from Employees\n"

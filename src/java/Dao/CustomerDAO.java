@@ -143,6 +143,7 @@ public class CustomerDAO {
 
     public Customer checkLogin(String username, String password) {
         Connection con = null;
+        Customer a = null;
         try {
             String query = "select * from Customers where Username = ? and [Password] = ?";
             con = DBContext.getConnection();
@@ -150,13 +151,14 @@ public class CustomerDAO {
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Customer a = new Customer(rs.getString(1), rs.getString(2));
-                return a;
+            if (rs.next()) {
+                a = new Customer(rs.getString(1), rs.getString(2));
             }
+            DBContext.GetInstance().close(con, ps, rs);
         } catch (Exception e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        return null;
+        return a;
     }
 
     public Customer findByEmail(Customer account) {
