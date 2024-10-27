@@ -6,7 +6,7 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0c46910bf8319a8fd0b606954d0e1cc89c07d939f062c3915f8351e42b31718f?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="logo-image" />
                 <span style="align-self: stretch; margin: auto 0;" >PetHub</span>
             </div>
-            <p class="company-description">
+            <p class="company-description" style="text-align: left;">
                 PetHub is more than just an online pet shop ? it's a place for pet parents who want nothing but the best for their pets.
                 From the moment you step into our stores or visit us online,
                 you'll find a large variety of high-quality products and services designed specifically for all the needs of your pet.
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <nav class="footer-section">
+        <nav class="footer-section" style="text-align: left;">
             <h2 class="section-title">Company</h2>
             <ul class="section-links">
                 <li><a href="#" class="link-item">About Us</a></li>
@@ -36,7 +36,7 @@
                 <li><a href="#" class="link-item">Privacy Policy</a></li>
             </ul>
         </nav>
-        <nav class="footer-section">
+        <nav class="footer-section" style="text-align: left;">
             <h2 class="section-title">Useful Links</h2>
             <ul class="section-links">
                 <li><a href="#" class="link-item">New products</a></li>
@@ -45,29 +45,26 @@
                 <li><a href="#" class="link-item">F.A.Q</a></li>
             </ul>
         </nav>
-        <nav class="footer-section">
+        <nav class="footer-section" style="text-align: left;">
             <h2 class="section-title">Customer Service</h2>
             <ul class="section-links">
                 <li><a href="#" class="link-item">Contact Us</a></li>
-                <li><a href="#" class="link-item">Support</a></li>
+                <li><a href="#" class="link-item">About Us</a></li>
                 <li><a href="#" class="link-item">Shipping</a></li>
             </ul>
         </nav>
-        <nav class="store-info">
+        <section class="store-info">
             <h2 class="section-title">Store</h2>
-            <ul class="section-links">
-
-                <!--<address class="store-address">-->
-                <li>FPT Plaza, Ngu Hanh Son District, Da Nang</li>
-                <!--</address>-->
-                <!--<div class="contact-info">-->
-                <li><a href="tel:+84 987654321" class="phone-number" style="color: #000">+84 987654321</a></li>
-                <li><a href="mailto:Namlightning23150@gmail.com" class="contact-email " style="color: #000">pethubvn@gmail.com</a></li>
-                <!--</div>-->
-            </ul>
-        </nav>
+            <address class="store-address">
+                FPT Plaza, Ngu Hanh Son District, Da Nang
+            </address>
+            <div class="contact-info">
+                <a href="tel:+84 987654321" class="phone-number" style="color: #000">+84 987654321</a>
+                <a href="mailto:Namlightning23150@gmail.com" class="contact-email" style="color: #000">pethubvn@gmail.com</a>
+            </div>
+        </section>
     </div>
     <center>
-        <p class="copyright">? Copyright PetHub 2024. Design by PetHubVN</p>
+        <p class="copyright">@ Copyright PetHub 2024. Design by PetHubVN</p>
     </center>
 </footer>

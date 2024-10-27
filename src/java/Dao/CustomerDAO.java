@@ -137,4 +137,56 @@ public class CustomerDAO {
         }
         return c;
     }
+    
+    public Customer checkLogin(String username, String password) {
+        try {
+            String query = "select * from Customers where Username = ? and [Password] = ?";
+            Connection con = new DBContext().getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Customer a = new Customer(rs.getString(1), rs.getString(2));
+                return a;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public Customer findByEmail(Customer account) {
+        String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Account WHERE Email=?";
+        String check_email = account.getEmail();
+        Customer a = null;
+        try {
+            Connection con = new DBContext().getConnection();
+            PreparedStatement ps = con.prepareStatement(sqlQuerry_find);
+            ps.setString(1, check_email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                a = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3));
+            }
+            con.close();
+        } catch (Exception e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return a;
+    }
+    
+    public void addnewAccountWithGoogle(Customer account) {
+        String email = account.getEmail();
+        String sqlQuerry_add = "insert into Account(Username,Password,Email) values(?,?,?);";
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlQuerry_add);
+            ps.setString(1, account.getUsername());
+            ps.setString(2, account.getPassword());
+            ps.setString(3, email);
+            ps.execute();
+            conn.close();
+        } catch (Exception e) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 }

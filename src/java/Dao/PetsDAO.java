@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -84,7 +85,7 @@ public class PetsDAO {
         }
     }
 
-    public static InputStream getImage(int petID) {
+    public static String getImage(int petID) {
         String sql = "SELECT Avatar_Img FROM Pets WHERE id = ?";
         DBContext db = new DBContext();
         try {
@@ -96,7 +97,7 @@ public class PetsDAO {
             if (resultSet.next()) {
                 byte[] imageBytes = resultSet.getBytes("Avatar_Img");
                 if (imageBytes != null) {
-                    return new ByteArrayInputStream(imageBytes);
+                    return Base64.getEncoder().encodeToString(imageBytes);
                 }
             }
             statement.close();
@@ -153,8 +154,5 @@ public class PetsDAO {
         } catch (Exception e) {
             Logger.getLogger(Pets.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
-
-    public static void main(String[] args) {
     }
 }
