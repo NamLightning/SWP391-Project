@@ -52,7 +52,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageRegistedPet.jsp"/>">
+            <a href="<c:url value="/admin/manageRegisteredPet.jsp"/>">
                 <span class="icon">
                     <ion-icon name="paw-outline"></ion-icon>
                 </span>

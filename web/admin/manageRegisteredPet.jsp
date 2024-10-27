@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
-<%@page import="Model.Customer"%>
+<%@page import="Model.Pets"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<%@page import="Dao.CustomerDAO" %>
+<%@page import="Dao.PetsDAO" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
-        <link rel="stylesheet" href="<c:url value="/css/managecus.css"/>">
+        <link rel="stylesheet" href="<c:url value="/css/managepet.css"/>">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -28,48 +28,60 @@
                     </div>
                 </div>
                 <div class="main-content">
-                    <div class="customer-table">
+                    <div class="pet-table">
                         <div class="header">
-                            <h2 style="font-size: 20px;">All Customers</h2>
-                            <button class="vip-customer-btn" 
-                                    onclick="window.location.href='<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>
+                            <h2 style="font-size: 20px; margin-right: 30%;">Registered Pets</h2>
                         </div>
                         <div class="search-sort-bar">
-                            <input type="text" placeholder="Search customer..." class="search-input">
+                            <input type="text" placeholder="Search pet..." class="search-input">
                             <select class="sort-select">
                                 <option>Sort by Newest</option>
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="customer-table" style="font-size: 13px;">
+                        <div class="pet-table" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Customer Name</th>
-                                        <th>Gender</th>
-                                        <th>Phone Number</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
+                                        <th>ID</th>
+                                        <th>Pet Name</th>
+                                        <th>Pet Owner</th>
+                                        <th>Pet Type</th>
+                                        <th>Registered Service</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>#12345128</td>
+                                        <td>Bill</td>
                                         <td>Nguyen Thanh Phat</td>
-                                        <td>Male</td>
-                                        <td>0934 567 890</td>
-                                        <td>example@mail.com</td>
-                                        <td>Da Nang City</td>
-                                        <td><span class="status active">Active</span></td>
+                                        <td>Dog</td>
+                                        <td>Trim & Bathe Dog’s Fur</td>
+                                        <td><button class="update" 
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#12345128</td>
+                                        <td>Max</td>
+                                        <td>Trinh Nguyen Hung</td>
+                                        <td>Cat</td>
+                                        <td>Trim & Bathe Cat’s Fur</td>
+                                        <td><button class="update" 
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
                                     </tr> 
                                     <tr>
-                                        <td>Le Thuy Duong</td>
-                                        <td>Female</td>
-                                        <td>0934 567 890</td>
-                                        <td>example@mail.com</td>
-                                        <td>Ho Chi Minh City</td>
-                                        <td><span class="status inactive">Inactive</span></td>
-                                    </tr> 
+                                        <td>#12345128</td>
+                                        <td>Charles</td>
+                                        <td>Nguyen Anton Tuan Kiet</td>
+                                        <td>Dog</td>
+                                        <td>Comprehensive Care For Dog</td>
+                                        <td><button class="update" 
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -91,3 +103,5 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
+
+

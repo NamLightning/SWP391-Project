@@ -32,7 +32,7 @@
                         <div class="header">
                             <h2 style="font-size: 20px;">All Employees</h2>
                             <button class="new-employee-btn" 
-                                    onclick="window.location.href='<c:url value="/admin/createEmployee.jsp"/>'">Create New Customer</button>
+                                    onclick="window.location.href = '<c:url value="/admin/createEmployee.jsp"/>'">Create New Employee</button>
                         </div>
                         <div class="search-sort-bar">
                             <input type="text" placeholder="Search employee..." class="search-input">
@@ -41,7 +41,7 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="customer-table" style="font-size: 13px;">
+                        <div class="employee-table" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
@@ -78,8 +78,8 @@
                 </div>
             </div>
         </div>
-        <script src="../js/sidebar.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
+    <script src="<c:url value="/js/sidebar.js"/>"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
