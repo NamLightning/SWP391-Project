@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Management Customers</title>
-        <link rel="stylesheet" href="../css/managecus.css">
+        <link rel="stylesheet" href="../css/managecusVIP.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -52,41 +52,41 @@
                         <table>
                             <thead>
                                 <tr>
+                                    <td>ID</td>
                                     <td>Customer Name</td>
-                                    <td>Gender</td>
-                                    <td>Phone number</td>
                                     <td>Email</td>
-                                    <td>Address</td>
-                                    <td>Status</td>
+                                    <td>Phone number</td>
+                                    <td>VIP Rank</td>
+                                    <td>Action</td>
+                                    <td>Option</td>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
+                                    <td>#12345678</td>
+                                    <td>John</td>
                                     <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
-                                    <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
-                                    <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
+                                    <td>0123456789</td>
+                                    <td>bac</td>
+                                    <td>
+                                        <a href="#" class="btn-view" style="margin-right: 10px">View</a>
+                                    </td>
+                                    <td>
+                                        <button class="more-options-btn" onclick="toggleOptions()">
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                            <span class="dot"></span>
+                                        </button>
 
+                                        <!-- Container chứa các tùy chọn -->
+                                        <div class="options-container" id="optionsContainer">
+                                            <div class="option">Tùy chọn 1</div>
+                                            <div class="option">Tùy chọn 2</div>
+                                            <div class="option">Tùy chọn 3</div>
+                                        </div>
+                                    </td>
+                                </tr>
 
 
                             </tbody>

@@ -78,6 +78,12 @@
                                 <input type="text" id="address" class="address-input" required />
                             </div>
                             <button type="submit" class="submit-button">Sign Up</button>
+                            <center>
+                                <div class="login-prompt" style="margin-bottom: 30px;">
+                                    <span class="login-text">Already have account?</span>
+                                    <a href="login.jsp" class="other-link">Login</a>
+                                </div>
+                            </center>
                         </div>
                     </form>
                 </div>

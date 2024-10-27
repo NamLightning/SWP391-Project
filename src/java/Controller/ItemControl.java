@@ -90,29 +90,7 @@ public class ItemControl extends HttpServlet {
                     break;
             }
         } else {
-            int currentPage;
-            if (request.getParameter("currentPage") != null && !request.getParameter("currentPage").isEmpty()) {
-                currentPage = Integer.parseInt(request.getParameter("currentPage"));
-            } else {
-                currentPage = 1;
-            }
-            int recordsPerPage;
-            if (request.getParameter("recordsPerPage") != null && !request.getParameter("recordsPerPage").isEmpty()) {
-                recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
-            } else {
-                recordsPerPage = 12;
-            }
-            ItemDAO productsDAO = new ItemDAO();
-            ArrayList<Item> products = productsDAO.getAllProducts(currentPage, recordsPerPage);
-            request.setAttribute("products", products);
-            int rows = productsDAO.getNumberOfRows();
-            int nOfPages = rows / recordsPerPage;
-            if (nOfPages % recordsPerPage > 0) {
-                nOfPages++;
-            }
-            request.setAttribute("noOfPages", nOfPages);
-            request.setAttribute("currentPage", currentPage);
-            request.setAttribute("recordsPerPage", recordsPerPage);
+            pageValue(request);
             request.getRequestDispatcher("product.jsp").forward(request, response);
         }
     }
