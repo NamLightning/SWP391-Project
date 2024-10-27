@@ -61,10 +61,10 @@
                 </div>
                 <section class="filter-price-container">
                     <h2 class="filter-price-title">Filter by Price</h2>
-                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="525000" aria-label="Price range slider">
+                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="500000" aria-label="Price range slider">
                     <div class="price-range-controls">
                         <p style="margin:0;">Price: </p>
-                        <p id="priceDisplay" class="price-range-text">525.000₫</p>
+                        <p id="priceDisplay" class="price-range-text">500.000₫</p>
                         <button class="apply-button" aria-label="Apply price filter">Apply</button>
                     </div>
                 </section>

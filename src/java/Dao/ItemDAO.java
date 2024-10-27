@@ -68,6 +68,26 @@ public class ItemDAO {
         }
         return list;
     }
+    
+    public ArrayList<Item> getAllProductsWithCategory(int CategoryID) {
+        String query = "select * from Products Where CategoryID = ?\n";
+        ArrayList<Item> list = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBContext.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, CategoryID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Item p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
+                list.add(p);
+            }
+            DBContext.GetInstance().close(conn, ps, rs);
+        } catch (Exception e) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
+    }
 
     public ArrayList<Item> getAllProducts(int currentPage, int recordsPerPage) {
 
