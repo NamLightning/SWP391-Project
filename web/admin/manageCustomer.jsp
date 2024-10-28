@@ -11,6 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
+        <link rel="stylesheet" href="<c:url value="/includes/sidebar.css"/>">
         <link rel="stylesheet" href="<c:url value="/css/managecus.css"/>">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
@@ -50,7 +51,7 @@
                                         <th>Phone Number</th>
                                         <th>Email</th>
                                         <th>Address</th>
-                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,7 +61,9 @@
                                         <td>0934 567 890</td>
                                         <td>example@mail.com</td>
                                         <td>Da Nang City</td>
-                                        <td><span class="status active">Active</span></td>
+                                        <td><button class="view-btn" 
+                                                    onclick="window.location.href = '<c:url value="/admin/userDetail.jsp"/>'">View</button>
+                                        </td>
                                     </tr> 
                                     <tr>
                                         <td>Le Thuy Duong</td>
@@ -68,7 +71,9 @@
                                         <td>0934 567 890</td>
                                         <td>example@mail.com</td>
                                         <td>Ho Chi Minh City</td>
-                                        <td><span class="status inactive">Inactive</span></td>
+                                        <td><button class="view-btn" 
+                                                    onclick="window.location.href = '<c:url value="/admin/userDetail.jsp"/>'">View</button>
+                                        </td>
                                     </tr> 
                                 </tbody>
                             </table>
@@ -91,3 +96,16 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
+
+<style>
+    .view-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border-color:#000;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000;
+}
+</style>

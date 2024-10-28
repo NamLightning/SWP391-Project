@@ -84,8 +84,8 @@ body {
     display: block;
     min-width: 60px;
     height: 60px;
-    line-height: 75px;
     text-align: center;
+    align-content: center;
 }
 
 .navigation ul li a .icon ion-icon {

@@ -111,9 +111,9 @@ body {
 }
 
 .cardBox .card .cardName {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--black2);
-    margin-top: 5px;
+    margin: 5px 0;
 }
 
 .cardBox .card .iconBx {
@@ -130,13 +130,6 @@ body {
 .cardBox .card:hover .iconBx {
     color: var(--white);
 }
-
-
-
-
-
-
-
 
 
 @media (max-width: 991px) {

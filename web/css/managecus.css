@@ -61,6 +61,17 @@ body {
     cursor: pointer;
 }
 
+.view-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border-color:#000;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #000;
+}
+
 .search-sort-bar {
     display: flex;
     gap: 20px;
@@ -102,24 +113,6 @@ body {
 .customer-table th {
     background-color: #fafbff;
     color: #8f9bb3;
-}
-
-.status {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.status.active {
-    background-color: #e3f7ec;
-    color: #34a853;
-}
-
-.status.inactive {
-    background-color: #ffebee;
-    color: #d32f2f;
 }
 
 .pagination {

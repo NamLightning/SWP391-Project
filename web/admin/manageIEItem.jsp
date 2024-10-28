@@ -2,7 +2,6 @@
 <%@page import="Model.Products"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <%@page import="Dao.ProductsDAO" %>
 <!DOCTYPE html>
 <html lang="en">

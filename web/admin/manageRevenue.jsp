@@ -30,6 +30,7 @@
                 </div>
                 <div>
                     <h1>Revenue Reports</h1>
+                    <h4>Income Statistic</h4>
                 </div>
                 <div class="main-content">
                     <div class="revenue-table">
@@ -42,6 +43,39 @@
                                 <option>Sort by Newest</option>
                                 <option>Sort by Oldest</option>
                             </select>
+                        </div>
+                        <div class="bg-all-university" >
+                            <div class="div">
+                                <div class="div-2">
+                                    <div class="revenue">Revenue</div>
+                                    <div class="name">Name</div>
+                                    <div class="sales-revenue">Sales Revenue</div>
+                                    <div class="service-revenue">Service Revenue</div>
+                                    <div class="interest-revenue">Interest Revenue</div>
+                                    <div class="gain-of-sales-of-assets">Gain of Sales of Assets</div>
+                                </div>
+                                <div class="div-3">
+                                    <div class="div-4">
+                                        <div class="currency">Currency</div>
+                                        <div class="vnd">VNĐ</div>
+                                        <div class="vnd">VNĐ</div>
+                                        <div class="vnd">VNĐ</div>
+                                        <div class="vnd">VNĐ</div>
+                                    </div>
+                                    <div class="div-5">
+                                        <div class="amount">Amount</div>
+                                        <div class="price">1.250.000</div>
+                                        <div class="price">256.000</div>
+                                        <div class="price">354.000</div>
+                                        <div class="price">456.000</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div-6"></div>
+                            <div class="div-7">
+                                <div class="total-revenue">Total Revenue</div>
+                                <div class="total">$2,316.00</div>
+                            </div>
                         </div>
                     </div>
                 </div>
