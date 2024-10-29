@@ -1,9 +1,3 @@
-<%-- 
-    Document   : petHygieneProduct
-    Created on : Sep 5, 2024, 6:04:13 PM
-    Author     : Administrator
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList, Model.Item"%>
@@ -68,7 +62,6 @@
                     </c:if>
                 </ul>
             </nav>
-            <%@include file="includes/customerChatBox.jsp" %>
         </main>
     </body>
 </html>

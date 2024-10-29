@@ -65,6 +65,18 @@
         <servlet-name>ValidateOtp</servlet-name>
         <servlet-class>Controller.AccountControl.ValidateOtp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerControl</servlet-name>
+        <servlet-class>Controller.CustomerControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeControl</servlet-name>
+        <servlet-class>Controller.EmployeeControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PetControl</servlet-name>
+        <servlet-class>Controller.PetControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -121,12 +133,24 @@
         <servlet-name>ValidateOtp</servlet-name>
         <url-pattern>/ValidateOtp</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerControl</servlet-name>
+        <url-pattern>/CustomerControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeControl</servlet-name>
+        <url-pattern>/EmployeeControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PetControl</servlet-name>
+        <url-pattern>/PetControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>./admin/manageVIPCustomer.jsp</welcome-file>
+        <welcome-file>./admin/editProduct.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

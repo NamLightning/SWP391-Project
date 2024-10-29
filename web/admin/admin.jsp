@@ -15,80 +15,80 @@
         <div class="container">
             <%@include file="../includes/sidebar.jsp"%>
             <!--home-->
-                    <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <div class="user">
-                    <img src="#" alt="">
+            <div class="main">
+                <div class="topbar">
+                    <div class="toggle">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div class="user">
+                        <img src="#" alt="">
+                    </div>
+
                 </div>
 
+
+                <div class="details ">
+                    <div class="recentOrders ">
+                        <div class="cardHeader" style="margin-left: 20px;">
+                            <h2>Item Analytics Report</h2>
+                            <a href="#" class="btn">View Statistic</a>
+                        </div>
+                    </div>
+
+
+                    <div class="recentCustomers">
+                        <div class="cardHeader" style="justify-content: center;">
+                            <h2>Quick Stats</h2>
+                        </div>
+                        <div class="cardBox">
+                            <div class="card">
+                                <div>
+                                    <div class="numbers">1,504</div>
+                                    <div class="cardName">Daily Views</div>
+                                </div>
+
+                                <div class="iconBx">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div>
+                                    <div class="numbers">1,504</div>
+                                    <div class="cardName">Orders</div>
+                                </div>
+
+                                <div class="iconBx">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div>
+                                    <div class="numbers">1,504</div>
+                                    <div class="cardName">Comment</div>
+                                </div>
+
+                                <div class="iconBx">
+                                    <ion-icon name="chatbubble-outline"></ion-icon>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div>
+                                    <div class="numbers">1,504</div>
+                                    <div class="cardName">Earning</div>
+                                </div>
+
+                                <div class="iconBx">
+                                    <ion-icon name="card-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
-
-
-            <div class="details ">
-                <div class="recentOrders ">
-                    <div class="cardHeader" style="margin-left: 20px;">
-                        <h2>Item Analytics Report</h2>
-                        <a href="#" class="btn">View Statistic</a>
-                    </div>
-                </div>
-
-
-                <div class="recentCustomers">
-                    <div class="cardHeader" style="justify-content: center;">
-                        <h2>Quick Stats</h2>
-                    </div>
-                    <div class="cardBox">
-                        <div class="card">
-                            <div>
-                                <div class="numbers">1,504</div>
-                                <div class="cardName">Daily Views</div>
-                            </div>
-
-                            <div class="iconBx">
-                                <ion-icon name="eye-outline"></ion-icon>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div>
-                                <div class="numbers">1,504</div>
-                                <div class="cardName">Orders</div>
-                            </div>
-
-                            <div class="iconBx">
-                                <ion-icon name="cart-outline"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div>
-                                <div class="numbers">1,504</div>
-                                <div class="cardName">Comment</div>
-                            </div>
-
-                            <div class="iconBx">
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div>
-                                <div class="numbers">1,504</div>
-                                <div class="cardName">Earning</div>
-                            </div>
-
-                            <div class="iconBx">
-                                <ion-icon name="card-outline"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
         </div>
 
 

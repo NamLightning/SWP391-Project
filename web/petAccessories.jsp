@@ -30,7 +30,7 @@
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petAccessories.jsp" checked>
+                                <input type="checkbox" class="checkbox" data-url="petAccessories.jsp" checked disabled>
                                 Accessories
                             </label>
                             <span class="category-count" data-count="accessories"></span>
@@ -61,10 +61,10 @@
                 </div>
                 <section class="filter-price-container">
                     <h2 class="filter-price-title">Filter by Price</h2>
-                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="525000" aria-label="Price range slider">
+                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="500000" aria-label="Price range slider">
                     <div class="price-range-controls">
                         <p style="margin:0;">Price: </p>
-                        <p id="priceDisplay" class="price-range-text">525.000₫</p>
+                        <p id="priceDisplay" class="price-range-text">500.000₫</p>
                         <button class="apply-button" aria-label="Apply price filter">Apply</button>
                     </div>
                 </section>
@@ -72,16 +72,11 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <div class="sort-dropdown">
-                        <select name="sort-drop">
-                            <option value="latest">Sort by latest</option>
-                            <option value="latest">Sort by latest</option>
-                            <option value="ascendant">Sort by price ascendant</option>
-                            <option value="descendant">Sort by price descendant</option>
-                        </select>
-                        <span class="sort-text">Sort by latest</span>
-                        <!--<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1882270c236b22b80043636c84381434c2ab08777c5cbbf7effae57b09c2e254?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dropdown icon" class="dropdown-icon">-->
-                    </div>
+                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                        <option value="latest">Sort by latest</option>
+                        <option value="ascendant">Sort by price ascendant</option>
+                        <option value="descendant">Sort by price descendant</option>
+                    </select>
                 </header>
                 <div class="product-grid">
                     <article class="product-card">

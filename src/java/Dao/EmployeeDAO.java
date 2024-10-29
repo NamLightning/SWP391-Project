@@ -188,4 +188,51 @@ public class EmployeeDAO {
         }
         return e;
     }
+    
+    
+    public ArrayList<Employee> getAllEmployee(int currentPage, int recordsPerPage) {
+        DBContext db = new DBContext();
+        ArrayList<Employee> list = new ArrayList<>();
+        try {
+            Connection con = db.getConnection();
+            
+            int start = currentPage * recordsPerPage - recordsPerPage;
+            int end = recordsPerPage * currentPage;
+            String sql = "With prod AS\n"
+                    + "( SELECT *,\n"
+                    + "ROW_NUMBER() OVER (order by EmployeeID) as RowNumber \n"
+                    + "FROM Employees )\n"
+                    + "select *\n"
+                    + "from prod\n"
+                    + "Where RowNumber Between ? and ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, start);
+            ps.setInt(2, end);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Employee p = new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8), rs.getBytes(9));
+                list.add(p);
+            }
+            new DBContext().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+     public Integer getNumberOfRows() {
+        DBContext db = new DBContext();
+        Integer numOfRows = 0;
+        try {
+            Connection con = db.getConnection();
+            String sql = "SELECT * FROM Employees";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                numOfRows++;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfRows;
+    }
 }

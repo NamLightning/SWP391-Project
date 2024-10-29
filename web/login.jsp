@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,46 +20,46 @@
     <center style="margin-right: 8%;">
         <section class="sign-in-form" style="width:50%;">
             <div class="login-form-container">
-                <div class="form-content" style="height: 50%;">
+                <div class="form-content" style="height: 50%; padding-left: 10%">
                     <section class="image-container">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a87160060e19b1c47f61e1ffb7c7ed526945768f3798789b1198dd6c8c84d8b2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="product-image" alt="Product image" />
                     </section>
                     <header class="form-header">
-                        <h1 class="form-title">Login</h1>
-                        <button class="google-login" onclick="location.href = 'https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PetStore/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force'">
-                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
-                            <span class="google-text">Continue with Google</span>
-                        </button>
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PRJ301-FinalProject/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force" 
+                           style="text-decoration: none; color: grey">
+                            <h1 class="form-title">Login</h1>
+                            <button class="google-login">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
+                                <span class="google-text">Continue with Google</span>
+                            </button>
+                        </a>
                     </header>
-                    <p class="divider">
-                        <span>-------------</span> or Login with Username<span>-------------</span>
+                    <p class="divider" style="text-align:center">
+                        <span>-------------</span> or Login with Email<span>-------------</span>
                     </p>
-                    <c:if test="${not empty mess}">
-                        <p class="alert alert-danger" role="alert">${mess}</p>
-                    </c:if>
-                    <form class="form-wrapper" action="LoginControl" method="POST">
+                    <form class="form-wrapper">
                         <div class="login-form-fields">
+                            <!--${message}-->
                             <div class="username-field">
-                                <label>Username</label>
-                                <input type="text" name="username" id="username" class="username-input" required />
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" class="username-input"/>
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
-                                    <label>Password</label>
-                                    <input type="password" name="password" id="password" class="password-input" placeholder="*****************" required />
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" class="password-input" placeholder="*****************"/>
                                 </div>
                             </div>
-
                             <div class="option-pass">
                                 <div class="remember-me">
                                     <div class="checkbox-wrapper">
-                                        <input type="checkbox" id="remember-me" value="1"/>
-                                        <label class="checkbox-label">
+                                        <input type="checkbox" id="remember-me"/>
+                                        <label for="remember-me" class="checkbox-label" style="width:100px;">
                                             Remember Me
                                         </label>
                                     </div>
                                 </div>
-                                <div class="forgot-pass" style="margin-top: 1.8%">
+                                <div class="forgot-pass" style="margin-top: 1.8%;">
                                     <a href="forgotPassword_EnterEmail.jsp" class="other-link">Forgot Password!</a>
                                 </div>
                             </div> 
@@ -73,6 +72,7 @@
                             </center>
                         </div>
                     </form>
+
                 </div>
             </div>
         </section>

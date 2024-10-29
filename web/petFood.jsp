@@ -10,6 +10,11 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
+        <%
+            ItemDAO itemDAO = new ItemDAO();
+            ArrayList<Item> productList = itemDAO.getAllProductsWithCategory(1);
+            pageContext.setAttribute("products", productList);
+        %>
     </head>
     <body>
     <center>
@@ -44,7 +49,7 @@
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFood.jsp" checked>
+                                <input type="checkbox" class="checkbox" data-url="petFood.jsp" checked disabled>
                                 Food
                             </label>
                             <span class="category-count" data-count="food"></span>
@@ -61,10 +66,10 @@
                 </div>
                 <section class="filter-price-container">
                     <h2 class="filter-price-title">Filter by Price</h2>
-                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="525000" aria-label="Price range slider">
+                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="500000" aria-label="Price range slider">
                     <div class="price-range-controls">
                         <p style="margin:0;">Price: </p>
-                        <p id="priceDisplay" class="price-range-text">525.000₫</p>
+                        <p id="priceDisplay" class="price-range-text">500.000₫</p>
                         <button class="apply-button" aria-label="Apply price filter">Apply</button>
                     </div>
                 </section>
@@ -72,13 +77,34 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <div class="sort-dropdown">
-                        <span class="sort-text">Sort by latest</span>
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1882270c236b22b80043636c84381434c2ab08777c5cbbf7effae57b09c2e254?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dropdown icon" class="dropdown-icon">
-                    </div>
+                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                        <option value="latest">Sort by latest</option>
+                        <option value="ascendant">Sort by price ascendant</option>
+                        <option value="descendant">Sort by price descendant</option>
+                    </select>
                 </header>
                 <div class="product-grid">
-                    <article class="product-card">
+                    <c:forEach var="p" items="${products}">
+                        <article class="product-card">
+                            <c:url var="cartLink" value="CartControl">
+                                <c:param name="recordsPerPage" value="${recordsPerPage}"></c:param>
+                                <c:param name="currentPage" value="${currentPage}"></c:param>
+                                <c:param name="action" value="add"></c:param>
+                                <c:param name="id" value="${p.getProductID()}"></c:param>
+                            </c:url>
+                            <img src="${reuse.loadImage(p.getAvatar_img())}" alt="..." class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">${p.getProductName()}</h3>
+                                    <p class="product-price">${p.getPrice()}₫</p>
+                                </div>
+                                <button class="favorite-button" aria-label="Add to favorites" type="button" onclick="window.location.href = '${cartLink}'">
+                                    <span class="heart-icon"></span>
+                                </button>
+                            </div>
+                        </article>
+                    </c:forEach>
+                    <!--<article class="product-card">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d619b14574a9c931df4b715f58d9012fc5d94b3107d0eec2323d10bbabbd8657?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Dog Food" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
@@ -221,7 +247,7 @@
                                 <span class="heart-icon"></span>
                             </button>
                         </div>
-                    </article>
+                    </article>-->
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">

@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     priceRange.addEventListener('input', function () {
         updatePriceDisplay(this.value);
+        priceRange.setAttribute('value', this.value);
     });
 
     applyButton.addEventListener('click', function () {
@@ -31,6 +32,7 @@ function updateCategoryCounts(counts) {
         const category = element.getAttribute('data-count');
         const count = counts[category] || 0;
         element.textContent = count;
+        element.value = count;
         element.setAttribute('aria-label', `${count} items`);
     });
 }
@@ -66,4 +68,3 @@ function updateCategoryCounts(counts) {
 //setTimeout(() => {
 //    changeColors('blue', 'green');
 //}, 2000);
-
