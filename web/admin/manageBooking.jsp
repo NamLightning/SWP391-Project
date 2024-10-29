@@ -82,104 +82,83 @@
 
                     </div>
                 </div>
-                <div class="tabs">
-                    <div class="quick-stats">Bookings</div>
-                    <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/34eef7bdc625fbd97e755536256173648f47ddfdfb369b5e3948ac453d3a109d?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                        class="tab-img"
-                        />
-                </div>
-                <div class="booking-container">
-                    <div class="booking-list">
-                        <div class="booking-item">
-                            <div class="booking-card">
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/2bae3accd02918a7e110fbaf0d19dddd4453d5c0c2022240ad570c5433a28285?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                    class="doctor-image"
-                                    />
-                                <div class="booking-content">
-                                    <div class="booking-details">
-                                        <div class="doctor-name">Amanda Chavez</div>
-                                        <div class="service-label">Service</div>
-                                        <div class="service-type">Physiotherapy</div>
-                                        <div class="date-label">Date</div>
-                                        <div class="booking-date">25 Jul 2020</div>
-                                    </div>
-                                    <div class="booking-time">
-                                        <div class="time-label">Time</div>
-                                        <div class="time-slot">11:00 - 12:00</div>
-                                    </div>
-                                </div>
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/4338b248a1653277534479fd28dea4033ea0493d2aef29ea60a97825ab4fe0f9?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                    class="divider-image"
-                                    />
-                                <div class="booking-actions">
-                                    <div class="accept-booking">Accept Booking</div>
-                                    <div class="decline-booking">Decline</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="booking-item">
-                            <div class="booking-card">
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/c5ee84574a5962f27c29204d2db02dd44c21e354fc2345a9454728a965b45ce9?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                    class="doctor-image"
-                                    />
-                                <div class="booking-content">
-                                    <div class="booking-details">
-                                        <div class="doctor-name">Fionna Wade</div>
-                                        <div class="service-label">Service</div>
-                                        <div class="service-type">Physiotherapy</div>
-                                        <div class="date-label">Date</div>
-                                        <div class="booking-date">25 Jul 2020</div>
-                                    </div>
-                                    <div class="booking-time">
-                                        <div class="time-label">Time</div>
-                                        <div class="time-slot">11:00 - 12:00</div>
-                                    </div>
-                                    <img
-                                        loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/1669045011136480b194870c731410d5c995aac39851f6d8daff781a75f8900d?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                        class="divider-image"
-                                        />
-                                    <div class="booking-actions">
-                                        <div class="accept-booking">Accept Booking</div>
-                                        <div class="decline-booking">Decline</div>
+                <div>
+                    <div class="tabs">
+                        <div class="quick-stats">Bookings</div>
+                        <img
+                            loading="lazy"
+                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/34eef7bdc625fbd97e755536256173648f47ddfdfb369b5e3948ac453d3a109d?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
+                            class="tab-img"
+                            />
+                    </div>
+                    <div class="booking-container">
+                        <div class="booking-list">
+                            <div class="booking-item">
+                                <div class="booking-card">
+                                    <div class="booking-content">
+                                        <div class="booking-details">
+                                            <div class="doctor-name">Amanda Chavez</div>
+                                            <div class="service-label">Service</div>
+                                            <div class="service-type">Trim & Bathe Dog's Fur</div>
+                                            <div class="date-label">Date</div>
+                                            <div class="booking-date">25 Jul 2020</div>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="time-label">Time</div>
+                                            <div class="time-slot">11:00 - 12:00</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="booking-item">
-                            <div class="booking-card">
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/f1a75ece14c200c2f5a26a56bbe30e29b8ebac7f8a577e1f5c344f1a476c1edd?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                    class="doctor-image"
-                                    />
-                                <div class="booking-details">
-                                    <div class="doctor-name">Beatrice Carrol</div>
-                                    <div class="service-label">Service</div>
-                                    <div class="service-type">Physiotherapy</div>
-                                    <div class="date-label">Date</div>
-                                    <div class="booking-date">25 Jul 2020</div>
+                            <div class="booking-item">
+                                <div class="booking-card">
+                                    <div class="booking-content">
+                                        <div class="booking-details">
+                                            <div class="doctor-name">Fionna Wade</div>
+                                            <div class="service-label">Service</div>
+                                            <div class="service-type">Comprehensive Dog Care</div>
+                                            <div class="date-label">Date</div>
+                                            <div class="booking-date">25 Jul 2020</div>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="time-label">Time</div>
+                                            <div class="time-slot">11:00 - 12:00</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="booking-time">
-                                    <div class="time-label">Time</div>
-                                    <div class="time-slot">11:00 - 12:00</div>
+                            </div>
+                            <div class="booking-item">
+                                <div class="booking-card">
+                                    <div class="booking-content">
+                                        <div class="booking-details">
+                                            <div class="doctor-name">Beatrice Carrol</div>
+                                            <div class="service-label">Service</div>
+                                            <div class="service-type">Trim & Bathe Cat's Fur</div>
+                                            <div class="date-label">Date</div>
+                                            <div class="booking-date">25 Jul 2020</div>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="time-label">Time</div>
+                                            <div class="time-slot">11:00 - 12:00</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/27c6768161256fc285f30332507adc03b05d4a71ab4eac9748701b11afe17f30?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b"
-                                    class="divider-image"
-                                    />
-                                <div class="booking-actions">
-                                    <div class="accept-booking">Accept Booking</div>
-                                    <div class="decline-booking">Decline</div>
+                            </div>
+                            <div class="booking-item">
+                                <div class="booking-card">
+                                    <div class="booking-content">
+                                        <div class="booking-details">
+                                            <div class="doctor-name">Beatrice Carrol</div>
+                                            <div class="service-label">Service</div>
+                                            <div class="service-type">Comprehensive Cat Care</div>
+                                            <div class="date-label">Date</div>
+                                            <div class="booking-date">25 Jul 2020</div>
+                                        </div>
+                                        <div class="booking-time">
+                                            <div class="time-label">Time</div>
+                                            <div class="time-slot">11:00 - 12:00</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -192,3 +171,4 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
+

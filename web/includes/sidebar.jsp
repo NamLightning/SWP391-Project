@@ -3,7 +3,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#">
+            <a href="#" readdonly>
                 <span class="icon">
                     <ion-icon name="paw"></ion-icon>
                 </span>

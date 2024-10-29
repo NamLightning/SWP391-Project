@@ -61,11 +61,9 @@ h4{
 
 .bookings-stat {
     position: relative;
-    /* display: grid; */
-    min-height: 500px;
     padding: 20px;
     background: var(--white);
-    /* box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); */
+    /*box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);*/
     border-radius: 20px;
     width: 50%;
     grid-template-rows: repeat(4, 1fr);
@@ -128,31 +126,35 @@ h4{
     color: var(--darknavi, #11141a);
     white-space: nowrap;
     font: 700 18px Inter, sans-serif;
-  }
-  @media (max-width: 991px) {
+}
+@media (max-width: 991px) {
     .tabs {
-      white-space: initial;
+        white-space: initial;
     }
-  }
-  .quick-stats {
+}
+.quick-stats {
     align-self: start;
     z-index: 10;
     margin-top: -4px;
-  }
-  .img {
+    margin-left: 4%;
+}
+.img {
     object-fit: contain;
     object-position: center;
     width: 100%;
     margin-top: 16px;
-  }
-  @media (max-width: 991px) {
+}
+@media (max-width: 991px) {
     .img {
-      max-width: 100%;
+        max-width: 100%;
     }
-  }
+}
 
 .booking-container {
     margin-top: 33px;
+    overflow-x: scroll;
+    margin: 0 2%;
+    padding: 2%;
 }
 
 @media (max-width: 991px) {
@@ -165,6 +167,7 @@ h4{
 .booking-list {
     gap: 20px;
     display: flex;
+    margin-bottom: 5%;
 }
 
 @media (max-width: 991px) {
@@ -193,11 +196,13 @@ h4{
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 278px;
     width: 100%;
     align-items: start;
     font-family: Lato, sans-serif;
     padding: 30px 35px;
+    background-color: #ffffff;
+    border-radius: 35px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 991px) {
@@ -244,29 +249,27 @@ h4{
 .service-label {
     color: rgba(127, 143, 164, 1);
     font-size: 12px;
-    margin-top: 26px;
+    margin-top: 16px;
 }
 
 .service-type {
     color: var(--darkgrey, #354052);
-    margin-top: 16px;
 }
 
 .date-label {
     color: rgba(127, 143, 164, 1);
     font-size: 12px;
-    margin-top: 36px;
+    margin-top: 15px;
 }
 
 .booking-date {
     color: rgba(53, 64, 82, 1);
-    margin-top: 17px;
 }
 
 .booking-time {
     align-self: end;
     display: flex;
-    margin-top: 110px;
+    margin-top: 30%;
     flex-direction: column;
 }
 
@@ -285,10 +288,9 @@ h4{
 .time-slot {
     color: rgba(53, 64, 82, 1);
     font-size: 14px;
-    margin-top: 17px;
 }
 
-.divider-image {
+/*.divider-image {
     aspect-ratio: 500;
     object-fit: contain;
     object-position: center;
@@ -301,7 +303,7 @@ h4{
     .divider-image {
         max-width: 100%;
     }
-}
+}*/
 
 .booking-actions {
     position: relative;
@@ -309,221 +311,32 @@ h4{
     margin-top: 20px;
     width: 284px;
     max-width: 100%;
-    gap: 20px;
+    gap: 10%;
     font-size: 14px;
     font-weight: 700;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 .accept-booking {
-    color: rgba(105, 81, 158, 1);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border-color:#34a853;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #e3f7ec;
+    color: #34a853;
 }
+
 
 .decline-booking {
-    color: rgba(187, 197, 213, 1);
-}
-
-.booking-item {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 33%;
-    margin-left: 20px;
- }
-@media (max-width: 991px) {
-    .booking-item {
-      width: 100%;
-    }
-}
-  .booking-card {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: 278px;
-    width: 100%;
-    align-items: start;
-    font-family: Lato, sans-serif;
-    padding: 30px 35px;
-  }
-  @media (max-width: 991px) {
-    .booking-card {
-      max-width: 100%;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-  }
-  .booking-details {
-    position: relative;
-    display: flex;
-    width: 318px;
-    max-width: 100%;
-    gap: 40px 100px;
-    font-weight: 400;
-  }
-  .doctor-name {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    font-size: 14px;
-    flex: 1;
-  }
-  .service-label {
-    color: var(--lightgrey, #7f8fa4);
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border-color: #d32f2f;
     font-size: 12px;
-    margin-top: 25px;
-  }
-  .service-type {
-    color: rgba(53, 64, 82, 1);
-    align-self: stretch;
-    margin-top: 16px;
-  }
-  .booking-time {
-    align-self: end;
-    display: flex;
-    margin-top: 110px;
-    flex-direction: column;
-    flex: 1;
-  }
-  @media (max-width: 991px) {
-    .booking-time {
-      margin-top: 40px;
-    }
-  }
-  .divider-image {
-    aspect-ratio: 500;
-    object-fit: contain;
-    object-position: center;
-    width: 100%;
-    align-self: stretch;
-    margin-top: 39px;
-  }
-  @media (max-width: 991px) {
-    .divider-image {
-      max-width: 100%;
-    }
-  }
-  .booking-actions {
-    position: relative;
-    display: flex;
-    margin-top: 20px;
-    width: 284px;
-    max-width: 100%;
-    gap: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    justify-content: space-between;
-  }
-  .booking-item {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 33%;
-    margin-left: 20px;
-  }
-  @media (max-width: 991px) {
-    .booking-item {
-      width: 100%;
-    }
-  }
-  .booking-card {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-height: 278px;
-    width: 100%;
-    align-items: start;
-    font-family: Lato, sans-serif;
-    padding: 30px 35px;
-  }
-  @media (max-width: 991px) {
-    .booking-card {
-      max-width: 100%;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
-  }
-  .booking-details {
-    position: relative;
-    display: flex;
-    width: 318px;
-    max-width: 100%;
-    gap: 40px 100px;
-    font-weight: 400;
-  }
-  .doctor-name{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    font-size: 14px;
-    color: rgba(127, 143, 164, 1);
-    flex: 1;
-  }
-  .service-lable {
-    font-size: 12px;
-    margin-top: 25px;
-  }
-  .service-type {
-    color: rgba(53, 64, 82, 1);
-    margin-top: 16px;
-  }
-  .date-label {
-    font-size: 12px;
-    margin-top: 36px;
-  }
-  .booking-time {
-    align-self: end;
-    display: flex;
-    margin-top: 110px;
-    flex-direction: column;
-    flex: 1;
-  }
-  @media (max-width: 991px) {
-    .booking-time {
-      margin-top: 40px;
-    }
-  }
-  .divider-image {
-    aspect-ratio: 500;
-    object-fit: contain;
-    object-position: center;
-    width: 100%;
-    align-self: stretch;
-    margin-top: 39px;
-  }
-  @media (max-width: 991px) {
-    .divider-image {
-      max-width: 100%;
-    }
-  }
-  .booking-actions {
-    position: relative;
-    display: flex;
-    margin-top: 20px;
-    width: 284px;
-    max-width: 100%;
-    gap: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    justify-content: space-between;
-  }
-
-/*.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+    font-weight: bold;
+    background-color: #ffebee;
+    color: #d32f2f;
 }
 
-.pagination-item {
-    padding: 8px 12px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #280559;
-}
-
-.pagination-item.active {
-    background-color: #280559;
-    color: #fff;
-}*/

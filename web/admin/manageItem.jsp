@@ -35,7 +35,7 @@
                                 <button class="view-ie-product-btn" 
                                         onclick="window.location.href = '<c:url value="/admin/manageIEItem.jsp"/>'">View Import/Export Products</button>
                                 <button class="new-product-btn" 
-                                        onclick="window.location.href = '<c:url value="/admin/createItem.jsp"/>'">Create New Product</button>
+                                        onclick="window.location.href = '<c:url value="/admin/addItem.jsp"/>'">Create New Product</button>
                             </div>
                         </div>
                         <div class="search-sort-bar">
