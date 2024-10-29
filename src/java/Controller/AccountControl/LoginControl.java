@@ -170,13 +170,13 @@ public class LoginControl extends HttpServlet {
                     session.setAttribute("us", username.trim());
 //                    session.setAttribute("pw", password);
                     if (a != null) {
-                        request.getRequestDispatcher("homePage.jsp").forward(request, response);
+                        response.sendRedirect("homePage.jsp");
                     }
                     if (e != null){
-                        request.getRequestDispatcher("petFood.jsp").forward(request, response);
+                        response.sendRedirect("petFood.jsp");
                     }
                     if (m != null){
-                        request.getRequestDispatcher("admin/admin.jsp").forward(request, response);
+                        response.sendRedirect("admin/admin.jsp");
                     }
                 }
             }

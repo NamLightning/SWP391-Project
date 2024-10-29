@@ -1,15 +1,18 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="../css/sidebar.css">
 <div class="navigation">
     <ul>
         <li>
             <a href="#">
                 <span class="icon">
-                    <ion-icon name="logo-octocat"></ion-icon>
+                    <ion-icon name="paw"></ion-icon>
                 </span>
-                <span class="title">PetHub</span>
+                <span class="title" style="font-size: 20px;font-weight: 600;">PetHub</span>
+
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/admin.jsp"/>">
                 <span class="icon">
                     <ion-icon name="home-outline"></ion-icon>
                 </span>
@@ -17,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageCustomer.jsp"/>">
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
                 </span>
@@ -25,7 +28,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageEmployee.jsp"/>">
                 <span class="icon">
                     <ion-icon name="people-circle-outline"></ion-icon>
                 </span>
@@ -33,7 +36,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageItem.jsp"/>">
                 <span class="icon">
                     <ion-icon name="cube-outline"></ion-icon>
                 </span>
@@ -41,7 +44,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageService.jsp"/>">
                 <span class="icon">
                     <ion-icon name="settings-outline"></ion-icon>
                 </span>
@@ -49,7 +52,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageRegisteredPet.jsp"/>">
                 <span class="icon">
                     <ion-icon name="paw-outline"></ion-icon>
                 </span>
@@ -57,7 +60,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/manageRevenue.jsp"/>">
                 <span class="icon">
                     <ion-icon name="analytics-outline"></ion-icon>
                 </span>
@@ -65,15 +68,15 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/managePromotion.jsp"/>">
                 <span class="icon">
                     <ion-icon name="pricetags-outline"></ion-icon>
                 </span>
-                <span class="title">Promote</span>
+                <span class="title">Promotion</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="<c:url value="/admin/sysNotification.jsp"/>">
                 <span class="icon">
                     <ion-icon name="notifications-circle-outline"></ion-icon>
                 </span>
@@ -81,5 +84,7 @@
             </a>
         </li>
     </ul>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </div>
-

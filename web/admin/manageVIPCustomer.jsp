@@ -31,8 +31,8 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2 style="margin-left: 10px; font-size: 30px;">Customer</h2>
-                            <a href="#" class="btn" style="margin-right: 10px">View VIP Customers</a>
+                            <h2 style="margin-left: 10px; font-size: 30px;"> VIP Customer</h2>
+                            <a href="#" class="btn" style="margin-right: 10px">View All Customers</a>
                         </div>
 
                         <div class="search" style="justify-self: center;">

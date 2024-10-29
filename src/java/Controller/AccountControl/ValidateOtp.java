@@ -40,10 +40,11 @@ public class ValidateOtp extends HttpServlet {
         int value = Integer.parseInt(request.getParameter("otp"));
         HttpSession session = request.getSession();
         int otp = Integer.parseInt( (String) session.getAttribute("otp"));
+        Long otpExpirationTime = (Long) session.getAttribute("otpExpirationTime");
 
         RequestDispatcher dispatcher = null;
 
-        if (value == otp) {
+        if (value == otp && System.currentTimeMillis() <= otpExpirationTime) {
             request.setAttribute("email", request.getParameter("email"));
             request.setAttribute("status", "success");
             dispatcher = request.getRequestDispatcher("forgotPassword_ChangePass.jsp");

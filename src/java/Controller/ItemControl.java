@@ -80,7 +80,6 @@ public class ItemControl extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "edit":
-                    pageValue(request);
                     editProduct(request, response);
                     break;
                 case "delete":
@@ -91,7 +90,7 @@ public class ItemControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("product.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/product.jsp").forward(request, response);
         }
     }
 
@@ -144,7 +143,8 @@ public class ItemControl extends HttpServlet {
                 }
                 productsDAO.updateProduct(p);
                 pageValue(request);
-                response.sendRedirect("ProductControl");
+//                request.getRequestDispatcher("ProductControl").forward(request, response);
+                response.sendRedirect("ProductControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
                 break;
             case "Cancel":
                 pageValue(request);
@@ -176,9 +176,10 @@ public class ItemControl extends HttpServlet {
         CategoriesDAO categoriesDAO = new CategoriesDAO();
         ArrayList<Categories> list = categoriesDAO.getAllCategories();
         Item product = productsDAO.checkExist(Integer.parseInt(productID));
+        pageValue(request);
         request.setAttribute("categoryList", list);
         request.setAttribute("product", product);
-        request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/editProduct.jsp").forward(request, response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -213,29 +214,32 @@ public class ItemControl extends HttpServlet {
     }
 
     private void pageValue(HttpServletRequest request) {
-        int currentPage;
-        if (request.getParameter("currentPage") != null && !request.getParameter("currentPage").isEmpty()) {
-            currentPage = Integer.parseInt(request.getParameter("currentPage"));
+        int pageNumber;
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            pageNumber = Integer.parseInt(request.getParameter("page"));
         } else {
-            currentPage = 1;
+            pageNumber = 1;
         }
-        int recordsPerPage;
-        if (request.getParameter("recordsPerPage") != null && !request.getParameter("recordsPerPage").isEmpty()) {
-            recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
+        int pageSize;
+        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
         } else {
-            recordsPerPage = 12;
+            pageSize = 12;
         }
+        int offset = (pageNumber - 1) * pageSize;
         ItemDAO productsDAO = new ItemDAO();
-        ArrayList<Item> products = productsDAO.getAllProducts(currentPage, recordsPerPage);
+        ArrayList<Item> products = productsDAO.getAllProducts(offset, pageSize);
         request.setAttribute("products", products);
         int rows = productsDAO.getNumberOfRows();
-        int nOfPages = rows / recordsPerPage;
-        if (nOfPages % recordsPerPage > 0) {
-            nOfPages++;
-        }
-        request.setAttribute("noOfPages", nOfPages);
-        request.setAttribute("currentPage", currentPage);
-        request.setAttribute("recordsPerPage", recordsPerPage);
+        int totalPages = (int) Math.ceil((double) rows / pageSize);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(totalPages, pageNumber + 2);
+
+        request.setAttribute("currentPage", pageNumber);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
     }
 
 }

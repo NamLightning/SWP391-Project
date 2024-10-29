@@ -84,11 +84,13 @@ public class ForgotPasswordControl extends HttpServlet {
             throws ServletException, IOException {
         String toEmail = request.getParameter("email");
         RequestDispatcher dispatcher = null;
-        String otpvalue = Reuseable.sendOTPEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", toEmail, "Cài lại mật khẩu", "Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\n Mã OTP của bạn là: ");
+        int expirationTimeInSeconds = 300;
+        String otpvalue = Reuseable.sendOTPEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", toEmail, "Cài lại mật khẩu", "Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\nMã OTP sẽ hết hiệu lực trong 5 phút.\nMã OTP của bạn là: ");
         HttpSession mySession = request.getSession();
         dispatcher = request.getRequestDispatcher("forgotPassword_EnterCode.jsp");
         request.setAttribute("message", "OTP is sent to your email id");
         mySession.setAttribute("otp", otpvalue);
+        mySession.setAttribute("otpExpirationTime", System.currentTimeMillis() + expirationTimeInSeconds * 1000);
         mySession.setAttribute("email", toEmail);
         dispatcher.forward(request, response);
 

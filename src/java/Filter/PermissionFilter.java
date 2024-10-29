@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -106,6 +107,7 @@ public class PermissionFilter implements Filter {
      * @exception ServletException if a servlet error occurs
      */
     private static final Map<String, List<String>> roleAccessMap = new HashMap<>();
+    private static final Map<String, List<String>> roleNoAccessMap = new HashMap<>();
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
@@ -128,12 +130,24 @@ public class PermissionFilter implements Filter {
         String username = session != null ? ((String) session.getAttribute("us") == null ? null : (String) session.getAttribute("us")) : null;
         String role = getUserRoleByUsername(username);
         log("Role: " + role);
-
-        if (role == null || !isAuthorizedForPath(role, url)) {
+        if (isStaticResource(url)) {
+            chain.doFilter(request, response);
+            return;
+        }
+        if (role != null && isRestrictedForRole(role, url)) {
             httpResponse.sendRedirect("/PetStore/error.jsp");
             return;
         }
 
+        if (role == null || !isAuthorizedForPath(role, url)) {
+            if (role.equals("Guest") || role.equals("Customer")) {
+                httpResponse.sendRedirect("/PetStore/error.jsp");
+            }
+            if (role.equals("Manager")){
+                httpResponse.sendRedirect("admin/admin.jsp");
+            }
+            return;
+        }
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -158,6 +172,10 @@ public class PermissionFilter implements Filter {
             }
             sendProcessingError(problem, response);
         }
+    }
+
+    private boolean isStaticResource(String url) {
+        return url.endsWith(".css") || url.endsWith(".js");
     }
 
     private String getUserRoleByUsername(String username) {
@@ -192,6 +210,11 @@ public class PermissionFilter implements Filter {
         return false;
     }
 
+    private boolean isRestrictedForRole(String role, String url) {
+        List<String> restrictedUrls = roleNoAccessMap.get(role);
+        return restrictedUrls != null && restrictedUrls.stream().anyMatch(url::startsWith);
+    }
+
     /**
      * Return the filter configuration object for this filter.
      */
@@ -224,10 +247,11 @@ public class PermissionFilter implements Filter {
                 log("PermissionFilter:Initializing filter");
             }
         }
-        roleAccessMap.put("Guest", Arrays.asList("/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/petClothing.jsp", "/petAccessories.jsp", "/petFood.jsp", "/petFurniture.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp"));
-        roleAccessMap.put("Customer", Arrays.asList("/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/petClothing.jsp", "/petAccessories.jsp", "/petFood.jsp", "/petFurniture.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp"));
-        roleAccessMap.put("Employee", Arrays.asList("/employee/", "/petClothing.jsp", "/petAccessories.jsp", "/petFood.jsp", "/petFurniture.jsp", "/LogOutControl"));
-        roleAccessMap.put("Manager", Arrays.asList("/product.jsp", "/editProduct.jsp", "/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl"));
+        roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp"));
+        roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp"));
+        roleAccessMap.put("Employee", Arrays.asList("/employee/", "/CategoriesControl", "/LogOutControl"));
+        roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl"));
+        roleNoAccessMap.put("Manager", Arrays.asList("/admin/editProduct.jsp", "/admin/product.jsp"));
     }
 
     /**

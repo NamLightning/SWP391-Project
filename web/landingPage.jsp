@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,7 +7,7 @@
         <title>Home Page</title>
         <link rel="stylesheet" href="bootstrap/bootstrap.css">
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="<c:url value='/css/header.css'/>">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
     </head>   

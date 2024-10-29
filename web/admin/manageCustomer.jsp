@@ -32,7 +32,7 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2 style="margin-left: 10px; font-size: 30px;">Customer</h2>
-                            <a href="#" class="btn" style="margin-right: 10px">View VIP Customers</a>
+                            <a onclick="window.location.href='manageVIPCustomer.jsp'" class="btn" style="margin-right: 10px">View VIP Customers</a>
                         </div>
 
                         <div class="search" style="justify-self: center;">
@@ -92,7 +92,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>

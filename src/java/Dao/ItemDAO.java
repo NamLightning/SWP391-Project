@@ -88,26 +88,38 @@ public class ItemDAO {
         }
         return list;
     }
-
-    public ArrayList<Item> getAllProducts(int currentPage, int recordsPerPage) {
-
+    
+    public ArrayList<Item> getAllProductsWithCategory(int CategoryID, int offset, int recordsPerPage) {
+        String query = "select * from Products Where CategoryID = ? ORDER BY ProductID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+        ArrayList<Item> list = new ArrayList<>();
+        Connection conn = null;
+        try {
+            conn = DBContext.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, CategoryID);
+            ps.setInt(2, offset);
+            ps.setInt(3, recordsPerPage);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Item p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
+                list.add(p);
+            }
+            DBContext.GetInstance().close(conn, ps, rs);
+        } catch (Exception e) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return list;
+    }
+    
+    public ArrayList<Item> getAllProducts(int offset, int recordsPerPage) {
         ArrayList<Item> list = new ArrayList<>();
         Connection con = null;
         try {
             con = DBContext.getConnection();
-
-            int start = currentPage * recordsPerPage - recordsPerPage;
-            int end = recordsPerPage * currentPage;
-            String sql = "With prod AS\n"
-                    + "( SELECT *,\n"
-                    + "ROW_NUMBER() OVER (order by ProductID) as RowNumber \n"
-                    + "FROM Products )\n"
-                    + "select *\n"
-                    + "from prod\n"
-                    + "Where RowNumber Between ? and ?";
+            String sql = "SELECT * FROM Products ORDER BY ProductID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, start);
-            ps.setInt(2, end);
+            ps.setInt(1, offset);
+            ps.setInt(2, recordsPerPage);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Item p = new Item(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getBytes(8));
@@ -127,6 +139,25 @@ public class ItemDAO {
             con = DBContext.getConnection();
             String sql = "SELECT * FROM Products";
             PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                numOfRows++;
+            }
+            DBContext.GetInstance().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfRows;
+    }
+    
+    public Integer getNumberOfRowsOfCategory(int categoryID) {
+        Integer numOfRows = 0;
+        Connection con = null;
+        try {
+            con = DBContext.getConnection();
+            String sql = "SELECT * FROM Products Where CategoryID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, categoryID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 numOfRows++;

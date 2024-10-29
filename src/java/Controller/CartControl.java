@@ -143,7 +143,10 @@ public class CartControl extends HttpServlet {
             c.setQuantity(Quantity);
             cartItemsDAO.updateCartItems(c);
         }
-        response.sendRedirect("petFood.jsp");
+        if (request.getParameter("page") != null) {
+            response.sendRedirect("CategoriesControl?action=" + request.getParameter("page") + "&page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        }
+        response.sendRedirect("CategoriesControl?page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
@@ -195,7 +198,13 @@ public class CartControl extends HttpServlet {
         if (c != null) {
             cartItemsDAO.deleteCartItems(c.getCartItemID());
         }
-        response.sendRedirect("petFood.jsp");
+        if (request.getParameter("page") != null) {
+            response.sendRedirect("CategoriesControl?action=" + request.getParameter("page") + "&page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        }
+        if (request.getParameter("pageNumber") != null) {
+            response.sendRedirect("CategoriesControl?page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        }
+        response.sendRedirect("cart.jsp");
     }
 
     private void addFromCart(HttpServletRequest request, HttpServletResponse response) throws IOException {

@@ -34,7 +34,8 @@ public class TestDB {
         CustomerDAO customerDAO = new CustomerDAO();
         CategoriesDAO categoriesDAO = new CategoriesDAO();
         ItemDAO productsDAO = ItemDAO.getInstance();
-//        productsDAO.registerProduct(new Products("Dog food", 20, 15, 1));
-        System.out.println(productsDAO.getNumberOfRows());
+        
+//        System.out.println(productsDAO.getAllProductsWithCategory(2,(1 - 1) * 12, 12));
+//        productsDAO.registerProduct(new Item("Dog House", 300000, 15, 3));
     }
 }

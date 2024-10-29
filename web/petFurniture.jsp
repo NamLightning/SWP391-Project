@@ -23,28 +23,28 @@
                     <ul class="category-list">
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFurniture.jsp" checked disabled>
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=furniture" checked disabled>
                                 Furniture
                             </label>
                             <span class="category-count" data-count="furniture"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petAccessories.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=accessory">
                                 Accessories
                             </label>
                             <span class="category-count" data-count="accessories"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petClothing.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=cloth">
                                 Clothes
                             </label>
                             <span class="category-count" data-count="clothes"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFood.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl">
                                 Food
                             </label>
                             <span class="category-count" data-count="food"></span>
@@ -79,19 +79,29 @@
                     </select>
                 </header>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Dog House</h3>
-                                <p class="product-price">599.000₫</p>
+                    <c:forEach var="p" items="${products}">
+                        <article class="product-card">
+                            <c:url var="cartLink" value="CartControl">
+                                <c:param name="pageSize" value="${pageSize}"></c:param>
+                                <c:param name="pageNumber" value="${currentPage}"></c:param>
+                                <c:param name="action" value="add"></c:param>
+                                <c:param name="page" value="furniture"></c:param>
+                                <c:param name="id" value="${p.getProductID()}"></c:param>
+                            </c:url>
+                            <img src="${reuse.loadImage(p.getAvatar_img())}" alt="..." class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">${p.getProductName()}</h3>
+                                    <p class="product-price">${p.getPrice()}₫</p>
+                                </div>
+                                <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                    <span class="heart-icon"></span>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
+                        </article>
+                    </c:forEach>
+                </div>
+<!--                    <article class="product-card">
                         <img src="images/fur2.jpg" alt="Cat House" class="product-image">
                         <div class="product-info">
                             <div class="product-details">
@@ -223,15 +233,36 @@
                             </button>
                         </div>
                     </article>
-                </div>
+                </div>-->
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">
-                        <a href="#" class="page-number active-page" aria-current="page">1</a>
-                        <a href="#" class="page-number inactive-page">2</a>
+
+                        <c:if test="${currentPage > 1}">
+                            <a href="CategoriesControl?action=furniture&page=${currentPage - 1}&size=${pageSize}" class="next-button">Previous</a>
+                        </c:if>
+
+                        <c:forEach begin="${startPage}" end="${endPage}" var="page">
+                            <c:choose>
+                                <c:when test="${page == currentPage}">
+                                    <strong class="page-number active-page">${page}</strong>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="CategoriesControl?action=furniture&page=${page}&size=${pageSize}" class="page-number inactive-page">${page}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+
+                        <c:if test="${currentPage > 3}">
+                            <span class="ellipsis">...</span>
+                        </c:if>
+                        <c:if test="${currentPage < totalPages - 2}">
+                            <span class="ellipsis">...</span>
+                        </c:if>
+
+                        <c:if test="${currentPage < totalPages}">
+                            <a href="CategoriesControl?action=furniture&page=${currentPage + 1}&size=${pageSize}" class="next-button">Next</a>
+                        </c:if>
                     </div>
-                    <a href="#" class="next-button">
-                        <span>Next</span>
-                    </a>
                 </nav>
             </main>
         </section>

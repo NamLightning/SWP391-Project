@@ -81,7 +81,7 @@
                             <a href="homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
                         </div>
                         <ul class="nav-menu">
-                            <li class="nav-item"><a href="petFood.jsp">Items</a></li>
+                            <li class="nav-item"><a href="CategoriesControl">Items</a></li>
                             <li class="nav-item"><a href="servicePage.jsp">Service</a></li>
                             <li class="nav-item"><a href="news_blog.jsp">News & Blog</a></li>
                             <li class="nav-item"><a href="contactUsPage.jsp">Contact Us</a></li>

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: "Ubuntu", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
 
 :root {
     --blue: #2a2185;
-    --white: #FAFBFF;
+    --white: #ffffff;
     --gray: #f5f5f5;
     --black1: #222;
     --black2: #999;
@@ -83,7 +83,8 @@ body {
     display: block;
     min-width: 60px;
     height: 60px;
-    line-height: 75px;
+    /* line-height: 75px; */
+    align-content: center;
     text-align: center;
 }
 
@@ -206,24 +207,32 @@ body {
     width: 100%;
 }
 
-.search label input {
-    width: 75%;
+
+
+
+.property select {
+    width: 90%;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px 20px;
     padding-left: 35px;
     font-size: 18px;
     outline: none;
     border: 1px solid var(--black2);
+    margin: 10px;
 }
 
-.search label ion-icon {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
+.property input {
+    width: 90%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+    margin: 10px;
 }
-
 
 
 
@@ -247,7 +256,7 @@ body {
 
 .details {
     position: relative;
-    width: 80%;
+    width: 50%;
     padding: 20px;
     /* display: grid;
     grid-template-columns: 2fr 1fr;
@@ -269,8 +278,10 @@ body {
 
 .details .cardHeader {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
+    justify-content: center;
+    height: 50px;
 }
 
 .cardHeader h2 {
@@ -288,71 +299,58 @@ body {
     border-radius: 6px;
 }
 
-.details table {
-    width: 100%;
-    border-collapse: collapse;
+
+
+/* Ẩn input file mặc định */
+#image {
+    display: none;
+}
+
+/* Nút upload tùy chỉnh */
+.custom-upload-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Đổi màu nút khi hover */
+.custom-upload-button:hover {
+    background-color: #45a049;
+}
+
+/* Khung hiển thị ảnh đã chọn */
+.preview {
     margin-top: 10px;
-}
-
-.details table thead td {
-    font-weight: 600;
-    justify-items: center;
-}
-
-.details .recentOrders table tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.details .recentOrders table tr:last-child {
-    border-bottom: none;
-}
-
-.details .recentOrders table tbody tr:hover {
-    background: var(--blue);
-    color: var(--white);
-}
-
-.details .recentOrders table tr td {
-    padding: 10px;
-}
-
-.details .recentOrders table tr td:last-child {
     text-align: center;
 }
 
-.details .recentOrders table tr td:nth-child(1) {
-    text-align: center;
+.preview img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    max-height: 200px;
 }
 
-.details .recentOrders table tr td:nth-child(2) {
-    text-align: center;
-}
-
-.details .recentOrders table tr td:nth-child(3) {
-    text-align: center;
-}
-
-.details .recentOrders table tr td:nth-child(4) {
-    text-align: center;
-}
-
-.details .recentOrders table tr td:nth-child(5) {
-    text-align: center;
-}
-
-.details .recentOrders table tr td:nth-child(6) {
-    text-align: center;
-}
-
-.details .recentOrders table tr td:nth-child(7) {
-    text-align: center;
+/* Hiển thị tên file đã chọn */
+.file-name {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    display: block;
 }
 
 
 
 
-.btn-view {
+
+
+.btn-add {
     position: relative;
     padding: 10px 25px;
     background: var(--white);
@@ -363,15 +361,12 @@ body {
     margin-left: 10px;
 }
 
-.btn-view:hover {
+.btn-add:hover {
     background: var(--white);
     color: var(--blue);
     border: 2px solid red;
 
 }
-
-
-
 
 
 

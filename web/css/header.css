@@ -1,4 +1,6 @@
-
+:root{
+  --Default-Black: #000;   
+}
 .container {
     display: flex;
     flex: 1;

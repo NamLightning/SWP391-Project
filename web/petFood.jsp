@@ -10,11 +10,6 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
-        <%
-            ItemDAO itemDAO = new ItemDAO();
-            ArrayList<Item> productList = itemDAO.getAllProductsWithCategory(1);
-            pageContext.setAttribute("products", productList);
-        %>
     </head>
     <body>
     <center>
@@ -28,28 +23,28 @@
                     <ul class="category-list">
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFurniture.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=furniture">
                                 Furniture
                             </label>
                             <span class="category-count" data-count="furniture"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petAccessories.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=accessory">
                                 Accessories
                             </label>
                             <span class="category-count" data-count="accessories"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petClothing.jsp">
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl?action=cloth">
                                 Clothes
                             </label>
                             <span class="category-count" data-count="clothes"></span>
                         </li>
                         <li class="category-item">
                             <label class="checkbox-label">
-                                <input type="checkbox" class="checkbox" data-url="petFood.jsp" checked disabled>
+                                <input type="checkbox" class="checkbox" data-url="CategoriesControl" checked disabled>
                                 Food
                             </label>
                             <span class="category-count" data-count="food"></span>
@@ -87,8 +82,8 @@
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
                             <c:url var="cartLink" value="CartControl">
-                                <c:param name="recordsPerPage" value="${recordsPerPage}"></c:param>
-                                <c:param name="currentPage" value="${currentPage}"></c:param>
+                                <c:param name="pageSize" value="${pageSize}"></c:param>
+                                <c:param name="pageNumber" value="${currentPage}"></c:param>
                                 <c:param name="action" value="add"></c:param>
                                 <c:param name="id" value="${p.getProductID()}"></c:param>
                             </c:url>
@@ -98,165 +93,42 @@
                                     <h3 class="product-name">${p.getProductName()}</h3>
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
-                                <button class="favorite-button" aria-label="Add to favorites" type="button" onclick="window.location.href = '${cartLink}'">
+                                <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
                                     <span class="heart-icon"></span>
                                 </button>
                             </div>
                         </article>
                     </c:forEach>
-                    <!--<article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d619b14574a9c931df4b715f58d9012fc5d94b3107d0eec2323d10bbabbd8657?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Dog Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Premium Dog Food</h3>
-                                <p class="product-price">479.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b8e5b0af167cc3f1d689592dbf2d31494d4b0182b391b057907e8c8658276a?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Cat Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Premium Cat Food</h3>
-                                <p class="product-price">439.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea319e275d827b55f396c0d7bf7e33c60fccccd43649d32ae9bf9755e65a13b6?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Food - Size M" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Dog Food - Size M</h3>
-                                <p class="product-price">299.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd8b8567c6bcddc608b852c98edd966545950fab547cc981cfdeb1d14142ac71?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Pedigree" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pedigree</h3>
-                                <p class="product-price">699.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d73c5cea9b9e730c285c60d22f6ccca4cd602c5f162dc065b2e0a33d47af8296?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Brit Care" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Brit Care</h3>
-                                <p class="product-price">365.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5ee623681f54d502b3adff05d151d617da6f4d8806473c2dec67438c5622f96?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Sajo Pet Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Sajo Pet Food</h3>
-                                <p class="product-price">345.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a677381e5270117ad340c66e647271f8603fc836065d1b4d03f27aa81088af4?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Royal Canin" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Royal Canin</h3>
-                                <p class="product-price">370.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e88cf5c0c632038a2ec84c3402411a6870087a2d20a2bc7d50a6508a9bef91f9?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Nature's Gift" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Nature's Gift</h3>
-                                <p class="product-price">355.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d72893c70f3afc6f2f5bd2e06d0ad727ef91f3ce28a6102f44d4bc65a7b4b9d?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Whiskas" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Whiskas</h3>
-                                <p class="product-price">1.299.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/food10.jpg" alt="Bil Jac" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Bil Jac</h3>
-                                <p class="product-price">298.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/food11.jpg" alt="Golden Gatos" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Golden Gatos</h3>
-                                <p class="product-price">339.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/food12.jpg" alt="Nulo" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Nulo</h3>
-                                <p class="product-price">375.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>-->
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">
-                        <a href="#" class="page-number active-page" aria-current="page">1</a>
-                        <a href="#" class="page-number inactive-page">2</a>
+
+                        <c:if test="${currentPage > 1}">
+                            <a href="CategoriesControl?page=${currentPage - 1}&size=${pageSize}" class="next-button">Previous</a>
+                        </c:if>
+
+                        <c:forEach begin="${startPage}" end="${endPage}" var="page">
+                            <c:choose>
+                                <c:when test="${page == currentPage}">
+                                    <strong class="page-number active-page">${page}</strong>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="CategoriesControl?page=${page}&size=${pageSize}" class="page-number inactive-page">${page}</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+
+                        <c:if test="${currentPage > 3}">
+                            <span class="ellipsis">...</span>
+                        </c:if>
+                        <c:if test="${currentPage < totalPages - 2}">
+                            <span class="ellipsis">...</span>
+                        </c:if>
+
+                        <c:if test="${currentPage < totalPages}">
+                            <a href="CategoriesControl?page=${currentPage + 1}&size=${pageSize}" class="next-button">Next</a>
+                        </c:if>
                     </div>
-                    <a href="#" class="next-button">
-                        <span>Next</span>
-                    </a>
                 </nav>
             </main>
         </section>
