@@ -5,11 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
     <center>
@@ -61,10 +60,10 @@
                 </div>
                 <section class="filter-price-container">
                     <h2 class="filter-price-title">Filter by Price</h2>
-                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="525000" aria-label="Price range slider">
+                    <input type="range" id="priceRange" class="price-range-slider" min="50000" max="1000000" step="10000" value="500000" aria-label="Price range slider">
                     <div class="price-range-controls">
                         <p style="margin:0;">Price: </p>
-                        <p id="priceDisplay" class="price-range-text">525.000₫</p>
+                        <p id="priceDisplay" class="price-range-text">500.000₫</p>
                         <button class="apply-button" aria-label="Apply price filter">Apply</button>
                     </div>
                 </section>
@@ -72,7 +71,7 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                    <select class="sort-dropdown" name="sort-drop">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
                         <option value="descendant">Sort by price descendant</option>
@@ -80,148 +79,172 @@
                 </header>
                 <div class="product-grid">
                     <article class="product-card">
-                        <img src="images/leash1.jpg" alt="Brown Dog Leash" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Brown Dog Leash</h3>
-                                <p class="product-price">199.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/leash1.jpg" alt="Brown Dog Leash" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Brown Dog Leash</h3>
+                                    <p class="product-price">199.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/leash2.jpg" alt="Pet Collar" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Collar</h3>
-                                <p class="product-price">339.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/leash2.jpg" alt="Pet Collar" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Collar</h3>
+                                    <p class="product-price">339.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory1.jpg" alt="Pet Backpack" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Backpack</h3>
-                                <p class="product-price">299.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory1.jpg" alt="Pet Backpack" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Backpack</h3>
+                                    <p class="product-price">299.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory2.jpg" alt="White Dog Leash" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name"> White Dog Leash</h3>
-                                <p class="product-price">699.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory2.jpg" alt="White Dog Leash" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name"> White Dog Leash</h3>
+                                    <p class="product-price">699.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory3.jpg" alt="Pet Chain" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Chain</h3>
-                                <p class="product-price">365.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory3.jpg" alt="Pet Chain" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Chain</h3>
+                                    <p class="product-price">365.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory4.jpg" alt="Cat Hat" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Hat</h3>
-                                <p class="product-price">345.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory4.jpg" alt="Cat Hat" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Cat Hat</h3>
+                                    <p class="product-price">345.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory5.jpg" alt="Dog Scarf" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Dog Scarf</h3>
-                                <p class="product-price">370.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory5.jpg" alt="Dog Scarf" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Dog Scarf</h3>
+                                    <p class="product-price">370.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory6.jpg" alt="Pet Collar" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Collar</h3>
-                                <p class="product-price">355.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory6.jpg" alt="Pet Collar" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Collar</h3>
+                                    <p class="product-price">355.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory7.jpg" alt="Cat Scarf" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Scarf</h3>
-                                <p class="product-price">1.299.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory7.jpg" alt="Cat Scarf" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Cat Scarf</h3>
+                                    <p class="product-price">1.299.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory8.jpg" alt="Pet Ribbon" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Ribbon</h3>
-                                <p class="product-price">298.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory8.jpg" alt="Pet Ribbon" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Ribbon</h3>
+                                    <p class="product-price">298.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory9.jpg" alt="Cat Collections" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Collections</h3>
-                                <p class="product-price">339.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory9.jpg" alt="Cat Collections" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Cat Collections</h3>
+                                    <p class="product-price">339.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/accessory10.jpg" alt="Pet Headband" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Headband</h3>
-                                <p class="product-price">375.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/accessory10.jpg" alt="Pet Headband" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pet Headband</h3>
+                                    <p class="product-price">375.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
@@ -238,5 +261,7 @@
         <%@include file="includes/footer.jsp"%>
     </center>
     <script src="js/price-sort.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

@@ -5,11 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>   
     <body>
     <center>
@@ -25,7 +24,7 @@
                         <p>PetHub is more than just an online pet shop – it’s a place 
                             for pet parents who want nothing but the best for their pets.
                         </p>
-                        <button class="welcome-button" onclick="window.location.href='petFood.jsp'">Shop Now</button>
+                        <button class="welcome-button" onclick="window.location.href = 'petFood.jsp'">Shop Now</button>
                     </div>
                 </div>
             </div>
@@ -113,17 +112,17 @@
             <div class="left-sidebar" style="background-color: #f8f9fa; width:15%; height: 20%;"></div>
             <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%">
                 <center>
-                <div class="learn-more">
-                    <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>
-                    <div class="learn-more-content">
-                        <h1>The smarter way to shop for your pet</h1>
-                        <br>
-                        <p>We are committed to having the best service
-                            and ensuring the best quality for your pet.
-                        </p>
-                        <button class="learn-more-button" onclick="window.location.href='servicePage.jsp'">Learn More</button>
+                    <div class="learn-more">
+                        <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>
+                        <div class="learn-more-content">
+                            <h1>The smarter way to shop for your pet</h1>
+                            <br>
+                            <p>We are committed to having the best service
+                                and ensuring the best quality for your pet.
+                            </p>
+                            <button class="learn-more-button" onclick="window.location.href = 'servicePage.jsp'">Learn More</button>
+                        </div>
                     </div>
-                </div>
                 </center>
             </div>
             <div class="right-sidebar" style="background-color: #f8f9fa;width:15%;height: 20%;"></div>
@@ -137,60 +136,76 @@
                     <div class="best-sell-menu">
                         <div class="best-sell-container">
                             <div class="best-sell-item">
-                                <img src="images/bowl1.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Cat Bowl</h3>
-                                    <p style="margin:0; padding-top:10px;">479.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/bowl1.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Cat Bowl</h3>
+                                        <p style="margin:0; padding-top:10px;">479.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="best-sell-item">
-                                <img src="images/bowl2.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Cat Bowl</h3>
-                                    <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/bowl2.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Cat Bowl</h3>
+                                        <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="best-sell-item">
-                                <img src="images/leash1.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Dog Leash</h3>
-                                    <p style="margin:0; padding-top:10px;">699.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/leash1.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Dog Leash</h3>
+                                        <p style="margin:0; padding-top:10px;">699.000₫</p>
+                                    </div>
+                                </a>
                             </div>     
                             <div class="best-sell-item">
-                                <img src="images/catcloth1.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Cat Sweater</h3>
-                                    <p style="margin:0; padding-top:10px;">699.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/catcloth1.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Cat Sweater</h3>
+                                        <p style="margin:0; padding-top:10px;">699.000₫</p>
+                                    </div>
+                                </a>
                             </div>   
                             <div class="best-sell-item">
-                                <img src="images/food1.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Premium Dog Food</h3>
-                                    <p style="margin:0; padding-top:10px;">479.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food1.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Premium Dog Food</h3>
+                                        <p style="margin:0; padding-top:10px;">479.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="best-sell-item">
-                                <img src="images/food4.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Dog Food - Size M</h3>
-                                    <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food4.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Dog Food - Size M</h3>
+                                        <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="best-sell-item">
-                                <img src="images/food2.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Premium Cat Food</h3>
-                                    <p style="margin:0; padding-top:10px;">699.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food2.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Premium Cat Food</h3>
+                                        <p style="margin:0; padding-top:10px;">699.000₫</p>
+                                    </div>
+                                </a>
                             </div>     
                             <div class="best-sell-item">
-                                <img src="images/dogcloth1.jpg" alt="">
-                                <div class="best-sell-info">
-                                    <h3>Dog Hoodie</h3>
-                                    <p style="margin:0; padding-top:10px;">699.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/dogcloth1.jpg" alt="">
+                                    <div class="best-sell-info">
+                                        <h3>Dog Hoodie</h3>
+                                        <p style="margin:0; padding-top:10px;">699.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

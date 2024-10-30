@@ -5,11 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
     <center>
@@ -72,7 +71,7 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                    <select class="sort-dropdown" name="sort-drop">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
                         <option value="descendant">Sort by price descendant</option>
@@ -80,148 +79,172 @@
                 </header>
                 <div class="product-grid">
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d619b14574a9c931df4b715f58d9012fc5d94b3107d0eec2323d10bbabbd8657?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Dog Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Premium Dog Food</h3>
-                                <p class="product-price">479.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d619b14574a9c931df4b715f58d9012fc5d94b3107d0eec2323d10bbabbd8657?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Dog Food" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Premium Dog Food</h3>
+                                    <p class="product-price">479.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b8e5b0af167cc3f1d689592dbf2d31494d4b0182b391b057907e8c8658276a?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Cat Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Premium Cat Food</h3>
-                                <p class="product-price">439.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/69b8e5b0af167cc3f1d689592dbf2d31494d4b0182b391b057907e8c8658276a?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Premium Cat Food" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Premium Cat Food</h3>
+                                    <p class="product-price">439.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea319e275d827b55f396c0d7bf7e33c60fccccd43649d32ae9bf9755e65a13b6?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Food - Size M" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Dog Food - Size M</h3>
-                                <p class="product-price">299.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ea319e275d827b55f396c0d7bf7e33c60fccccd43649d32ae9bf9755e65a13b6?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Food - Size M" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Dog Food - Size M</h3>
+                                    <p class="product-price">299.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd8b8567c6bcddc608b852c98edd966545950fab547cc981cfdeb1d14142ac71?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Pedigree" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pedigree</h3>
-                                <p class="product-price">699.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dd8b8567c6bcddc608b852c98edd966545950fab547cc981cfdeb1d14142ac71?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Pedigree" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Pedigree</h3>
+                                    <p class="product-price">699.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d73c5cea9b9e730c285c60d22f6ccca4cd602c5f162dc065b2e0a33d47af8296?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Brit Care" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Brit Care</h3>
-                                <p class="product-price">365.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d73c5cea9b9e730c285c60d22f6ccca4cd602c5f162dc065b2e0a33d47af8296?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Brit Care" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Brit Care</h3>
+                                    <p class="product-price">365.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5ee623681f54d502b3adff05d151d617da6f4d8806473c2dec67438c5622f96?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Sajo Pet Food" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Sajo Pet Food</h3>
-                                <p class="product-price">345.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5ee623681f54d502b3adff05d151d617da6f4d8806473c2dec67438c5622f96?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Sajo Pet Food" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Sajo Pet Food</h3>
+                                    <p class="product-price">345.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a677381e5270117ad340c66e647271f8603fc836065d1b4d03f27aa81088af4?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Royal Canin" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Royal Canin</h3>
-                                <p class="product-price">370.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a677381e5270117ad340c66e647271f8603fc836065d1b4d03f27aa81088af4?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Royal Canin" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Royal Canin</h3>
+                                    <p class="product-price">370.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e88cf5c0c632038a2ec84c3402411a6870087a2d20a2bc7d50a6508a9bef91f9?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Nature's Gift" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Nature's Gift</h3>
-                                <p class="product-price">355.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e88cf5c0c632038a2ec84c3402411a6870087a2d20a2bc7d50a6508a9bef91f9?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Nature's Gift" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Nature's Gift</h3>
+                                    <p class="product-price">355.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d72893c70f3afc6f2f5bd2e06d0ad727ef91f3ce28a6102f44d4bc65a7b4b9d?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Whiskas" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Whiskas</h3>
-                                <p class="product-price">1.299.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d72893c70f3afc6f2f5bd2e06d0ad727ef91f3ce28a6102f44d4bc65a7b4b9d?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Whiskas" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Whiskas</h3>
+                                    <p class="product-price">1.299.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/food10.jpg" alt="Bil Jac" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Bil Jac</h3>
-                                <p class="product-price">298.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/food10.jpg" alt="Bil Jac" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Bil Jac</h3>
+                                    <p class="product-price">298.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/food11.jpg" alt="Golden Gatos" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Golden Gatos</h3>
-                                <p class="product-price">339.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/food11.jpg" alt="Golden Gatos" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Golden Gatos</h3>
+                                    <p class="product-price">339.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                     <article class="product-card">
-                        <img src="images/food12.jpg" alt="Nulo" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Nulo</h3>
-                                <p class="product-price">375.000₫</p>
+                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                            <img src="images/food12.jpg" alt="Nulo" class="product-image">
+                            <div class="product-info">
+                                <div class="product-details">
+                                    <h3 class="product-name">Nulo</h3>
+                                    <p class="product-price">375.000₫</p>
+                                </div>
+                                <button class="add-to-cart" aria-label="Add to cart">
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
                             </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
+                        </a>
                     </article>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
@@ -238,5 +261,7 @@
         <%@include file="includes/footer.jsp"%>
     </center>
     <script src="js/price-sort.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
