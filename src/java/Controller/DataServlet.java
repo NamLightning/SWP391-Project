@@ -7,6 +7,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.TimeUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,18 +54,34 @@ public class DataServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private static long intervalSeconds = 30;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         int randomValue = (int) (Math.random() * 100);
-        String randomLabel = "Data Point: " + System.currentTimeMillis();
+        String randomLabel = "Data Point" + ": " + formatInterval(intervalSeconds += 30);
         out.print("<div>");
         out.print("<p>Label: " + randomLabel + "</p>");
         out.print("<p>Value: " + randomValue + "</p>");
         out.print("</div>");
         out.flush();
+    }
+    
+    private static String formatInterval(long totalSeconds) {
+        long days = TimeUnit.SECONDS.toDays(totalSeconds);
+        long hours = TimeUnit.SECONDS.toHours(totalSeconds) % 24;
+        long minutes = TimeUnit.SECONDS.toMinutes(totalSeconds) % 60;
+        long seconds = totalSeconds % 60;
+
+        if (days > 0) {
+            return String.format("%d days %02d:%02d:%02d", days, hours, minutes, seconds);
+        } else if (hours > 0) {
+            return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        } else {
+            return String.format("%02d:%02d", minutes, seconds);
+        }
     }
 
     /**

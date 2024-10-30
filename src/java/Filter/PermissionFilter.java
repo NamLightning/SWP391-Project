@@ -21,6 +21,7 @@ import java.util.Set;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -108,6 +109,7 @@ public class PermissionFilter implements Filter {
      */
     private static final Map<String, List<String>> roleAccessMap = new HashMap<>();
     private static final Map<String, List<String>> roleNoAccessMap = new HashMap<>();
+    private List<String> validServletPaths;
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
@@ -130,10 +132,14 @@ public class PermissionFilter implements Filter {
         String username = session != null ? ((String) session.getAttribute("us") == null ? null : (String) session.getAttribute("us")) : null;
         String role = getUserRoleByUsername(username);
         log("Role: " + role);
+        ServletContext context = httpRequest.getServletContext();
+        log("Servlet Context: " + context.getResource(url));
+
         if (isStaticResource(url)) {
             chain.doFilter(request, response);
             return;
         }
+
         if (role != null && isRestrictedForRole(role, url)) {
             httpResponse.sendRedirect("/PetStore/error.jsp");
             return;
@@ -143,11 +149,24 @@ public class PermissionFilter implements Filter {
             if (role.equals("Guest") || role.equals("Customer")) {
                 httpResponse.sendRedirect("/PetStore/error.jsp");
             }
-            if (role.equals("Manager")){
-                httpResponse.sendRedirect("admin/admin.jsp");
+            if (role.equals("Manager")) {
+                httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
             }
             return;
         }
+
+        if (context.getResource(url) == null) {
+            if (isValidServlet(url)) {
+                if (role.equals("Guest") || role.equals("Customer")) {
+                    httpResponse.sendRedirect("/PetStore/error.jsp");
+                }
+                if (role.equals("Manager")) {
+                    httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
+                }
+            }
+            return;
+        }
+
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -176,6 +195,15 @@ public class PermissionFilter implements Filter {
 
     private boolean isStaticResource(String url) {
         return url.endsWith(".css") || url.endsWith(".js");
+    }
+
+    private boolean isValidServlet(String url) {
+        for (String valid : validServletPaths) {
+            if (valid.startsWith(url)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private String getUserRoleByUsername(String username) {
@@ -251,7 +279,8 @@ public class PermissionFilter implements Filter {
         roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp"));
         roleAccessMap.put("Employee", Arrays.asList("/employee/", "/CategoriesControl", "/LogOutControl"));
         roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl", "/DataServlet"));
-        roleNoAccessMap.put("Manager", Arrays.asList("/admin/editProduct.jsp", "/admin/product.jsp"));
+        roleNoAccessMap.put("Manager", Arrays.asList("/admin/updateItem.jsp", "/admin/manageItem.jsp"));
+        validServletPaths = Arrays.asList("/ProductControl", "/LoginControl", "/CheckOutControl", "/CategoriesControl", "/DataServlet", "/LogOutControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/CartControl");
     }
 
     /**

@@ -90,7 +90,7 @@ public class ItemControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("admin/product.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageItem.jsp").forward(request, response);
         }
     }
 
@@ -179,7 +179,7 @@ public class ItemControl extends HttpServlet {
         pageValue(request);
         request.setAttribute("categoryList", list);
         request.setAttribute("product", product);
-        request.getRequestDispatcher("admin/editProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/updateItem.jsp").forward(request, response);
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {

@@ -94,151 +94,155 @@
                                     <h3 class="product-name">${p.getProductName()}</h3>
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
-                                    <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                    <span class="heart-icon"></span>
-                                </button>
-                            </div>
-                        </article>
+                                <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                        <span class="heart-icon"></span>
+                                    </button>
+                                </div>
+                            </article>
                     </c:forEach>
                 </div>
-<!--                    <article class="product-card">
-                        <img src="images/leash2.jpg" alt="Pet Collar" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Collar</h3>
-                                <p class="product-price">339.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory1.jpg" alt="Pet Backpack" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Backpack</h3>
-                                <p class="product-price">299.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory2.jpg" alt="White Dog Leash" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name"> White Dog Leash</h3>
-                                <p class="product-price">699.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory3.jpg" alt="Pet Chain" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Chain</h3>
-                                <p class="product-price">365.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory4.jpg" alt="Cat Hat" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Hat</h3>
-                                <p class="product-price">345.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory5.jpg" alt="Dog Scarf" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Dog Scarf</h3>
-                                <p class="product-price">370.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory6.jpg" alt="Pet Collar" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Collar</h3>
-                                <p class="product-price">355.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory7.jpg" alt="Cat Scarf" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Scarf</h3>
-                                <p class="product-price">1.299.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory8.jpg" alt="Pet Ribbon" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Ribbon</h3>
-                                <p class="product-price">298.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory9.jpg" alt="Cat Collections" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Cat Collections</h3>
-                                <p class="product-price">339.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <img src="images/accessory10.jpg" alt="Pet Headband" class="product-image">
-                        <div class="product-info">
-                            <div class="product-details">
-                                <h3 class="product-name">Pet Headband</h3>
-                                <p class="product-price">375.000₫</p>
-                            </div>
-                            <button class="favorite-button" aria-label="Add to favorites">
-                                <span class="heart-icon"></span>
-                            </button>
-                        </div>
-                    </article>
-                </div>-->
+                <!--                    <article class="product-card">
+                                        <img src="images/leash2.jpg" alt="Pet Collar" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Collar</h3>
+                                                <p class="product-price">339.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory1.jpg" alt="Pet Backpack" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Backpack</h3>
+                                                <p class="product-price">299.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory2.jpg" alt="White Dog Leash" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name"> White Dog Leash</h3>
+                                                <p class="product-price">699.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory3.jpg" alt="Pet Chain" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Chain</h3>
+                                                <p class="product-price">365.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory4.jpg" alt="Cat Hat" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Cat Hat</h3>
+                                                <p class="product-price">345.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory5.jpg" alt="Dog Scarf" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Dog Scarf</h3>
+                                                <p class="product-price">370.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory6.jpg" alt="Pet Collar" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Collar</h3>
+                                                <p class="product-price">355.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory7.jpg" alt="Cat Scarf" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Cat Scarf</h3>
+                                                <p class="product-price">1.299.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory8.jpg" alt="Pet Ribbon" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Ribbon</h3>
+                                                <p class="product-price">298.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory9.jpg" alt="Cat Collections" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Cat Collections</h3>
+                                                <p class="product-price">339.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                    <article class="product-card">
+                                        <img src="images/accessory10.jpg" alt="Pet Headband" class="product-image">
+                                        <div class="product-info">
+                                            <div class="product-details">
+                                                <h3 class="product-name">Pet Headband</h3>
+                                                <p class="product-price">375.000₫</p>
+                                            </div>
+                                            <button class="favorite-button" aria-label="Add to favorites">
+                                                <span class="heart-icon"></span>
+                                            </button>
+                                        </div>
+                                    </article>
+                                </div>-->
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">
 
                         <c:if test="${currentPage > 1}">
                             <a href="CategoriesControl?action=accessory&page=${currentPage - 1}&size=${pageSize}" class="next-button">Previous</a>
+                        </c:if>
+                            
+                        <c:if test="${currentPage > 3}">
+                            <span class="ellipsis">...</span>
                         </c:if>
 
                         <c:forEach begin="${startPage}" end="${endPage}" var="page">
@@ -252,9 +256,6 @@
                             </c:choose>
                         </c:forEach>
 
-                        <c:if test="${currentPage > 3}">
-                            <span class="ellipsis">...</span>
-                        </c:if>
                         <c:if test="${currentPage < totalPages - 2}">
                             <span class="ellipsis">...</span>
                         </c:if>

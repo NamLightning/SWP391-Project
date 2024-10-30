@@ -94,10 +94,10 @@
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
                                 <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                    <span class="heart-icon"></span>
-                                </button>
-                            </div>
-                        </article>
+                                        <span class="heart-icon"></span>
+                                    </button>
+                                </div>
+                            </article>
                     </c:forEach>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
@@ -105,6 +105,10 @@
 
                         <c:if test="${currentPage > 1}">
                             <a href="CategoriesControl?page=${currentPage - 1}&size=${pageSize}" class="next-button">Previous</a>
+                        </c:if>
+
+                        <c:if test="${currentPage > 3}">
+                            <span class="ellipsis">...</span>
                         </c:if>
 
                         <c:forEach begin="${startPage}" end="${endPage}" var="page">
@@ -118,9 +122,7 @@
                             </c:choose>
                         </c:forEach>
 
-                        <c:if test="${currentPage > 3}">
-                            <span class="ellipsis">...</span>
-                        </c:if>
+
                         <c:if test="${currentPage < totalPages - 2}">
                             <span class="ellipsis">...</span>
                         </c:if>

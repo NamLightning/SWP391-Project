@@ -36,7 +36,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageItem.jsp"/>">
+            <a href="<c:url value="/ProductControl"/>">
                 <span class="icon">
                     <ion-icon name="cube-outline"></ion-icon>
                 </span>

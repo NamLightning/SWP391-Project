@@ -37,7 +37,7 @@
                             const maxDataPoints = 10;
                             function fetchData() {
                             const xhr = new XMLHttpRequest();
-                                    xhr.open('GET', '/WebTest/DataServlet', true);
+                                    xhr.open('GET', '/PetStore/DataServlet', true);
                                     xhr.onload = function() {
                                     if (xhr.status === 200) {
                                     // Inject the returned HTML into the page
@@ -45,7 +45,7 @@
                                             // Parse the HTML to get the value
                                             const parser = new DOMParser();
                                             const doc = parser.parseFromString(xhr.responseText, 'text/html');
-                                            const label = doc.querySelector('p').innerText.split(': ')[1]; // Get label
+                                            const label = doc.querySelector('p').innerText.split(': ')[2]; // Get label
                                             const value = parseInt(doc.querySelectorAll('p')[1].innerText.split(': ')[1]); // Get value
 
                                             // Update the chart
