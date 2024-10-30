@@ -41,7 +41,7 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="customer-table" style="font-size: 13px;">
+                        <div class="customer-table-2" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>

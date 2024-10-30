@@ -39,7 +39,7 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="pet-table" style="font-size: 13px;">
+                        <div class="pet-table-2" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
@@ -48,7 +48,7 @@
                                         <th>Pet Owner</th>
                                         <th>Pet Type</th>
                                         <th>Registered Service</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,8 +59,8 @@
                                         <td>Dog</td>
                                         <td>Trim & Bathe Dog’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>#12345128</td>
@@ -69,8 +69,8 @@
                                         <td>Cat</td>
                                         <td>Trim & Bathe Cat’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr> 
                                     <tr>
                                         <td>#12345128</td>
@@ -79,8 +79,8 @@
                                         <td>Dog</td>
                                         <td>Comprehensive Care For Dog</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                 </tbody>
                             </table>

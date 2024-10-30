@@ -76,6 +76,7 @@ h4{
     display: grid;
     grid-template-columns: repeat( 4, 1fr);
     grid-gap: 20px;
+    justify-items: center;
 }
 
 .cardBox .card {
@@ -84,11 +85,10 @@ h4{
     padding: 25px;
     border-radius: 20px;
     display: flex;
-    /*    justify-content: space-between;*/
     cursor: pointer;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     margin-bottom: 20px;
-    width: 90%;
+    width: 100%;
     justify-self: center;
 }
 
@@ -108,6 +108,7 @@ h4{
 .cardBox .card .iconBx {
     font-size: 3rem;
     color: var(--black2);
+    margin-left: 50%;
 }
 
 .cardBox .card:hover {

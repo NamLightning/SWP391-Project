@@ -32,7 +32,7 @@
                         <div class="header">
                             <h2 style="font-size: 20px;">All Employees</h2>
                             <button class="new-employee-btn" 
-                                    onclick="window.location.href = '<c:url value="/admin/createEmployee.jsp"/>'">Create New Employee</button>
+                                    onclick="window.location.href = '<c:url value="/admin/addEmployee.jsp"/>'">Create New Employee</button>
                         </div>
                         <div class="search-sort-bar">
                             <input type="text" placeholder="Search employee..." class="search-input">
@@ -41,7 +41,7 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="employee-table" style="font-size: 13px;">
+                        <div class="employee-table-2" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>

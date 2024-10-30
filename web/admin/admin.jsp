@@ -9,6 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
         <link rel="stylesheet" href="<c:url value="/css/admin.css"/>">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://raw.githubusercontent.com/chartjs/Chart.js/refs/heads/master/docs/scripts/utils.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -29,6 +31,10 @@
                         <div class="cardHeader" style="margin-left: 20px;">
                             <h2>Item Analytic Report</h2>
                             <a href="#" class="btn">View Statistic</a>
+                        </div>
+                        <div id="data-container" hidden></div>
+                        <div class="chart">
+                            <canvas id="lineChart" width="700" height="530"></canvas>
                         </div>
                     </div>
 
@@ -84,6 +90,7 @@
                     </div>
                 </div>
             </div>
+            <script src="../js/lineChart.js"></script>
             <script src="../js/sidebar.js"></script>
             <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
             <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

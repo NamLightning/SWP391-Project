@@ -40,6 +40,10 @@
         <servlet-name>CheckOutControl</servlet-name>
         <servlet-class>Controller.CheckOutControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DataServlet</servlet-name>
+        <servlet-class>Controller.DataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>CheckOutControl</servlet-name>
         <url-pattern>/CheckOutControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DataServlet</servlet-name>
+        <url-pattern>/DataServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

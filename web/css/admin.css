@@ -32,12 +32,13 @@ body {
     display: flex;
     grid-template-columns: 1fr 2fr;
     margin-top: -10px;
+    gap: 20px;
 }
 
 .recentOrders {
     position: relative;
     /* display: grid; */
-    min-height: 600px;
+    min-height: 590px;
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -56,6 +57,7 @@ body {
 
 .cardHeader h2 {
     font-weight: 600;
+    font-size: 20px;
     color: var(--blue);
 }
 
@@ -70,11 +72,8 @@ body {
 
 .recentCustomers {
     position: relative;
-    /* display: grid; */
     min-height: 500px;
     padding: 20px;
-    background: var(--white);
-    /* box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); */
     border-radius: 20px;
     width: 50%;
     grid-template-rows: repeat(4, 1fr);
