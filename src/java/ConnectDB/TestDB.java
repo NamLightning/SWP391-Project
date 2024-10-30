@@ -36,6 +36,6 @@ public class TestDB {
         ItemDAO productsDAO = ItemDAO.getInstance();
         
 //        System.out.println(productsDAO.getAllProductsWithCategory(2,(1 - 1) * 12, 12));
-//        productsDAO.registerProduct(new Item("Dog House", 300000, 15, 3));
+//        productsDAO.registerProduct(new Item("Dog House", 300000, 15, 1));
     }
 }

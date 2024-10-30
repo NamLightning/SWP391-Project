@@ -111,9 +111,12 @@ public class ItemControl extends HttpServlet {
 
         ItemDAO productsDAO = new ItemDAO();
         CategoriesDAO categoriesDAO = new CategoriesDAO();
-
-        String productID = request.getParameter("productID").trim();
-        int id = Integer.parseInt(productID);
+        String productID;
+        Integer id = null;
+        if (request.getParameter("productID") != null) {
+            productID = request.getParameter("productID").trim();
+            id = Integer.parseInt(productID);
+        }
         String productName = request.getParameter("productName");
         String productDesc = request.getParameter("productDesc");
         String price = request.getParameter("price").trim();
@@ -125,6 +128,20 @@ public class ItemControl extends HttpServlet {
 
         String submit = request.getParameter("submit");
         switch (submit) {
+            case "Add":
+                Categories cadd = categoriesDAO.checkExist(id2);
+                String fileName1 = getImageName(request);
+                byte[] fileData1 = getImage(request);
+                Item i = new Item(productName, productDesc, price2, stock2, cadd.getCategoryID());
+                if (fileName1 != null) {
+                    i.setAvatar_name(fileName1);
+                }
+                if (fileData1 != null) {
+                    i.setAvatar_img(fileData1);
+                }
+                productsDAO.registerProduct(i);
+                response.sendRedirect("ProductControl");
+                break;
             case "Edit":
                 Item p = productsDAO.checkExist(id);
                 Categories c = categoriesDAO.checkExist(id2);
@@ -182,8 +199,18 @@ public class ItemControl extends HttpServlet {
         request.getRequestDispatcher("admin/updateItem.jsp").forward(request, response);
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        String productID = request.getParameter("id").trim();
+        ItemDAO productsDAO = new ItemDAO();
+        Item product = productsDAO.checkExist(Integer.parseInt(productID));
+        if (product != null){
+            productsDAO.deleteProduct(product.getProductID());
+        }
+        response.sendRedirect("ProductControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private String getImageName(HttpServletRequest request) throws IOException, ServletException {
@@ -228,8 +255,10 @@ public class ItemControl extends HttpServlet {
         }
         int offset = (pageNumber - 1) * pageSize;
         ItemDAO productsDAO = new ItemDAO();
+        CategoriesDAO categoriesDAO = new CategoriesDAO();
         ArrayList<Item> products = productsDAO.getAllProducts(offset, pageSize);
         request.setAttribute("products", products);
+        request.setAttribute("categoryList", categoriesDAO.getAllCategories());
         int rows = productsDAO.getNumberOfRows();
         int totalPages = (int) Math.ceil((double) rows / pageSize);
         int startPage = Math.max(1, pageNumber - 2);

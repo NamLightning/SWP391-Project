@@ -83,7 +83,7 @@
                                     <label class="property">
                                         <p>Item category:</p>
 
-                                        &nbsp;&nbsp;&nbsp;<select id="categories" name="categories">
+                                        <select id="categories" name="categories">
                                             <c:forEach var="category" items="${categoryList}">
                                                 <option value="${category.getCategoryID()}" <c:if test="${product.getCategoryID() == category.getCategoryID()}">selected</c:if>>${category.getCategoryName()}</option>
                                             </c:forEach>                                            

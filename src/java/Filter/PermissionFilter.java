@@ -159,12 +159,13 @@ public class PermissionFilter implements Filter {
             if (isValidServlet(url)) {
                 if (role.equals("Guest") || role.equals("Customer")) {
                     httpResponse.sendRedirect("/PetStore/error.jsp");
+                    return;
                 }
                 if (role.equals("Manager")) {
                     httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
+                    return;
                 }
             }
-            return;
         }
 
         Throwable problem = null;

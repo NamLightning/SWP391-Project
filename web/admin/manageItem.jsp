@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList, Model.Item"%>
+<%@page import="Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList, Model.Item, Model.Categories"%>
 <jsp:useBean id="categories" class="Dao.CategoriesDAO" scope="page"/>
 <jsp:useBean id="reuse" class="Utils.Reuseable" scope="page"/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Product Name</th>
-                                        <th>Pet Type</th>
+                                        <th>Category</th>
                                         <th>Price</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -65,10 +65,20 @@
                                             <c:param name="action" value="edit"></c:param>
                                             <c:param name="id" value="${p.getProductID()}"></c:param>
                                         </c:url>
+                                        <c:url var="deleteLink" value="ProductControl">
+                                            <c:param name="pageSize" value="${pageSize}"></c:param>
+                                            <c:param name="page" value="${currentPage}"></c:param>
+                                            <c:param name="action" value="delete"></c:param>
+                                            <c:param name="id" value="${p.getProductID()}"></c:param>
+                                        </c:url>
                                         <tr>
                                             <td>${p.getProductID()}</td>
                                             <td>${p.getProductName()}</td>
-                                            <td>Cat</td>
+                                            <c:forEach items="${categoryList}" var="c">
+                                                <c:if test="${c.getCategoryID() == p.getCategoryID()}">
+                                                    <td>${c.getCategoryName()}</td>
+                                                </c:if>
+                                            </c:forEach>
                                             <td>${p.getPrice()}₫</td>
                                             <c:if test="${p.getStockQuantity() > 0}">
                                                 <td><span class="status-instock active">Available</span></td>
@@ -78,7 +88,7 @@
                                             </c:if>
                                             <!--<a href="${editLink}">Edit</a>-->
                                             <td><button class="update" onclick="location.href = '${editLink}'">Update</button></td>
-                                            <td><button class="delete">Delete</button></td>
+                                            <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
