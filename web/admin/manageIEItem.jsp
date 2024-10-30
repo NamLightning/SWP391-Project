@@ -1,9 +1,8 @@
 <%@page import="java.util.List"%>
-<%@page import="Model.Customer"%>
+<%@page import="Model.Products"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<%@page import="Dao.CustomerDAO" %>
+<%@page import="Dao.ProductsDAO" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
-        <link rel="stylesheet" href="<c:url value="/css/managecus.css"/>">
+        <link rel="stylesheet" href="<c:url value="/css/manageitem.css"/>">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -28,39 +27,51 @@
                     </div>
                 </div>
                 <div class="main-content">
-                    <div class="customer-table">
+                    <div class="item-table">
                         <div class="header">
-                            <h2 style="font-size: 20px;">All VIP Customers</h2>
-                            <button class="vip-customer-btn" 
-                                    onclick="window.location.href='<c:url value="/admin/manageCustomer.jsp"/>'">View All Customer</button>
+                            <h2 style="font-size: 20px;">Import/Export Products</h2>
+                            <button class="view-product-btn" 
+                                    onclick="window.location.href = '<c:url value="/admin/manageItem.jsp"/>'">View All Products</button>
                         </div>
                         <div class="search-sort-bar">
-                            <input type="text" placeholder="Search customer..." class="search-input">
+                            <input type="text" placeholder="Search product..." class="search-input">
                             <select class="sort-select">
                                 <option>Sort by Newest</option>
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="customer-table" style="font-size: 13px;">
+                        <div class="item-table" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Customer Name</th>
-                                        <th>Gender</th>
-                                        <th>Phone Number</th>
-                                        <th>Email</th>
-                                        <th>Address</th>
-                                        <th>Rank</th>
+                                        <th>ID</th>
+                                        <th>Product Name</th>
+                                        <th>Status</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Nguyen Thanh Phat</td>
-                                        <td>Male</td>
-                                        <td>0934 567 890</td>
-                                        <td>example@mail.com</td>
-                                        <td>Ho Chi Minh City</td>
-                                        <td>Silver</td>
+                                        <td>#12345128</td>
+                                        <td>Protein Food</td>
+                                        <td><span class="status-instock active">Import</span></td>
+                                        <td>200.000₫</td>
+                                        <td>100</td>
+                                        <td><button class="update" 
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
+                                    </tr> 
+                                    <tr>
+                                        <td>#12345128</td>
+                                        <td>Milk Cookies</td>
+                                        <td><span class="status-instock inactive">Export</span></td>
+                                        <td>150.000₫</td>
+                                        <td>100</td>
+                                        <td><button class="update" 
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
                                     </tr> 
                                 </tbody>
                             </table>
@@ -83,3 +94,4 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
+

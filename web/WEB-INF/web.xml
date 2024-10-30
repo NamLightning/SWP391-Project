@@ -65,6 +65,10 @@
         <servlet-name>ValidateOtp</servlet-name>
         <servlet-class>Controller.AccountControl.ValidateOtp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DataServlet</servlet-name>
+        <servlet-class>Controller.DataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -120,6 +124,10 @@
     <servlet-mapping>
         <servlet-name>ValidateOtp</servlet-name>
         <url-pattern>/ValidateOtp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DataServlet</servlet-name>
+        <url-pattern>/DataServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -32,6 +32,7 @@ body {
     display: flex;
     grid-template-columns: 1fr 2fr;
     margin-top: -10px;
+    gap: 20px;
 }
 
 .recentOrders {
@@ -45,7 +46,6 @@ body {
     width: 100%;
     height: 100%;
     margin: 20px 0 20px 40px;
-
 }
 
 .cardHeader {
@@ -111,9 +111,9 @@ body {
 }
 
 .cardBox .card .cardName {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--black2);
-    margin-top: 5px;
+    margin: 5px 0;
 }
 
 .cardBox .card .iconBx {
@@ -130,13 +130,6 @@ body {
 .cardBox .card:hover .iconBx {
     color: var(--white);
 }
-
-
-
-
-
-
-
 
 
 @media (max-width: 991px) {

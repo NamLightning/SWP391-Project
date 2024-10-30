@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="../css/sidebar.css">
+<link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
 <div class="navigation">
     <ul>
         <li>
-            <a href="#">
+            <a href="#" readdonly>
                 <span class="icon">
                     <ion-icon name="paw"></ion-icon>
                 </span>
@@ -84,7 +84,4 @@
             </a>
         </li>
     </ul>
-    
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </div>

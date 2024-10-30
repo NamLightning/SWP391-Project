@@ -250,7 +250,7 @@ public class PermissionFilter implements Filter {
         roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp"));
         roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/landingPage.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp"));
         roleAccessMap.put("Employee", Arrays.asList("/employee/", "/CategoriesControl", "/LogOutControl"));
-        roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl"));
+        roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl", "/DataServlet"));
         roleNoAccessMap.put("Manager", Arrays.asList("/admin/editProduct.jsp", "/admin/product.jsp"));
     }
 
