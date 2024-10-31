@@ -15,3 +15,7 @@ function decreaseQuantity() {
 function updateQuantityDisplay() {
     document.getElementById("quantity").innerText = quantity.toString().padStart(2, '0');
 }
+
+//function updateQuantityDisplay() {
+//    document.getElementById("quantityy").innerText = quantity.toString().padStart(2, '0');
+//}
