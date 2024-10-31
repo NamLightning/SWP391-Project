@@ -2,13 +2,10 @@ package Dao;
 
 import ConnectDB.DBContext;
 import Model.Pets;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.logging.Level;
@@ -188,7 +185,7 @@ public class PetsDAO {
             int end = recordsPerPage * currentPage;
             String sql = "With prod AS\n"
                     + "( SELECT *,\n"
-                    + "ROW_NUMBER() OVER (order by petID) as RowNumber \n"
+                    + "ROW_NUMBER() OVER (order by PetID) as RowNumber \n"
                     + "FROM Pets )\n"
                     + "select *\n"
                     + "from prod\n"

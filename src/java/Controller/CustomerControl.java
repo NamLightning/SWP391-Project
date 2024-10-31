@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.glassfish.jersey.internal.inject.Custom;
 
 /**
  *
@@ -81,7 +82,7 @@ public class CustomerControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("manager-listEmployee.jsp").forward(request, response);
+            request.getRequestDispatcher("managerCustomer.jsp").forward(request, response);
         }
     }
 
@@ -114,10 +115,24 @@ public class CustomerControl extends HttpServlet {
 
         String submit = request.getParameter("submit");
         switch (submit) {
+            case "Add":
+                String fileName1 = getImageName(request);
+                byte[] fileData1 = getImage(request);
+                Customer i = new Customer(username,password,firstName,lastName,email,phoneNumber,address);
+                if (fileName1 != null) {
+                    i.setAvatar_name(fileName1);
+                }
+                if (fileData1 != null) {
+                    i.setAvatar_img(fileData1);
+                }
+                customerDAO.registerCustomer(i);
+                response.sendRedirect("CustomerControl");
+                break;
             case "Edit":
                 Customer p = customerDAO.checkExist(id);
                 String fileName = getImageName(request);
                 byte[] fileData = getImage(request);
+                
                 p.setUsername(username);
                 p.setPassword(password);
                 p.setFirstName(firstName);
@@ -161,17 +176,28 @@ public class CustomerControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String customerID = request.getParameter("id").trim();
+        String customerID = request.getParameter("customerID").trim();
         CustomerDAO customerDAO = new CustomerDAO();
 
         Customer customer = customerDAO.checkExist(Integer.parseInt(customerID));
+        pageValue(request);
 
         request.setAttribute("customer", customer);
-        request.getRequestDispatcher("editCustomer.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/editCustomer.jsp").forward(request, response);
     }
 
-    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        String customerID = request.getParameter("customerID").trim();
+        CustomerDAO productsDAO = new CustomerDAO();
+        Customer customer = productsDAO.checkExist(Integer.parseInt(customerID));
+        if (customer != null){
+            productsDAO.deleteCustomer(customer.getCustomerID());
+        }
+        response.sendRedirect("CustomerControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private String getImageName(HttpServletRequest request) throws IOException, ServletException {
@@ -216,7 +242,7 @@ public class CustomerControl extends HttpServlet {
         }
         CustomerDAO customerDao = new CustomerDAO();
         ArrayList<Customer> products = customerDao.getAllCustomer(currentPage, recordsPerPage);
-        request.setAttribute("products", products);
+        request.setAttribute("customer", products);
         int rows = customerDao.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {

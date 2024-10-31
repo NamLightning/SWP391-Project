@@ -6,44 +6,33 @@
 package Model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Administrator
  */
 public class Promotions {
+
     private int promotionID;
     private String promotionName;
-    private double discountPercent;
-    private Date startDate;
-    private Date endDate;
-    private int productID;
-    private int managerID;
+    private int discountPercent;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private String Descriptions;
 
-    public Promotions(String promotionName, double discountPercent, Date startDate, Date endDate) {
-        this.promotionName = promotionName;
-        this.discountPercent = discountPercent;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public Promotions(String promotionName, double discountPercent, Date startDate, Date endDate, int productID, int managerID) {
-        this.promotionName = promotionName;
-        this.discountPercent = discountPercent;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.productID = productID;
-        this.managerID = managerID;
-    }
-
-    public Promotions(int promotionID, String promotionName, double discountPercent, Date startDate, Date endDate, int productID, int managerID) {
+    public Promotions(int promotionID, String promotionName, int discountPercent, LocalDateTime startDate, LocalDateTime endDate, String Descriptions) {
         this.promotionID = promotionID;
         this.promotionName = promotionName;
         this.discountPercent = discountPercent;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.productID = productID;
-        this.managerID = managerID;
+        this.Descriptions = Descriptions;
+    }
+
+    public Promotions() {
     }
 
     public int getPromotionID() {
@@ -62,48 +51,61 @@ public class Promotions {
         this.promotionName = promotionName;
     }
 
-    public double getDiscountPercent() {
+    public int getDiscountPercent() {
         return discountPercent;
     }
 
-    public void setDiscountPercent(double discountPercent) {
+    public void setDiscountPercent(int discountPercent) {
         this.discountPercent = discountPercent;
     }
 
-    public Date getStartDate() {
+    public LocalDateTime StartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDateTime EndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
-    public int getProductID() {
-        return productID;
+    public String getDescriptions() {
+        return Descriptions;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setDescriptions(String Descriptions) {
+        this.Descriptions = Descriptions;
     }
 
-    public int getManagerID() {
-        return managerID;
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+
+    public String getStartDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        return sdf.format(this.startDate);
     }
 
-    public void setManagerID(int managerID) {
-        this.managerID = managerID;
+    public void setStartDate(String startDate) {
+        this.startDate = LocalDateTime.parse(startDate, DATE_TIME_FORMATTER);
+    }
+
+    public String getEndDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+        return sdf.format(this.endDate);
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = LocalDateTime.parse(endDate, DATE_TIME_FORMATTER);
     }
 
     @Override
     public String toString() {
-        return "Promotions{" + "promotionID=" + promotionID + ", promotionName=" + promotionName + ", discountPercent=" + discountPercent + ", startDate=" + startDate + ", endDate=" + endDate + ", productID=" + productID + ", managerID=" + managerID + '}';
+        return "Promotions{" + "promotionID=" + promotionID + ", promotionName=" + promotionName + ", discountPercent=" + discountPercent + ", startDate=" + startDate + ", endDate=" + endDate + ", Descriptions=" + Descriptions + '}';
     }
+
 }

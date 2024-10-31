@@ -12,24 +12,24 @@ import java.sql.Date;
  * @author Administrator
  */
 public class Services {
-    private int serviceID;
-    private int customerID;
-    private String serviceName;
-    private Date serviceDate;
-    private String status;
 
-    public Services(int customerID, String serviceName, Date serviceDate) {
-        this.customerID = customerID;
-        this.serviceName = serviceName;
-        this.serviceDate = serviceDate;
+    private int serviceID;
+    private String serviceName;
+    private double price;
+    private String serviceDesc;
+    private String avatar_name;
+    private byte[] avatar_img;
+
+    public Services() {
     }
 
-    public Services(int serviceID, int customerID, String serviceName, Date serviceDate, String status) {
+    public Services(int serviceID, String serviceName, double price, String serviceDesc, String avatar_name, byte[] avatar_img) {
         this.serviceID = serviceID;
-        this.customerID = customerID;
         this.serviceName = serviceName;
-        this.serviceDate = serviceDate;
-        this.status = status;
+        this.price = price;
+        this.serviceDesc = serviceDesc;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
     public int getServiceID() {
@@ -40,14 +40,6 @@ public class Services {
         this.serviceID = serviceID;
     }
 
-    public int getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(int customerID) {
-        this.customerID = customerID;
-    }
-
     public String getServiceName() {
         return serviceName;
     }
@@ -56,24 +48,43 @@ public class Services {
         this.serviceName = serviceName;
     }
 
-    public Date getServiceDate() {
-        return serviceDate;
+    public double getPrice() {
+        return price;
     }
 
-    public void setServiceDate(Date serviceDate) {
-        this.serviceDate = serviceDate;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public String getStatus() {
-        return status;
+    public String getServiceDesc() {
+        return serviceDesc;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setServiceDesc(String serviceDesc) {
+        this.serviceDesc = serviceDesc;
+    }
+
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     @Override
     public String toString() {
-        return "Services{" + "serviceID=" + serviceID + ", customerID=" + customerID + ", serviceName=" + serviceName + ", serviceDate=" + serviceDate + ", status=" + status + '}';
+        return "Services{" + "serviceID=" + serviceID + ", serviceName=" + serviceName + ", price=" + price + ", serviceDesc=" + serviceDesc + ", avatar_name=" + avatar_name + ", avatar_img=" + avatar_img + '}';
     }
+    
+    
+
 }

@@ -4,16 +4,17 @@
  */
 package Controller;
 
-import Dao.PetsDAO;
-import Model.Pets;
+import Dao.PromotionsDAO;
+import Model.Promotions;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ import javax.servlet.http.Part;
  *
  * @author DELL
  */
-public class PetControl extends HttpServlet {
+public class PromotionControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +47,10 @@ public class PetControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PetControl</title>");
+            out.println("<title>Servlet PromotionControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PetControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PromotionControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,17 +76,17 @@ public class PetControl extends HttpServlet {
             switch (action) {
                 case "edit":
                     pageValue(request);
-                    editPets(request, response);
+                    editPromotions(request, response);
                     break;
                 case "delete":
-                    deletePets(request, response);
+                    deletePromotions(request, response);
                     break;
                 default:
                     break;
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("manager-listPets.jsp").forward(request, response);
+            request.getRequestDispatcher("manager-listPromotions.jsp").forward(request, response);
         }
     }
 
@@ -97,7 +98,6 @@ public class PetControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -105,71 +105,47 @@ public class PetControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        PetsDAO petsDAO = new PetsDAO();
+        PromotionsDAO promotionsDAO = new PromotionsDAO();
 
-        String petsID = request.getParameter("petID").trim();
-        int petId = Integer.parseInt(petsID);
-        String managerID = request.getParameter("managerID");
-        int manageId = Integer.parseInt(managerID);
-        String petName = request.getParameter("petName");
-        String petType = request.getParameter("petType").trim();
-        String healthStatus = request.getParameter("healthStatus").trim();
-        String lastCheckedDate = request.getParameter("lastCheckedDate").trim();
-        
-        // Parse the lastCheckedDate to java.sql.Date
-        java.sql.Date sqlLastCheckedDate = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            java.util.Date parsedDate = sdf.parse(lastCheckedDate);
-            sqlLastCheckedDate = new java.sql.Date(parsedDate.getTime());
-        } catch (ParseException ex) {
-            Logger.getLogger(PetControl.class.getName()).log(Level.SEVERE, "Invalid date format", ex);
-        }
-        
+        String promotionsID = request.getParameter("promotionID").trim();
+        int promotionId = Integer.parseInt(promotionsID);
+        String promotionName = request.getParameter("promotionName");
+        int discountPercents = Integer.parseInt(request.getParameter("discount").trim());
+        String descriptions = request.getParameter("Descriptions").trim();
 
-        String action = request.getParameter("action"); // Changed to "action" for clarity
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        LocalDateTime startDate = LocalDateTime.parse(request.getParameter("startDate").trim(), formatter);
+        LocalDateTime endDate = LocalDateTime.parse(request.getParameter("endDate").trim(), formatter);
+
+        String action = request.getParameter("action");
         switch (action) {
             case "Edit":
-                Pets p = petsDAO.checkExist(petId);
-                String fileName = getImageName(request);
-                byte[] fileData = getImage(request);
-                
-                // Update pet details
-                p.setPetID(petId);
-                p.setManagerID(manageId);
-                p.setPetName(petName);
-                p.setPetType(petType);
-                p.setHealthStatus(healthStatus);
-                p.setLastCheckedDate(sqlLastCheckedDate); // Set the parsed date
+                Promotions p = promotionsDAO.checkExist(promotionId);
 
-                if (fileName != null) {
-                    p.setAvatar_name(fileName);
-                }
-                if (fileData != null) {
-                    p.setAvatar_img(fileData);
-                }
-                
-                // Update pet in database
-                petsDAO.updatePet(p);
+                p.setPromotionID(promotionId);
+                p.setPromotionName(promotionName);
+                p.setDiscountPercent(discountPercents);
+                p.setStartDate(startDate);
+                p.setEndDate(endDate);
+                p.setDescriptions(descriptions);
+
+                promotionsDAO.updatePromotion(p);
                 pageValue(request);
-                response.sendRedirect("PetsControl");
+                response.sendRedirect("PromotionsControl");
                 break;
-                
+
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("PetsControl").forward(request, response);
+                request.getRequestDispatcher("PromotionsControl").forward(request, response);
                 break;
-                
+
             default:
-                // Handle cases where action is not "Edit" or "Cancel"
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
                 break;
         }
     }
 
     // Add the necessary helper methods: getImageName, getImage, and pageValue
-
-
     /**
      * Returns a short description of the servlet.
      *
@@ -180,49 +156,22 @@ public class PetControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void editPets(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void editPromotions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String petsID = request.getParameter("id").trim();
-        PetsDAO petsDAO = new PetsDAO();
+        String promotionsID = request.getParameter("id").trim();
+        PromotionsDAO promotionsDAO = new PromotionsDAO();
 
-        Pets pets = petsDAO.checkExist(Integer.parseInt(petsID));
+        Promotions promotions = promotionsDAO.checkExist(Integer.parseInt(promotionsID));
 
-        request.setAttribute("pets", pets);
-        request.getRequestDispatcher("editPets.jsp").forward(request, response);
+        request.setAttribute("promotions", promotions);
+        request.getRequestDispatcher("editPromotions.jsp").forward(request, response);
     }
 
-    private void deletePets(HttpServletRequest request, HttpServletResponse response) {
+    private void deletePromotions(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private String getImageName(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        String fileName = null;
-        if (filePart != null) {
-            fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        }
-        return fileName;
-    }
-
-    private byte[] getImage(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        byte[] fileData = null;
-        if (filePart != null) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            if (!fileName.isEmpty()) {
-                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-                filePart.write(uploadPath + File.separator + fileName);
-                fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
-            }
-        }
-        return fileData;
     }
 
     private void pageValue(HttpServletRequest request) {
@@ -238,10 +187,10 @@ public class PetControl extends HttpServlet {
         } else {
             recordsPerPage = 12;
         }
-        PetsDAO petsDao = new PetsDAO();
-        ArrayList<Pets> products = petsDao.getAllPet(currentPage, recordsPerPage);
+        PromotionsDAO promotionsDao = new PromotionsDAO();
+        ArrayList<Promotions> products = promotionsDao.getAllPromotion(currentPage, recordsPerPage);
         request.setAttribute("products", products);
-        int rows = petsDao.getNumberOfRows();
+        int rows = promotionsDao.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {
             nOfPages++;

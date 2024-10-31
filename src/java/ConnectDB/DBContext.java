@@ -16,14 +16,11 @@ import java.sql.SQLException;
  * @author Administrator
  */
 public class DBContext implements DatabaseInfor{
-    private Connection conn = null;
+    private static Connection conn = null;
+    private static DBContext dbcontext = null;
 
-    public DBContext() {
-
-    }
-
-    public Connection getConnection() {
-        if (conn == null){
+    public static Connection getConnection() throws SQLException {
+        if (conn == null || conn.isClosed()){
             try {
                 Class.forName(driverName);
                 conn = DriverManager.getConnection(url, user, pass);
@@ -33,6 +30,13 @@ public class DBContext implements DatabaseInfor{
             }
         }
         return conn;
+    }
+    
+    public static DBContext GetInstance(){
+        if (dbcontext == null){
+            dbcontext = new DBContext();
+        }
+        return dbcontext;
     }
 
     public void close(Connection conn, PreparedStatement ps, ResultSet rs)

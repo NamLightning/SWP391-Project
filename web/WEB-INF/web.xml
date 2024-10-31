@@ -77,6 +77,14 @@
         <servlet-name>PetControl</servlet-name>
         <servlet-class>Controller.PetControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DataServlet</servlet-name>
+        <servlet-class>Controller.DataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PromotionControl</servlet-name>
+        <servlet-class>Controller.PromotionControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -145,12 +153,20 @@
         <servlet-name>PetControl</servlet-name>
         <url-pattern>/PetControl</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DataServlet</servlet-name>
+        <url-pattern>/DataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PromotionControl</servlet-name>
+        <url-pattern>/PromotionControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>./admin/editProduct.jsp</welcome-file>
+        <welcome-file>servicePage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

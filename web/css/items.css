@@ -188,6 +188,7 @@ input[type=range] {
     background-color: #fff;
     display: flex;
     min-width: 240px;
+    max-width: 300px;
     flex-direction: column;
     overflow: hidden;
     justify-content: flex-start;

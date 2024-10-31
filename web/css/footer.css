@@ -1,21 +1,22 @@
+
 .footer {
     background-image: url(https://cdn.builder.io/api/v1/image/assets/TEMP/92b2220caa44fdae32d49cd71b5a3bf58365983501e5fb49d2ff7422e1b5ccb2?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b);
     align-self: stretch;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 50px 150px;
+    padding: 50px 0;
     font-family: 'Poppins',sans-serif;
     background-color: #f8f9fa;
+    width: 100%;
 }
 
 .footer-content {
     display: flex;
-    width: 105%;
+    width: 100%;
     height: 260px;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    gap: 4%;
+    justify-content: center;
 }
 
 .company-info {
@@ -83,7 +84,7 @@
     justify-content: flex-start;
     padding: 0;
     margin: 0;
-    
+
 }
 
 .link-item {
@@ -107,7 +108,7 @@
 .store-title {
     font-size: 20px;
     font-family: Poppins, sans-serif;
-    font-weight: 16;
+    font-weight: 16px;
 }
 
 .store-title h2{

@@ -28,71 +28,69 @@
                 </div>
 
 
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2 style="margin-left: 10px; font-size: 30px;">Customer</h2>
-                            <a href="#" class="btn" style="margin-right: 10px">View VIP Customers</a>
+                <div class="main-content">
+                    <div class="customer-table">
+                        <div class="header">
+                            <h2 style="font-size: 20px;">All Customers</h2>
+                            <button class="vip-customer-btn" 
+                                    onclick="window.location.href = '<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>
                         </div>
-
-                        <div class="search" style="justify-self: center;">
-                            <label>
-                                <input type="text" placeholder="search here">
-                                <ion-icon name="search-outline"></ion-icon>
-                            </label>
-
-                            <label for="options"></label>
-                            <select id="options" class="select-box">
-                                <option value="1">Tùy chọn 1</option>
-                                <option value="2">Tùy chọn 2</option>
-                                <option value="3">Tùy chọn 3</option>
+                        <div class="search-sort-bar">
+                            <input type="text" placeholder="Search customer..." class="search-input">
+                            <select class="sort-select">
+                                <option>Sort by Newest</option>
+                                <option>Sort by Oldest</option>
                             </select>
                         </div>
+                        <div class="customer-table-2" style="font-size: 13px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="p" items="${customer}">
+                                        <c:url var="editLink" value="CustomerControl">
+                                            <c:param name="pageSize" value="${pageSize}"></c:param>
+                                            <c:param name="page" value="${currentPage}"></c:param>
+                                            <c:param name="action" value="edit"></c:param>
+                                            <c:param name="id" value="${p.getCustomerID()}"></c:param>
+                                        </c:url>
+                                        <c:url var="deleteLink" value="CustomerControl">
+                                            <c:param name="pageSize" value="${pageSize}"></c:param>
+                                            <c:param name="page" value="${currentPage}"></c:param>
+                                            <c:param name="action" value="delete"></c:param>
+                                            <c:param name="id" value="${p.getCustomerID()}"></c:param>
+                                        </c:url>
+                                        <tr>
+                                            <td>${p.getFirstName()} ${p.getLastName()}</td>
+                                            <td>${p.getPhoneNumber()}</td>
+                                            <td>${p.getEmail()}</td>
+                                            <td>${p.getAddress()}</td>
+                                            <td><button class="view-btn" 
+                                                        onclick="window.location.href = '<c:url value="/admin/userDetail.jsp"/>'">View</button>
+                                            </td>
+                                        </tr> 
+                                    </c:forEach>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Customer Name</td>
-                                    <td>Gender</td>
-                                    <td>Phone number</td>
-                                    <td>Email</td>
-                                    <td>Address</td>
-                                    <td>Status</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
-                                    <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
-                                    <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Star Refrigerator</td>
-                                    <td>male</td>
-                                    <td>089898989</td>
-                                    <td>star@gmail.com</td>
-                                    <td>ngu hanh son, da nang</td>
-                                    <td><span class="status delivered">Active</span></td>
-                                </tr>
-
-
-
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <a href="#" class="pagination-item">&lt;</a>
+                            <a href="#" class="pagination-item active">1</a>
+                            <a href="#" class="pagination-item">2</a>
+                            <a href="#" class="pagination-item">3</a>
+                            <a href="#" class="pagination-item">4</a>
+                            <span class="pagination-item">...</span>
+                            <a href="#" class="pagination-item">&gt;</a>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
