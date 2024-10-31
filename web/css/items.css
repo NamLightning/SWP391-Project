@@ -362,18 +362,18 @@ body{
 }
 
 .detail-container{
-    display: flex;
-    flex: 1;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    width: 100%;
-    padding: 0;
+display: flex;
+flex: 1;
+font-family: 'Poppins', sans-serif;
+margin: 0;
+width: 100%;
+padding: 0;
 }
 
 .main-details-content{
-    background-color: #ffffff;
-    margin: 1%;
-    width: 70%;
+background-color: #ffffff;
+margin: 1%;
+width: 70%;
 }
 
 .image-container {
@@ -479,10 +479,7 @@ body{
     color: var(--Gray-900, #191c1f);
     font: 600 14px/1 Public Sans, sans-serif;
 }
-.user-feedbacks {
-    color: var(--Gray-600, #5f6c72);
-    font: 400 14px/1 Public Sans, sans-serif;
-}
+
 .pet-back-pack-for-dog-cat-space-gray {
     color: var(--Gray-900, #191c1f);
     margin-top: 8px;
@@ -510,13 +507,13 @@ body{
     }
 }
 .row {
-    display: flex;
+    /*display: flex;*/
     align-items: flex-start;
     gap: 24px;
     font-family: Inter, sans-serif;
     color: rgba(0, 0, 0, 1);
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    /*    justify-content: flex-start;
+        flex-wrap: wrap;*/
 }
 @media (max-width: 991px) {
     .row {
@@ -528,16 +525,17 @@ body{
 }
 .availability-in-stock {
     width: 312px;
+    margin-top: 1%;
 }
 .row-2 {
-    display: flex;
+    /*    display: flex;*/
     margin-top: 8px;
     align-items: flex-start;
     gap: 24px;
     font-family: Public Sans, sans-serif;
     color: var(--Gray-600, #5f6c72);
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    /*    justify-content: flex-start;
+        flex-wrap: wrap;*/
 }
 @media (max-width: 991px) {
     .row-2 {
@@ -549,6 +547,7 @@ body{
 }
 .category-pet-accessories {
     width: 312px;
+    margin-top: 1%;
 }
 .prices {
     align-self: flex-start;
@@ -584,7 +583,7 @@ body{
     width: 648px;
     border: 1px solid rgba(228, 231, 233, 1);
 }
-.form {
+/*.form {
     display: flex;
     margin-top: 24px;
     flex-direction: column;
@@ -683,7 +682,7 @@ body{
     .dropdown {
         white-space: initial;
     }
-}
+}*/
 .img-7 {
     aspect-ratio: 1;
     object-fit: contain;

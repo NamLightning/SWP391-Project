@@ -70,34 +70,34 @@
                             <div data-layername="price" class="price">319.000₫</div>
                         </div>
                         <div data-layername="devider" class="devider"></div>
-                        <div data-layername="form" class="form">
-                            <div data-layername="row" class="row-3">
-                                <div data-layername="color" class="color">
-                                    <div data-layername="color" class="color-2">Color</div>
-                                    <div data-layername="color" class="color-3">
-                                        <div data-layername="color" class="color-4">
-                                            <div data-layername="02" class="color-02"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-layername="size" class="size">
-                                    <div data-layername="size" class="size-2">Size</div>
-                                    <select data-layername="dropdown" class="dropdown">
-                                        <option value="s">S</option>
-                                        <option value="m">M</option>
-                                        <option value="l">L</option>
-                                        <option value="xl">XL</option>
-                                        <option value="xxl">XXL</option>
-                                        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8e3b5e0d925b162b1fedc1da4770082312089e8a1dd9e17e8885a209d8290377?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-7" alt="Dropdown arrow" />
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        <!--                        <div data-layername="form" class="form">
+                                                    <div data-layername="row" class="row-3">
+                                                        <div data-layername="color" class="color">
+                                                            <div data-layername="color" class="color-2">Color</div>
+                                                            <div data-layername="color" class="color-3">
+                                                                <div data-layername="color" class="color-4">
+                                                                    <div data-layername="02" class="color-02"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div data-layername="size" class="size">
+                                                            <div data-layername="size" class="size-2">Size</div>
+                                                            <select data-layername="dropdown" class="dropdown">
+                                                                <option value="s">S</option>
+                                                                <option value="m">M</option>
+                                                                <option value="l">L</option>
+                                                                <option value="xl">XL</option>
+                                                                <option value="xxl">XXL</option>
+                                                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8e3b5e0d925b162b1fedc1da4770082312089e8a1dd9e17e8885a209d8290377?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-7" alt="Dropdown arrow" />
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
                         <div data-layername="buttons" class="buttons">
                             <div data-layername="button" class="button-1">
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba388e0eabad954235024ee887707edd5d6e5c8af2f51cf95d84f47e8d6d2fd9?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-8" alt="Decrease quantity" />
-                                <div data-layername="01" class="quantity-01">01</div>
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4ef0281caf6e16bf01681ba248222d77473d0422e9e910a1484d63287f291cf?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-9" alt="Increase quantity" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba388e0eabad954235024ee887707edd5d6e5c8af2f51cf95d84f47e8d6d2fd9?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-8" alt="Decrease quantity" onclick="decreaseQuantity()" />
+                                <div data-layername="01" class="quantity-01" id="quantity">01</div>
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4ef0281caf6e16bf01681ba248222d77473d0422e9e910a1484d63287f291cf?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-9" alt="Increase quantity" onclick="increaseQuantity()" />
                             </div>
                             <div data-layername="button" class="button-2">
                                 <div data-layername="label" class="label">Add to card</div>
@@ -113,9 +113,9 @@
                                 <div data-layername="shareItem" class="share-item-2">Share item:</div>
                                 <div data-layername="socialIcon" class="social-icon">
                                     <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/bb1f241da910ae5b69f1d2a9e6e27c1ab21c163c8c64f82812af96aa675d5d8a?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-12" alt="Social media icon" />
-                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6566c625e4f3432f409fde4355028ff9350085d0079c00a500a18a2c37ec0c62?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-13" alt="Social media icon" />
-                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/edbc9734bdde143dd7f6bc7723d083b91b6e87f1fa0200ae4bdffc135bb8b945?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-14" alt="Social media icon" />
-                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f108ee3304be9e00319f5d50d7bf1eee621454189c3cd5a1d6a28e93e8c63fc6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-15" alt="Social media icon" />
+                                    <a href="https://www.facebook.com/"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6566c625e4f3432f409fde4355028ff9350085d0079c00a500a18a2c37ec0c62?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-13" alt="Social media icon" /></a>
+                                    <a href="https://x.com/"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/edbc9734bdde143dd7f6bc7723d083b91b6e87f1fa0200ae4bdffc135bb8b945?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-14" alt="Social media icon" /></a>
+                                    <a href="https://www.pinterest.com/"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f108ee3304be9e00319f5d50d7bf1eee621454189c3cd5a1d6a28e93e8c63fc6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-15" alt="Social media icon" /></a>
                                 </div>
                             </div>
                         </div>
@@ -246,8 +246,9 @@
                 </div>
             </div>
             <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1224px;"></div>
-    </div>
-    <%@include file="includes/footer.jsp"%>
-</center>
+        </div>
+        <%@include file="includes/footer.jsp"%>
+    </center>
 </body>
+<script src="js/editQuantity.js"></script>
 </html>
