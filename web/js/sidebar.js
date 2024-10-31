@@ -68,3 +68,5 @@ function showFileNameAndPreview() {
         preview.innerHTML = ""; // Xóa ảnh xem trước và tên file nếu không có ảnh nào được chọn
     }
 }
+
+
