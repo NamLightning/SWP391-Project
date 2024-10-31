@@ -14,9 +14,9 @@
     <body>
     <center>
         <%@include file="includes/header.jsp"%>
-        <div class="container">
+        <div class="detail-container">
             <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1224px;"></div>
-            <div class="main-content">
+            <div class="main-details-content">
                 <!--item-->
                 <div data-layername="itemDetail" class="item-detail">
                     <div data-layername="itemPreview" class="item-preview">
@@ -43,7 +43,7 @@
                                 <div data-layername="row" class="row">
                                     <div data-layername="skuA264671" class="sku">
                                         <span style="font-family: Public Sans, -apple-system, Roboto, Helvetica, sans-serif; color: rgba(95, 108, 114, 1);">
-                                            Sku:
+                                            Product ID:
                                         </span>
                                         <span style="font-family: Public Sans, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 600; color: rgba(25, 28, 31, 1);">
                                             A264671
@@ -122,6 +122,63 @@
                     </div>
                 </div>
                 <!--description-->
+                <section class="pet-thing-info">
+                    <div class="pet-thing-content">
+                        <article class="pet-thing-description">
+                            <h2 class="section-title">Description</h2>
+                            <p class="description-text">
+                                Travel in style and comfort with the Pet Thing for Dog & Cat in Space Gray. Designed for pet lovers who are always on the go, this pet thing combines functionality and modern aesthetics to keep your furry friend safe and comfortable. Featuring a spacious interior, breathable mesh panels for optimal ventilation, and a transparent window for your pet to enjoy the view, it's perfect for walks, hikes, or any adventure. The pet thing's ergonomic design, including padded shoulder straps and a sturdy base, ensures a comfortable experience for both you and your pet. Make every journey a breeze with this stylish and durable pet carrier.
+                            </p>
+                        </article>
+                        <div class="pet-thing-features">
+                            <h2 class="section-title">Feature</h2>
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/546a3d1b61956efbadfeeb7d3de3789f138348076aca94978925fa073a50b4f3?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="feature-icon" />
+                                    <span class="feature-text">Free 1 Year Warranty</span>
+                                </li>
+                                <li class="feature-item">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e5ff979b5b25b8b62a04b969a522785d7df3baa59d0c3805203c04caba7ce185?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="feature-icon" />
+                                    <span class="feature-text">Free Shipping & Fasted Delivery</span>
+                                </li>
+                                <li class="feature-item">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ffce21c8e42d9aa1c83b8ac242b4f5c3b24cdfbd47c00e3c7323e6135812e4f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="feature-icon" />
+                                    <span class="feature-text">100% Money-back guarantee</span>
+                                </li>
+                                <li class="feature-item">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a6821d12df2b94d4f46b61efa32fba6b9e2322fe11b3b25147b3df8b73441824?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="feature-icon" />
+                                    <span class="feature-text">24/7 Customer support</span>
+                                </li>
+                                <li class="feature-item">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e8acf517cd00f15d6c90b03b1598471b9c27d598d8be2d6ba7578f027c145f9?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="feature-icon" />
+                                    <span class="feature-text">Secure payment method</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr class="divider" />
+                        <div class="shipping-info">
+                            <h2 class="section-title">Shipping Information</h2>
+                            <dl class="shipping-details">
+                                <div class="shipping-item">
+                                    <dt class="shipping-label">Courier:</dt>
+                                    <dd class="shipping-value">2 - 4 days, free shipping</dd>
+                                </div>
+                                <div class="shipping-item">
+                                    <dt class="shipping-label">Local Shipping:</dt>
+                                    <dd class="shipping-value">up to one week</dd>
+                                </div>
+                                <div class="shipping-item">
+                                    <dt class="shipping-label">UPS Ground Shipping:</dt>
+                                    <dd class="shipping-value">4 - 6 days</dd>
+                                </div>
+                                <div class="shipping-item">
+                                    <dt class="shipping-label">Unishop Global Export:</dt>
+                                    <dd class="shipping-value">3 - 4 days</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
                 <!--related item-->
                 <div class="item-container" style="flex: 1;width: 1296px; height: 700px">
                     <div class="related-item" id="best_seller">
@@ -189,12 +246,8 @@
                 </div>
             </div>
             <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1224px;"></div>
-        </div>
-        <%@include file="includes/footer.jsp"%>
-    </center>
+    </div>
+    <%@include file="includes/footer.jsp"%>
+</center>
 </body>
 </html>
-
-<style>
-
-</style>

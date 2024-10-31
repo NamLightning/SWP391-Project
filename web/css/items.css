@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .filters-cards {
     display: flex;
     align-items: flex-start;
@@ -144,7 +146,7 @@ input[type=range] {
 .product-header {
     display: flex;
     width: 100%;
-    max-width: 966px;
+    max-width: 97%;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -359,9 +361,19 @@ body{
     margin: 0;
 }
 
-.main-content{
+.detail-container{
+    display: flex;
+    flex: 1;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.main-details-content{
     background-color: #ffffff;
     margin: 1%;
+    width: 70%;
 }
 
 .image-container {
@@ -382,7 +394,7 @@ body{
     gap: 40px 56px;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 32px 0 107px;
+    padding-top: 5%;
 }
 @media (max-width: 991px) {
     .item-detail {
@@ -849,7 +861,115 @@ body{
     align-self: stretch;
     margin: auto 0;
 }
+/**/
+.pet-thing-info {
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #e4e7e9;
+    background: #fff;
+    width: 100%;
+    max-width: 1317px;
+    font-family: 'Public Sans', sans-serif;
+}
+.pet-thing-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.pet-thing-description {
+    display: flex;
+    flex-direction: column;
+    width: 616px;
+    min-width: 240px;
+}
+.section-title {
+    color: #191c1f;
+    font-size: 16px;
+    font-weight: 600;
+}
+.description-text {
+    color: #5f6c72;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 12px;
+}
+.pet-thing-features {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    min-width: 240px;
+}
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    list-style-type: none;
+    padding: 0;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+.feature-text {
+    flex: 1;
+}
+.divider {
+    width: 1px;
+    height: 228px;
+    background-color: #e4e7e9;
+    border: none;
+}
+.shipping-info {
+    display: flex;
+    flex-direction: column;
+    width: 272px;
+    min-width: 240px;
+}
+.shipping-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.shipping-item {
+    display: flex;
+    justify-content: space-between;
+}
+.shipping-label {
+    color: #191c1f;
+    font-weight: 500;
+}
+.shipping-value {
+    color: #5f6c72;
+    font-weight: 400;
+}
+@media (max-width: 991px) {
+    .pet-thing-info {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+    .pet-thing-content,
+    .pet-thing-description {
+        max-width: 100%;
+    }
+}
 
+/**/
 .item-container{
     display: flex;
     flex: 1;

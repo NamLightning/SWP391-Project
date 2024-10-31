@@ -39,32 +39,40 @@
                     <div class="category-menu">
                         <div class="category-container">
                             <div class="category-feature">
-                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67933fc965fa8324a2ac6ff73eb74d3ecb67e185dd12cf2837558db462b4bcd?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Furniture">
-                                <div class="category-info">
-                                    <h3>Furniture</h3>
-                                    <p style="margin:0; padding:0;">20 products</p>
-                                </div>
+                                <a href="petFurniture.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67933fc965fa8324a2ac6ff73eb74d3ecb67e185dd12cf2837558db462b4bcd?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Furniture">
+                                    <div class="category-info">
+                                        <h3>Furniture</h3>
+                                        <p style="margin:0; padding:0;">20 products</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="category-feature">
-                                <img src="images/cate-img2.png" alt="Food">
-                                <div class="category-info">
-                                    <h3>Food</h3>
-                                    <p style="margin:0; padding:0;">20 products</p>
-                                </div>
+                                <a href="petFood.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/cate-img2.png" alt="Food">
+                                    <div class="category-info">
+                                        <h3>Food</h3>
+                                        <p style="margin:0; padding:0;">20 products</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="category-feature">
-                                <img src="images/cate-img3.png" alt="Accessories">
-                                <div class="category-info">
-                                    <h3>Accessories</h3>
-                                    <p  style="margin:0; padding:0;">20 products</p>
-                                </div>
+                                <a href="petAccessories.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/cate-img3.png" alt="Accessories">
+                                    <div class="category-info">
+                                        <h3>Accessories</h3>
+                                        <p  style="margin:0; padding:0;">20 products</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="category-feature">
-                                <img src="images/cate-img4.png" alt="Clothes">
-                                <div class="category-info">
-                                    <h3>Clothes</h3>
-                                    <p style="margin:0; padding:0;">20 products</p>
-                                </div>
+                                <a href="petClothing.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/cate-img4.png" alt="Clothes">
+                                    <div class="category-info">
+                                        <h3>Clothes</h3>
+                                        <p style="margin:0; padding:0;">20 products</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -80,26 +88,33 @@
                     <h1 style="margin:0;padding-bottom: 20px;">Feature products</h1>
                     <div class="feature-menu">
                         <div class="feature-container">
+
                             <div class="feature-item">
-                                <img src="images/food1.jpg" alt="">
-                                <div class="feature-info">
-                                    <h3>Premium Dog Food</h3>
-                                    <p style="margin:0; padding-top:10px;">479.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food1.jpg" alt="">
+                                    <div class="feature-info">
+                                        <h3>Premium Dog Food</h3>
+                                        <p style="margin:0; padding-top:10px;">479.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="feature-item">
-                                <img src="images/food2.jpg" alt="">
-                                <div class="feature-info">
-                                    <h3>Premium Cat Food</h3>
-                                    <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food2.jpg" alt="">
+                                    <div class="feature-info">
+                                        <h3>Premium Cat Food</h3>
+                                        <p style="margin-top: 0; padding-top:10px;">439.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                             <div class="feature-item">
-                                <img src="images/food3.jpg" alt="" style="object-fit: contain;">
-                                <div class="feature-info">
-                                    <h3>Premium Dog Food - Size XL</h3>
-                                    <p style="margin:0; padding-top:10px;">699.000₫</p>
-                                </div>
+                                <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <img src="images/food3.jpg" alt="" style="object-fit: contain;">
+                                    <div class="feature-info">
+                                        <h3>Premium Dog Food - Size XL</h3>
+                                        <p style="margin:0; padding-top:10px;">699.000₫</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
