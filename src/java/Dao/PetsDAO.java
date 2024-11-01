@@ -70,7 +70,6 @@ public class PetsDAO {
 
     public void updateImage(Pets p) {
         String sql = " UPDATE Pets\n" + "SET AvatarName = ?, Avatar_Img=?\n" + "WHERE PetID = ?";
-        DBContext db = new DBContext();
         try {
             Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
@@ -87,7 +86,6 @@ public class PetsDAO {
 
     public static String getImage(int petID) {
         String sql = "SELECT Avatar_Img FROM Pets WHERE id = ?";
-        DBContext db = new DBContext();
         try {
             Connection con = DBContext.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
@@ -138,6 +136,27 @@ public class PetsDAO {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void updatePet(Pets e) {
+        String sql = " UPDATE Pets\n" + "SET PetName = ?, PetType = ?, HealthStatus = ?, LastCheckedDate = ?, EmployeeID = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE PetID = ?";
+        DBContext db = new DBContext();
+        try {
+            Connection con = db.getConnection();
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, e.getPetName());
+            statement.setString(2, e.getPetType());
+            statement.setString(3, e.getHealthStatus());
+            statement.setDate(4, Date.valueOf(e.getLastCheckedDate()));
+            statement.setInt(5, e.getEmployeeID());
+            statement.setString(6, e.getAvatar_name());
+            statement.setBytes(7, e.getAvatar_img());
+            statement.setInt(8, e.getEmployeeID());
+            statement.execute();
+            new DBContext().close(con, statement, null);
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void deletePet(int id) {
         String sql = "DELETE FROM Pets WHERE PetID=?";
@@ -154,5 +173,71 @@ public class PetsDAO {
         } catch (Exception e) {
             Logger.getLogger(Pets.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+    public ArrayList<Pets> getAllPet(int currentPage, int recordsPerPage) {
+        DBContext db = new DBContext();
+        ArrayList<Pets> list = new ArrayList<>();
+        try {
+            Connection con = db.getConnection();
+
+            int start = currentPage * recordsPerPage - recordsPerPage;
+            int end = recordsPerPage * currentPage;
+            String sql = "With prod AS\n"
+                    + "( SELECT *,\n"
+                    + "ROW_NUMBER() OVER (order by PetID) as RowNumber \n"
+                    + "FROM Pets )\n"
+                    + "select *\n"
+                    + "from prod\n"
+                    + "Where RowNumber Between ? and ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, start);
+            ps.setInt(2, end);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Pets p = new Pets(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8), rs.getBytes(9));
+                list.add(p);
+            }
+            new DBContext().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(EmployeeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public Integer getNumberOfRows() {
+        DBContext db = new DBContext();
+        Integer numOfRows = 0;
+        try {
+            Connection con = db.getConnection();
+            String sql = "SELECT * FROM Pets";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                numOfRows++;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfRows;
+    }
+    
+    
+    public Pets checkExist(int id) {
+        String query = "select * from Pets\n"
+                + "where PetID = ?\n";
+        Pets e = null;
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                e = new Pets(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getDate(6), rs.getInt(7), rs.getString(8), rs.getBytes(9));
+            }
+            new DBContext().close(conn, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
     }
 }

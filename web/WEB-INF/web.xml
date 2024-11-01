@@ -69,6 +69,22 @@
         <servlet-name>DataServlet</servlet-name>
         <servlet-class>Controller.DataServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerControl</servlet-name>
+        <servlet-class>Controller.CustomerControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeControl</servlet-name>
+        <servlet-class>Controller.EmployeeControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PetControl</servlet-name>
+        <servlet-class>Controller.PetControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PromotionControl</servlet-name>
+        <servlet-class>Controller.PromotionControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -129,12 +145,28 @@
         <servlet-name>DataServlet</servlet-name>
         <url-pattern>/DataServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerControl</servlet-name>
+        <url-pattern>/CustomerControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeControl</servlet-name>
+        <url-pattern>/EmployeeControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PetControl</servlet-name>
+        <url-pattern>/PetControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PromotionControl</servlet-name>
+        <url-pattern>/PromotionControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>landingPage.jsp</welcome-file>
+        <welcome-file>homePage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

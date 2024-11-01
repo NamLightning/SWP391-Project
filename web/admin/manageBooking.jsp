@@ -45,19 +45,9 @@
                                 <div class="cardName">Total Bookings</div>
                                 <div class="numbers">152</div>
                             </div>
-                            <!--                            <div class="iconBx">
-                                                            <ion-icon name="eye-outline"></ion-icon>
-                                                        </div>-->
-                        </div>
-
-                        <div class="card">
-                            <div>
-                                <div class="cardName">Pending Approval</div>
-                                <div class="numbers">23</div>
+                            <div class="iconBx">
+                                <ion-icon name="calendar-outline"></ion-icon>
                             </div>
-                            <!--                            <div class="iconBx">
-                                                            <ion-icon name="cart-outline"></ion-icon>
-                                                        </div>-->
                         </div>
 
                         <div class="card">
@@ -65,9 +55,9 @@
                                 <div class="cardName">New Clients This Month</div>
                                 <div class="numbers">5</div>
                             </div>
-                            <!--                            <div class="iconBx">
-                                                            <ion-icon name="chatbubble-outline"></ion-icon>
-                                                        </div>-->
+                            <div class="iconBx">
+                                <ion-icon name="person-add-outline"></ion-icon>
+                            </div>
                         </div>
 
                         <div class="card">
@@ -75,9 +65,9 @@
                                 <div class="cardName">Returning Clients</div>
                                 <div class="numbers">46%</div>
                             </div>
-                            <!--                            <div class="iconBx">
-                                                            <ion-icon name="card-outline"></ion-icon>
-                                                        </div>-->
+                            <div class="iconBx">
+                                <ion-icon name="return-down-back-outline"></ion-icon>
+                            </div>
                         </div>
 
                     </div>

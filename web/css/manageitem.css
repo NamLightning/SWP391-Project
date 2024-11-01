@@ -8,38 +8,47 @@ body {
 
 .main-content {
     padding: 40px;
-    max-width: 1200px;
+    width: 100%;
     margin: 0;
+    justify-items: center;
 }
 
 .item-table {
+    max-width: 90%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.item-table-2 {
     max-width: 1200px;
     margin: 0;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Drop shadow effect */
     overflow: hidden;
     padding: 30px;
 }
 
 .item-table table {
     width: 100%;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
 }
 
 .item-table th,
 .item-table td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
 
 .item-table th {
     background-color: #fafbff;
     color: #8f9bb3;
-    font-weight: bold;
 }
+
 
 .item-table tr:hover {
     background-color: #f5f5f5;
@@ -96,34 +105,6 @@ body {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #ddd;
-}
-
-.item-table {
-    max-width: 1200px;
-    margin: 0;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 30px;
-}
-
-.item-table table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-.item-table th,
-.item-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.item-table th {
-    background-color: #fafbff;
-    color: #8f9bb3;
 }
 
 .status-instock{

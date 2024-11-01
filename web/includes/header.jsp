@@ -35,15 +35,8 @@
         width: 50%;
         height: 50%;
     }
-    .remove-button,
-        .quantity-button {
-            background-color: transparent;
-            border: none;
-            color: #333;
-            font-size: 20px;
-            cursor: pointer;
-        }
 </style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 <header>
     <center>
         <div class="container">
@@ -57,7 +50,7 @@
                                 <span>+84 357572079</span>
                             </div>
                         </div>
-                        <div class="location-info"style="padding-right:5px;">
+                        <div class="location-info" style="padding-right:5px;">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0459a1766085384576accced4da0e6d1e8a5e9e88191f8dad13bb1d757e0fe77?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="" class="icon" />
                             <span>FPT Plaza, Ngu Hanh Son District, Da Nang</span>
                         </div>              
@@ -89,11 +82,10 @@
                         <form class="search-container">
                             <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f54504702ed8a70ca94c77306304e000bffd092436dcd387934a645a88007bc1?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Search Icon" class="search-icon">
-
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon" id="hoverItem" onclick="location.href = 'cart.jsp'">
                             <div class="popup-hover" id="popupHover">
                                 <c:if test="${empty us}"> <!-- <- This line is for Guest -->
-                                    Coming soon!
+                                    <%@include file="cartPopup.jsp" %>
                                 </c:if>
                                 <c:if test="${not empty us}"> <!-- <- This line is for Customer -->
                                     <c:set var="totalPrice" value="0" scope="page"/>
@@ -105,26 +97,39 @@
                                         ArrayList<CartItems> cartList = cartItemsDAO.getAllCartItems(c.getCustomerID());
                                         pageContext.setAttribute("carts", cartList);
                                     %>
-                                    <h3>Shopping Cart (${carts.size()})</h3>
-                                    <c:forEach var="c" items="${carts}">
-                                        <c:url var="deleteLink" value="CartControl">
-                                            <c:param name="action" value="delete"></c:param>
-                                            <c:param name="cid" value="${c.getCartItemID()}"></c:param>
-                                        </c:url>
-                                        <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-image">
-                                        <div class="item">
-                                            <p>${pDAO.checkExist(c.getProductID()).getProductName()}</p>
-                                            <p>${c.getQuantity()} x ${pDAO.checkExist(c.getProductID()).getPrice()}₫</p>
-                                            <button class="remove-button" type="button" onclick="window.location.href = '${deleteLink}'"><i class="fas fa-times"></i></button>
+                                    <section class="shopping-cart">
+                                        <header class="cart-header">
+                                            Shopping Cart <span class="cart-count">(${carts.size()})</span>
+                                        </header>
+                                        <div class="product-list">
+                                            <c:forEach var="c" items="${carts}">
+                                                <c:url var="deleteLink" value="CartControl">
+                                                    <c:param name="action" value="delete"></c:param>
+                                                    <c:param name="cid" value="${c.getCartItemID()}"></c:param>
+                                                </c:url>
+                                                <article class="product-item">
+                                                    <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-image">
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">${pDAO.checkExist(c.getProductID()).getProductName()}</h3>
+                                                        <div class="product-price">
+                                                            <span class="quantity">${c.getQuantity()}</span> <span>x</span> <span class="price">${pDAO.checkExist(c.getProductID()).getPrice()}₫</span>
+                                                        </div>
+                                                    </div>
+                                                    <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart" type="button" onclick="window.location.href = '${deleteLink}'"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="remove-icon" /></button>
+                                                </article>
+                                                <c:set var="itemTotal" value="${pDAO.checkExist(c.getProductID()).getPrice() * c.getQuantity()}" />
+                                                <c:set var="totalPrice" value="${totalPrice + itemTotal}" />
+                                            </c:forEach>
                                         </div>
-                                        <c:set var="itemTotal" value="${pDAO.checkExist(c.getProductID()).getPrice() * c.getQuantity()}" />
-                                        <c:set var="totalPrice" value="${totalPrice + itemTotal}" />
-                                    </c:forEach>
-                                    <div class="subtotal">
-                                        <p>Sub-Total: ${totalPrice}₫</p>
-                                    </div>
-                                    <button type="button" onclick="window.location.href = 'checkOut.jsp'">Checkout Now</button>
-                                    <button type="button" onclick="window.location.href = 'cart.jsp'">View Cart</button>
+                                        <div class="divider" role="separator"></div>
+                                        <div class="subtotal">
+                                            <span class="subtotal-label">Sub-Total:</span><span class="subtotal-amount">${totalPrice}₫</span>
+                                        </div>
+                                        <div class="cart-actions">
+                                            <button class="btn btn-primary" type="button" onclick="window.location.href = 'checkOut.jsp'">Checkout Now<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0bfd7ef916026eff87b43b560d5575f85e58e7b5c3fa9b0f3710711f43901ee6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" aria-hidden="true" /></button>
+                                            <button class="btn btn-secondary" type="button" onclick="window.location.href = 'cart.jsp'">View Cart</button>
+                                        </div>
+                                    </section>
                                 </c:if>
                             </div>
                         </form>

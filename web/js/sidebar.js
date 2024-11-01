@@ -60,7 +60,8 @@ function showFileNameAndPreview() {
         // Hiển thị ảnh xem trước mới và thay thế ảnh cũ
         const reader = new FileReader();
         reader.onload = function (e) {
-            preview.innerHTML = `<img src="${e.target.result}" alt="Image Preview">`;
+            preview.innerHTML = `<img src="${e.target.result}" alt="Image Preview">
+                                     <span class="file-name">${file.name}</span>`;
         };
         reader.readAsDataURL(file);
     } else {

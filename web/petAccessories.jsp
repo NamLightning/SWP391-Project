@@ -5,11 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
     <center>
@@ -72,7 +71,7 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                    <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
                         <option value="descendant">Sort by price descendant</option>
@@ -81,6 +80,7 @@
                 <div class="product-grid">
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
+                            <!--<a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">-->
                             <c:url var="cartLink" value="CartControl">
                                 <c:param name="pageSize" value="${pageSize}"></c:param>
                                 <c:param name="pageNumber" value="${currentPage}"></c:param>
@@ -94,10 +94,11 @@
                                     <h3 class="product-name">${p.getProductName()}</h3>
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
-                                <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                        <span class="heart-icon"></span>
+                                <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                        <ion-icon name="cart-outline"></ion-icon>
                                     </button>
                                 </div>
+                                <!--</a>-->
                             </article>
                     </c:forEach>
                 </div>
@@ -240,7 +241,7 @@
                         <c:if test="${currentPage > 1}">
                             <a href="CategoriesControl?action=accessory&page=${currentPage - 1}&size=${pageSize}" class="next-button">Previous</a>
                         </c:if>
-                            
+
                         <c:if test="${currentPage > 3}">
                             <span class="ellipsis">...</span>
                         </c:if>
@@ -270,5 +271,7 @@
         <%@include file="includes/footer.jsp"%>
     </center>
     <script src="js/price-sort.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

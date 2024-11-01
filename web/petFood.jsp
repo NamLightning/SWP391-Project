@@ -72,7 +72,7 @@
             <main class="product-section">
                 <header class="product-header">
                     <p class="results-count">Showing 12 of 12 results</p>
-                    <select name="sort-drop" style="padding: 5px; border-radius: 10px;">
+                    <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
                         <option value="descendant">Sort by price descendant</option>
@@ -93,9 +93,9 @@
                                     <h3 class="product-name">${p.getProductName()}</h3>
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
-                                <button class="favorite-button" aria-label="Add to favorites" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                        <span class="heart-icon"></span>
-                                    </button>
+                                <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                            <ion-icon name="cart-outline"></ion-icon>
+                                        </button>
                                 </div>
                             </article>
                     </c:forEach>
@@ -137,5 +137,7 @@
         <%@include file="includes/footer.jsp"%>
     </center>
     <script src="js/price-sort.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

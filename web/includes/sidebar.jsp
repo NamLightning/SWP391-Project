@@ -3,7 +3,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#" readdonly>
+            <a href="#" readonly>
                 <span class="icon">
                     <ion-icon name="paw"></ion-icon>
                 </span>
@@ -73,14 +73,6 @@
                     <ion-icon name="pricetags-outline"></ion-icon>
                 </span>
                 <span class="title">Promotion</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/admin/sysNotification.jsp"/>">
-                <span class="icon">
-                    <ion-icon name="notifications-circle-outline"></ion-icon>
-                </span>
-                <span class="title">System notification</span>
             </a>
         </li>
     </ul>

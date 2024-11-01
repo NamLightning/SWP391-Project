@@ -22,6 +22,7 @@
     <body>
         <form action="ProfileControl" method="POST">
             <div class="row">
+                <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <input type="text" name="fname" class="form-control" id="floatingInputUsername" placeholder="First Name" value="${account.getFirstName()}" autofocus readonly>
