@@ -87,9 +87,24 @@
                                 <p class="pet-condition">Swollen leg for about 3 days</p>
                                 <hr class="section-divider" />
 
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">15 July 2024, 03:00 PM</p>
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">Pet House Bintaro</p>
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">Anna Nurhalimad</p>
+                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
+                                    <span class="icon" style="margin-right: 5px;">
+                                        <ion-icon name="time-outline"></ion-icon>
+                                    </span>
+                                    15 July 2024, 03:00 PM
+                                </p>
+                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
+                                    <span class="icon" style="margin-right: 5px;">
+                                        <ion-icon name="home-outline"></ion-icon>
+                                    </span>
+                                    Pet House Bintaro
+                                </p>
+                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
+                                    <span class="icon" style="margin-right: 5px;">
+                                        <ion-icon name="person-outline"></ion-icon>
+                                    </span>
+                                    Anna Nurhalimad
+                                </p>
 
 
                             </div>
