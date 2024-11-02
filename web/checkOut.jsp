@@ -12,7 +12,7 @@
     <body>
         <%@include file="includes/header.jsp" %>
         <div class="container">
-            <div class="main-content">
+            <div class="main-checkOut-">
                 <center>
                     <section class="checkout-container">
                         <div class="checkout-information">

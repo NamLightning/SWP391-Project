@@ -6,10 +6,11 @@
   background: #fff;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
   max-width: 376px;
+  width: 100%;
   font: 14px Public Sans, sans-serif;
 }
 
-.cart-header {
+.cart-popup-header {
   width: auto;
   background: #fff;
   box-shadow: 0 -1px 0 0 #e4e7e9 inset;
@@ -25,13 +26,13 @@
   color: #5f6c72;
 }
 
-.product-list {
+.product-popup-list {
   display: flex;
   margin-top: 20px;
   flex-direction: column;
 }
 
-.product-item {
+.product-popup-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,25 +42,25 @@
   margin-top: 16px;
 }
 
-.product-image {
+.product-popup-image {
   aspect-ratio: 1;
   object-fit: contain;
   width: 80px;
 }
 
-.product-details {
+.product-popup-details {
   display: flex;
   flex-direction: column;
   width: 200px;
 }
 
-.product-name {
+.product-popup-name {
   color: #191c1f;
   font-weight: 400;
   line-height: 20px;
 }
 
-.product-price {
+.product-popup-price {
   display: flex;
   margin-top: 8px;
   align-items: start;
@@ -67,12 +68,12 @@
   line-height: 1;
 }
 
-.quantity {
+.quantity-popup {
   color: #5f6c72;
   font-weight: 400;
 }
 
-.price {
+.price-popup {
   color: #2da5f3;
   font-weight: 600;
 }
@@ -81,31 +82,31 @@
   width: 16px;
 }
 
-.divider {
+.divider-popup {
   background-color: #e4e7e9;
   height: 1px;
   margin-top: 20px;
   width: 100%;
 }
 
-.subtotal {
+.subtotal-popup {
   display: flex;
   margin-top: 20px;
   justify-content: space-between;
   padding: 0 24px;
 }
 
-.subtotal-label {
+.subtotal-label-popup {
   color: #475156;
   font-weight: 400;
 }
 
-.subtotal-amount {
+.subtotal-amount-popup {
   color: #191c1f;
   font-weight: 500;
 }
 
-.cart-actions {
+.cart-actions-popup {
   display: flex;
   margin-top: 20px;
   padding: 0 24px;
@@ -139,32 +140,21 @@
   border: 2px solid #fa8232;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 </style>
 
 <section class="shopping-cart">
-  <header class="cart-header">
+  <header class="cart-popup-header">
     Shopping Cart <span class="cart-count">(02)</span>
   </header>
   
-  <div class="product-list">
-    <article class="product-item">
-      <img src="../images/food7.jpg" alt="Sajo Pet Food - 20kg" class="product-image" />
-      <div class="product-details">
-        <h3 class="product-name">Sajo Pet Food - 20kg</h3>
-        <div class="product-price">
-            <span class="quantity">2</span><span>x</span>
-          <span class="price">$1,500</span>
+  <div class="product-popup-list">
+    <article class="product-popup-item">
+      <img src="../images/food7.jpg" alt="Sajo Pet Food - 20kg" class="product-popup-image" />
+      <div class="product-popup-details">
+        <h3 class="product-popup-name">Sajo Pet Food - 20kg</h3>
+        <div class="product-popup-price">
+            <span class="quantity-popup">2</span><span>x</span>
+          <span class="price-popup">$1,500</span>
         </div>
       </div>
       <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart">
@@ -172,13 +162,13 @@
       </button>
     </article>
     
-    <article class="product-item">
-      <img src="../images/accessory2.jpg" alt="Dog Leash - Size M - Vani" class="product-image" />
-      <div class="product-details">
-        <h3 class="product-name">Dog Leash - Size M - Vani </h3>
-        <div class="product-price">
-          <span class="quantity">1</span><span>x</span>
-          <span class="price">$269</span>
+    <article class="product-popup-item">
+      <img src="../images/accessory2.jpg" alt="Dog Leash - Size M - Vani" class="product-popup-image" />
+      <div class="product-popup-details">
+        <h3 class="product-popup-name">Dog Leash - Size M - Vani </h3>
+        <div class="product-popup-price">
+          <span class="quantity-popup">1</span><span>x</span>
+          <span class="price-popup">$269</span>
         </div>
       </div>
       <button class="remove-item">
@@ -187,18 +177,18 @@
     </article>
   </div>
   
-  <div class="divider" role="separator"></div>
+  <div class="divider-popup" role="separator"></div>
   
-  <div class="subtotal">
-    <span class="subtotal-label">Sub-Total:</span>
-    <span class="subtotal-amount">$2038.00 USD</span>
+  <div class="subtotal-popup">
+    <span class="subtotal-popup-label">Sub-Total:</span>
+    <span class="subtotal-popup-amount">$2038.00 USD</span>
   </div>
   
-  <div class="cart-actions">
+  <div class="cart-actions-popup">
     <button class="btn btn-primary">
       Checkout now
       <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0bfd7ef916026eff87b43b560d5575f85e58e7b5c3fa9b0f3710711f43901ee6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" aria-hidden="true" />
     </button>
-    <button class="btn btn-secondary">View Cart</button>
+    <button class="btn btn-secondary" onclick="window.location.href='../cart.jsp'">View Cart</button>
   </div>
 </section>

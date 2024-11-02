@@ -14,6 +14,7 @@
         <div class="main-cart-container">
             <section class="shopping-cart-container">
                 <div class="shopping-cart-layout">
+                    <%@include file="includes/userMenu.jsp" %>
                     <div class="cart-items-column">
                         <div class="shopping-card">
                             <h2 class="card-heading">Shopping Card</h2>
@@ -94,7 +95,7 @@
                                     <span class="grand-total-value">1.249..000₫</span>
                                 </div>
                             </div>
-                            <button class="buy-now-button">
+                            <button class="buy-now-button" onclick="window.location.href = 'checkOut.jsp'">
                                 <span class="button-label">BUY NOW</span>
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5b1ffe29b68895324ddf197d8ed231c0dff565b516fd161dc7f990933da2c9e?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="button-icon" />
                             </button>

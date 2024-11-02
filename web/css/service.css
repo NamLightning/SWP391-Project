@@ -1,10 +1,28 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /*min-height: 100vh;*/
+    overflow-x: hidden;
+}
+
 .pet-care-header h1{
     padding-top: 10px;
+    font-size: 40px;
     font-weight: 700;
     margin:0;
     font-family: 'Poppins', sans-serif;
     text-align: left;
+    width: 520px;
+    margin-top: 500px;
+    padding-left: 100px;
+    color: white;
 }
 .pet-care-header {
     background-image: url(https://cdn.builder.io/api/v1/image/assets%2F5ab9b8f40f3f4c73bf963337551ad1d8%2F1c5fc78ef8664fedb9880ef200b00e96);
@@ -12,7 +30,9 @@
     align-items: center;
     margin: 2% 0;
     padding: 0;
-    height: 560px;
+    height: 810px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 @media (max-width: 991px) {
@@ -25,7 +45,7 @@
 
 .how-it-works {
     display: flex;
-    min-height: 650px;
+    min-height: 500px;
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -40,12 +60,25 @@
 }
 
 .section-title {
-    color: rgba(20, 20, 20, 1);
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: -0.48px;
+    /*color: rgba(20, 20, 20, 1);*/
+    font-weight: 600;
+    /*letter-spacing: -0.48px;*/
     text-align: center;
+    margin-top: 0;
+    padding-bottom: 2px;
+    /*width: 634px;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+
+}
+.section-title h2{
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
     width: 634px;
+
 }
 
 .steps-container {
@@ -88,7 +121,7 @@
 
 .step-title {
     color: rgba(20, 20, 20, 1);
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.36px;
@@ -119,26 +152,32 @@
 }
 
 .visit-clinic-container {
-    display: flex;
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /*margin-top: 30px;*/
     min-height: 700px;
     width: 100%;
     max-width: 1809px;
-    gap: 40px 78px;
+    gap: 50px;
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 50px 0;
     font: 24px Poppins, sans-serif;
+    margin-left: 10px;
 }
 
 .clinic-image {
     aspect-ratio: 1.79;
     object-fit: contain;
     object-position: center;
-    width: 954px;
+    width: 900px;
     border-radius: 15px;
     min-width: 240px;
     flex-grow: 1;
+    /*margin: 10px;*/
+    grid-column: 1;
+    margin-left: 30px;
+
 }
 
 .content-wrapper {
@@ -149,17 +188,20 @@
     justify-content: flex-start;
     flex-grow: 1;
     width: 470px;
-    margin: auto 0;
+    margin-top: 30px;
+    grid-column: 2;
+
 }
 
-.section-title {
+.section-title-2 {
     align-self: stretch;
     gap: 10px;
-    font-size: 48px;
+    /*font-size: 60px;*/
     color: #090a0a;
     font-weight: 700;
     line-height: 1;
     padding: 10px 0;
+    text-align: start;
 }
 
 .service-description {
@@ -169,6 +211,7 @@
     font-weight: 400;
     line-height: 36px;
     margin-top: 24px;
+    font-size: 20px;
 }
 
 .cta-button {
@@ -185,6 +228,7 @@
     line-height: 1;
     justify-content: center;
     padding: 18px 36px 18px 48px;
+    text-decoration: none;
 }
 
 .button-text {
@@ -199,6 +243,7 @@
     width: 36px;
     align-self: stretch;
     margin: auto 0;
+    
 }
 
 @media (max-width: 991px) {
@@ -222,4 +267,3 @@
         padding: 0 20px;
     }
 }
-

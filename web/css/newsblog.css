@@ -185,7 +185,7 @@ h3{
     align-items: flex-start;
     gap: 40px 48px;
     justify-content: flex-start;
-    flex-wrap: wrap;
+/*    flex-wrap: wrap;*/
 }
 @media (max-width: 991px) {
     .content-wrapper {
