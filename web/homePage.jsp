@@ -258,6 +258,7 @@
             <div class="right-sidebar" style="background-color: #ffffff;width:312px;height: 721px;"></div>
         </div>
     </center>
+    <%@include file="includes/chatbox.jsp"%>
 </body>
 <%@include file="includes/footer.jsp" %>
 </html>

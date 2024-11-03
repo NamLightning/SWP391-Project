@@ -44,6 +44,10 @@
         <servlet-name>DataServlet</servlet-name>
         <servlet-class>Controller.DataServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChatBoxServlet</servlet-name>
+        <servlet-class>Controller.ChatBoxServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -80,9 +84,13 @@
         <servlet-name>DataServlet</servlet-name>
         <url-pattern>/DataServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChatBoxServlet</servlet-name>
+        <url-pattern>/chatBoxServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            60
         </session-timeout>
     </session-config>
     <welcome-file-list>
