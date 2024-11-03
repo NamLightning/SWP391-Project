@@ -148,6 +148,7 @@
                 </nav>
             </div>
         </div>
+        <%@include file="includes/footer.jsp"%>
     </center>
 </body>
 </html>

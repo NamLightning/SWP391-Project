@@ -43,7 +43,7 @@
 
     .form-label {
         color: #191c1f;
-        font: 400 14px/1 Public Sans, sans-serif;
+        font: 600 14px/1 Public Sans, sans-serif;
     }
 
     .rating-input {
@@ -89,11 +89,11 @@
         margin-top: 24px;
         padding: 0 32px;
         border-radius: 3px;
+        border-style: hidden;
         background: #fa8232;
         color: #fff;
-        text-transform: uppercase;
         letter-spacing: 0.19px;
-        font: 700 16px/56px Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
+        font: 700 14px/56px Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
     }
 
 </style>
@@ -114,9 +114,7 @@
                     </div>
                     <div class="rating-text">
                         <span id="current-rating">0 Star Rating</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <path d="M4 6L8 10L12 6" stroke="#475156" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
                     </div>
                 </div>
             </div>

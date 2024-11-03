@@ -111,7 +111,7 @@
                 </div>
             </form>
 
-            <div class="footer-button" >
+            <div class="footer-button">
                 <input name="submit" type="submit" class="continue-button" value="Continue">
             </div>
         </section>

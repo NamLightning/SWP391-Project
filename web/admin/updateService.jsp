@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2 style="font-size: 30px;">Add Service</h2>
+                            <h2 style="font-size: 30px;">Edit Service</h2>
                         </div>
 
                         <div class="search" style="justify-self: center;">
@@ -64,7 +65,7 @@
                             </label>
 
                             <div style="justify-self: center;">
-                                <input name="submit" class="btn-add" type="submit" value="Add">
+                                <input name="submit" class="btn-add" type="submit" value="Edit">
 
                             </div>
                         </div>
