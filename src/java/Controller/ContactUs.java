@@ -3,28 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.AccountControl;
+package Controller;
 
-import Dao.CustomerDAO;
-import Model.Customer;
-import java.io.File;
+import Utils.Reuseable;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author Administrator
  */
-@MultipartConfig
-public class ProfileControl extends HttpServlet {
+public class ContactUs extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +36,10 @@ public class ProfileControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProfileControl</title>");            
+            out.println("<title>Servlet ContactUs</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProfileControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ContactUs at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -81,50 +74,13 @@ public class ProfileControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-
-        CustomerDAO customerDAO = new CustomerDAO();
-        String customerID = request.getParameter("id").trim();
-        int id = Integer.parseInt(customerID);
-        String fName = request.getParameter("firstname");
-        String lName = request.getParameter("lastname");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String password = request.getParameter("password");
-        String repassword = request.getParameter("repassword");
-        String address = request.getParameter("address");
-        String filename = getImageName(request);
-        byte[] fileImage = getImage(request);
         
-        Customer c = new Customer(id, null, password, fName, lName, email, phone, address, filename, fileImage);
-        customerDAO.updateCustomer(c);
-        response.sendRedirect("userProfile.jsp");
-    }
-    
-    private String getImageName(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        String fileName = null;
-        if (filePart != null) {
-            fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        }
-        return fileName;
-    }
-
-    private byte[] getImage(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        byte[] fileData = null;
-        if (filePart != null) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            if (!fileName.isEmpty()) {
-                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-                filePart.write(uploadPath + File.separator + fileName);
-                fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
-            }
-        }
-        return fileData;
+        String fName = request.getParameter("firstName");
+        String lName = request.getParameter("lastName");
+        String email = request.getParameter("email");
+        String message = request.getParameter("message");
+        Reuseable.sendEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", "hungtnde180058@fpt.edu.vn", "Contact Us", "Email: " + email + "\nFirst Name: " + fName + ", Last Name: " + lName + "\nMessage: " + message);
+        response.sendRedirect("contactUsPage.jsp?mess=Sent%20successful");
     }
 
     /**

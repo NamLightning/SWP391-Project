@@ -18,6 +18,48 @@
         <link rel="stylesheet" href="css/user.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
+    <style>
+        #image {
+            display: none;
+        }
+        .custom-upload-button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Đổi màu nút khi hover */
+        .custom-upload-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Khung hiển thị ảnh đã chọn */
+        .preview {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            max-height: 200px;
+        }
+
+        /* Hiển thị tên file đã chọn */
+        .file-name {
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
     <%
         CustomerDAO customerDAO3 = new CustomerDAO();
         String username3 = (String) session.getAttribute("us");
@@ -34,8 +76,15 @@
                     <header class="account-settings-header">Account Setting</header>
                     <div class="account-settings-content">
                         <div class="account-info">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/331e59ea9e3f661a0fe3c0c6c4be4c297bf91b03ff6ccb1bf6f84effc54f3854?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="User profile picture" class="profile-image" />
-                            <form action="ProfileControl" method="POST" class="form-fields">
+                            <form action="ProfileControl" method="POST" class="form-fields" enctype="multipart/form-data">
+                                <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />
+                                <label style="margin-bottom: 10px;">
+                                    <label>Upload Items Image: </label>
+                                    <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
+                                    <input type="file" name="image" id="image" accept="image/*"
+                                           onchange="showFileNameAndPreview()">
+                                </label>
+                                <div class="preview" id="preview"></div>
                                 <div class="input-group">
                                     <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
                                     <div class="form-field">
@@ -58,7 +107,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="save-button">Save Changes</button><br><br>
-                                <button onclick="window.location.href = 'homePage.jsp'" type="button">Return</button><br><br>
+                                <!--<button onclick="window.location.href = 'homePage.jsp'" type="button">Return</button><br><br>-->
                             </form>
                         </div>
                     </div>
@@ -70,11 +119,11 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" id="firstName" class="form-input" value="Kevin" aria-label="${account.getFirstName()}">
+                                    <input type="text" id="firstName" class="form-input" value="${account.getFirstName()}" aria-label="First Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" id="lastName" class="form-input" value="Gilbert" aria-label="${account.getLastName()}">
+                                    <input type="text" id="lastName" class="form-input" value="${account.getLastName()}" aria-label="Last Name">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -122,6 +171,7 @@
             </div>
         </div>
         <%@include file="includes/footer.jsp"%>
+        <script src="${pageContext.request.contextPath}/js/sidebar.js"></script>
     </center>
 </body>
 </html>

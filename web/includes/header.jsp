@@ -218,7 +218,7 @@
                             </c:if>
                             <c:if test="${not empty us}">
                                 <div id="hoverItem">
-                                    <span style="margin-bottom: 100px">Hi, ${us}</span>
+                                    <span style="text-decoration: none; color: #000;">Hi, ${us}</span>
                                     <a href="userProfile.jsp">
                                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                                         <%@include file="userMenu.jsp" %>

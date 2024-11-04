@@ -37,7 +37,7 @@
                     </a>
                     <p class="divider" style="text-align:center;">
                         <span>-------------</span> or Sign Up with Username <span>-------------</span>
-                    <form class="form-wrapper">
+                    <form class="form-wrapper" action="SignUpControl" method="POST">
                         <div class="form-fields">
                             <div class="name-fields">
                                 <div class="name-field">

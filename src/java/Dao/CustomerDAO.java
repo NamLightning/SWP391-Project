@@ -100,7 +100,17 @@ public class CustomerDAO {
     }
 
     public void updateCustomer(Customer c) {
-        String sql = " UPDATE Customers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, address = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE CustomerID = ?";
+        String sql = "UPDATE Customers SET "
+                + "Username = COALESCE(?, Username), "
+                + "[Password] = COALESCE(?, [Password]), "
+                + "FirstName = COALESCE(?, FirstName), "
+                + "LastName = COALESCE(?, LastName), "
+                + "Email = COALESCE(?, Email), "
+                + "PhoneNumb = COALESCE(?, PhoneNumb), "
+                + "address = COALESCE(?, address), "
+                + "AvatarName = COALESCE(?, AvatarName), "
+                + "Avatar_Img = COALESCE(?, Avatar_Img) "
+                + "WHERE CustomerID = ?";
         Connection con = null;
         try {
             con = DBContext.getConnection();
@@ -197,7 +207,7 @@ public class CustomerDAO {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
+
     public ArrayList<Customer> getAllCustomers() {
         String query = "select * from Customers\n";
         ArrayList<Customer> list = new ArrayList<>();
@@ -206,7 +216,7 @@ public class CustomerDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(conn, ps, rs);
@@ -215,20 +225,20 @@ public class CustomerDAO {
         }
         return list;
     }
-    
+
     public ArrayList<Customer> getAllCustomer(int currentPage, int recordsPerPage) {
         DBContext db = new DBContext();
         ArrayList<Customer> list = new ArrayList<>();
         try {
             Connection con = db.getConnection();
-            
+
             String sql = "select * from Customers ORDER BY CustomerID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, currentPage);
             ps.setInt(2, recordsPerPage);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(con, ps, rs);
@@ -237,7 +247,8 @@ public class CustomerDAO {
         }
         return list;
     }
-     public Integer getNumberOfRows() {
+
+    public Integer getNumberOfRows() {
         DBContext db = new DBContext();
         Integer numOfRows = 0;
         try {

@@ -33,29 +33,30 @@
         </div>
         <div class="left-sidebar"></div><br>
         <section class="contact-section" id="form-feedback">
-            <form class="contact-form">
+            <form class="contact-form" action="ContactUs" method="Post">
                 <div class="form-inputs">
                     <div class="name-inputs">
                         <div class="input-group">
-                            <label for="firstName" class="input-label">First Name</label>
-                            <input type="text" id="firstName" class="input-field" placeholder="First name" required>
+                            <label for="firstname" class="input-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="input-field" placeholder="First name" required>
                         </div>
                         <div class="input-group">
-                            <label for="lastName" class="input-label">Last Name</label>
-                            <input type="text" id="lastName" class="input-field" placeholder="Last name" required>
+                            <label for="lastname" class="input-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="input-field" placeholder="Last name" required>
                         </div>
                     </div>
                     <div class="input-group">
-                        <label for="email" class="input-label">Email Address</label>
-                        <input type="email" id="email" class="input-field" placeholder="E-mail address" required>
+                        <label for="Email" class="input-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="input-field" placeholder="E-mail address" required>
                     </div>
                     <div class="input-group">
-                        <label for="message" class="input-label">Message</label>
-                        <textarea id="message" class="input-field message-input" placeholder="Your message..." required></textarea>
+                        <label for="Message" class="input-label">Message</label>
+                        <textarea id="message" name="message" class="input-field message-input" placeholder="Your message..." required></textarea>
                     </div>
                     <button type="submit" class="submit-button">Send Message</button>
                 </div>
             </form>
+            <p class="alert alert-success" role="alert">${mess}</p>
 
             <div class="contactus-info">
                 <h2 class="contact-heading">Feel free to contact us</h2>

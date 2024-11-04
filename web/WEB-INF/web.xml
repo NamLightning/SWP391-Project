@@ -85,6 +85,10 @@
         <servlet-name>PromotionControl</servlet-name>
         <servlet-class>Controller.PromotionControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ContactUs</servlet-name>
+        <servlet-class>Controller.ContactUs</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -160,6 +164,10 @@
     <servlet-mapping>
         <servlet-name>PromotionControl</servlet-name>
         <url-pattern>/PromotionControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactUs</servlet-name>
+        <url-pattern>/ContactUs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
