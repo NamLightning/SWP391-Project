@@ -15,7 +15,7 @@
     <center>
         <%@include file="includes/header.jsp"%>
         <div class="detail-container">
-            <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1224px;"></div>
+            <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1920px;"></div>
             <div class="main-details-content">
                 <!--item-->
                 <div data-layername="serviceDetail" class="service-detail">
@@ -66,7 +66,7 @@
                         </div>
                         <div data-layername="devider" class="devider"></div>
                         <div data-layername="button" class="button-book">
-                            <a href="bookingForm1.jsp" style="text-decoration: none; color:#ffffff;"><div data-layername="label" class="label">Booking now</div></a>
+                            <a href="booking_1.jsp" style="text-decoration: none; color:#ffffff;"><div data-layername="label" class="label">Booking now</div></a>
                         </div>
                         <div data-layername="content" class="content">
                             <div data-layername="100GuaranteeSafeCHeckout" class="guarantee-safe-checkout-100">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1224px;"></div>
+            <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1920px;"></div>
         </div>
         <%@include file="includes/footer.jsp"%>
     </center>

@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageCustomer.jsp"/>">
+            <a href="<c:url value="/CustomerControl"/>">
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
                 </span>

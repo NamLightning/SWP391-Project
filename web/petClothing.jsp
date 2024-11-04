@@ -15,6 +15,7 @@
     <center>
         <div class="left-sidebar"></div>
         <%@include file="includes/header.jsp" %>
+        <link rel="stylesheet" href="css/items.css">
         <div class="right-sidebar"></div>
         <section class="filters-cards">
             <aside class="filters">

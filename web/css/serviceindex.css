@@ -112,7 +112,6 @@ body{
     z-index: 0;
     display: flex;
     min-height: 50%;
-    max-width: 100%;
     width: 1320px;
     align-items: flex-start;
     gap: 40px 56px;
@@ -293,6 +292,7 @@ body{
     font-weight: 400;
     line-height: 20px;
     margin-top: 12px;
+    width: 80%;
 }
 @media (max-width: 991px) {
     .description p {
@@ -327,12 +327,12 @@ body{
     }
 }
 
-.devider {
+.divider {
     background-color: #e4e7e9;
     min-height: 1px;
     margin-top: 24px;
     max-width: 100%;
-    width: 648px;
+    width: 80%;
     border: 1px solid rgba(228, 231, 233, 1);
 }
 
@@ -365,7 +365,7 @@ body{
 .content {
     position: relative;
     display: flex;
-    margin-top: 24px;
+    margin-top: 0;
     width: 100%;
     max-width: 648px;
     padding-bottom: 8px;
@@ -405,6 +405,7 @@ body{
     right: 0px;
     top: 50%;
     transform: translate(0%, -50%);
+    margin-right: 20%;
 }
 .share-item-2 {
     color: var(--Gray-700, #475156);

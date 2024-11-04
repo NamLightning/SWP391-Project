@@ -276,12 +276,12 @@ public class PermissionFilter implements Filter {
                 log("PermissionFilter:Initializing filter");
             }
         }
-        roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/bookingForm1.jsp"));
-        roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/vip.jsp", "/bookingForm1.jsp"));
+        roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp"));
+        roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/vip.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp"));
         roleAccessMap.put("Employee", Arrays.asList("/employee/", "/CategoriesControl", "/LogOutControl"));
-        roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl", "/DataServlet"));
+        roleAccessMap.put("Manager", Arrays.asList("/admin/", "/manager-listEmployee.jsp", "/LogOutControl", "/ProductControl", "/DataServlet", "/CustomerControl"));
         roleNoAccessMap.put("Manager", Arrays.asList("/admin/updateItem.jsp", "/admin/manageItem.jsp"));
-        validServletPaths = Arrays.asList("/ProductControl", "/LoginControl", "/CheckOutControl", "/CategoriesControl", "/DataServlet", "/LogOutControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/CartControl");
+        validServletPaths = Arrays.asList("/ProductControl", "/LoginControl", "/CheckOutControl", "/CategoriesControl", "/DataServlet", "/LogOutControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/CartControl", "/CustomerControl");
     }
 
     /**

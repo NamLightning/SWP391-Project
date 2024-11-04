@@ -53,7 +53,7 @@ public class LogOutControl extends HttpServlet {
         request.getSession(true);
 //        CookieUtils.add("user", null, 0, response);
 //        CookieUtils.add("pass", null, 0, response);
-        response.sendRedirect("landingPage.jsp");
+        response.sendRedirect("homePage.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

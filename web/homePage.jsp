@@ -146,7 +146,7 @@
         <div class="container-5">
             <div class="left-sidebar" style="background-color: #ffffff; width:312px; height: 1224px;"></div>
             <div class="main-content-5" style="flex: 1;width: 1296px; height: 1024px">
-                 <div class="best-sell" id="best_seller">
+                <div class="best-sell" id="best_seller">
                     <h1>Best Selling</h1>
                     <div class="best-sell-menu">
                         <div class="best-sell-container">
@@ -258,6 +258,7 @@
             <div class="right-sidebar" style="background-color: #ffffff;width:312px;height: 721px;"></div>
         </div>
     </center>
+    <%@include file="includes/chatbox.jsp"%>
 </body>
 <%@include file="includes/footer.jsp" %>
 </html>

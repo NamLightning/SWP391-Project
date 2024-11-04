@@ -7,87 +7,121 @@
 <%@page import="Model.Customer"%>
 <%@page import="Dao.CustomerDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>PetHub</title>  
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/user.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <%
-        CustomerDAO customerDAO = new CustomerDAO();
-        String username = (String) session.getAttribute("us");
-        Customer customer = customerDAO.findCustomerByUsername(username);
-        pageContext.setAttribute("account", customer);
+        CustomerDAO customerDAO3 = new CustomerDAO();
+        String username3 = (String) session.getAttribute("us");
+        Customer customer3 = customerDAO3.findCustomerByUsername(username3);
+        pageContext.setAttribute("account", customer3);
     %>
     <body>
-        <form action="ProfileControl" method="POST">
-            <div class="row">
-                <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="text" name="fname" class="form-control" id="floatingInputUsername" placeholder="First Name" value="${account.getFirstName()}" autofocus readonly>
-                        <label for="floatingInputUsername">First Name </label>
+    <center>
+        <%@include file="includes/header.jsp"%>
+        <div class="main-container">
+            <%@include file="includes/userMenu.jsp"%>
+            <div class="user-container">
+                <section class="account-settings">
+                    <header class="account-settings-header">Account Setting</header>
+                    <div class="account-settings-content">
+                        <div class="account-info">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/331e59ea9e3f661a0fe3c0c6c4be4c297bf91b03ff6ccb1bf6f84effc54f3854?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="User profile picture" class="profile-image" />
+                            <form action="ProfileControl" method="POST" class="form-fields">
+                                <div class="input-group">
+                                    <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
+                                    <div class="form-field">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" id="username" class="form-input" value="${account.getUsername()}" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="full-name" class="form-label">Full Name</label>
+                                        <input type="text" id="full-name" class="form-input" value="${account.getLastName()} ${account.getFirstName()}" />
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="form-field">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" id="phone" class="form-input" value="${account.getPhoneNumber()}" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" id="email" class="form-input" value="${account.getEmail()}" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="save-button">Save Changes</button><br><br>
+                                <button onclick="window.location.href = 'homePage.jsp'" type="button">Return</button><br><br>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="text" name="lname" class="form-control" id="floatingInputUsername" placeholder="LastName" value="${account.getLastName()}" autofocus readonly>
-                        <label for="floatingInputUsername">Last Name </label>
+                </section>
+                <section class="shipping-address">
+                    <h2 class="shipping-address-heading">Shipping Address</h2>
+                    <div class="shipping-address-content">
+                        <form class="shipping-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" id="firstName" class="form-input" value="Kevin" aria-label="${account.getFirstName()}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" id="lastName" class="form-input" value="Gilbert" aria-label="${account.getLastName()}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <div class="form-input">
+                                        <span>Da Nang</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                                <input type="tel" id="phoneNumber" class="form-input" value="+1-202-555-0118" aria-label="Phone Number">
+                            </div>
+                            <button type="submit" class="save-button">Save Changes</button>
+                        </form>
                     </div>
-                </div>
+                </section>
+                <section class="change-password-container">
+                    <h2 class="change-password-heading">Change Password</h2>
+                    <form class="change-password-form">
+                        <div class="form-group">
+                            <label for="current-password" class="form-label">Current Password</label>
+                            <input type="password" id="current-password" value="${account.getPassword()}" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input type="password" name="password" id="password" class="form-input"  value="" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" name="repassword" id="repassword" class="form-input" required>
+                        </div>
+                        <button type="submit" class="save-button">Change Password</button>
+                    </form>
+                </section>
             </div>
-
-            <div class="form-floating mb-3">
-                <input type="tel" name="phone_numb" class="form-control" id="floatingInputUsername" placeholder="Phone" value="${account.getPhoneNumber()}" autofocus readonly>
-                <label for="floatingInputUsername">Phone Number </label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="email" name="email" class="form-control" id="floatingInputUsername" placeholder="Email" value="${account.getEmail()}" autofocus readonly>
-                <label for="floatingInputUsername">Email </label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" name="username" class="form-control" id="floatingInputUsername" placeholder="Username" value="${account.getUsername()}"  autofocus readonly>
-                <label for="floatingInputUsername">Username</label>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="text" name="newFname" class="form-control" id="floatingInputUsername" placeholder="First Name" required autofocus>
-                        <label for="floatingInputUsername">Enter New First Name <span class="required"></span></label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <input type="text" name="newLname" class="form-control" id="floatingInputUsername" placeholder="LastName" required autofocus>
-                        <label for="floatingInputUsername">Enter New Last Name <span class="required"></span></label>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="tel" name="newPhone_numb" class="form-control" id="floatingInputUsername" placeholder="Phone" required autofocus>
-                <label for="floatingInputUsername">Enter New Phone Number <span class="required"></span></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="email" name="newEmail" class="form-control" id="floatingInputUsername" placeholder="Email" required autofocus>
-                <label for="floatingInputUsername">Enter New Email <span class="required"></span></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" name="newUsername" class="form-control" id="floatingInputUsername" placeholder="Username" required autofocus>
-                <label for="floatingInputUsername">Enter New Username<span class="required"></span></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" name="password" class="form-control" id="floatingInputUsername" placeholder="Password" required autofocus>
-                <label for="floatingInputUsername">Enter New Password <span class="required"></span></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" name="repassword" class="form-control" id="floatingInputUsername" placeholder="Re-password" required autofocus>
-                <label for="floatingInputUsername">Enter New Re-password <span class="required"></span></label>
-            </div>
-            <input type="submit" value="Update Information"><br><br>
-            <button onclick="window.location.href = 'home.jsp'" type="button">Return</button><br><br>
-            <!--<a href="ProfileServlet?action=delete">Delete Account</a>-->
-        </form>
-    </body>
+        </div>
+        <%@include file="includes/footer.jsp"%>
+    </center>
+</body>
 </html>

@@ -7,13 +7,14 @@
         <title>PetHub</title>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
-        <link rel="stylesheet" href="css/items.css">
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
     <center>
         <div class="left-sidebar"></div>
         <%@include file="includes/header.jsp" %>
+        <link rel="stylesheet" href="css/items.css">
         <div class="right-sidebar"></div>
         <section class="filters-cards">
             <aside class="filters">

@@ -81,7 +81,7 @@ public class CustomerControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("managerCustomer.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageCustomer.jsp").forward(request, response);
         }
     }
 
@@ -239,15 +239,14 @@ public class CustomerControl extends HttpServlet {
         } else {
             recordsPerPage = 12;
         }
+        
+        int offset = (currentPage - 1) * recordsPerPage;
         CustomerDAO customerDao = new CustomerDAO();
-        ArrayList<Customer> products = customerDao.getAllCustomer(currentPage, recordsPerPage);
+        ArrayList<Customer> products = customerDao.getAllCustomer(offset, recordsPerPage);
         request.setAttribute("customer", products);
         int rows = customerDao.getNumberOfRows();
-        int nOfPages = rows / recordsPerPage;
-        if (nOfPages % recordsPerPage > 0) {
-            nOfPages++;
-        }
-        request.setAttribute("noOfPages", nOfPages);
+        int totalPages = (int) Math.ceil((double) rows / recordsPerPage);
+        request.setAttribute("noOfPages", totalPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("recordsPerPage", recordsPerPage);
     }
