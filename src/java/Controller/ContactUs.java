@@ -79,7 +79,7 @@ public class ContactUs extends HttpServlet {
         String lName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String message = request.getParameter("message");
-        Reuseable.sendEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", "hungtnde180058@fpt.edu.vn", "Contact Us", "Email: " + email + "\nFirst Name: " + fName + ", Last Name: " + lName + "\nMessage: " + message);
+        Reuseable.sendEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", "kietnhatde180149@fpt.edu.vn", "Contact Us", "Email: " + email + "\nFirst Name: " + fName + ", Last Name: " + lName + "\nMessage: " + message);
         response.sendRedirect("contactUsPage.jsp?mess=Sent%20successful");
     }
 

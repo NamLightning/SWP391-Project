@@ -19,7 +19,7 @@
 
     /* Styling the popup */
     .popup-hover {
-        display: none; /* Hidden by default */
+        display: block; /* Hidden by default */
         padding: 10px;
         background-color: #f0f0f0;
         border: 1px solid #ccc;
@@ -45,8 +45,8 @@
         z-index: 100;
     }
     .popup-hover img{
-        width: 50%;
-        height: 50%;
+        width: 50px;
+        height: 50px;
     }
 </style>
 <style>
@@ -192,6 +192,7 @@
 }
 
 </style>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
 <header>
     <center>
@@ -244,7 +245,7 @@
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon" id="hoverItem2" onclick="location.href = 'cart.jsp'">
                             <div class="popup-hover" id="popupHover2">
                                 <c:if test="${empty us}"> <!-- <- This line is for Guest -->
-                                    <%@include file="cartPopup.jsp" %>
+                                    <%--<%@include file="cartPopup.jsp" %>--%>
                                 </c:if>
                                 <c:if test="${not empty us}"> <!-- <- This line is for Customer -->
                                     <c:set var="totalPrice" value="0" scope="page"/>
@@ -257,7 +258,7 @@
                                         pageContext.setAttribute("carts", cartList);
                                     %>
                                     <section class="shopping-cart">
-                                        <header class="cart-header">
+                                        <header class="cart-popup-header">
                                             Shopping Cart <span class="cart-count">(${carts.size()})</span>
                                         </header>
                                         <div class="product-popup-list">
@@ -267,7 +268,7 @@
                                                     <c:param name="cid" value="${c.getCartItemID()}"></c:param>
                                                 </c:url>
                                                 <article class="product-popup-item">
-                                                    <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-image">
+                                                    <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-popup-image">
                                                     <div class="product-popup-details">
                                                         <h3 class="product-popup-name">${pDAO.checkExist(c.getProductID()).getProductName()}</h3>
                                                         <div class="product-popup-price">
@@ -284,7 +285,7 @@
                                         <div class="subtotal-popup">
                                             <span class="subtotal-popup-label">Sub-Total:</span><span class="subtotal-popup-amount">${totalPrice}₫</span>
                                         </div>
-                                        <div class="cart-actions">
+                                        <div class="cart-actions-popup">
                                             <button class="btn btn-primary" type="button" onclick="window.location.href = 'checkOut.jsp'">Checkout Now<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0bfd7ef916026eff87b43b560d5575f85e58e7b5c3fa9b0f3710711f43901ee6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" aria-hidden="true" /></button>
                                             <button class="btn btn-secondary" type="button" onclick="window.location.href = 'cart.jsp'">View Cart</button>
                                         </div>
@@ -333,7 +334,7 @@
                                                                 }
                                                                 }, 100);
                                                                 });</script>
-<script>
+<!--<script>
                     // Get elements
                     const hoverItem2 = document.getElementById('hoverItem2');
                     const popupHover2 = document.getElementById('popupHover2');
@@ -365,4 +366,4 @@
                             }
                             }, 100);
                             });
-</script>
+</script>-->

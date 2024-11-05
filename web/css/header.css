@@ -26,7 +26,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     color: #000;
-    font: 100 16px/1 Poppins, sans-serif;
+    font: 400 16px/1 Poppins, sans-serif;
 }
 
 .left-sidebar, .right-sidebar {
@@ -145,7 +145,7 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    width: 28px;
+    width: 24px;
     aspect-ratio: 1;
     object-fit: contain;
 }

@@ -11,7 +11,7 @@
     </head>
     <body>
         <%@include file="includes/header.jsp" %>
-        <div class="container">
+        <div class="check-out-container">
         <div class="main-checkOut">
             <center>
                 <section class="checkout-container">
@@ -167,8 +167,6 @@
                             </form>
                         </div>
                     </div>
-
-
                 </section>
             </center>
         </div>
