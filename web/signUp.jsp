@@ -42,40 +42,40 @@
                             <div class="name-fields">
                                 <div class="name-field">
                                     <label>First name</label>
-                                    <input type="text" id="first-name" class="input-field" required />
+                                    <input type="text" id="first-name" name="first-name" class="input-field" required />
                                 </div>
                                 <div class="name-field">
                                     <label>Second name</label>
-                                    <input type="text" id="second-name" class="input-field" required />
+                                    <input type="text" id="second-name" name="second-name" class="input-field" required />
                                 </div>
                             </div>
                             <div class="username-field">
                                 <label>User name</label>
-                                <input type="text" id="username" class="username-input" required />
+                                <input type="text" id="username" name="username" class="username-input" required />
                             </div>
                             <div class="password-field">
                                 <div class="password-wrapper">
                                     <label>Password</label>
-                                    <input type="password" id="password" class="password-input" placeholder="*****************" required />
+                                    <input type="password" id="password" name="password" class="password-input" placeholder="*****************" required />
                                 </div>
                             </div>
                             <div class="re-password-field">
                                 <div class="re-password-wrapper">
                                     <label>Re-Password</label>
-                                    <input type="password" id="re-password" class="re-password-input" placeholder="*****************" required />
+                                    <input type="password" id="re-password" name="re-password" class="re-password-input" placeholder="*****************" required />
                                 </div>
                             </div>
                             <div class="phone-field">
                                 <label>Phone number</label>
-                                <input type="tel" id="phone-number" class="input-field" required />
+                                <input type="tel" id="phone-number" name="phone-number" class="input-field" required />
                             </div>
                             <div class="email-field">
                                 <label>Email</label>
-                                <input type="email" id="email" class="email-input" placeholder="mail@abc.com" required />
+                                <input type="email" id="email" name="email" class="email-input" placeholder="mail@abc.com" required />
                             </div>
                             <div class="address-field">
                                 <label>Address</label>
-                                <input type="text" id="address" class="address-input" required />
+                                <input type="text" id="address" name="address" class="address-input" required />
                             </div>
                             <button type="submit" class="submit-button">Sign Up</button>
                             <center>
