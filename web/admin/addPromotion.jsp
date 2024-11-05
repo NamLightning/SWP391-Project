@@ -5,8 +5,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Responsive Admine Dashboard</title>
-        <link rel="stylesheet" href="../css/addPro.css">
+        <title>Responsive Admin Dashboard</title>
+        <link rel="stylesheet" href="../css/createPro.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -23,7 +23,11 @@
                     <div class="user">
                         <img src="#" alt="">
                     </div>
+
                 </div>
+                
+                
+                
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
@@ -65,11 +69,19 @@
 
                             </div>
                         </div>
+
+
                     </div>
+
                 </div>
+
             </div>
         </div>
+
+
         <script src="../js/sidebar.js"></script>
+
+
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>

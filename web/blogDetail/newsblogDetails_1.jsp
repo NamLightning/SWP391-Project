@@ -5,30 +5,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/newsblog.css">
-        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/newsblog.css">
+        <link rel="stylesheet" href="../css/footer.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     </head>
     <body>
     <center>
-        <%@include file="includes/header.jsp"%>
+        <%@include file="../includes/header.jsp"%>
         <article class="newsblog-container">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5b097d8cb88487c3941539e73f6a33382058cde1213ad8f4a3b378dfa0e1841b?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog walking in rainy weather" class="hero-image" />
+            <img src="../images/news1.jpg"alt="" class="hero-image" />
             <div class="content-wrapper">
                 <main class="main-news-content">
                     <h1 class="article-title">13 things to remember when walking your dog in rain and floods</h1>
                     <p class="article-intro">
-                        With heavy rain causing flooding around the UK, it's important we know how to keep our
-                        <a href="https://www.countryliving.com/uk/wildlife/pets/a28618170/flea-outbreak-pets-uk/" target="_blank">pets</a> safe when heading outside in the rain. Flood water can contain many harmful toxins including human and livestock waste, debris, rodents, or even downed power lines. "Extreme weather of all kinds can be distressing for dogs. Signs to look out for include pacing around the home, excessive barking, or trying to run and hide," says the Dogs' Trust. "There are steps owners can take to comfort their dogs and help them cope if they are becoming anxious. If you're worried about the weather, keep your dog indoors as much as possible."
-                        <br />
-                        Grab your raincoat and take a look at the <a href="https://www.dogstrust.org.uk/" target="_blank">Dog's Trust</a> advice below before you head out:
+                       Pumpkin, as long as it's plain, is safe for cats and has several health benefits. 
+                       Just pay mind to proportion sizes and the type of pumpkin you're feeding your cat.
                     </p>
-                    <section class="highlight-box">
+<!--                    <section class="highlight-box">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7df3e14cccc5ef7f965b3be1497edfff50d8e898bde41169dc27fb2d6cf199d?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Rainy weather icon" class="highlight-icon" />
-                        <p class="highlight-text">Rain or shine, walk with confidence and care – because every step with your furry friend matters!</p>
-                    </section>
+                        <p class="highlight-text"></p>
+                    </section>-->
                     <ol class="tips-list">
                         <li>Avoid walking in any flooded areas, as the water could be contaminated.</li>
                         <li>Consider heading out at a different time to avoid heavy rain.</li>
@@ -54,7 +52,7 @@
                 <aside class="sidebar">
                     <section class="blog-section">
                         <h2 class="blog-title">Latest Blog</h2>
-                        <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/645ed63efa619f99dd9553063ff261b3775ddedb728f93bec296f632f2ceaa57?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Cat eating pumpkin" class="blog-image" />
                                 <div class="blog-content">
@@ -63,7 +61,7 @@
                                 </div>
                             </article>
                         </a>
-                        <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f809568f65ac5782f5ed6f16928d3d01ae9777b5d7dc41e54b06a5d6d9a6d398?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog training" class="blog-image" />
                                 <div class="blog-content">
@@ -72,7 +70,7 @@
                                 </div>
                             </article>
                         </a>
-                        <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
                                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e38ca233d506b7b56f7a026a074d2481e81d76407a9e7a5c52523c42875b234?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Puppy crate training" class="blog-image" />
                                     <div class="blog-content">
@@ -85,7 +83,7 @@
                 </aside>
             </div>
         </article>
-        <%@include file="includes/footer.jsp"%>
+        <%@include file="../includes/footer.jsp"%>
     </center>
 </body>
 </html>

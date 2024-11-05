@@ -212,8 +212,8 @@ public class EmployeeControl extends HttpServlet {
             recordsPerPage = 12;
         }
         EmployeeDAO employeeDao = new EmployeeDAO();
-        ArrayList<Employee> employees = employeeDao.getAllEmployee(currentPage, recordsPerPage);
-        request.setAttribute("products", employees);
+        ArrayList<Employee> products = employeeDao.getAllEmployee(currentPage, recordsPerPage);
+        request.setAttribute("products", products);
         int rows = employeeDao.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {

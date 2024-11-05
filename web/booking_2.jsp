@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -16,7 +15,7 @@
     <center>
         <%@include file="includes/header.jsp"%>
 
-       <section class="booking-frame">
+        <section class="booking-frame">
             <nav class="thread" aria-label="Booking steps">
                 <a href="booking_1.jsp" class="step-item" role="button">
                     <span class="step-number step-number-inactive" aria-current="step">1</span>
@@ -37,16 +36,20 @@
             <div class="schedule-container">
                 <h2 class="schedule-title">Schedule Date & Time</h2>
                 <div class="content-wrapper">
-                    
+
 
                     <form class="time-set">
                         <div class="form-field">
-                            <label for="time-input" class="form-label">Time</label>
-                            <input type="datetime-local" id="time-input" class="form-input" value="" required>
+                            <label for="date-input" class="form-label">Date</label>
+                            <input type="date" id="date-input" class="form-input" value="" required>
                         </div>
-
                         <div class="form-field">
-                            <label for="clinic" class="form-label">Clinic</label>
+                            <label for="time-input" class="form-label">Time</label>
+                            <input type="time" id="time-input" class="form-input" value="" required>
+                        </div>
+<!--
+                        <div class="form-field">
+                            <label class="form-label"></label>
                             <div class="form-select">
                                 <select id="clinic" name="clinic" class="form-input">
                                     <option value="1">Option 1</option>
@@ -63,26 +66,8 @@
                                     <option value="2">Option 2</option>
                                 </select>
                             </div>
-                        </div>
-
-
+                        </div>-->
                     </form>
-                    
-                    
-                    
-                    <div class="calendar-info-container">
-                        <aside class="pet-info">
-                            <img src="#" class="pet-image">
-                            <div class="pet-details">
-                                <h3 class="pet-name">Lucy</h3>
-                                <div class="pet-attributes">
-                                    <p>Golden Retriever</p>
-                                    <p>Female, 2 y.o</p>
-                                </div>
-                                <p class="pet-condition">Swollen leg for about 3 days</p>
-                            </div>
-                        </aside>
-                    </div>
                 </div>
             </div>
 

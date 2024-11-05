@@ -3,13 +3,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PetHub</title>
+        <title>Error Page</title>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
-        <%@include file="includes/header.jsp" %>
+        <%@include file="includes/header.jsp" %><br>
         <div class="container">
             <div class="main-content">
                 <center>
@@ -34,7 +33,7 @@
         font-weight: bold;
         unicode-bidi: isolate;
     }
-
+    
     .error-message h2{
         margin-top: 10px;
         margin-bottom: 40px;

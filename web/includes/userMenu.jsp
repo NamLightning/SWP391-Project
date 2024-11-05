@@ -7,7 +7,7 @@
         border: 1px solid #e4e7e9;
         background: #fff;
         box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-        display: flex;
+        display: none;
         height: fit-content;
         flex-direction: column;
     }
@@ -38,7 +38,7 @@
         object-position: center;
         width: 50px;
         border-radius: 20px;
-        
+
     }
 
     .user-info {
@@ -83,11 +83,11 @@
 </style>
 
 
-<nav class="navigation-sidebar">
+<nav class="navigation-sidebar popup-hover2" id="popupHover">
     <a href="userProfile.jsp" class="dashboard-nav-item" style="text-decoration: none;">
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a941b2e9410775a652bd7701d03ebf4c9db560ba6aeb91f78f1562a8451d0287?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="user-avatar" alt="User avatar" />
         <div class="user-info">
-            <h3 class="user-name">Kelvin</h3>
+            <h3 class="user-name">${us}</h3>
             <p class="user-points">VIP Points: 20</p>
         </div>
     </a>
@@ -107,7 +107,7 @@
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/48db08d440d91cdb57b2d69f653e30dca394bf6601dd8d8bfd640729a29054f8?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="nav-icon" alt="Content image" />
         <span class="nav-text">VIP Points</span>
     </a>
-    <a href="#" class="nav-item">
+    <a href="${pageContext.request.contextPath}/LogOutControl" class="nav-item">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/36688a5e1071d984f472990a15ab664beea02593b49f48d74f5239b4a1dddecc?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="nav-icon" />
         <span class="nav-text">Log-out</span>
     </a>

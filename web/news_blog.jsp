@@ -17,7 +17,7 @@
             <div class="news-title-image">
                 <section class="article-container">
                     <article class="article-card">
-                        <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                        <a href="blogDetail/newsblogDetails_1.jsp" style="text-decoration: none; color: #000;display: block;">
                             <div class="article-content">
                                 <h3 class="article-category" style="padding-left: 5%;">WHAT CAN CATS EAT</h3>
                                 <h2 class="article-title">Can Cat Eat Pumpkin?</h2>
@@ -35,42 +35,42 @@
                         <div class="news-blog-menu">
                             <div class="news-blog-container">
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_2.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/blog1.png" alt="">
                                         <p style="margin:0; padding-top:10px; padding-left: 10px;text-align: left;">12 December,2023</p>
                                         <h3 style="padding-left: 10px;">Do Cats Get Cold?</h3>
                                     </a>
                                 </div>
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_3.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/blog2.png" alt="">
                                         <p style="margin:0; padding-top:10px;padding-left: 10px;text-align: left;">21 August,2024</p>
                                         <h3 style="padding-left: 10px;">How Much Does Dog Training Cost?</h3>
                                     </a>
                                 </div>
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_4.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/blog3.png" alt="">
                                         <p style="margin:0; padding-top:10px;padding-left: 10px;text-align: left;">3 September,2024</p>
                                         <h3 style="padding-left: 10px;">The Do's and Don'ts of Crate Training a Puppy</h3>
                                     </a>
                                 </div>
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_5.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/news2.jpg" alt="" class="news-image-overlay" loading="lazy" >
                                         <p style="margin:0; padding-top:10px;padding-left: 10px;text-align: left;">30 April, 2023</p>
                                         <h3 style="padding-left: 10px;">Study Finds Cats Connect to Their Owners as Much as Dogs Do</h3>
                                     </a>
                                 </div>
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_6.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/news3.jpg" alt="" class="news-image-overlay" loading="lazy" >
                                         <p style="margin:0; padding-top:10px;padding-left: 10px;text-align: left;">18 March, 2023</p>
                                         <h3 style="padding-left: 10px;">13 things to remember when walking your dog in rain and floods</h3>
                                     </a>
                                 </div>
                                 <div class="news-blog-item">
-                                    <a href="newsblogDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <a href="blogDetail/newsblogDetails_7.jsp" style="text-decoration: none; color: #000;display: block;">
                                         <img src="images/news5.jpg" alt="" class="news-image-overlay" loading="lazy" >
                                         <p style="margin:0; padding-top:10px; padding-left: 10px;text-align: left;">1 October, 2023</p>
                                         <h3 style="padding-left: 10px;">Reason rescue dog is obsessed with white cars leaves internet in tears</h3>
@@ -87,4 +87,3 @@
     <%@include file="includes/footer.jsp" %>
 </body>
 </html>
-

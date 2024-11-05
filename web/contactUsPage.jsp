@@ -1,16 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html style="scroll-behavior: smooth;">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/contactus.css">
     </head>
     <body>
-        <%@include file="includes/header.jsp"%>
+        <%@include file="includes/header.jsp" %>
     <center>
         <div class="container">
             <div class="left-sidebar"></div>
@@ -32,29 +33,30 @@
         </div>
         <div class="left-sidebar"></div><br>
         <section class="contact-section" id="form-feedback">
-            <form class="contact-form">
+            <form class="contact-form" action="ContactUs" method="Post">
                 <div class="form-inputs">
                     <div class="name-inputs">
                         <div class="input-group">
-                            <label for="firstName" class="input-label">First Name</label>
-                            <input type="text" id="firstName" class="input-field" placeholder="First name" required>
+                            <label for="firstname" class="input-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="input-field" placeholder="First name" required>
                         </div>
                         <div class="input-group">
-                            <label for="lastName" class="input-label">Last Name</label>
-                            <input type="text" id="lastName" class="input-field" placeholder="Last name" required>
+                            <label for="lastname" class="input-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="input-field" placeholder="Last name" required>
                         </div>
                     </div>
                     <div class="input-group">
-                        <label for="email" class="input-label">Email Address</label>
-                        <input type="email" id="email" class="input-field" placeholder="E-mail address" required>
+                        <label for="Email" class="input-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="input-field" placeholder="E-mail address" required>
                     </div>
                     <div class="input-group">
-                        <label for="message" class="input-label">Message</label>
-                        <textarea id="message" class="input-field message-input" placeholder="Your message..." required></textarea>
+                        <label for="Message" class="input-label">Message</label>
+                        <textarea id="message" name="message" class="input-field message-input" placeholder="Your message..." required></textarea>
                     </div>
                     <button type="submit" class="submit-button">Send Message</button>
                 </div>
             </form>
+            <p class="alert alert-success" role="alert">${mess}</p>
 
             <div class="contactus-info">
                 <h2 class="contact-heading">Feel free to contact us</h2>
@@ -83,7 +85,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3835.5848800259173!2d108.258449!3d15.9830405!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31421162aa4e0c59%3A0x22c827eb74773719!2sFPT%20Plaza%202!5e0!3m2!1svi!2s!4v1727276665627!5m2!1svi!2s"height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </center>
-        <script src="<c:url value="/js/manipulation.js"/>"></script>
+    <script src="js/manipulation.js"></script>
     <%@include file="includes/footer.jsp" %>
 </body>
 </html>

@@ -15,7 +15,7 @@
     <center>
         <%@include file="includes/header.jsp"%>
         <div class="detail-container">
-            <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1224px;"></div>
+            <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1920px;"></div>
             <div class="main-details-content">
                 <!--item-->
                 <div data-layername="serviceDetail" class="service-detail">
@@ -64,7 +64,7 @@
                         <div data-layername="prices" class="prices">
                             <div data-layername="price" class="price">319.000₫</div>
                         </div>
-                        <div data-layername="devider" class="divider"></div>
+                        <div data-layername="devider" class="devider"></div>
                         <div data-layername="button" class="button-book">
                             <a href="booking_1.jsp" style="text-decoration: none; color:#ffffff;"><div data-layername="label" class="label">Booking now</div></a>
                         </div>
@@ -126,12 +126,21 @@
                                         </div>
                                     </article>
                                 </a>
+                                <a href="serviceDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                    <article class="service-card">
+                                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/13a45de2e41f36780096288e65f410f782fa92121ddce7063090447cada2cc21?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog Wash and Blow Dry Service" class="service-image" />
+                                        <div class="service-content">
+                                            <h3>Dog Wash & Blow Dry</h3>
+                                            <p>Cleaning and shampooing your pet to keep their coat fresh.</p>
+                                        </div>
+                                    </article>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1400px;"></div>
+            <div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1920px;"></div>
         </div>
         <%@include file="includes/footer.jsp"%>
     </center>

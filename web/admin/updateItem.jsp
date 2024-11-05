@@ -1,3 +1,9 @@
+<%-- 
+    Document   : updateItem
+    Created on : Oct 27, 2024, 10:46:23 PM
+    Author     : ASUS ZenBook
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="Dao.ItemDAO, Model.Item, Utils.Reuseable, Dao.CategoriesDAO, java.util.ArrayList"%>
@@ -46,13 +52,13 @@
                                         </div>
                                     </c:if>
                                     <label style="margin-bottom: 10px;">
-                                        <div class="preview" id="preview"></div>
-
                                         <label>Upload Items Image: </label>
                                         <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                         <input type="file" name="image" id="image" accept="image/*"
                                                onchange="showFileNameAndPreview()">
                                     </label>
+
+                                    <div class="preview" id="preview"></div>
 
                                     <label class="property">
                                         <p>Item name:</p>

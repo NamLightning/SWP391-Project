@@ -99,12 +99,11 @@
                                 <div data-layername="01" class="quantity-01" id="quantity">01</div>
                                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4ef0281caf6e16bf01681ba248222d77473d0422e9e910a1484d63287f291cf?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-9" alt="Increase quantity" onclick="increaseQuantity()" />
                             </div>
-                            <a href="cart.jsp" style="text-decoration: none;">
                             <div data-layername="button" class="button-2">
                                 <div data-layername="label" class="label">Add to card</div>
                                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d9af30ce1a36a775b4f5729bdd83ffc8c0a0ad06905d325ab867481971ba7e00?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-10" alt="Add to card icon" />
-                            </div></a>
-                            <a href="checkOut.jsp" style="text-decoration: none;"><div data-layername="button" class="button-3">Buy now</div></a>
+                            </div>
+                            <div data-layername="button" class="button-3">Buy now</div>
                         </div>
                         <div data-layername="content" class="content">
                             <div data-layername="100GuaranteeSafeCHeckout" class="guarantee-safe-checkout-100">

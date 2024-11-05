@@ -35,7 +35,7 @@
                                 <button class="view-booking-btn" 
                                         onclick="window.location.href = '<c:url value="/admin/manageBooking.jsp"/>'">View All Bookings</button>
                                 <button class="new-service-btn" 
-                                        onclick="window.location.href = '<c:url value="/admin/addService.jsp"/>'">Create New Service</button>
+                                        onclick="window.location.href = '<c:url value="/admin/createService.jsp"/>'">Create New Service</button>
                             </div>
                         </div>
                         <div class="search-sort-bar">
@@ -45,7 +45,7 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="service-table-2" style="font-size: 13px;">
+                        <div class="service-table" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
@@ -53,7 +53,7 @@
                                         <th>Service Name</th>
                                         <th>Pet Type</th>
                                         <th>Price</th>
-                                        <th style="text-align: center;">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,8 +63,8 @@
                                         <td>Dog</td>
                                         <td>200.000₫</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
-                                        <button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
                                     </tr> 
                                 </tbody>
                             </table>

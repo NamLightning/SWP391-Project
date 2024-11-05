@@ -37,16 +37,16 @@
                             <div class="card-body my-2 col-md-10">
                                 <h3 class="card-title ">Forgot Password</h3>
                                 <p>Please enter your email address to receive a password reset OTP.</p>
-                                <form action="Authentication_ChangePassword_SendOTP_Servlet" method="post">
+                                <form action="ForgotPasswordControl" method="post">
                                     <div class="form-group">
                                         <label for="email">Email Address</label>
                                         <div class="input-container">
-                                            <input id="email" name="gmail" class="text" type="email" placeholder="Enter your email" required>
+                                            <input id="email" name="email" class="text" type="email" placeholder="Enter your email" required>
                                         </div>
                                         <p class="text-danger">${message}</p>
                                     </div>
                                     <div>
-                                        <button href="forgotPassword_EnterCode.jsp" class="btn btn-primary fw-bold" type="submit">Send OTP</button>
+                                        <button class="btn btn-primary fw-bold" type="submit">Send OTP</button>
                                     </div>
                                 </form>
                             </div>

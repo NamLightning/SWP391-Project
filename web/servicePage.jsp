@@ -19,7 +19,7 @@
         </header>
         <section class="how-it-works">
             <div class="info-text">
-                <h2 class="section-title">Quick and Easy Booking in </h2><br><h2>3 Simple Steps!</h2>
+                <h2 class="section-title">Quick and Easy Booking in <span style="color: rgba(20, 20, 20, 1)">3 Simple</span> Steps!</h2>
                 <div class="steps-container">
                     <article class="step-card">
                         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/485ea603669ce8df12ac4ac19ab487e3379a241278eebdc97dba7c2e2026c24c?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Select Service icon" class="step-image" />

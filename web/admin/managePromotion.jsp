@@ -32,7 +32,7 @@
                         <div class="header">
                             <h2 style="font-size: 20px; margin-right: 30%;">All Promotions</h2>
                             <button class="new-promotion-btn" 
-                                    onclick="window.location.href = '<c:url value="/admin/addPromotion.jsp"/>'">Create New Promotion</button>
+                                    onclick="window.location.href = '<c:url value="/admin/createPromotion.jsp"/>'">Create New Promotion</button>
                         </div>
                         <div class="search-sort-bar">
                             <input type="text" placeholder="Search promotion..." class="search-input">
@@ -41,38 +41,38 @@
                                 <option>Sort by Oldest</option>
                             </select>
                         </div>
-                        <div class="promotion-table-2" style="font-size: 13px;">
+                        <div class="promotion-table" style="font-size: 13px;">
                             <table>
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Description</th>
-                                        <th>Quantity</th>
-                                        <th style="text-align: center;">Status</th>
-                                        <th style="text-align: center;">Action</th>
+                                        <th>Number of Promotions</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>#12345128</td>
                                         <td>Sale 25%</td>
-                                        <td style="width:350;">Sale 25% for grand opening day</td>
-                                        <td style="text-align: center;">50</td>
-                                        <td style="text-align: center;"><span class="status-instock active">Available</span></td>
+                                        <td>Sale 25% for grand opening day</td>
+                                        <td>50</td>
+                                        <td><span class="status-instock active">Available</span></td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updatePromotion.jsp"/>'">Update</button>
-                                        <button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updatePromotion.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>#12345128</td>
                                         <td>Paw Day</td>
                                         <td>Free bow clip accessory for orders placed in Paw Day</td>
-                                        <td style="text-align: center;">50</td>
-                                        <td style="text-align: center;"><span class="status-instock inactive">Unavailable</span></td>
+                                        <td>50</td>
+                                        <td><span class="status-instock inactive">Unavailable</span></td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updatePromotion.jsp"/>'">Update</button>
-                                        <button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updatePromotion.jsp"/>'">Update</button></td>
+                                        <td><button class="delete">Delete</button></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -95,4 +95,3 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
-

@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -30,90 +29,135 @@
                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0dfc62669a6e3fd2ef83ca945a7bf8e70da1b4dde773f49c77d7351add13a61b?placeholderIfAbsent=true&apiKey=61b4df99ebeb4d7c83bd0ecec7b90c13" alt="" class="step-separator" />
                 <a href="booking_3.jsp" class="step-item" role="button">
                     <span class="step-number step-number-active">3</span>
-                    <span class="step-text step-text-active">Select Payment</span>
+                    <span class="step-text step-text-active">Confirm Booking Information</span>
                 </a>
             </nav>
 
             <div class="schedule-container">
-                <h2 class="schedule-title">Payment</h2>
+                <h2 class="schedule-title">Confirm Booking Information</h2>
                 <div class="content-wrapper">
-
-
-                    <form class="time-set">
-
+                    <form class="confirm-set">
                         <div class="form-field">
-                            <label for="clinic" class="form-label">Choose payment method</label>
-                            <div class="form-select">
-                                <select id="payment" name="payment" class="form-input">
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                </select>
-                            </div>
+                            <label class="payment-label">Payment method</label>
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc5e32f1af95709ba6194b582da6f745934d8eff3ec5130c386760116cb51ff?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8"
+                                 alt="VN Pay" class="payment-icon">
                         </div>
-
-                        <div class="form-field">
-                            <label for="time-input" class="form-label">Card number</label>
-                            <input type="text" id="cardnumber" placeholder="Card Number" class="form-input" value="" required>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="time-input" class="form-label">Expired card</label>
-                            <input type="date" id="expiredCard" placeholder="Expired card" class="form-input" value="" required>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="time-input" class="form-label">CVV</label>
-                            <input type="text" id="cvv" placeholder="CVV" class="form-input" value="" required>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="time-input" class="form-label">Card name</label>
-                            <input type="text" id="cardName" placeholder="Card Name" class="form-input" value="">
-                        </div>
-
-
-                    </form>
-
-
-
-                    <div class="calendar-info-container">
-                        <aside class="pet-info">
-                            <img src="#" class="pet-image">
-                            <div class="pet-details">
-                                <h3 class="pet-name">Lucy</h3>
-                                <div class="pet-attributes">
-                                    <p>Golden Retriever</p>
-                                    <p>Female, 2 y.o</p>
+                        <h2 class="section-title">Personal Information</h2>
+                        <div class="form-container">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
+                                    </div>
                                 </div>
-                                <p class="pet-condition">Swollen leg for about 3 days</p>
-                                <hr class="section-divider" />
-
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
-                                    <span class="icon" style="margin-right: 5px;">
-                                        <ion-icon name="time-outline"></ion-icon>
-                                    </span>
-                                    15 July 2024, 03:00 PM
-                                </p>
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
-                                    <span class="icon" style="margin-right: 5px;">
-                                        <ion-icon name="home-outline"></ion-icon>
-                                    </span>
-                                    Pet House Bintaro
-                                </p>
-                                <p class="pet-condition" style="text-align: left; margin-left: 10px;">
-                                    <span class="icon" style="margin-right: 5px;">
-                                        <ion-icon name="person-outline"></ion-icon>
-                                    </span>
-                                    Anna Nurhalimad
-                                </p>
+                                <div class="form-field">
+                                    <label for="lastName" class="form-label">Last name</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
+                                    </div>
+                                </div>
                             </div>
-                        </aside>
-                    </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email" class="form-label">Email</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="email" type="email" placeholder="Email" class="form-input" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="address" class="form-label">Address</label>
+                                    <div class="form-input-wrapper" style="width: 48%;">
+                                        <input id="address" type="text" placeholder="Address" class="form-input" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="section-divider" />
+
+                        <h2 class="section-title">Pet Information</h2>
+                        <div class="form-container">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="petName" class="form-label">Pet Name</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="petType" class="form-label">Gender</label>
+                                    <div class="form-input-wrapper">
+                                        <select id="petType" name="petType" class="form-input" autocomplete="off">
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="petBreed" class="form-label">Breed</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="petAge" class="form-label">Age</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="petAge" type="text" placeholder="Age" class="form-input" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="section-divider" />
+                        
+                        <h2 class="section-title">Booking Information</h2>
+                        <div class="form-container">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="serviceName" class="form-label" readonly>Service Name</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="serviceName" type="text" placeholder="Service Name" class="form-input" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="bookingDate" class="form-label" readonly>Booking Date</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="bookingDate" type="text" placeholder="Booking Date" class="form-input" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="startDate" class="form-label" readonly>Start Date</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="startDate" type="text" placeholder="Start Date" class="form-input" value="" />
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label for="price" class="form-label" readonly>Price</label>
+                                    <div class="form-input-wrapper">
+                                        <input id="price" type="text" placeholder="Price" class="form-input" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
 
+            </form>
             <div class="footer-button" >
-                <input name="submit" type="submit" class="continue-button" value="Continue">
+                <button class="continue-button" onclick="windows.location.href = 'vnPay.jsp'">Confirm</button>
             </div>
         </section>
 

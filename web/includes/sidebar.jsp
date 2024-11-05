@@ -3,7 +3,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#" readdonly>
+            <a href="#" readonly>
                 <span class="icon">
                     <ion-icon name="paw"></ion-icon>
                 </span>
@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageCustomer.jsp"/>">
+            <a href="<c:url value="/CustomerControl"/>">
                 <span class="icon">
                     <ion-icon name="people-outline"></ion-icon>
                 </span>
@@ -36,7 +36,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageItem.jsp"/>">
+            <a href="<c:url value="/ProductControl"/>">
                 <span class="icon">
                     <ion-icon name="cube-outline"></ion-icon>
                 </span>

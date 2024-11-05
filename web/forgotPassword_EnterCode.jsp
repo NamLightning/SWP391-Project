@@ -34,11 +34,11 @@
                                 <div class="card-body my-2 col-md-10">
                                     <h3 class="card-title ">Forgot Password</h3>
                                     <p>Please enter the OTP code sent to your email.</p>
-                                    <form action="Authentication_ChangePassword_VerifyOTP_Servlet" method="post">
+                                    <form action="ValidateOtp" method="post">
                                         <div class="form-group">
                                             <label>OTP Code</label>
                                             <div class="input-container">
-                                                <input class="text" name="OTP" type="text" placeholder="Enter code" required>
+                                                <input class="text" name="otp" type="text" placeholder="Enter code" required>
                                             </div>
                                             <p class="text-danger">${message}</p>
                                         </div>

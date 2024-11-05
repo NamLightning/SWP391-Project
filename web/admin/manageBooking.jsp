@@ -52,16 +52,6 @@
 
                         <div class="card">
                             <div>
-                                <div class="cardName">Registered Pets</div>
-                                <div class="numbers">152</div>
-                            </div>
-                            <div class="iconBx">
-                                <ion-icon name="paw-outline"></ion-icon>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div>
                                 <div class="cardName">New Clients This Month</div>
                                 <div class="numbers">5</div>
                             </div>

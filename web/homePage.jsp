@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>PetHub</title>
+        <title>Home Page</title>
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/homeindex.css">
@@ -17,14 +17,14 @@
             <div class="left-sidebar"></div>
             <div class="main-content">
                 <div class="welcome-page" style="width: 100%;height: 100%;margin: 0;">
-                    <img src="images/welcome-img.png" alt="" class="welcome-image"/>
+                    <img src="${pageContext.request.contextPath}/images/welcome-img.png" alt="..." class="welcome-image"/>
                     <div class="welcome-content">
                         <h1>A pet store with everything you need</h1>
                         <br>
                         <p>PetHub is more than just an online pet shop – it’s a place 
                             for pet parents who want nothing but the best for their pets.
                         </p>
-                        <button class="welcome-button" onclick="window.location.href = 'petFood.jsp'">Shop Now</button>
+                        <button class="welcome-button" onclick="window.location.href = 'CategoriesControl'">Shop Now</button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div class="category-menu">
                         <div class="category-container">
                             <div class="category-feature">
-                                <a href="petFurniture.jsp" style="text-decoration: none; color: #000;display: block;">
+                                <a href="CategoriesControl?action=furniture" style="text-decoration: none; color: #000;display: block;">
                                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e67933fc965fa8324a2ac6ff73eb74d3ecb67e185dd12cf2837558db462b4bcd?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Furniture">
                                     <div class="category-info">
                                         <h3>Furniture</h3>
@@ -48,7 +48,7 @@
                                 </a>
                             </div>
                             <div class="category-feature">
-                                <a href="petFood.jsp" style="text-decoration: none; color: #000;display: block;">
+                                <a href="CategoriesControl" style="text-decoration: none; color: #000;display: block;">
                                     <img src="images/cate-img2.png" alt="Food">
                                     <div class="category-info">
                                         <h3>Food</h3>
@@ -56,8 +56,9 @@
                                     </div>
                                 </a>
                             </div>
+
                             <div class="category-feature">
-                                <a href="petAccessories.jsp" style="text-decoration: none; color: #000;display: block;">
+                                <a href="CategoriesControl?action=accessory" style="text-decoration: none; color: #000;display: block;">
                                     <img src="images/cate-img3.png" alt="Accessories">
                                     <div class="category-info">
                                         <h3>Accessories</h3>
@@ -66,7 +67,7 @@
                                 </a>
                             </div>
                             <div class="category-feature">
-                                <a href="petClothing.jsp" style="text-decoration: none; color: #000;display: block;">
+                                <a href="CategoriesControl?action=cloth" style="text-decoration: none; color: #000;display: block;">
                                     <img src="images/cate-img4.png" alt="Clothes">
                                     <div class="category-info">
                                         <h3>Clothes</h3>
@@ -88,7 +89,6 @@
                     <h1 style="margin:0;padding-bottom: 20px;">Feature products</h1>
                     <div class="feature-menu">
                         <div class="feature-container">
-
                             <div class="feature-item">
                                 <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
                                     <img src="images/food1.jpg" alt="">
@@ -125,7 +125,7 @@
 
         <div class="container-4">
             <div class="left-sidebar" style="background-color: #f8f9fa; width:15%; height: 20%;"></div>
-            <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%">
+            <div class="main-content-4" style="flex: 1;width: 1480px; height: 20%px">
                 <center>
                     <div class="learn-more">
                         <img src="images/learnmore-img.jpg" alt="" class="learn-more-image"/>

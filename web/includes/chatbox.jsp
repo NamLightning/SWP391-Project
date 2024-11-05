@@ -23,7 +23,7 @@
             <div class="chat-header">
                 <div class="chat-header-left">
                     <div class="chat-icon">
-                        <img src="<c:url value="/images/chat.svg"/>" width="45" alt="">
+                        <img src="<c:url value="/images/chat.svg"/>" width="30" alt="">
                     </div>
                     <div class="chat-info">
                         <div class="chat-title">Customer Support</div>

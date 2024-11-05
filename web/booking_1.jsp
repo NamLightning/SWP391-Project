@@ -33,6 +33,48 @@
                 </a>
             </nav>
 
+            <h2 class="section-title">Personal Information</h2>
+            <form class="form-container">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <div class="form-input-wrapper">
+                            <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="lastName" class="form-label">Last name</label>
+                        <div class="form-input-wrapper">
+                            <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <div class="form-input-wrapper">
+                            <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="email" class="form-label">Email</label>
+                        <div class="form-input-wrapper">
+                            <input id="email" type="email" placeholder="Email" class="form-input" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="address" class="form-label">Address</label>
+                        <div class="form-input-wrapper" style="width: 48%;">
+                            <input id="address" type="text" placeholder="Address" class="form-input" value="" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <hr class="section-divider" />
+
             <h2 class="section-title">Pet Information</h2>
             <form class="form-container">
                 <div class="form-row">
@@ -43,11 +85,11 @@
                         </div>
                     </div>
                     <div class="form-field">
-                        <label for="petType" class="form-label">Type</label>
+                        <label for="petType" class="form-label">Gender</label>
                         <div class="form-input-wrapper">
                             <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
                             </select>
                         </div>
                     </div>
@@ -69,7 +111,7 @@
                 </div>
             </form>
 
-            <div class="footer-button">
+            <div class="footer-button" >
                 <input name="submit" type="submit" class="continue-button" value="Continue">
             </div>
         </section>
