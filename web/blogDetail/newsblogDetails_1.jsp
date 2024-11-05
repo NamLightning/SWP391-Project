@@ -15,53 +15,51 @@
     <center>
         <%@include file="../includes/header.jsp"%>
         <article class="newsblog-container">
-            <img src="../images/news1.jpg"alt="" class="hero-image" />
+            <img src="../images/news1.jpg" alt="" class="hero-image" />
             <div class="content-wrapper">
                 <main class="main-news-content">
-                    <h1 class="article-title">13 things to remember when walking your dog in rain and floods</h1>
+                    <h1 class="article-title">Can cat eat pumpkin?</h1>
                     <p class="article-intro">
-                       Pumpkin, as long as it's plain, is safe for cats and has several health benefits. 
-                       Just pay mind to proportion sizes and the type of pumpkin you're feeding your cat.
+                        Pumpkin, as long as it's plain, is safe for cats and has several health benefits. 
+                        Just pay mind to proportion sizes and the type of pumpkin you're feeding your cat.
                     </p>
-<!--                    <section class="highlight-box">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7df3e14cccc5ef7f965b3be1497edfff50d8e898bde41169dc27fb2d6cf199d?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Rainy weather icon" class="highlight-icon" />
-                        <p class="highlight-text"></p>
-                    </section>-->
+                    <!--                    <section class="highlight-box">
+                                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7df3e14cccc5ef7f965b3be1497edfff50d8e898bde41169dc27fb2d6cf199d?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Rainy weather icon" class="highlight-icon" />
+                                            <p class="highlight-text"></p>
+                                        </section>-->
+                    <h1 class="article-title">Health Benefits of Pumpkin for Cats</h1>
                     <ol class="tips-list">
-                        <li>Avoid walking in any flooded areas, as the water could be contaminated.</li>
-                        <li>Consider heading out at a different time to avoid heavy rain.</li>
-                        <li>If you can head out safely, always keep your dog on a lead so they can't run off and get into difficulties.</li>
-                        <li>Keep your pet out of the water as it could contain toxic chemicals. While it's tempting for them to run through the water, keep them occupied with other treats.</li>
-                        <li>If the storm is disrupting your dog's exercise routine, keep them active in the home by creating a toy filled with food.</li>
-                        <li>Make sure your dogs wear a hi-vis jacket or <a href="https://www.countryliving.com/uk/wildlife/pets/g35012308/light-up-dog-collar/" target="_blank">reflective collar</a> to help them stay safe.</li>
-                        <li>If you are near an area that may flood, be aware that flood water could contain raw sewage.</li>
-                        <li>Bathe them if you have been out on a walk, as the water toxins could remain on their coat if not bathed properly.</li>
+                        <li>Gastrointestinal upset: Plain pumpkin can be a good source of moisture and fiber for cats experiencing gastrointestinal difficulty.</li>
+                        <li>Constipation: Canned pumpkin, which has a higher moisture content, is a good option for cats with mild constipation.</li>
+                        <li>Diarrhea: On the other hand, the fiber content of canned pumpkin also helps to bulk stools during episodes of diarrhea.</li>
+                        <li>Hairballs: Pumpkin may also be beneficial for cats who are prone to hairballs. Pumpkin can help move the hair through the gastrointestinal tract.</li>
+                        <li>Weight loss: Because pumpkin is low in calories, it may also be a good treat option for cats who are obese or need to lose weight.</li>
                     </ol>
                     <figure class="image-gallery">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f8c08e0a67a49e6c8263719f09ccbd8387ebd68e4e0a9c0495c8c77bf31afa45?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog walking in rainy weather" class="gallery-image" />
+                        <img src="https://www.thesprucepets.com/thmb/RN8QDxt_fWEiX6AkpYcfpBAW4ug=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/spruce-pets-can-cats-eat-pumpkin-e6c8c011e2784e43ae04054180571049.jpg" alt="" class="gallery-image" />
                     </figure>
+                    <h1 class="article-title">How to Feed Pumpkin to Cats</h1>
                     <ul class="additional-tips">
-                        <li>Ensure they have a safe place to play in the <a href="https://www.countryliving.com/uk/homes-interiors/gardens/a20728042/best-gardening-apps-download-garden/" target="_blank">garden</a> if they need to head outdoors.</li>
-                        <li>Make sure your dog is microchipped, the contact details are up to date, and your dog is wearing a collar and an ID tag whilst out walking, so if they do get lost, they can be reunited with you.</li>
-                        <li>Keep an eye on older dogs as cold, damp weather might make them feel a little stiffer than usual.</li>
-                        <li>Never go out if your dog is feeling anxious about the weather. Some signs they are feeling unsettled include shaking, not being excited by walks or hiding. The Dogs' Trust advise: "Any dog showing behaviour change should have a vet check to rule out any underlying medical conditions or sources of pain."</li>
-                        <li>Finally, always talk to your vet if you have any concerns about your dog's health in extreme weather. They will be able to provide you with expert help.</li>
+                        <li>You can feed your cat cooked pumpkin, or you can use plain canned or pureed pumpkin from the store. You should introduce pumpkin slowly to your cat, starting with a bite or two. Adult cats can start with 1 teaspoon twice daily. 
+                            If your cat takes a liking to the orange stuff, you can slowly increase the amount up to 1 tablespoon twice daily.</li>
+                        <li>Stick to feeding your cat the flesh or fruit of the pumpkin. The stem, leaves, skin, and whole seeds could become choking hazards or cause blockages in the stomach or intestines.</li>
+                        <li>If you plan to cook your own pumpkin, you can steam or roast the pumpkin flesh. Do not add spices, salt, or oils to the pumpkin. 
+                            Alternatively, you can feed your cat canned pumpkin puree by mixing it into the cat’s food.</li>
                     </ul>
-                    <p>By following these tips, you can ensure a safer and more enjoyable walking experience for your dog, even in rainy or flood-prone conditions. Stay safe and keep your furry friend protected!</p>
                 </main>
                 <aside class="sidebar">
                     <section class="blog-section">
                         <h2 class="blog-title">Latest Blog</h2>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_2.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
-                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/645ed63efa619f99dd9553063ff261b3775ddedb728f93bec296f632f2ceaa57?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Cat eating pumpkin" class="blog-image" />
+                                <img src="../images/blog1.png" alt="Cat get cold" class="blog-image" />
                                 <div class="blog-content">
-                                    <h3 class="blog-post-title">Can Cat Eat Pumpkin?</h3>
-                                    <time class="blog-post-date" datetime="2024-10-28">28 Oct, 2024</time>
+                                    <h3 class="blog-post-title">Do Cats Get Cold?</h3>
+                                    <time class="blog-post-date" datetime="2023-11-12">12 December,2023</time>
                                 </div>
                             </article>
                         </a>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_3.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f809568f65ac5782f5ed6f16928d3d01ae9777b5d7dc41e54b06a5d6d9a6d398?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog training" class="blog-image" />
                                 <div class="blog-content">
@@ -70,13 +68,13 @@
                                 </div>
                             </article>
                         </a>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_4.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
-                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e38ca233d506b7b56f7a026a074d2481e81d76407a9e7a5c52523c42875b234?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Puppy crate training" class="blog-image" />
-                                    <div class="blog-content">
-                                        <h3 class="blog-post-title">The Do's and Don'ts of Crate Training a Puppy</h3>
-                                        <time class="blog-post-date" datetime="2024-10-03">3 Oct, 2024</time>
-                                    </div>
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e38ca233d506b7b56f7a026a074d2481e81d76407a9e7a5c52523c42875b234?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Puppy crate training" class="blog-image" />
+                                <div class="blog-content">
+                                    <h3 class="blog-post-title">The Do's and Don'ts of Crate Training a Puppy</h3>
+                                    <time class="blog-post-date" datetime="2024-10-03">3 Oct, 2024</time>
+                                </div>
                             </article>
                         </a>
                     </section>

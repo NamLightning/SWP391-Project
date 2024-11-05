@@ -19,16 +19,16 @@
 
     /* Styling the popup */
     .popup-hover {
-        display: block; /* Hidden by default */
-        padding: 10px;
+        display: none; /* Hidden by default */
+        /*padding: 10px;*/
         background-color: #f0f0f0;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        width: 200px;
+        width: 400px;
         position: absolute;
         top: 45px; /* Adjust based on the desired popup position */
-        left: 250px;
+        /*left: 250px;*/
         z-index: 100;
     }
 
@@ -56,7 +56,7 @@
   border: 1px solid #e4e7e9;
   background: #fff;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-  max-width: 376px;
+  max-width: 400px;
   width: 100%;
   font: 14px Public Sans, sans-serif;
 }
@@ -213,9 +213,9 @@
                         </div>              
                         <div class="user-profile">
                             <c:if test="${empty us}">
-                                <span><a href="login.jsp" style="text-decoration:0; color:#000" class="button">Login</a></span>
+                                <span><a href="${pageContext.request.contextPath}/login.jsp" style="text-decoration:0; color:#000" class="button">Login</a></span>
                                 <span>|</span>
-                                <span><a href="signUp.jsp" style="text-decoration:0; color:#000" class="button">Sign Up</a></span>
+                                <span><a href="${pageContext.request.contextPath}/signUp.jsp" style="text-decoration:0; color:#000" class="button">Sign Up</a></span>
                             </c:if>
                             <c:if test="${not empty us}">
                                 <div id="hoverItem">
@@ -231,13 +231,13 @@
                     <nav class="main-nav">
                         <div class="brand">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/414bc3aa4ba1b0e046c9120ca0cecefee610e27e98072a299dbc81848a1ae88c?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Pet Hub logo" class="brand-logo" />
-                            <a href="homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
+                            <a href="${pageContext.request.contextPath}/homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
                         </div>
                         <ul class="nav-menu">
-                            <li class="nav-item"><a href="CategoriesControl">Items</a></li>
-                            <li class="nav-item"><a href="servicePage.jsp">Service</a></li>
-                            <li class="nav-item"><a href="news_blog.jsp">News & Blog</a></li>
-                            <li class="nav-item"><a href="contactUsPage.jsp">Contact Us</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/CategoriesControl">Items</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/servicePage.jsp">Service</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/news_blog.jsp">News & Blog</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/contactUsPage.jsp">Contact Us</a></li>
                         </ul>
                         <form class="search-container">
                             <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">

@@ -15,46 +15,42 @@
     <center>
         <%@include file="../includes/header.jsp"%>
         <article class="newsblog-container">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5b097d8cb88487c3941539e73f6a33382058cde1213ad8f4a3b378dfa0e1841b?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog walking in rainy weather" class="hero-image" />
+            <img src="https://a.storyblok.com/f/152976/1254x837/b9d1a97ac8/istock-1290792821.jpg/m/fit-in/1152x0/filters:format(webp):quality(100)" alt="" class="hero-image" />
             <div class="content-wrapper">
                 <main class="main-news-content">
-                    <h1 class="article-title">13 things to remember when walking your dog in rain and floods</h1>
+                    <h1 class="article-title">The Do And Don't Of Crate Training A Puppy</h1>
                     <p class="article-intro">
-                        With heavy rain causing flooding around the UK, it's important we know how to keep our
-                        <a href="https://www.countryliving.com/uk/wildlife/pets/a28618170/flea-outbreak-pets-uk/" target="_blank">pets</a> safe when heading outside in the rain. Flood water can contain many harmful toxins including human and livestock waste, debris, rodents, or even downed power lines. "Extreme weather of all kinds can be distressing for dogs. Signs to look out for include pacing around the home, excessive barking, or trying to run and hide," says the Dogs' Trust. "There are steps owners can take to comfort their dogs and help them cope if they are becoming anxious. If you're worried about the weather, keep your dog indoors as much as possible."
-                        <br />
-                        Grab your raincoat and take a look at the <a href="https://www.dogstrust.org.uk/" target="_blank">Dog's Trust</a> advice below before you head out:
+                        You’ve got a new puppy, which means hours of playing, exploring… and getting them used to their new home. 
+                        Crates are a popular and effective training tool for dogs of all ages. 
+                        However, since puppies are easier to train than older dogs, it’s better to introduce them to crates while they’re still young.
                     </p>
-                    <section class="highlight-box">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7df3e14cccc5ef7f965b3be1497edfff50d8e898bde41169dc27fb2d6cf199d?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Rainy weather icon" class="highlight-icon" />
-                        <p class="highlight-text">Rain or shine, walk with confidence and care – because every step with your furry friend matters!</p>
-                    </section>
+                    <!--                    <section class="highlight-box">
+                                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e7df3e14cccc5ef7f965b3be1497edfff50d8e898bde41169dc27fb2d6cf199d?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Rainy weather icon" class="highlight-icon" />
+                                            <p class="highlight-text">Rain or shine, walk with confidence and care – because every step with your furry friend matters!</p>
+                                        </section>-->
+                    <h1 class="article-title">How to crate train a puppy?</h1>
                     <ol class="tips-list">
-                        <li>Avoid walking in any flooded areas, as the water could be contaminated.</li>
-                        <li>Consider heading out at a different time to avoid heavy rain.</li>
-                        <li>If you can head out safely, always keep your dog on a lead so they can't run off and get into difficulties.</li>
-                        <li>Keep your pet out of the water as it could contain toxic chemicals. While it's tempting for them to run through the water, keep them occupied with other treats.</li>
-                        <li>If the storm is disrupting your dog's exercise routine, keep them active in the home by creating a toy filled with food.</li>
-                        <li>Make sure your dogs wear a hi-vis jacket or <a href="https://www.countryliving.com/uk/wildlife/pets/g35012308/light-up-dog-collar/" target="_blank">reflective collar</a> to help them stay safe.</li>
-                        <li>If you are near an area that may flood, be aware that flood water could contain raw sewage.</li>
-                        <li>Bathe them if you have been out on a walk, as the water toxins could remain on their coat if not bathed properly.</li>
+                        <li>Crate or kennel training a puppy means introducing them to an indoor dog crate or kennel. You can use a crate as a safe and secure den for your new puppy to help them rest and relax for short periods of time.</li>
+                        <li>Crates are suitable for dogs of all ages but are particularly popular with owners of puppies that are house training.</li>
+                        <li>Puppies can be quite destructive when they arrive in their new homes. Some common issues include puppies going to the toilet in the wrong places, and causing damage to furniture by chewing. You can use a crate for training to help reduce these incidents.</li>
+                        <li>Crates can also stop your puppy accidentally injuring themselves by eating and chewing things they shouldn't.</li>
+                        <li>It's a good idea to take out puppy insurance as soon as you bring your new friend home so you're covered for any mishaps as soon as possible.</li>
                     </ol>
                     <figure class="image-gallery">
-                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f8c08e0a67a49e6c8263719f09ccbd8387ebd68e4e0a9c0495c8c77bf31afa45?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog walking in rainy weather" class="gallery-image" />
+                        <img src="../images/blog3.png" alt="" class="gallery-image" />
                     </figure>
                     <ul class="additional-tips">
-                        <li>Ensure they have a safe place to play in the <a href="https://www.countryliving.com/uk/homes-interiors/gardens/a20728042/best-gardening-apps-download-garden/" target="_blank">garden</a> if they need to head outdoors.</li>
-                        <li>Make sure your dog is microchipped, the contact details are up to date, and your dog is wearing a collar and an ID tag whilst out walking, so if they do get lost, they can be reunited with you.</li>
-                        <li>Keep an eye on older dogs as cold, damp weather might make them feel a little stiffer than usual.</li>
-                        <li>Never go out if your dog is feeling anxious about the weather. Some signs they are feeling unsettled include shaking, not being excited by walks or hiding. The Dogs' Trust advise: "Any dog showing behaviour change should have a vet check to rule out any underlying medical conditions or sources of pain."</li>
-                        <li>Finally, always talk to your vet if you have any concerns about your dog's health in extreme weather. They will be able to provide you with expert help.</li>
+                        <li>When your dog or puppy can remain calm and relaxed inside their crate for more than 30 minutes, that’s usually a good sign that they’re now comfortable with their crate.</li>
+                        <li>Once you’ve managed to house train your dog you may find that you don’t need to use the crate as often. You might even decide you don’t need to use a crate after house training has finished, but lots of owners continue using it as a safe den-like area for their dogs.</li>
+                        <li>The choice will depend on each individual dog and the personal circumstances of their owners.</li>
+                        <li>Crate training has become a popular discussion topic among dog owners. The benefits are that it teaches your dog how to behave in your home, as well as giving them a comfortable, safe place if they feel stressed or overwhelmed.</li>
+                        <li>Don’t leave your dog inside a crate for hours on end, and always make sure you use your crate for the right reasons. Crate training is just a small part of caring for your puppy and if you’re worried about protecting them, it’s always a good idea to consider insurance coverage for any accidents or illnesses they might suffer as they’re growing up. To find out more, get a ManyPets puppy insurance quote in seconds. </li>
                     </ul>
-                    <p>By following these tips, you can ensure a safer and more enjoyable walking experience for your dog, even in rainy or flood-prone conditions. Stay safe and keep your furry friend protected!</p>
                 </main>
                 <aside class="sidebar">
                     <section class="blog-section">
                         <h2 class="blog-title">Latest Blog</h2>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_1.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
                                 <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/645ed63efa619f99dd9553063ff261b3775ddedb728f93bec296f632f2ceaa57?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Cat eating pumpkin" class="blog-image" />
                                 <div class="blog-content">
@@ -63,22 +59,22 @@
                                 </div>
                             </article>
                         </a>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_2.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
-                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f809568f65ac5782f5ed6f16928d3d01ae9777b5d7dc41e54b06a5d6d9a6d398?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Dog training" class="blog-image" />
+                                <img src="../images/blog1.png" alt="Cat get cold" class="blog-image" />
                                 <div class="blog-content">
-                                    <h3 class="blog-post-title">How Much Does Dog Training Cost?</h3>
-                                    <time class="blog-post-date" datetime="2024-08-21">21 Aug, 2024</time>
+                                    <h3 class="blog-post-title">Do Cats Get Cold?</h3>
+                                    <time class="blog-post-date" datetime="2023-11-12">12 December,2023</time>
                                 </div>
                             </article>
                         </a>
-                        <a href="../newsblogDetails.jsp" style="text-decoration: none; color: #000; display: block;">
+                        <a href="newsblogDetails_3.jsp" style="text-decoration: none; color: #000; display: block;">
                             <article class="blog-post">
-                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e38ca233d506b7b56f7a026a074d2481e81d76407a9e7a5c52523c42875b234?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Puppy crate training" class="blog-image" />
-                                    <div class="blog-content">
-                                        <h3 class="blog-post-title">The Do's and Don'ts of Crate Training a Puppy</h3>
-                                        <time class="blog-post-date" datetime="2024-10-03">3 Oct, 2024</time>
-                                    </div>
+                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5e38ca233d506b7b56f7a026a074d2481e81d76407a9e7a5c52523c42875b234?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Puppy crate training" class="blog-image" />
+                                <div class="blog-content">
+                                    <h3 class="blog-post-title">The Do's and Don'ts of Crate Training a Puppy</h3>
+                                    <time class="blog-post-date" datetime="2024-10-03">3 Oct, 2024</time>
+                                </div>
                             </article>
                         </a>
                     </section>
