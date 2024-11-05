@@ -17,6 +17,8 @@ public class Employee {
     private String lastName;
     private String email;
     private String phoneNumber;
+    private String avatar_name;
+    private byte[] avatar_img;
 
     public Employee(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;
@@ -27,7 +29,18 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public Employee(int employeeID, String username, String password, String firstName, String lastName, String email, String phoneNumber) {
+    public Employee(String username, String password, String firstName, String lastName, String email, String phoneNumber, String avatar_name, byte[] avatar_img) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public Employee(int employeeID, String username, String password, String firstName, String lastName, String email, String phoneNumber, String avatar_name, byte[] avatar_img) {
         this.employeeID = employeeID;
         this.username = username;
         this.password = password;
@@ -35,6 +48,24 @@ public class Employee {
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     public int getEmployeeID() {

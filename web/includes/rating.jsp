@@ -82,6 +82,7 @@
         border-radius: 2px;
         border: 1px solid #e4e7e9;
         background: #fff;
+        resize: none;
     }
 
     .submit-button {
@@ -98,6 +99,7 @@
 
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section class="leave-rating">
     <header class="rating-header">RATE FOR US</header>
     <div class="rating-content">

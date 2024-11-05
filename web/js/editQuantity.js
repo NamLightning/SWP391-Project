@@ -1,21 +1,20 @@
-let quantity = 1;
+let quantities = {
+    "quantity-1": 1,
+    "quantity-2": 3
+};
 
-function increaseQuantity() {
-    quantity++;
-    updateQuantityDisplay();
+function increaseQuantity(id) {
+    quantities[id]++;
+    updateQuantityDisplay(id);
 }
 
-function decreaseQuantity() {
-    if (quantity > 1) {
-        quantity--;
-        updateQuantityDisplay();
+function decreaseQuantity(id) {
+    if (quantities[id] > 1) {
+        quantities[id]--;
+        updateQuantityDisplay(id);
     }
 }
 
-function updateQuantityDisplay() {
-    document.getElementById("quantity").innerText = quantity.toString().padStart(2, '0');
-}
-
-function updateQuantityDisplay() {
-    document.getElementById("quantityy").innerText = quantity.toString().padStart(2, '0');
+function updateQuantityDisplay(id) {
+    document.getElementById(id).innerText = quantities[id].toString().padStart(2, '0');
 }

@@ -20,41 +20,41 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class InventoryDAO {
-    public void registerInventory(Inventory i) {
-        String query = "insert into Inventory(ProductID, Quantity, ManagerID)\n"
-                + "values(?, ?, ?)";
-        try {
-            Connection conn = new DBContext().getConnection();
-            PreparedStatement ps = conn.prepareStatement(query);
+//    public void registerInventory(Inventory i) {
+//        String query = "insert into Inventory(ProductID, Quantity, ManagerID)\n"
+//                + "values(?, ?, ?)";
+//        try {
+//            Connection conn = new DBContext().getConnection();
+//            PreparedStatement ps = conn.prepareStatement(query);
 //            ps.setInt(1, c.getEmployeeID());
 //            ps.setInt(2, c.getRequestID());
 //            ps.setString(3, c.getResponse());
-            ps.execute();
-            new DBContext().close(conn, ps, null);
-        } catch (Exception e) {
-            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
+//            ps.execute();
+//            new DBContext().close(conn, ps, null);
+//        } catch (Exception e) {
+//            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//    }
 
-    public ArrayList<Inventory> findAllInventoryByEmployeeID(int employeeID) {
-        String query = "select * from Inventory\n"
-                + "where employeeID = ?\n";
-        ArrayList<Inventory> list = new ArrayList<>();
-        try {
-            Connection conn = new DBContext().getConnection();
-            PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, employeeID);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+//    public ArrayList<Inventory> findAllInventoryByEmployeeID(int employeeID) {
+//        String query = "select * from Inventory\n"
+//                + "where employeeID = ?\n";
+//        ArrayList<Inventory> list = new ArrayList<>();
+//        try {
+//            Connection conn = new DBContext().getConnection();
+//            PreparedStatement ps = conn.prepareStatement(query);
+//            ps.setInt(1, employeeID);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
 //                Inventory i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4));
 //                list.add(c);
-            }
-            new DBContext().close(conn, ps, rs);
-        } catch (Exception e) {
-            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return list;
-    }
+//            }
+//            new DBContext().close(conn, ps, rs);
+//        } catch (Exception e) {
+//            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//        return list;
+//    }
     
     public ArrayList<Inventory> findAllInventoryByRequestID(int requestID) {
         String query = "select * from Inventory\n"

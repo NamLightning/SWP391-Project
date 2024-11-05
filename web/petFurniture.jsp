@@ -78,174 +78,27 @@
                     </select>
                 </header>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur1.jpg" alt="Dog House" class="product-image">
+                    <c:forEach var="p" items="${products}">
+                        <article class="product-card">
+                            <c:url var="cartLink" value="CartControl">
+                                <c:param name="pageSize" value="${pageSize}"></c:param>
+                                <c:param name="pageNumber" value="${currentPage}"></c:param>
+                                <c:param name="action" value="add"></c:param>
+                                <c:param name="page" value="furniture"></c:param>
+                                <c:param name="id" value="${p.getProductID()}"></c:param>
+                            </c:url>
+                            <img src="${reuse.loadImage(p.getAvatar_img())}" alt="..." class="product-image">
                             <div class="product-info">
                                 <div class="product-details">
-                                    <h3 class="product-name">Dog House</h3>
-                                    <p class="product-price">599.000₫</p>
+                                    <h3 class="product-name">${p.getProductName()}</h3>
+                                    <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur2.jpg" alt="Cat House" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat House</h3>
-                                    <p class="product-price">439.000₫</p>
+                                <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                        <ion-icon name="cart-outline"></ion-icon>
+                                    </button>
                                 </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur3.jpg" alt="Dog Circle Bed" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Dog Circle Bed</h3>
-                                    <p class="product-price">299.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/70ff6e5faeb5a6e53c3a987a6ce78c20923d86f8d5bf510348faa02702e245f3?placeholderIfAbsent=true&apiKey=c13e4e7034f6406eafaf7c522b0db751" alt="Dog Long Bed" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Dog Long Bed</h3>
-                                    <p class="product-price">699.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/bowl2.jpg" alt="Cat Bowl" class="product-image" style="object-fit: contain;">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat Bowl</h3>
-                                    <p class="product-price">365.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur6.jpg" alt="Cat Chair" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat Chair</h3>
-                                    <p class="product-price">345.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur7.jpg" alt="Cat Litter Tray" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat Litter Tray</h3>
-                                    <p class="product-price">370.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur5.jpg" alt="Double Cat Bowl" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Double Cat Bowl</h3>
-                                    <p class="product-price">355.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur9.jpg" alt="Cat Tree" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat Tree</h3>
-                                    <p class="product-price">1.299.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur10.png" alt="Dog Bath" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Dog Bath</h3>
-                                    <p class="product-price">298.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/fur11.jpg" alt="Cat Toy Tree" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Cat Toy Tree</h3>
-                                    <p class="product-price">339.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
-                    <article class="product-card">
-                        <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                            <img src="images/bowl1.jpg" alt="Dog Bowl" class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">Dog Bowl</h3>
-                                    <p class="product-price">375.000₫</p>
-                                </div>
-                                <button class="add-to-cart" aria-label="Add to cart">
-                                    <ion-icon name="cart-outline"></ion-icon>
-                                </button>
-                            </div>
-                        </a>
-                    </article>
+                            </article>
+                    </c:forEach>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     starContainer.addEventListener('mouseover', function (e) {
-        if (e.target.classList.contains('star-icon')) {
+        if (e.target.classList.contains('fa fa-star')) {
             updateStars(parseInt(e.target.dataset.rating));
         }
     });
@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     starContainer.addEventListener('click', function (e) {
-        if (e.target.classList.contains('star-icon')) {
+        if (e.target.classList.contains('fa fa-star')) {
             selectedRating = parseInt(e.target.dataset.rating);
             updateStars(selectedRating);
         }
     });
 
     starContainer.addEventListener('keydown', function (e) {
-        if (e.target.classList.contains('star-icon') && (e.key === 'Enter' || e.key === ' ')) {
+        if (e.target.classList.contains('fa fa-star') && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault();
             selectedRating = parseInt(e.target.dataset.rating);
             updateStars(selectedRating);

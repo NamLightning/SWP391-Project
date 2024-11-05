@@ -1,4 +1,4 @@
-.sign-in-form {
+di.sign-in-form {
     margin-top: 5%;
     margin-bottom: 5%;
     display: flex;
@@ -8,10 +8,17 @@
     text-align: left;
 }
 
+.divider{
+    text-align:center;
+}
+
+.form-wrapper{
+    text-align: left;
+}
 .login-form-container {
     background-color: #fff;
     display: flex;
-    width: 130%;
+    width: 70%;
     height: 30%;
     flex-direction: column;
     align-items: center;
@@ -43,7 +50,7 @@
     color: #828282;
     justify-content: center;
     padding: 10px;
-    border: 1px solid #e8e8e8;
+    /*border: 1px solid #e8e8e8;*/
 }
 
 .remember-me {

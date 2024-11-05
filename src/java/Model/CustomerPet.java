@@ -14,6 +14,8 @@ public class CustomerPet {
     private int customerID;
     private int assignTo;
     private String healthStatus;
+    private String avatar_name;
+    private byte[] avatar_img;
 
     public CustomerPet(int customerID, int assignTo) {
         this.customerID = customerID;
@@ -26,11 +28,44 @@ public class CustomerPet {
         this.healthStatus = healthStatus;
     }
 
-    public CustomerPet(int customerPetID, int customerID, int assignTo, String healthStatus) {
+    public CustomerPet(int customerID, int assignTo, String avatar_name, byte[] avatar_img) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public CustomerPet(int customerID, int assignTo, String healthStatus, String avatar_name, byte[] avatar_img) {
+        this.customerID = customerID;
+        this.assignTo = assignTo;
+        this.healthStatus = healthStatus;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public CustomerPet(int customerPetID, int customerID, int assignTo, String healthStatus, String avatar_name, byte[] avatar_img) {
         this.customerPetID = customerPetID;
         this.customerID = customerID;
         this.assignTo = assignTo;
         this.healthStatus = healthStatus;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     public int getCustomerPetID() {

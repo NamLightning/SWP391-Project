@@ -20,17 +20,20 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class CategoriesDAO {
+
     public void registerCategories(Categories c) {
         String query = "insert into Categories(CategoryName)\n"
                 + "values(?)";
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, c.getCategoryName());
             ps.execute();
-            new DBContext().close(conn, ps, null);
-        } catch (Exception e) {
-            Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBContext.GetInstance().close(conn, ps, null);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
@@ -38,86 +41,92 @@ public class CategoriesDAO {
         String query = "select * from Categories\n"
                 + "where CategoryName = ?\n";
         Categories c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, categoryName);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 c = new Categories(rs.getInt(1), rs.getString(2));
             }
-            new DBContext().close(conn, ps, rs);
-        } catch (Exception e) {
-            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBContext.GetInstance().close(conn, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return c;
     }
-    
-    public ArrayList<Categories> getAllCategories(String categoryName) {
+
+    public ArrayList<Categories> getAllCategories() {
         String query = "select * from Categories\n";
         ArrayList<Categories> list = new ArrayList<>();
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setString(1, categoryName);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Categories c = new Categories(rs.getInt(1), rs.getString(2));
                 list.add(c);
             }
-            new DBContext().close(conn, ps, rs);
-        } catch (Exception e) {
-            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBContext.GetInstance().close(conn, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return list;
     }
 
     public void deleteCategories(int id) {
+        Connection conn = null;
         try {
-            DBContext db = new DBContext();
+            conn = DBContext.getConnection();
             PreparedStatement statement;
-            try (Connection con = db.getConnection()) {
-                String sql = "DELETE FROM Categories WHERE CategoryID=?";
-                statement = con.prepareStatement(sql);
-                statement.setInt(1, id);
-                statement.execute();
-            }
-            statement.close();
-        } catch (SQLException | NumberFormatException ex) {
+            String sql = "DELETE FROM Categories WHERE CategoryID=?";
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+            DBContext.GetInstance().close(conn, null, null);
+        } catch (Exception ex) {
             Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
     public void updateCategories(Categories c) {
         String sql = " UPDATE Categories\n" + "SET CategoryName = ?\n" + "WHERE CategoryID = ?";
-        DBContext db = new DBContext();
+        Connection conn = null;
         try {
-            Connection con = db.getConnection();
-            PreparedStatement statement = con.prepareStatement(sql);
+            conn = DBContext.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, c.getCategoryName());
             statement.setInt(2, c.getCategoryID());
             statement.execute();
-            new DBContext().close(con, statement, null);
+            DBContext.GetInstance().close(conn, null, null);
         } catch (Exception ex) {
             Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
-    
+
     public Categories checkExist(int id) {
         String query = "select * from Categories\n"
                 + "where CategoryID = ?\n";
         Categories c = null;
+        Connection conn = null;
         try {
-            Connection conn = new DBContext().getConnection();
+            conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 c = new Categories(rs.getInt(1), rs.getString(2));
             }
-            new DBContext().close(conn, ps, rs);
-        } catch (Exception e) {
-            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, e);
+            DBContext.GetInstance().close(conn, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(CategoriesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return c;
     }

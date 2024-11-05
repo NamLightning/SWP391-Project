@@ -5,12 +5,24 @@
  */
 package Controller;
 
+import Utils.Reuseable;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
+import java.util.Random;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,7 +47,7 @@ public class ForgotPasswordControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ForgotPasswordControl</title>");            
+            out.println("<title>Servlet ForgotPasswordControl</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ForgotPasswordControl at " + request.getContextPath() + "</h1>");
@@ -70,7 +82,18 @@ public class ForgotPasswordControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String toEmail = request.getParameter("email");
+        RequestDispatcher dispatcher = null;
+        int expirationTimeInSeconds = 300;
+        String otpvalue = Reuseable.sendOTPEmail("sup135791113@gmail.com", "xpnt hqol ciaf eeim", toEmail, "Cài lại mật khẩu", "Chúng tôi thấy bạn đang gửi yêu cầu cài lại mật khẩu cho email này trên PetHub.\nMã OTP sẽ hết hiệu lực trong 5 phút.\nMã OTP của bạn là: ");
+        HttpSession mySession = request.getSession();
+        dispatcher = request.getRequestDispatcher("forgotPassword_EnterCode.jsp");
+        request.setAttribute("message", "OTP is sent to your email id");
+        mySession.setAttribute("otp", otpvalue);
+        mySession.setAttribute("otpExpirationTime", System.currentTimeMillis() + expirationTimeInSeconds * 1000);
+        mySession.setAttribute("email", toEmail);
+        dispatcher.forward(request, response);
+
     }
 
     /**

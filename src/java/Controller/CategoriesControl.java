@@ -5,8 +5,11 @@
  */
 package Controller;
 
+import Dao.ItemDAO;
+import Model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +38,7 @@ public class CategoriesControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CategoriesControl</title>");            
+            out.println("<title>Servlet CategoriesControl</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CategoriesControl at " + request.getContextPath() + "</h1>");
@@ -56,7 +59,31 @@ public class CategoriesControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        String action = request.getParameter("action");
+        if (action != null) {
+            switch (action) {
+                case "accessory":
+                    pageValueForAccessories(request);
+                    request.getRequestDispatcher("petAccessories.jsp").forward(request, response);
+                    break;
+                case "cloth":
+                    pageValueForClothing(request);
+                    request.getRequestDispatcher("petClothing.jsp").forward(request, response);
+                    break;
+                case "furniture":
+                    pageValueForFurniture(request);
+                    request.getRequestDispatcher("petFurniture.jsp").forward(request, response);
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            pageValueForFood(request);
+            request.getRequestDispatcher("petFood.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -83,4 +110,119 @@ public class CategoriesControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void pageValueForFood(HttpServletRequest request) {
+        int pageNumber;
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            pageNumber = Integer.parseInt(request.getParameter("page"));
+        } else {
+            pageNumber = 1;
+        }
+        int pageSize;
+        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        } else {
+            pageSize = 12;
+        }
+        int offset = (pageNumber - 1) * pageSize;
+        ItemDAO productsDAO = new ItemDAO();
+        ArrayList<Item> products = productsDAO.getAllProductsWithCategory(1, offset, pageSize);
+        request.setAttribute("products", products);
+        int rows = productsDAO.getNumberOfRowsOfCategory(1);
+        int totalPages = (int) Math.ceil((double) rows / pageSize);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(totalPages, pageNumber + 2);
+
+        request.setAttribute("currentPage", pageNumber);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
+    }
+
+    private void pageValueForFurniture(HttpServletRequest request) {
+        int pageNumber;
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            pageNumber = Integer.parseInt(request.getParameter("page"));
+        } else {
+            pageNumber = 1;
+        }
+        int pageSize;
+        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        } else {
+            pageSize = 12;
+        }
+        int offset = (pageNumber - 1) * pageSize;
+        ItemDAO productsDAO = new ItemDAO();
+        ArrayList<Item> products = productsDAO.getAllProductsWithCategory(3, offset, pageSize);
+        request.setAttribute("products", products);
+        int rows = productsDAO.getNumberOfRowsOfCategory(3);
+        int totalPages = (int) Math.ceil((double) rows / pageSize);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(totalPages, pageNumber + 2);
+
+        request.setAttribute("currentPage", pageNumber);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
+    }
+
+    private void pageValueForAccessories(HttpServletRequest request) {
+        int pageNumber;
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            pageNumber = Integer.parseInt(request.getParameter("page"));
+        } else {
+            pageNumber = 1;
+        }
+        int pageSize;
+        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        } else {
+            pageSize = 12;
+        }
+        int offset = (pageNumber - 1) * pageSize;
+        ItemDAO productsDAO = new ItemDAO();
+        ArrayList<Item> products = productsDAO.getAllProductsWithCategory(4, offset, pageSize);
+        request.setAttribute("products", products);
+        int rows = productsDAO.getNumberOfRowsOfCategory(4);
+        int totalPages = (int) Math.ceil((double) rows / pageSize);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(totalPages, pageNumber + 2);
+
+        request.setAttribute("currentPage", pageNumber);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
+    }
+
+    private void pageValueForClothing(HttpServletRequest request) {
+        int pageNumber;
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            pageNumber = Integer.parseInt(request.getParameter("page"));
+        } else {
+            pageNumber = 1;
+        }
+        int pageSize;
+        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
+            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        } else {
+            pageSize = 12;
+        }
+        int offset = (pageNumber - 1) * pageSize;
+        ItemDAO productsDAO = new ItemDAO();
+        ArrayList<Item> products = productsDAO.getAllProductsWithCategory(2, offset, pageSize);
+        request.setAttribute("products", products);
+        int rows = productsDAO.getNumberOfRowsOfCategory(2);
+        int totalPages = (int) Math.ceil((double) rows / pageSize);
+        int startPage = Math.max(1, pageNumber - 2);
+        int endPage = Math.min(totalPages, pageNumber + 2);
+
+        request.setAttribute("currentPage", pageNumber);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("startPage", startPage);
+        request.setAttribute("endPage", endPage);
+    }
 }

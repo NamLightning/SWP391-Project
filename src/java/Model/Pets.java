@@ -6,12 +6,14 @@
 package Model;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author Administrator
  */
 public class Pets {
+
     private int petID;
     private int managerID;
     private String petName;
@@ -19,11 +21,21 @@ public class Pets {
     private String healthStatus;
     private Date lastCheckedDate;
     private int employeeID;
+    private String avatar_name;
+    private byte[] avatar_img;
 
     public Pets(int managerID, String petName, String petType) {
         this.managerID = managerID;
         this.petName = petName;
         this.petType = petType;
+    }
+
+    public Pets(int managerID, String petName, String petType, String avatar_name, byte[] avatar_img) {
+        this.managerID = managerID;
+        this.petName = petName;
+        this.petType = petType;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
     }
 
     public Pets(int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
@@ -34,8 +46,18 @@ public class Pets {
         this.lastCheckedDate = lastCheckedDate;
         this.employeeID = employeeID;
     }
+    
+    public Pets(int petID, String petName, String petType, String healthStatus, Date lastCheckedDate, String avatar_name, byte[] avatar_img) {
+        this.petID = petID;
+        this.petName = petName;
+        this.petType = petType;
+        this.healthStatus = healthStatus;
+        this.lastCheckedDate = lastCheckedDate;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
 
-    public Pets(int petID, int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID) {
+    public Pets(int petID, int managerID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID, String avatar_name, byte[] avatar_img) {
         this.petID = petID;
         this.managerID = managerID;
         this.petName = petName;
@@ -43,6 +65,35 @@ public class Pets {
         this.healthStatus = healthStatus;
         this.lastCheckedDate = lastCheckedDate;
         this.employeeID = employeeID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+    
+    public Pets(int petID, String petName, String petType, String healthStatus, Date lastCheckedDate, int employeeID, String avatar_name, byte[] avatar_img) {
+        this.petID = petID;
+        this.petName = petName;
+        this.petType = petType;
+        this.healthStatus = healthStatus;
+        this.lastCheckedDate = lastCheckedDate;
+        this.employeeID = employeeID;
+        this.avatar_name = avatar_name;
+        this.avatar_img = avatar_img;
+    }
+    
+    public String getAvatar_name() {
+        return avatar_name;
+    }
+
+    public void setAvatar_name(String avatar_name) {
+        this.avatar_name = avatar_name;
+    }
+
+    public byte[] getAvatar_img() {
+        return avatar_img;
+    }
+
+    public void setAvatar_img(byte[] avatar_img) {
+        this.avatar_img = avatar_img;
     }
 
     public int getPetID() {
@@ -85,12 +136,22 @@ public class Pets {
         this.healthStatus = healthStatus;
     }
 
-    public Date getLastCheckedDate() {
+    public Date lastCheckedDate() {
         return lastCheckedDate;
     }
 
     public void setLastCheckedDate(Date lastCheckedDate) {
         this.lastCheckedDate = lastCheckedDate;
+    }
+    
+    public String getLastCheckedDate() {
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+        return sd.format(lastCheckedDate);
+    }
+
+    public void setLastCheckedDate(String lastCheckedDate) {
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+        Date.valueOf(sd.format(lastCheckedDate));
     }
 
     public int getEmployeeID() {
@@ -105,5 +166,5 @@ public class Pets {
     public String toString() {
         return "Pets{" + "petID=" + petID + ", managerID=" + managerID + ", petName=" + petName + ", petType=" + petType + ", healthStatus=" + healthStatus + ", lastCheckedDate=" + lastCheckedDate + ", employeeID=" + employeeID + '}';
     }
-    
+
 }

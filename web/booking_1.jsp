@@ -33,48 +33,6 @@
                 </a>
             </nav>
 
-            <h2 class="section-title">Personal Information</h2>
-            <form class="form-container">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <div class="form-input-wrapper">
-                            <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="lastName" class="form-label">Last name</label>
-                        <div class="form-input-wrapper">
-                            <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <div class="form-input-wrapper">
-                            <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="email" class="form-label">Email</label>
-                        <div class="form-input-wrapper">
-                            <input id="email" type="email" placeholder="Email" class="form-input" value="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="address" class="form-label">Address</label>
-                        <div class="form-input-wrapper" style="width: 48%;">
-                            <input id="address" type="text" placeholder="Address" class="form-input" value="" />
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <hr class="section-divider" />
-
             <h2 class="section-title">Pet Information</h2>
             <form class="form-container">
                 <div class="form-row">

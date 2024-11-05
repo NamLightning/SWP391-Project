@@ -36,7 +36,7 @@ public class DataServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DataServlet</title>");
+            out.println("<title>Servlet DataServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DataServlet at " + request.getContextPath() + "</h1>");
@@ -55,7 +55,6 @@ public class DataServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private static long intervalSeconds = 30;
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -69,7 +68,7 @@ public class DataServlet extends HttpServlet {
         out.print("</div>");
         out.flush();
     }
-
+    
     private static String formatInterval(long totalSeconds) {
         long days = TimeUnit.SECONDS.toDays(totalSeconds);
         long hours = TimeUnit.SECONDS.toHours(totalSeconds) % 24;
