@@ -165,7 +165,7 @@
                                                                     <input type="text" id="couponCode" class="coupon-input" placeholder="Enter Code">-->
                                     <div class="coupon-choose">
                                         <label for="couponCode" class="visually-hidden" style="text-align: left;margin-right: 120px; font-weight: 600;">Coupons</label>
-                                        <a href="includes/promotionCart.jsp" style="text-decoration: none; color: orange; text-align: left;">Choose your promotions</a>
+                                        <a href="${pageContext.request.contextPath}/includes/promotionCart.jsp" style="text-decoration: none; color: orange; text-align: left;">Choose your promotions</a>
                                     </div>
                                     <button type="submit" class="apply-coupon-btn">Apply Coupon</button>
                                 </form>

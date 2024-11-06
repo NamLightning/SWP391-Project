@@ -324,7 +324,7 @@
     padding-bottom: 24px;
     flex-direction: column;
     justify-content: start;
-    /*margin: 0 24px;*/
+    margin: 0 24px;
 }
 @media (max-width: 991px) {
     .total-content {

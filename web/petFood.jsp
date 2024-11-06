@@ -72,7 +72,7 @@
             </aside>
             <main class="product-section">
                 <header class="product-header">
-                    <p class="results-count">Showing 12 of 12 results</p>
+                    <!--<p class="results-count">Showing 12 of 12 results</p>-->
                     <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
@@ -95,8 +95,8 @@
                                     <p class="product-price">${p.getPrice()}₫</p>
                                 </div>
                                 <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                            <ion-icon name="cart-outline"></ion-icon>
-                                        </button>
+                                        <ion-icon name="cart-outline"></ion-icon>
+                                    </button>
                                 </div>
                             </article>
                     </c:forEach>
@@ -139,6 +139,6 @@
     </center>
     <script src="js/price-sort.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

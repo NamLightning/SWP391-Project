@@ -54,6 +54,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <a href="manageEmployee.jsp" style="text-decoration:none;">
                                     <tr>
                                         <td>#12345128</td>
                                         <td>Phan Anh Quan</td>
@@ -62,6 +63,7 @@
                                         <td>0934 567 890</td>
                                         <td>Cashier</td>
                                     </tr> 
+                                    </a>
                                 </tbody>
                             </table>
                         </div>

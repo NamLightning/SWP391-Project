@@ -1,14 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package Controller;
 
-import Dao.CategoriesDAO;
-import Dao.ItemDAO;
-import Model.Categories;
-import Model.Item;
+import Dao.ServicesDAO;
+import Model.Services;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,24 +13,19 @@ import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 
 /**
  *
- * @author Administrator
+ * @author DELL
  */
 @MultipartConfig
-public class ItemControl extends HttpServlet {
+public class ServiceControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,10 +44,10 @@ public class ItemControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductControl</title>");
+            out.println("<title>Servlet ServiceControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServiceControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,17 +72,18 @@ public class ItemControl extends HttpServlet {
         if (action != null) {
             switch (action) {
                 case "edit":
-                    editProduct(request, response);
+                    pageValue(request);
+                    editServices(request, response);
                     break;
                 case "delete":
-                    deleteProduct(request, response);
+                    deleteServices(request, response);
                     break;
                 default:
                     break;
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("admin/manageItem.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageService.jsp").forward(request, response);
         }
     }
 
@@ -109,68 +102,63 @@ public class ItemControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        ItemDAO productsDAO = new ItemDAO();
-        CategoriesDAO categoriesDAO = new CategoriesDAO();
-        String productID;
+        ServicesDAO serviceDAO = new ServicesDAO();
+
+        String serviceID;
         Integer id = null;
-        if (request.getParameter("productID") != null) {
-            productID = request.getParameter("productID").trim();
-            id = Integer.parseInt(productID);
+
+        if (request.getParameter("serviceID") != null) {
+            serviceID = request.getParameter("serviceID");
+            id = Integer.parseInt(serviceID);
         }
-        String productName = request.getParameter("productName");
-        String productDesc = request.getParameter("productDesc");
-        String price = request.getParameter("price").trim();
-        double price2 = Double.parseDouble(price);
-        String stock = request.getParameter("stock").trim();
-        int stock2 = Integer.parseInt(stock);
-        String categories = request.getParameter("categories").trim();
-        int id2 = Integer.parseInt(categories);
+
+        String serviceName = request.getParameter("serviceName");
+        double prices = Double.parseDouble(request.getParameter("price").trim());
+
+        String serviceDesc = request.getParameter("serviceDes").trim();
 
         String submit = request.getParameter("submit");
         switch (submit) {
             case "Add":
-                Categories cadd = categoriesDAO.checkExist(id2);
                 String fileName1 = getImageName(request);
                 byte[] fileData1 = getImage(request);
-                Item i = new Item(productName, productDesc, price2, stock2, cadd.getCategoryID());
+                Services i = new Services( serviceName, prices, serviceDesc);
                 if (fileName1 != null) {
                     i.setAvatar_name(fileName1);
                 }
                 if (fileData1 != null) {
                     i.setAvatar_img(fileData1);
                 }
-                productsDAO.registerProduct(i);
-                response.sendRedirect("ProductControl");
+                serviceDAO.registerServices(i);
+                response.sendRedirect("ServiceControl");
                 break;
             case "Edit":
-                Item p = productsDAO.checkExist(id);
-                Categories c = categoriesDAO.checkExist(id2);
+                Services p = serviceDAO.checkExist(id);
                 String fileName = getImageName(request);
                 byte[] fileData = getImage(request);
-                p.setProductName(productName);
-                p.setDescription(productDesc);
-                p.setPrice(price2);
-                p.setStockQuantity(stock2);
-                p.setCategoryID(c.getCategoryID());
+
+                p.setServiceName(serviceName);
+                p.setPrice(prices);
+                p.setServiceDesc(serviceDesc);
+
                 if (fileName != null) {
                     p.setAvatar_name(fileName);
                 }
                 if (fileData != null) {
                     p.setAvatar_img(fileData);
                 }
-                productsDAO.updateProduct(p);
+                serviceDAO.updateServices(p);
                 pageValue(request);
-//                request.getRequestDispatcher("ProductControl").forward(request, response);
-                response.sendRedirect("ProductControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+                response.sendRedirect("ServiceControl");
                 break;
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("ProductControl").forward(request, response);
+                request.getRequestDispatcher("ServiceControl").forward(request, response);
                 break;
             default:
                 break;
         }
-        request.getRequestDispatcher("ProductControl").forward(request, response);
+        request.getRequestDispatcher("ServiceControl").forward(request, response);
     }
 
     /**
@@ -183,34 +171,33 @@ public class ItemControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void editProduct(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
+    private void editServices(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String productID = request.getParameter("id").trim();
-        ItemDAO productsDAO = new ItemDAO();
-        CategoriesDAO categoriesDAO = new CategoriesDAO();
-        ArrayList<Categories> list = categoriesDAO.getAllCategories();
-        Item product = productsDAO.checkExist(Integer.parseInt(productID));
+        String serviceID = request.getParameter("id");
+        ServicesDAO serviceDAO = new ServicesDAO();
+
+        Services service = serviceDAO.checkExist(Integer.parseInt(serviceID));
         pageValue(request);
-        request.setAttribute("categoryList", list);
-        request.setAttribute("product", product);
-        request.getRequestDispatcher("admin/updateItem.jsp").forward(request, response);
+
+        request.setAttribute("service", service);
+        request.getRequestDispatcher("admin/updateService.jsp").forward(request, response);
     }
 
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+    private void deleteServices(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String productID = request.getParameter("id").trim();
-        ItemDAO productsDAO = new ItemDAO();
-        Item product = productsDAO.checkExist(Integer.parseInt(productID));
-        if (product != null){
-            productsDAO.deleteProduct(product.getProductID());
+        String serviceID = request.getParameter("id").trim();
+        ServicesDAO productsDAO = new ServicesDAO();
+        Services service = productsDAO.checkExist(Integer.parseInt(serviceID));
+        if (service != null) {
+            productsDAO.deleteServices(service.getServiceID());
         }
-        response.sendRedirect("ItemControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private String getImageName(HttpServletRequest request) throws IOException, ServletException {
@@ -241,34 +228,27 @@ public class ItemControl extends HttpServlet {
     }
 
     private void pageValue(HttpServletRequest request) {
-        int pageNumber;
-        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
-            pageNumber = Integer.parseInt(request.getParameter("page"));
+        int currentPage;
+        if (request.getParameter("currentPage") != null && !request.getParameter("currentPage").isEmpty()) {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
         } else {
-            pageNumber = 1;
+            currentPage = 1;
         }
-        int pageSize;
-        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
-            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        int recordsPerPage;
+        if (request.getParameter("recordsPerPage") != null && !request.getParameter("recordsPerPage").isEmpty()) {
+            recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         } else {
-            pageSize = 12;
+            recordsPerPage = 12;
         }
-        int offset = (pageNumber - 1) * pageSize;
-        ItemDAO productsDAO = new ItemDAO();
-        CategoriesDAO categoriesDAO = new CategoriesDAO();
-        ArrayList<Item> products = productsDAO.getAllProducts(offset, pageSize);
-        request.setAttribute("products", products);
-        request.setAttribute("categoryList", categoriesDAO.getAllCategories());
-        int rows = productsDAO.getNumberOfRows();
-        int totalPages = (int) Math.ceil((double) rows / pageSize);
-        int startPage = Math.max(1, pageNumber - 2);
-        int endPage = Math.min(totalPages, pageNumber + 2);
 
-        request.setAttribute("currentPage", pageNumber);
-        request.setAttribute("totalPages", totalPages);
-        request.setAttribute("pageSize", pageSize);
-        request.setAttribute("startPage", startPage);
-        request.setAttribute("endPage", endPage);
+        int offset = (currentPage - 1) * recordsPerPage;
+        ServicesDAO serviceDao = new ServicesDAO();
+        ArrayList<Services> products = serviceDao.getAllServices(offset, recordsPerPage);
+        request.setAttribute("services", products);
+        int rows = serviceDao.getNumberOfRows();
+        int totalPages = (int) Math.ceil((double) rows / recordsPerPage);
+        request.setAttribute("noOfPages", totalPages);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("recordsPerPage", recordsPerPage);
     }
-
 }

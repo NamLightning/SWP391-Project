@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,9 +25,8 @@ public class CustomerDAO {
     public void registerCustomer(Customer c) {
         String query = "insert into Customers(Username, [Password], FirstName, LastName, Email, PhoneNumb, address, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        Connection conn = null;
         try {
-            conn = DBContext.getConnection();
+            Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, c.getUsername());
             ps.setString(2, c.getPassword());
@@ -48,9 +48,8 @@ public class CustomerDAO {
         String query = "select * from Customers\n"
                 + "where Username = ?\n";
         Customer c = null;
-        Connection conn = null;
         try {
-            conn = DBContext.getConnection();
+            Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
@@ -68,9 +67,8 @@ public class CustomerDAO {
         String query = "select * from Customers\n"
                 + "where PhoneNumb = ?\n";
         Customer c = null;
-        Connection conn = null;
         try {
-            conn = DBContext.getConnection();
+            Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, phoneNumb);
             ResultSet rs = ps.executeQuery();
@@ -85,14 +83,15 @@ public class CustomerDAO {
     }
 
     public void deleteCustomer(int id) {
-        Connection con = null;
         try {
+            DBContext db = new DBContext();
             PreparedStatement statement;
-            con = DBContext.getConnection();
-            String sql = "DELETE FROM Customers WHERE CustomerID=?";
-            statement = con.prepareStatement(sql);
-            statement.setInt(1, id);
-            statement.execute();
+            try (Connection con = db.getConnection()) {
+                String sql = "DELETE FROM Customers WHERE CustomerID=?";
+                statement = con.prepareStatement(sql);
+                statement.setInt(1, id);
+                statement.execute();
+            }
             statement.close();
         } catch (SQLException | NumberFormatException ex) {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,20 +99,10 @@ public class CustomerDAO {
     }
 
     public void updateCustomer(Customer c) {
-        String sql = "UPDATE Customers SET "
-                + "Username = COALESCE(?, Username), "
-                + "[Password] = COALESCE(?, [Password]), "
-                + "FirstName = COALESCE(?, FirstName), "
-                + "LastName = COALESCE(?, LastName), "
-                + "Email = COALESCE(?, Email), "
-                + "PhoneNumb = COALESCE(?, PhoneNumb), "
-                + "address = COALESCE(?, address), "
-                + "AvatarName = COALESCE(?, AvatarName), "
-                + "Avatar_Img = COALESCE(?, Avatar_Img) "
-                + "WHERE CustomerID = ?";
-        Connection con = null;
+        String sql = " UPDATE Customers\n" + "SET Username = ?, [Password] = ?, FirstName = ?, LastName = ?, Email = ?, PhoneNumb = ?, address = ?, AvatarName = ?, Avatar_Img = ?\n" + "WHERE CustomerID = ?";
+        DBContext db = new DBContext();
         try {
-            con = DBContext.getConnection();
+            Connection con = db.getConnection();
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, c.getUsername());
             statement.setString(2, c.getPassword());
@@ -136,9 +125,8 @@ public class CustomerDAO {
         String query = "select * from Customers\n"
                 + "where CustomerID = ?\n";
         Customer c = null;
-        Connection conn = null;
         try {
-            conn = DBContext.getConnection();
+            Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -153,32 +141,28 @@ public class CustomerDAO {
     }
 
     public Customer checkLogin(String username, String password) {
-        Connection con = null;
-        Customer a = null;
         try {
             String query = "select * from Customers where Username = ? and [Password] = ?";
-            con = DBContext.getConnection();
+            Connection con = new DBContext().getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                a = new Customer(rs.getString(1), rs.getString(2));
+            while (rs.next()) {
+                Customer a = new Customer(rs.getString(1), rs.getString(2));
+                return a;
             }
-            DBContext.GetInstance().close(con, ps, rs);
         } catch (Exception e) {
-            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-        return a;
+        return null;
     }
 
     public Customer findByEmail(Customer account) {
         String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Account WHERE Email=?";
         String check_email = account.getEmail();
         Customer a = null;
-        Connection con = null;
         try {
-            con = DBContext.getConnection();
+            Connection con = new DBContext().getConnection();
             PreparedStatement ps = con.prepareStatement(sqlQuerry_find);
             ps.setString(1, check_email);
             ResultSet rs = ps.executeQuery();
@@ -196,7 +180,7 @@ public class CustomerDAO {
         String email = account.getEmail();
         String sqlQuerry_add = "insert into Account(Username,Password,Email) values(?,?,?);";
         try {
-            Connection conn = DBContext.getConnection();
+            Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlQuerry_add);
             ps.setString(1, account.getUsername());
             ps.setString(2, account.getPassword());
@@ -216,7 +200,7 @@ public class CustomerDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(conn, ps, rs);
@@ -225,20 +209,28 @@ public class CustomerDAO {
         }
         return list;
     }
-
+    
     public ArrayList<Customer> getAllCustomer(int currentPage, int recordsPerPage) {
         DBContext db = new DBContext();
         ArrayList<Customer> list = new ArrayList<>();
         try {
             Connection con = db.getConnection();
-
-            String sql = "select * from Customers ORDER BY CustomerID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+            
+            int start = currentPage * recordsPerPage - recordsPerPage;
+            int end = recordsPerPage * currentPage;
+            String sql = "With prod AS\n"
+                    + "( SELECT *,\n"
+                    + "ROW_NUMBER() OVER (order by CustomerID) as RowNumber \n"
+                    + "FROM Customers )\n"
+                    + "select *\n"
+                    + "from prod\n"
+                    + "Where RowNumber Between ? and ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, currentPage);
-            ps.setInt(2, recordsPerPage);
+            ps.setInt(1, start);
+            ps.setInt(2, end);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(con, ps, rs);
@@ -247,8 +239,7 @@ public class CustomerDAO {
         }
         return list;
     }
-
-    public Integer getNumberOfRows() {
+     public Integer getNumberOfRows() {
         DBContext db = new DBContext();
         Integer numOfRows = 0;
         try {
@@ -263,5 +254,10 @@ public class CustomerDAO {
             Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numOfRows;
+    }
+     
+     public static void main(String[] args) {
+        CustomerDAO cus = new CustomerDAO();
+        cus.registerCustomer(new Customer("hung", "123", "hung", "hung", "hungtn@gmail.com", "0909"));
     }
 }

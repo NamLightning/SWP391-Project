@@ -45,11 +45,11 @@
 
         .preview img {
             max-width: 100%;
-            height: auto;
+            height: 175px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 100px;
             padding: 5px;
-            max-height: 200px;
+            max-height: 500px;
         }
 
         /* Hiển thị tên file đã chọn */
@@ -77,14 +77,14 @@
                     <div class="account-settings-content">
                         <div class="account-info">
                             <form action="ProfileControl" method="POST" class="form-fields" enctype="multipart/form-data">
-                                <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />
+                                <!--<img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />-->
+                                <div class="preview" id="preview"><img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" /></div>
                                 <label style="margin-bottom: 10px;">
-                                    <label>Upload Items Image: </label>
-                                    <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                     <input type="file" name="image" id="image" accept="image/*"
                                            onchange="showFileNameAndPreview()">
+                                    <label>Upload Items Image: </label>
+                                    <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                 </label>
-                                <div class="preview" id="preview"></div>
                                 <div class="input-group">
                                     <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
                                     <div class="form-field">
@@ -126,25 +126,29 @@
                                     <input type="text" id="lastName" class="form-input" value="${account.getLastName()}" aria-label="Last Name">
                                 </div>
                             </div>
+                            <!--                            <div class="form-group">
+                                                            <label for="address" class="form-label">Address</label>
+                                                            <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
+                                                        </div>-->
+                            <!--                            <div class="form-row">
+                                                            <div class="form-group">
+                                                                <label for="city" class="form-label">City</label>
+                                                                <div class="form-input">
+                                                                    <span>Da Nang</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="zipCode" class="form-label">Zip Code</label>
+                                                                <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
+                                                            </div>
+                                                        </div>-->
                             <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
-                            </div>
-                            <div class="form-row">
+                                <!--                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                                                                <input type="tel" id="phoneNumber" class="form-input" value="+1-202-555-0118" aria-label="Phone Number">-->
                                 <div class="form-group">
-                                    <label for="city" class="form-label">City</label>
-                                    <div class="form-input">
-                                        <span>Da Nang</span>
-                                    </div>
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
                                 </div>
-                                <div class="form-group">
-                                    <label for="zipCode" class="form-label">Zip Code</label>
-                                    <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phoneNumber" class="form-label">Phone Number</label>
-                                <input type="tel" id="phoneNumber" class="form-input" value="+1-202-555-0118" aria-label="Phone Number">
                             </div>
                             <button type="submit" class="save-button">Save Changes</button>
                         </form>

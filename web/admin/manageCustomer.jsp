@@ -32,8 +32,8 @@
                     <div class="customer-table">
                         <div class="header">
                             <h2 style="font-size: 20px;">All Customers</h2>
-                            <button class="vip-customer-btn" 
-                                    onclick="window.location.href = '<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>
+<!--                            <button class="vip-customer-btn" 
+                                    onclick="window.location.href = '<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>-->
                         </div>
                         <div class="search-sort-bar">
                             <input type="text" placeholder="Search customer..." class="search-input">

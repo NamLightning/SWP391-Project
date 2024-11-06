@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -124,29 +125,29 @@
                         <div class="form-container">
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="serviceName" class="form-label" readonly>Service Name</label>
+                                    <label for="serviceName" class="form-label" >Service Name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="serviceName" type="text" placeholder="Service Name" class="form-input" value="" />
+                                        <input id="serviceName" type="text" placeholder="Service Name" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
-                                    <label for="bookingDate" class="form-label" readonly>Booking Date</label>
+                                    <label for="bookingDate" class="form-label" >Booking Date</label>
                                     <div class="form-input-wrapper">
-                                        <input id="bookingDate" type="text" placeholder="Booking Date" class="form-input" value="" />
+                                        <input id="bookingDate" type="text" placeholder="Booking Date" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-field">
-                                    <label for="startDate" class="form-label" readonly>Start Date</label>
+                                    <label for="startDate" class="form-label" >Start Date</label>
                                     <div class="form-input-wrapper">
-                                        <input id="startDate" type="text" placeholder="Start Date" class="form-input" value="" />
+                                        <input id="startDate" type="text" placeholder="Start Date" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
-                                    <label for="price" class="form-label" readonly>Price</label>
+                                    <label for="price" class="form-label" >Price</label>
                                     <div class="form-input-wrapper">
-                                        <input id="price" type="text" placeholder="Price" class="form-input" value="" />
+                                        <input id="price" type="text" placeholder="Price" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>

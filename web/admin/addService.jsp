@@ -33,42 +33,44 @@
                             <h2 style="font-size: 30px;">Add Service</h2>
                         </div>
 
-                        <div class="search" style="justify-self: center;">
-                            <label style="margin-bottom: 10px;">
+                        <form action="${pageContext.request.contextPath}/ServiceControl" method="POST" enctype="multipart/form-data">
 
-                                <!-- Khung hiển thị ảnh và tên file -->
-                                <div class="preview" id="preview" style="margin-bottom: 10px;"></div>
+                            <div class="search" style="justify-self: center;">
+                                <label style="margin-bottom: 10px;">
 
-                                <label>Upload Service Image: </label>
-                                <label class="custom-upload-button" onclick="document.getElementById('image').click()">Chọn
-                                    ảnh</label>
-                                <input type="file" name="image" id="image" accept="image/*"
-                                       onchange="showFileNameAndPreview()">
-                            </label>
+                                    <!-- Khung hiển thị ảnh và tên file -->
+                                    <div class="preview" id="preview" style="margin-bottom: 10px;"></div>
+
+                                    <label>Upload Service Image: </label>
+                                    <label class="custom-upload-button" onclick="document.getElementById('image').click()">Chọn
+                                        ảnh</label>
+                                    <input type="file" name="image" id="image" accept="image/*"
+                                           onchange="showFileNameAndPreview()">
+                                </label>
 
 
-                            <label class="property">
-                                <p>Service name:</p>
-                                <input id="serviceName" name="serviceName" type="text" placeholder="Service Name" value="">
-                            </label>
+                                <label class="property">
+                                    <p>Service name:</p>
+                                    <input id="serviceName" name="serviceName" type="text" placeholder="Service Name" value="">
+                                </label>
 
-                            <label class="property">
-                                <p>Service price:</p>
-                                <input id="price" name="price" type="text" placeholder="Service price" value="">
-                            </label>
+                                <label class="property">
+                                    <p>Service price:</p>
+                                    <input id="price" name="price" type="text" placeholder="Service price" value="">
+                                </label>
 
-                            <label class="property">
-                                <p>Service description:</p>
-                                <input id="serviceDes" name="serviceDes" type="text" placeholder="Service description"
-                                       value="">
-                            </label>
+                                <label class="property">
+                                    <p>Service description:</p>
+                                    <input id="serviceDes" name="serviceDes" type="text" placeholder="Service description"
+                                           value="">
+                                </label>
 
-                            <div style="justify-self: center;">
-                                <input name="submit" class="btn-add" type="submit" value="Add">
+                                <div style="justify-self: center;">
+                                    <input name="submit" class="btn-add" type="submit" value="Add">
 
+                                </div>
                             </div>
-                        </div>
-
+                        </form>
 
                     </div>
 

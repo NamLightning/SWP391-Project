@@ -36,16 +36,18 @@
                             <h2 style="font-size: 30px;">Add Item</h2>
                         </div>
 
-                        <form action="${pageContext.request.contextPath}/ProductControl" method="POST" enctype="multipart/form-data">
+                        <form action="${pageContext.request.contextPath}/ItemControl" method="POST" enctype="multipart/form-data">
                             <div class="search" style="justify-self: center;">
                                 <label style="margin-bottom: 10px;">
+
+                                    <div class="preview" id="preview"></div>
+
                                     <label>Upload Items Image: </label>
                                     <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                     <input type="file" name="image" id="image" accept="image/*"
                                            onchange="showFileNameAndPreview()">
                                 </label>
 
-                                <div class="preview" id="preview"></div>
 
                                 <label class="property">
                                     <p>Item name:</p>

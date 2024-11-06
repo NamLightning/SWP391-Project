@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class PromotionsDAO {
 
-    public static ArrayList<Promotions> getAllPromotions() {
+    public ArrayList<Promotions> getAllPromotions() {
         DBContext db = new DBContext();
         ArrayList<Promotions> oList = new ArrayList<>();
         String sql = "SELECT * FROM Promotions";
@@ -65,17 +65,16 @@ public class PromotionsDAO {
     }
 
     public void addPromotion(Promotions e) {
-        String sql = "INSERT INTO Promotions (PromotionID, PromotionName, DiscountPercent, StartDate, EndDate, Descriptions) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Promotions (PromotionName, DiscountPercent, StartDate, EndDate, Descriptions) VALUES (?, ?, ?, ?, ?)";
         DBContext db = new DBContext();
 
         try (Connection con = db.getConnection();
              PreparedStatement statement = con.prepareStatement(sql)) {
-            statement.setInt(1, e.getPromotionID());
-            statement.setString(2, e.getPromotionName());
-            statement.setInt(3, e.getDiscountPercent());
-            statement.setTimestamp(4, Timestamp.valueOf(e.getStartDate()));
-            statement.setTimestamp(5, Timestamp.valueOf(e.getEndDate()));
-            statement.setString(6, e.getDescriptions());
+            statement.setString(1, e.getPromotionName());
+            statement.setInt(2, e.getDiscountPercent());
+            statement.setTimestamp(3, Timestamp.valueOf(e.StartDate()));
+            statement.setTimestamp(4, Timestamp.valueOf(e.EndDate()));
+            statement.setString(5, e.getDescriptions());
             statement.execute();
         } catch (Exception ex) {
             Logger.getLogger(PromotionsDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -178,5 +177,10 @@ public class PromotionsDAO {
             Logger.getLogger(PromotionsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return e;
+    }
+    public static void main(String[] args) {
+        PromotionsDAO dao = new PromotionsDAO();
+        Promotions e = new Promotions( "sell sap san", 0, LocalDateTime.parse("2004-12-12T12:40"), LocalDateTime.parse("2004-12-12T13:40"), "mua thi dc sell");
+        dao.getAllPromotions().forEach(System.out::print);
     }
 }

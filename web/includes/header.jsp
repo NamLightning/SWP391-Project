@@ -33,7 +33,7 @@
     }
 
     .popup-hover2 {
-        display: none; /* Hidden by default */
+        display: block; /* Hidden by default */
         padding: 10px;
         background-color: #f0f0f0;
         border: 1px solid #ccc;
@@ -130,7 +130,7 @@
 }
 
 .remove-icon {
-  width: 16px;
+  width: 10px;
 }
 
 .divider-popup {
@@ -189,6 +189,10 @@
   color: #fd7e14;
   background-color: #ffffff;
   border: 2px solid #fa8232;
+}
+
+.remove-icon {
+  width: 16px;
 }
 
 </style>

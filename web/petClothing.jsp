@@ -72,7 +72,7 @@
             </aside>
             <main class="product-section">
                 <header class="product-header">
-                    <p class="results-count">Showing 12 of 12 results</p>
+                    <!--<p class="results-count">Showing 12 of 12 results</p>-->
                     <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>

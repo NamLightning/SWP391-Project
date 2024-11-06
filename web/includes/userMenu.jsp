@@ -34,9 +34,9 @@
 
     .user-avatar {
         aspect-ratio: 1;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
-        width: 50px;
+        /*width: 40px;*/
         border-radius: 20px;
 
     }
@@ -45,6 +45,7 @@
         align-self: flex-start;
         display: flex;
         flex-direction: column;
+        width: 50px;
     }
 
     .user-name {
@@ -85,10 +86,11 @@
 
 <nav class="navigation-sidebar popup-hover2" id="popupHover">
     <a href="userProfile.jsp" class="dashboard-nav-item" style="text-decoration: none;">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a941b2e9410775a652bd7701d03ebf4c9db560ba6aeb91f78f1562a8451d0287?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="user-avatar" alt="User avatar" />
+        <!--<img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a941b2e9410775a652bd7701d03ebf4c9db560ba6aeb91f78f1562a8451d0287?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="user-avatar" alt="User avatar" />-->
+        <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="user-avatar" />
         <div class="user-info">
             <h3 class="user-name">${us}</h3>
-            <p class="user-points">VIP Points: 20</p>
+            <p class="user-points"> VIP Points: 20</p>
         </div>
     </a>
     <a href="orderHistory.jsp" class="nav-item">

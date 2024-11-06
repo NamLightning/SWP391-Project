@@ -85,30 +85,30 @@
                         </div>
                     </div>
                     <div class="form-field">
-                        <label for="petType" class="form-label">Gender</label>
+                        <label for="petType" class="form-label">Pet Type</label>
                         <div class="form-input-wrapper">
                             <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
+                                <option selected>Choose Pet Type</option> 
+                                <option value="1">Dog</option>
+                                <option value="2">Cat</option>
                             </select>
                         </div>
                     </div>
-
                 </div>
-                <div class="form-row">
+<!--                <div class="form-row">
                     <div class="form-field">
                         <label for="petBreed" class="form-label">Breed</label>
                         <div class="form-input-wrapper">
                             <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" />
                         </div>
-                    </div>
-                    <div class="form-field">
+                    </div>-->
+<!--                    <div class="form-field">
                         <label for="petAge" class="form-label">Age</label>
                         <div class="form-input-wrapper">
                             <input id="petAge" type="text" placeholder="Age" class="form-input" value="" />
                         </div>
-                    </div>
-                </div>
+                    </div>-->
+                <!--</div>-->
             </form>
 
             <div class="footer-button" >

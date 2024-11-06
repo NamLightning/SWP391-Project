@@ -17,7 +17,7 @@
 
     <body>
         <button class="chat-btn">
-            <img src="<c:url value="/images/chat.svg"/>" width="30" alt="">
+            <img src="<c:url value="images/chat.svg"/>" width="30" alt="">
         </button>
         <div class="chat-container">
             <div class="chat-header">

@@ -45,7 +45,7 @@
         <servlet-class>Controller.ImageServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProductControl</servlet-name>
+        <servlet-name>ItemControl</servlet-name>
         <servlet-class>Controller.ItemControl</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
@@ -89,6 +89,14 @@
         <servlet-name>ContactUs</servlet-name>
         <servlet-class>Controller.ContactUs</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChatBoxServlet</servlet-name>
+        <servlet-class>Controller.ChatBoxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServiceControl</servlet-name>
+        <servlet-class>Controller.ServiceControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -126,8 +134,8 @@
         <url-pattern>/ImageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProductControl</servlet-name>
-        <url-pattern>/ProductControl</url-pattern>
+        <servlet-name>ItemControl</servlet-name>
+        <url-pattern>/ItemControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WebSocketChatServer</servlet-name>
@@ -168,6 +176,10 @@
     <servlet-mapping>
         <servlet-name>ContactUs</servlet-name>
         <url-pattern>/ContactUs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceControl</servlet-name>
+        <url-pattern>/ServiceControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
