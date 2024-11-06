@@ -20,15 +20,16 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class ItemDAO {
+
     private static ItemDAO productsDAO;
-    
+
     public static ItemDAO getInstance() {
-        if (productsDAO == null){
+        if (productsDAO == null) {
             productsDAO = new ItemDAO();
         }
         return productsDAO;
     }
-    
+
     public void registerProduct(Item p) {
         String query = "insert into Products(ProductName, [Description], Price, StockQuantity, CategoryID, AvatarName, Avatar_Img)\n"
                 + "values(?, ?, ?, ?, ?, ?, ?)";
@@ -48,7 +49,7 @@ public class ItemDAO {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public ArrayList<Item> getAllProducts() {
         String query = "select * from Products\n";
         ArrayList<Item> list = new ArrayList<>();
@@ -66,22 +67,18 @@ public class ItemDAO {
         }
         return list;
     }
-    
+
     public ArrayList<Item> getAllProducts(int currentPage, int recordsPerPage) {
         DBContext db = new DBContext();
         ArrayList<Item> list = new ArrayList<>();
         try {
             Connection con = db.getConnection();
-            
+
             int start = currentPage * recordsPerPage - recordsPerPage;
             int end = recordsPerPage * currentPage;
-            String sql = "With prod AS\n"
-                    + "( SELECT *,\n"
-                    + "ROW_NUMBER() OVER (order by ProductID) as RowNumber \n"
-                    + "FROM Products )\n"
-                    + "select *\n"
-                    + "from prod\n"
-                    + "Where RowNumber Between ? and ?";
+
+            String sql = "select * from Products ORDER BY ProductID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, start);
             ps.setInt(2, end);
@@ -96,7 +93,7 @@ public class ItemDAO {
         }
         return list;
     }
-    
+
     public Integer getNumberOfRows() {
         DBContext db = new DBContext();
         Integer numOfRows = 0;
@@ -132,7 +129,7 @@ public class ItemDAO {
         }
         return p;
     }
-    
+
     public Item findProductByCategory(int category) {
         String query = "select * from Products\n"
                 + "where CategoryID = ?\n";
@@ -188,7 +185,7 @@ public class ItemDAO {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public Item checkExist(int id) {
         String query = "select * from Products\n"
                 + "where ProductID = ?\n";

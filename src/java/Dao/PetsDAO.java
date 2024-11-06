@@ -3,11 +3,9 @@ package Dao;
 import ConnectDB.DBContext;
 import Model.Pets;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

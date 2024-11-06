@@ -9,6 +9,7 @@ import Model.Pets;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Date;
@@ -85,7 +86,7 @@ public class PetControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("manager-listPets.jsp").forward(request, response);
+            request.getRequestDispatcher("managePet.jsp").forward(request, response);
         }
     }
 
@@ -117,45 +118,38 @@ public class PetControl extends HttpServlet {
         String petName = request.getParameter("petName");
         String petType = request.getParameter("petType").trim();
 
-        
         String customerID = request.getParameter("customerID");
-        int manageId = Integer.parseInt(customerID);
-        
+        int cusID = Integer.parseInt(customerID);
+
         String action = request.getParameter("action"); // Changed to "action" for clarity
         switch (action) {
             case "Add":
 
-                Services i = new Services( serviceName, prices, serviceDesc);
+                Pets i = new Pets(petName, petType, cusID);
 
-                serviceDAO.registerServices(i);
-                response.sendRedirect("ServiceControl");
+                petsDAO.addPet(i);
+                response.sendRedirect("PetControl");
                 break;
             case "Edit":
-                Services p = serviceDAO.checkExist(id);
-                String fileName = getImageName(request);
-                byte[] fileData = getImage(request);
+                Pets p = petsDAO.checkExist(id);
 
-                p.setServiceName(serviceName);
-                p.setPrice(prices);
-                p.setServiceDesc(serviceDesc);
+                p.setPetName(petName);
+                p.setPetType(petType);
+                p.setCustomerID(cusID);
 
-                if (fileName != null) {
-                    p.setAvatar_name(fileName);
-                }
-                if (fileData != null) {
-                    p.setAvatar_img(fileData);
-                }
-                serviceDAO.updateServices(p);
+                petsDAO.updatePet(p);
                 pageValue(request);
-                response.sendRedirect("ServiceControl");
+                response.sendRedirect("PetControl");
                 break;
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("ServiceControl").forward(request, response);
+                request.getRequestDispatcher("PetControl").forward(request, response);
                 break;
             default:
                 break;
         }
+        request.getRequestDispatcher("PetControl").forward(request, response);
+
     }
 
     // Add the necessary helper methods: getImageName, getImage, and pageValue
@@ -177,14 +171,24 @@ public class PetControl extends HttpServlet {
         String petsID = request.getParameter("id").trim();
         PetsDAO petsDAO = new PetsDAO();
 
-        Pets pets = petsDAO.checkExist(Integer.parseInt(petsID));
+        Pets pet = petsDAO.checkExist(Integer.parseInt(petsID));
 
-        request.setAttribute("pets", pets);
+        request.setAttribute("pet", pet);
         request.getRequestDispatcher("editPets.jsp").forward(request, response);
     }
 
-    private void deletePets(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    private void deletePets(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        String serviceID = request.getParameter("id").trim();
+        PetsDAO petDAO = new PetsDAO();
+        Pets pet = petDAO.checkExist(Integer.parseInt(serviceID));
+        if (pet != null) {
+            petDAO.deletePet(pet.getPetID());
+        }
+        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private void pageValue(HttpServletRequest request) {
@@ -201,8 +205,8 @@ public class PetControl extends HttpServlet {
             recordsPerPage = 12;
         }
         PetsDAO petsDao = new PetsDAO();
-        ArrayList<Pets> products = petsDao.getAllPet(currentPage, recordsPerPage);
-        request.setAttribute("products", products);
+        ArrayList<Pets> pets = petsDao.getAllPet(currentPage, recordsPerPage);
+        request.setAttribute("pets", pets);
         int rows = petsDao.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {

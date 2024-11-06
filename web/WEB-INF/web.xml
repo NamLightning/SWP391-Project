@@ -41,10 +41,6 @@
         <servlet-class>Controller.CheckOutControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ImageServlet</servlet-name>
-        <servlet-class>Controller.ImageServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ProductControl</servlet-name>
         <servlet-class>Controller.ItemControl</servlet-class>
         <async-supported>true</async-supported>
@@ -120,10 +116,6 @@
     <servlet-mapping>
         <servlet-name>CheckOutControl</servlet-name>
         <url-pattern>/CheckOutControl</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ImageServlet</servlet-name>
-        <url-pattern>/ImageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductControl</servlet-name>
