@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="Dao.CategoriesDAO, java.util.ArrayList, Model.Categories"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Add Product</title>
-        <link rel="stylesheet" href="../css/addProduct.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addItem.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -37,13 +36,11 @@
                             <h2 style="font-size: 30px;">Add Item</h2>
                         </div>
 
-
                         <form action="${pageContext.request.contextPath}/ProductControl" method="POST" enctype="multipart/form-data">
-
                             <div class="search" style="justify-self: center;">
                                 <label style="margin-bottom: 10px;">
 
-                                    <div class="preview" id="preview" style="margin-bottom: 10px;"></div>
+                                    <div class="preview" id="preview"></div>
 
                                     <label>Upload Items Image: </label>
                                     <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
@@ -59,8 +56,7 @@
 
                                 <label class="property">
                                     <p>Item description:</p>
-                                    <input id="productDesc" name="productDesc" type="text" placeholder="Item description"
-                                           value="">
+                                    <input id="productDesc" name="productDesc" type="text" placeholder="Item description" value="">
                                 </label>
 
                                 <label class="property">
@@ -76,10 +72,10 @@
                                 <label class="property">
                                     <p>Item category:</p>
 
-                                     <select id="categories" name="categories">
+                                    <select id="categories" name="categories">
                                         <c:forEach var="category" items="${categoryList}">
                                             <option value="${category.getCategoryID()}">${category.getCategoryName()}</option>
-                                        </c:forEach>  
+                                        </c:forEach>                                            
                                     </select>
                                 </label>
                                 <div style="justify-self: center;">
@@ -87,16 +83,11 @@
                                 </div>
                             </div>
                         </form>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
-        <script src="../js/sidebar.js"></script>
-
-
+        <script src="${pageContext.request.contextPath}/js/sidebar.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

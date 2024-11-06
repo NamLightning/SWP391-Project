@@ -5,7 +5,6 @@
  */
 package Model;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,6 +24,14 @@ public class Promotions {
 
     public Promotions(int promotionID, String promotionName, int discountPercent, LocalDateTime startDate, LocalDateTime endDate, String Descriptions) {
         this.promotionID = promotionID;
+        this.promotionName = promotionName;
+        this.discountPercent = discountPercent;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.Descriptions = Descriptions;
+    }
+
+    public Promotions(String promotionName, int discountPercent, LocalDateTime startDate, LocalDateTime endDate, String Descriptions) {
         this.promotionName = promotionName;
         this.discountPercent = discountPercent;
         this.startDate = startDate;

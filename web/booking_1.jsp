@@ -85,11 +85,11 @@
                         </div>
                     </div>
                     <div class="form-field">
-                        <label for="petType" class="form-label">Type</label>
+                        <label for="petType" class="form-label">Gender</label>
                         <div class="form-input-wrapper">
                             <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
                             </select>
                         </div>
                     </div>

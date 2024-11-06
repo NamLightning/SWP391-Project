@@ -254,4 +254,9 @@ public class CustomerDAO {
         }
         return numOfRows;
     }
+     
+     public static void main(String[] args) {
+        CustomerDAO cus = new CustomerDAO();
+        cus.registerCustomer(new Customer("hung", "123", "hung", "hung", "hungtn@gmail.com", "0909"));
+    }
 }

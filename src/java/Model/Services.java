@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package Model;
-
-import java.sql.Date;
-
 /**
  *
  * @author Administrator
@@ -21,6 +18,19 @@ public class Services {
     private byte[] avatar_img;
 
     public Services() {
+    }
+
+    public Services(String serviceName, double price, String serviceDesc) {
+        this.serviceName = serviceName;
+        this.price = price;
+        this.serviceDesc = serviceDesc;
+    }
+
+    public Services(int serviceID, String serviceName, double price, String serviceDesc) {
+        this.serviceID = serviceID;
+        this.serviceName = serviceName;
+        this.price = price;
+        this.serviceDesc = serviceDesc;
     }
 
     public Services(int serviceID, String serviceName, double price, String serviceDesc, String avatar_name, byte[] avatar_img) {

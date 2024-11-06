@@ -85,6 +85,10 @@
         <servlet-name>PromotionControl</servlet-name>
         <servlet-class>Controller.PromotionControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServiceControl</servlet-name>
+        <servlet-class>Controller.ServiceControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -161,12 +165,16 @@
         <servlet-name>PromotionControl</servlet-name>
         <url-pattern>/PromotionControl</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceControl</servlet-name>
+        <url-pattern>/ServiceControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>checkOut.jsp</welcome-file>
+        <welcome-file>booking_2.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
