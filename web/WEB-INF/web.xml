@@ -175,6 +175,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>booking_2.jsp</welcome-file>
+        <welcome-file>booking_1.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

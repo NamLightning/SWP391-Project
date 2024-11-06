@@ -199,7 +199,7 @@ public class CustomerDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(conn, ps, rs);
@@ -208,28 +208,22 @@ public class CustomerDAO {
         }
         return list;
     }
-    
+
     public ArrayList<Customer> getAllCustomer(int currentPage, int recordsPerPage) {
         DBContext db = new DBContext();
         ArrayList<Customer> list = new ArrayList<>();
         try {
             Connection con = db.getConnection();
-            
+
             int start = currentPage * recordsPerPage - recordsPerPage;
             int end = recordsPerPage * currentPage;
-            String sql = "With prod AS\n"
-                    + "( SELECT *,\n"
-                    + "ROW_NUMBER() OVER (order by CustomerID) as RowNumber \n"
-                    + "FROM Customers )\n"
-                    + "select *\n"
-                    + "from prod\n"
-                    + "Where RowNumber Between ? and ?";
+            String sql = "select * from Customers ORDER BY CustomerID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, start);
             ps.setInt(2, end);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getString(8),rs.getString(9), rs.getBytes(10));
+                Customer p = new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBytes(10));
                 list.add(p);
             }
             new DBContext().close(con, ps, rs);
@@ -238,7 +232,8 @@ public class CustomerDAO {
         }
         return list;
     }
-     public Integer getNumberOfRows() {
+
+    public Integer getNumberOfRows() {
         DBContext db = new DBContext();
         Integer numOfRows = 0;
         try {
@@ -254,8 +249,8 @@ public class CustomerDAO {
         }
         return numOfRows;
     }
-     
-     public static void main(String[] args) {
+
+    public static void main(String[] args) {
         CustomerDAO cus = new CustomerDAO();
         cus.registerCustomer(new Customer("hung", "123", "hung", "hung", "hungtn@gmail.com", "0909"));
     }

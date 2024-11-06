@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="Model.Customer"%>
+<%@page import="Dao.CustomerDAO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +13,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     </head>
+    <%
+        CustomerDAO customerDAO3 = new CustomerDAO();
+        String username3 = (String) session.getAttribute("us");
+        Customer customer3 = customerDAO3.findCustomerByUsername(username3);
+        pageContext.setAttribute("account", customer3);
+    %>
     <body>
+
     <center>
         <%@include file="includes/header.jsp"%>
 
@@ -36,16 +45,18 @@
             <h2 class="section-title">Personal Information</h2>
             <form class="form-container">
                 <div class="form-row">
+                    <input type="text" name="id" class="" id="id" value="${account.getCustomerID()}" hidden readonly>
+
                     <div class="form-field">
                         <label for="firstName" class="form-label">First Name</label>
                         <div class="form-input-wrapper">
-                            <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
+                            <input id="firstName" type="text" placeholder="First Name" class="form-input" value="${account.getFirstName()}" />
                         </div>
                     </div>
                     <div class="form-field">
                         <label for="lastName" class="form-label">Last name</label>
                         <div class="form-input-wrapper">
-                            <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
+                            <input id="lastName" type="text" placeholder="Last name" class="form-input" value="${account.getLastName()}" />
                         </div>
                     </div>
                 </div>
@@ -53,13 +64,13 @@
                     <div class="form-field">
                         <label for="phoneNumber" class="form-label">Phone Number</label>
                         <div class="form-input-wrapper">
-                            <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
+                            <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="${account.getPhoneNumber()}" />
                         </div>
                     </div>
                     <div class="form-field">
                         <label for="email" class="form-label">Email</label>
                         <div class="form-input-wrapper">
-                            <input id="email" type="email" placeholder="Email" class="form-input" value="" />
+                            <input id="email" type="email" placeholder="Email" class="form-input" value="${account.getEmail()}" />
                         </div>
                     </div>
                 </div>
@@ -67,7 +78,7 @@
                     <div class="form-field">
                         <label for="address" class="form-label">Address</label>
                         <div class="form-input-wrapper" style="width: 48%;">
-                            <input id="address" type="text" placeholder="Address" class="form-input" value="" />
+                            <input id="address" type="text" placeholder="Address" class="form-input" value="${account.getAddress()}" />
                         </div>
                     </div>
                 </div>
