@@ -45,7 +45,7 @@
         <servlet-class>Controller.ImageServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ItemControl</servlet-name>
+        <servlet-name>ProductControl</servlet-name>
         <servlet-class>Controller.ItemControl</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
@@ -89,14 +89,6 @@
         <servlet-name>ContactUs</servlet-name>
         <servlet-class>Controller.ContactUs</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ChatBoxServlet</servlet-name>
-        <servlet-class>Controller.ChatBoxServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ServiceControl</servlet-name>
-        <servlet-class>Controller.ServiceControl</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -134,8 +126,8 @@
         <url-pattern>/ImageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ItemControl</servlet-name>
-        <url-pattern>/ItemControl</url-pattern>
+        <servlet-name>ProductControl</servlet-name>
+        <url-pattern>/ProductControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WebSocketChatServer</servlet-name>
@@ -177,9 +169,29 @@
         <servlet-name>ContactUs</servlet-name>
         <url-pattern>/ContactUs</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>com.vnpay.common.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vnpayQuery</servlet-name>
+        <servlet-class>com.vnpay.common.vnpayQuery</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>vnpayRefund</servlet-name>
+        <servlet-class>com.vnpay.common.vnpayRefund</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>ServiceControl</servlet-name>
-        <url-pattern>/ServiceControl</url-pattern>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/vnpayajax/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vnpayQuery</servlet-name>
+        <url-pattern>/vnpayquery/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vnpayRefund</servlet-name>
+        <url-pattern>/vnpayrefund/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

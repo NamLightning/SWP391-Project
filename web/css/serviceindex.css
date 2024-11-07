@@ -351,6 +351,7 @@ body{
     width: 200px;
     padding: 0 32px;
     margin: 2% 0;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .button-book {

@@ -117,8 +117,8 @@ body {
 
 
 .content-wrapper {
-/*    display: grid;
-    grid-template-columns: 1fr 1fr;*/
+    /*    display: grid;
+        grid-template-columns: 1fr 1fr;*/
     width: 100%;
     max-width: 1119px;
     flex-direction: column;
@@ -284,7 +284,7 @@ body {
     bottom: 245px;
     height: 100px;
     padding: 22px 32px;
-
+    cursor: pointer;
     margin-top: 30px;
 }
 .continue-button {
@@ -301,10 +301,12 @@ body {
     border: none;
     outline: none;
     margin: 0 0 0 82%;
+    cursor: pointer; 
 }
 
 .continue-button:hover {
     background-color: rgba(0,0,0);
+    cursor: pointer; 
 }
 @media (max-width: 991px) {
     .action-list, .calendar-info-container, .pet-info, .time-set {
@@ -325,5 +327,6 @@ body {
     .continue-button {
         padding: 20px;
         width: 100%;
+        cursor: pointer; 
     }
 }

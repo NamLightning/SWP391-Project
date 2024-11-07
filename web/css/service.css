@@ -229,11 +229,13 @@ body {
     justify-content: center;
     padding: 18px 36px 18px 48px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .button-text {
     align-self: stretch;
     margin: auto 0;
+    cursor: pointer;
 }
 
 .button-icon {
@@ -243,6 +245,7 @@ body {
     width: 36px;
     align-self: stretch;
     margin: auto 0;
+    cursor: pointer;
     
 }
 

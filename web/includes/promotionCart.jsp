@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.List" %>
@@ -220,8 +221,8 @@
                                 </div>
                                 <input type="radio" class="radio-icon" disabled>
                             </div>
-                            <button class="confirm-button" type="submit" onclick="closeModal()">Confirm</button>
                         </div>
+                        <button class="confirm-button" type="submit" onclick="closeModal()">Confirm</button>
                     </div>
                 </center>
             </div>

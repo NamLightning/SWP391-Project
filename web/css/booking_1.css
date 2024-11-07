@@ -191,7 +191,7 @@ body {
     bottom: 245px;
     height: 100px;
     padding: 22px 32px;
-
+    cursor: pointer;
     margin-top: 30px;
 }
 .continue-button {
@@ -208,10 +208,12 @@ body {
     border: none;
     outline: none;
     margin: 0 0 0 auto;
+    cursor: pointer; 
 }
 
 .continue-button:hover {
     background-color: rgba(0,0,0);
+    cursor: pointer; 
 }
 
 @media (max-width: 991px) {
@@ -223,6 +225,7 @@ body {
     }
     .step-number, .step-text, .continue-button {
         white-space: initial;
+        cursor: pointer; 
     }
     .form-input, .form-select {
         max-width: 100%;
