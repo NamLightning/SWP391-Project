@@ -34,11 +34,10 @@
 
     .user-avatar {
         aspect-ratio: 1;
-        object-fit: contain;
+        object-fit: cover;
         object-position: center;
-        width: 50px;
+        /*width: 50px;*/
         border-radius: 20px;
-
     }
 
     .user-info {
@@ -81,11 +80,16 @@
     }
 
 </style>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <nav class="navigation-sidebar popup-hover2" id="popupHover">
     <a href="userProfile.jsp" class="dashboard-nav-item" style="text-decoration: none;">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a941b2e9410775a652bd7701d03ebf4c9db560ba6aeb91f78f1562a8451d0287?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="user-avatar" alt="User avatar" />
+        <c:if test="${empty ac.getAvatar_img()}">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
+        </c:if>
+        <c:if test="${not empty ac.getAvatar_img()}">
+            <img src="${reuse.loadImage(ac.getAvatar_img())}" alt="User avatar" class="user-avatar" />
+        </c:if>
         <div class="user-info">
             <h3 class="user-name">${us}</h3>
             <p class="user-points">VIP Points: 20</p>

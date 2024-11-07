@@ -19,16 +19,16 @@
 
     /* Styling the popup */
     .popup-hover {
-        display: block; /* Hidden by default */
-        padding: 10px;
-        background-color: #f0f0f0;
+        display: none; /* Hidden by default */
+
+        background-color: #ffffff;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        width: 200px;
+        width: 350px;
         position: absolute;
-        top: 45px; /* Adjust based on the desired popup position */
-        left: 250px;
+        top: 50px; /* Adjust based on the desired popup position */
+        right: 10px;
         z-index: 100;
     }
 
@@ -44,156 +44,303 @@
         right: 50px;
         z-index: 100;
     }
-    .popup-hover img{
-        width: 50px;
-        height: 50px;
-    }
+    /*    .popup-hover img{
+            width: 50px;
+            height: 50px;
+        }*/
+    /*    .popup-hover .remove-icon{
+            width: 25px;
+            height: 25px;
+        }*/
 </style>
 <style>
-.shopping-cart {
-  padding: 0 0 24px;
-  border-radius: 4px;
-  border: 1px solid #e4e7e9;
-  background: #fff;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-  max-width: 376px;
-  width: 100%;
-  font: 14px Public Sans, sans-serif;
-}
+    .shopping-cart {
+        padding: 0 0 24px;
+        border-radius: 4px;
+        border: 1px solid #e4e7e9;
+        background: #fff;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        max-width: 400px;
+        width: 100%;
+        font: 14px Public Sans, sans-serif;
+    }
 
-.cart-popup-header {
-  width: auto;
-  background: #fff;
-  box-shadow: 0 -1px 0 0 #e4e7e9 inset;
-  font-size: 16px;
-  color: #5f6c72;
-  font-weight: 500;
-  line-height: 24px;
-  padding: 16px 24px;
-}
+    .cart-popup-header {
+        width: auto;
+        background: #fff;
+        box-shadow: 0 -1px 0 0 #e4e7e9 inset;
+        font-size: 16px;
+        color: #5f6c72;
+        font-weight: 500;
+        line-height: 24px;
+        padding: 16px 24px;
+    }
 
-.cart-count {
-  font-weight: 400;
-  color: #5f6c72;
-}
+    .cart-count {
+        font-weight: 400;
+        color: #5f6c72;
+    }
 
-.product-popup-list {
-  display: flex;
-  margin-top: 20px;
-  flex-direction: column;
-}
+    .product-popup-list {
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+    }
 
-.product-popup-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  background: #fff;
-  gap: 16px;
-  margin-top: 16px;
-}
+    .product-popup-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        background: #fff;
+        gap: 16px;
+        margin-top: 16px;
+        padding: 0 10px;
+    }
 
-.product-popup-image {
-  aspect-ratio: 1;
-  object-fit: contain;
-  width: 80px;
-}
+    .product-popup-image {
+        aspect-ratio: 1;
+        object-fit: contain;
+        width: 80px;
+    }
 
-.product-popup-details {
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-}
+    .product-popup-details {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+    }
 
-.product-popup-name {
-  color: #191c1f;
-  font-weight: 400;
-  line-height: 20px;
-}
+    .product-popup-name {
+        color: #191c1f;
+        font-weight: 400;
+        line-height: 20px;
+    }
 
-.product-popup-price {
-  display: flex;
-  margin-top: 8px;
-  align-items: start;
-  gap: 4px;
-  line-height: 1;
-}
+    .product-popup-price {
+        display: flex;
+        margin-top: 8px;
+        align-items: start;
+        gap: 4px;
+        line-height: 1;
+    }
 
-.quantity-popup {
-  color: #5f6c72;
-  font-weight: 400;
-}
+    .quantity-popup {
+        color: #5f6c72;
+        font-weight: 400;
+    }
 
-.price-popup {
-  color: #2da5f3;
-  font-weight: 600;
-}
+    .price-popup {
+        color: #2da5f3;
+        font-weight: 600;
+    }
 
-.remove-icon {
-  width: 16px;
-}
+    .remove-icon {
+        width: 16px;
+    }
 
-.divider-popup {
-  background-color: #e4e7e9;
-  height: 1px;
-  margin-top: 20px;
-  width: 100%;
-}
+    .divider-popup {
+        background-color: #e4e7e9;
+        height: 1px;
+        margin-top: 20px;
+        width: 100%;
+    }
 
-.subtotal-popup {
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
-  padding: 0 24px;
-}
+    .subtotal-popup {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        padding: 0 24px;
+    }
 
-.subtotal-label-popup {
-  color: #475156;
-  font-weight: 400;
-}
+    .subtotal-label-popup {
+        color: #475156;
+        font-weight: 400;
+    }
 
-.subtotal-amount-popup {
-  color: #191c1f;
-  font-weight: 500;
-}
+    .subtotal-amount-popup {
+        color: #191c1f;
+        font-weight: 500;
+    }
 
-.cart-actions-popup {
-  display: flex;
-  margin-top: 20px;
-  padding: 0 24px;
-  flex-direction: column;
-  gap: 12px;
-}
+    .cart-actions-popup {
+        display: flex;
+        margin-top: 20px;
+        padding: 0 24px;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-.btn {
-  border-radius: 2px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.17px;
-  line-height: 48px;
-  text-align: center;
-  cursor: pointer;
-}
+    .btn {
+        border-radius: 2px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.17px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+    }
 
-.btn-primary {
-  background-color: #fd7e14;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-style: hidden;
-}
+    .btn-primary {
+        background-color: #fd7e14;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-style: hidden;
+    }
 
-.btn-secondary {
-  color: #fd7e14;
-  background-color: #ffffff;
-  border: 2px solid #fa8232;
-}
+    .btn-secondary {
+        color: #fd7e14;
+        background-color: #ffffff;
+        border: 2px solid #fa8232;
+    }
 
 </style>
+<script>
+    function updateQuantityXHR(cartItemId, action) {
+    const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'CartControl?action=' + action + '&cid=' + cartItemId, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            // Handle the server response
+            xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText)
+                    if ('delete' === action){
+            const product = document.getElementById(`product - ` + cartItemId);
+                    if (product){
+            product.remove();
+            }
+            const productPopup = document.getElementById(`product - popup - item - ` + cartItemId);
+                    if (productPopup){
+            productPopup.remove();
+            }
+            const newTotalPrice = parseFloat(document.getElementById('subtotal').value) - (data.Price * data.newQuantity);
+                    if (document.getElementById('amount') !== null){
+            document.getElementById('total-value').innerText = newTotalPrice + '₫';
+            }
+            document.getElementById('subtotal-popup-amount').innerText = newTotalPrice + '₫';
+                    if (document.getElementById('amount') !== null){
+            document.getElementById('amount').value = newTotalPrice;
+            }
+            document.getElementById('subtotal').value = newTotalPrice;
+                    if (document.getElementById('grand-total-value') !== null){
+            document.getElementById('grand-total-value').innerText = newTotalPrice + '₫';
+            }
+            } else if (data.newQuantity >= 1){
+            document.getElementById(`quantity - ` + cartItemId).innerText = data.newQuantity;
+                    document.getElementById(`quantity - popup - ` + cartItemId).innerText = data.newQuantity;
+                    const newSubTotal = data.Price * data.newQuantity;
+                    let newTotalPrice;
+                    if (action === 'decrement'){
+            newTotalPrice = parseFloat(document.getElementById('subtotal').value) - data.Price;
+            }
+            if (action === 'increment'){
+            newTotalPrice = parseFloat(document.getElementById('subtotal').value) + data.Price;
+            }
+            document.getElementById(`product - subtotal - ` + cartItemId).innerText = newSubTotal + '₫';
+                    document.getElementById('total-value').innerText = newTotalPrice + '₫';
+                    document.getElementById('subtotal-popup-amount').innerText = newTotalPrice + '₫';
+                    document.getElementById('subtotal').value = newTotalPrice;
+                    document.getElementById('amount').value = newTotalPrice;
+                    document.getElementById('grand-total-value').innerText = newTotalPrice + '₫';
+            } else if (data.newQuantity === 0){
+            const product = document.getElementById(`product - ` + cartItemId);
+                    if (product){
+            product.remove();
+            }
+            const productPopup = document.getElementById(`product - popup - item - ` + cartItemId);
+                    if (productPopup){
+            productPopup.remove();
+            }
+            const newTotalPrice = parseFloat(document.getElementById('subtotal').value) - data.Price;
+                    document.getElementById('total-value').innerText = newTotalPrice + '₫';
+                    document.getElementById('subtotal-popup-amount').innerText = newTotalPrice + '₫';
+                    document.getElementById('amount').value = newTotalPrice;
+                    document.getElementById('subtotal').value = newTotalPrice;
+                    document.getElementById('grand-total-value').innerText = newTotalPrice + '₫';
+            }
+            }
+            };
+            // Send the request with parameters
+            xhr.send();
+            }
+</script>
+<!--<script>
+    function addToCartXHR(productId, action) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'CartControl?action=' + action +'&id=' + productId, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">
+    // Handle the server response
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const data = JSON.parse(xhr.responseText)
+            const productPopupList = document.querySelector('.product-popup-list');
+            if (document.getElementById(`product-popup-item-` + data.cartItemId)){
+            const productPopupItem = document.createElement('article');
+            productPopupItem.classList.add('product-popup-item');
+            
+            productPopupItem.id = 'product-popup-item-' + data.cartItemId;
+            const img = document.createElement('img');
+            img.src = data.image;
+            img.classList.add('product-popup-image');
+            productPopupItem.appendChild(img);
+            
+            const productDetails = document.createElement('div');
+            productDetails.classList.add('product-popup-details');
+            
+            const h3 = document.createElement('h3');
+            h3.classList.add('product-popup-name');
+            h3.innerText = data.ProductName;
+            productDetails.appendChild(h3);
+            
+            const priceDiv = document.createElement('div');
+            priceDiv.classList.add('product-popup-price');
+            
+            const quantitySpan = document.createElement('span');
+            quantitySpan.classList.add('quantity-popup');
+            quantitySpan.id = 'quantity-popup-' + data.cartItemId;
+            quantitySpan.innerText = data.Quantity;
+            priceDiv.appendChild(quantitySpan);
+            const xSpan = document.createElement('span');
+            xSpan.innerText = ' x ';
+            priceDiv.appendChild(xSpan);
+            const priceSpan = document.createElement('span');
+            priceSpan.classList.add('price-popup');
+            priceSpan.id = 'price-popup-' + data.cartItemId;
+            priceSpan.innerText = data.Price + '₫';
+            priceDiv.appendChild(priceSpan);
+            productDetails.appendChild(priceDiv);
+            productPopupItem.appendChild(productDetails);
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-item');
+            removeButton.type = 'button';
+            removeButton.setAttribute('aria-label', 'Remove ' + data.ProductName + ' from cart');
+            removeButton.onclick = function() {
+                updateQuantityXHR(data.cartItemId, 'delete');
+            };
+            const removeIcon = document.createElement('img');
+            removeIcon.src = 'https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8';  // Replace with actual icon URL
+            removeIcon.alt = 'Remove';
+            removeIcon.classList.add('remove-icon');
+            removeButton.appendChild(removeIcon);
+            productPopupItem.appendChild(removeButton);
+            productPopupList.appendChild(productPopupItem);
+            const cartCount = document.querySelector('.cart-count');
+            cartCount.innerText = `(parseInt(cartCount.innerText.replace(/[^\d]/g, '')) + 1)`;
+            const subtotal = document.getElementById('subtotal');
+            subtotal.value = parseFloat(subtotal.value) + parseFloat(productPrice);
+            const subtotalPopup = document.getElementById('subtotal-popup-amount');
+            subtotalPopup.innerText = parseFloat(subtotal.value) + '₫';
+            }
+        }
+    };
+
+    // Send the request with parameters
+    xhr.send();
+}
+</script>-->
 <header>
     <center>
         <div class="container">
@@ -212,16 +359,32 @@
                             <span>FPT Plaza, Ngu Hanh Son District, Da Nang</span>
                         </div>              
                         <div class="user-profile">
+                            <%
+                                CustomerDAO customerDAO = new CustomerDAO();
+                                String username = (String) session.getAttribute("us");
+                                Customer c = customerDAO.findCustomerByUsername(username);
+                                pageContext.setAttribute("ac", c);
+                            %>
                             <c:if test="${empty us}">
-                                <span><a href="login.jsp" style="text-decoration:0; color:#000" class="button">Login</a></span>
+                                <span><a href="${pageContext.request.contextPath}/login.jsp" style="text-decoration:0; color:#000" class="button">Login</a></span>
                                 <span>|</span>
-                                <span><a href="signUp.jsp" style="text-decoration:0; color:#000" class="button">Sign Up</a></span>
+                                <span><a href="${pageContext.request.contextPath}/signUp.jsp" style="text-decoration:0; color:#000" class="button">Sign Up</a></span>
                             </c:if>
                             <c:if test="${not empty us}">
                                 <div id="hoverItem">
                                     <span style="text-decoration: none; color: #000;">Hi, ${us}</span>
-                                    <a href="userProfile.jsp">
-                                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
+                                    <a href="${pageContext.request.contextPath}/userProfile.jsp" style="text-decoration: none;">
+                                        <c:if test="${empty us}">
+                                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
+                                        </c:if>
+                                        <c:if test="${not empty us}">
+                                            <c:if test="${empty ac.getAvatar_img()}">
+                                                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
+                                            </c:if>
+                                            <c:if test="${not empty ac.getAvatar_img()}">
+                                                <img src="${reuse.loadImage(ac.getAvatar_img())}" alt="User avatar" class="user-avatar" />
+                                            </c:if>
+                                        </c:if>
                                         <%@include file="userMenu.jsp" %>
                                     </a>
                                 </div>
@@ -234,10 +397,10 @@
                             <a href="homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
                         </div>
                         <ul class="nav-menu">
-                            <li class="nav-item"><a href="CategoriesControl">Items</a></li>
-                            <li class="nav-item"><a href="servicePage.jsp">Service</a></li>
-                            <li class="nav-item"><a href="news_blog.jsp">News & Blog</a></li>
-                            <li class="nav-item"><a href="contactUsPage.jsp">Contact Us</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/CategoriesControl">Items</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/servicePage.jsp">Service</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/news_blog.jsp">News & Blog</a></li>
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/contactUsPage.jsp">Contact Us</a></li>
                         </ul>
                         <form class="search-container">
                             <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">
@@ -251,9 +414,6 @@
                                     <c:set var="totalPrice" value="0" scope="page"/>
                                     <%
                                         CartItemsDAO cartItemsDAO = new CartItemsDAO();
-                                        CustomerDAO customerDAO = new CustomerDAO();
-                                        String username = (String) session.getAttribute("us");
-                                        Customer c = customerDAO.findCustomerByUsername(username);
                                         ArrayList<CartItems> cartList = cartItemsDAO.getAllCartItems(c.getCustomerID());
                                         pageContext.setAttribute("carts", cartList);
                                     %>
@@ -267,23 +427,24 @@
                                                     <c:param name="action" value="delete"></c:param>
                                                     <c:param name="cid" value="${c.getCartItemID()}"></c:param>
                                                 </c:url>
-                                                <article class="product-popup-item">
+                                                <article class="product-popup-item" id="product-popup-item-${c.getCartItemID()}">
                                                     <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-popup-image">
                                                     <div class="product-popup-details">
                                                         <h3 class="product-popup-name">${pDAO.checkExist(c.getProductID()).getProductName()}</h3>
                                                         <div class="product-popup-price">
-                                                            <span class="quantity-popup">${c.getQuantity()}</span> <span>x</span> <span class="price-popup">${pDAO.checkExist(c.getProductID()).getPrice()}₫</span>
+                                                            <span class="quantity-popup" id="quantity-popup-${c.getCartItemID()}">${c.getQuantity()}</span> <span>x</span> <span class="price-popup" id="price-popup-${c.getCartItemID()}">${pDAO.checkExist(c.getProductID()).getPrice()}₫</span>
                                                         </div>
                                                     </div>
-                                                    <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart" type="button" onclick="window.location.href = '${deleteLink}'"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="remove-icon" /></button>
+                                                    <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart" type="button" onclick="updateQuantityXHR(${c.getCartItemID()}, 'delete')"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="remove-icon" /></button>
                                                 </article>
                                                 <c:set var="itemTotal" value="${pDAO.checkExist(c.getProductID()).getPrice() * c.getQuantity()}" />
                                                 <c:set var="totalPrice" value="${totalPrice + itemTotal}" />
                                             </c:forEach>
                                         </div>
                                         <div class="divider-popup" role="separator"></div>
+                                        <input id="subtotal" name="subtotal" type="text" value="${totalPrice}" hidden/>
                                         <div class="subtotal-popup">
-                                            <span class="subtotal-popup-label">Sub-Total:</span><span class="subtotal-popup-amount">${totalPrice}₫</span>
+                                            <span class="subtotal-popup-label">Sub-Total:</span><span class="subtotal-popup-amount" id="subtotal-popup-amount">${totalPrice}₫</span>
                                         </div>
                                         <div class="cart-actions-popup">
                                             <button class="btn btn-primary" type="button" onclick="window.location.href = 'checkOut.jsp'">Checkout Now<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0bfd7ef916026eff87b43b560d5575f85e58e7b5c3fa9b0f3710711f43901ee6?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" aria-hidden="true" /></button>
@@ -334,7 +495,7 @@
                                                                 }
                                                                 }, 100);
                                                                 });</script>
-<!--<script>
+<script>
                     // Get elements
                     const hoverItem2 = document.getElementById('hoverItem2');
                     const popupHover2 = document.getElementById('popupHover2');
@@ -366,4 +527,4 @@
                             }
                             }, 100);
                             });
-</script>-->
+</script>

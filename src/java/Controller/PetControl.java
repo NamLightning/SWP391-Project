@@ -97,79 +97,68 @@ public class PetControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-
-        PetsDAO petsDAO = new PetsDAO();
-
-        String petsID = request.getParameter("petID").trim();
-        int petId = Integer.parseInt(petsID);
-        String managerID = request.getParameter("managerID");
-        int manageId = Integer.parseInt(managerID);
-        String petName = request.getParameter("petName");
-        String petType = request.getParameter("petType").trim();
-        String healthStatus = request.getParameter("healthStatus").trim();
-        String lastCheckedDate = request.getParameter("lastCheckedDate").trim();
-        
-        // Parse the lastCheckedDate to java.sql.Date
-        java.sql.Date sqlLastCheckedDate = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            java.util.Date parsedDate = sdf.parse(lastCheckedDate);
-            sqlLastCheckedDate = new java.sql.Date(parsedDate.getTime());
-        } catch (ParseException ex) {
-            Logger.getLogger(PetControl.class.getName()).log(Level.SEVERE, "Invalid date format", ex);
-        }
-        
-
-        String action = request.getParameter("action"); // Changed to "action" for clarity
-        switch (action) {
-            case "Edit":
-                Pets p = petsDAO.checkExist(petId);
-                String fileName = getImageName(request);
-                byte[] fileData = getImage(request);
-                
-                // Update pet details
-                p.setPetID(petId);
-                p.setManagerID(manageId);
-                p.setPetName(petName);
-                p.setPetType(petType);
-                p.setHealthStatus(healthStatus);
-                p.setLastCheckedDate(sqlLastCheckedDate); // Set the parsed date
-
-                if (fileName != null) {
-                    p.setAvatar_name(fileName);
-                }
-                if (fileData != null) {
-                    p.setAvatar_img(fileData);
-                }
-                
-                // Update pet in database
-                petsDAO.updatePet(p);
-                pageValue(request);
-                response.sendRedirect("PetsControl");
-                break;
-                
-            case "Cancel":
-                pageValue(request);
-                request.getRequestDispatcher("PetsControl").forward(request, response);
-                break;
-                
-            default:
-                // Handle cases where action is not "Edit" or "Cancel"
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
-                break;
-        }
+//        response.setContentType("text/html;charset=UTF-8");
+//        request.setCharacterEncoding("UTF-8");
+//        response.setCharacterEncoding("UTF-8");
+//
+//        PetsDAO petsDAO = new PetsDAO();
+//
+//        String petsID;
+//        Integer id = null;
+//
+//        if (request.getParameter("petID") != null) {
+//            petsID = request.getParameter("petID");
+//            id = Integer.parseInt(petsID);
+//        }
+//
+//        String petName = request.getParameter("petName");
+//        String petType = request.getParameter("petType").trim();
+//
+//        
+//        String customerID = request.getParameter("customerID");
+//        int manageId = Integer.parseInt(customerID);
+//        
+//        String action = request.getParameter("action"); // Changed to "action" for clarity
+//        switch (action) {
+//            case "Add":
+//
+//                Services i = new Services( serviceName, prices, serviceDesc);
+//
+//                serviceDAO.registerServices(i);
+//                response.sendRedirect("ServiceControl");
+//                break;
+//            case "Edit":
+//                Services p = serviceDAO.checkExist(id);
+//                String fileName = getImageName(request);
+//                byte[] fileData = getImage(request);
+//
+//                p.setServiceName(serviceName);
+//                p.setPrice(prices);
+//                p.setServiceDesc(serviceDesc);
+//
+//                if (fileName != null) {
+//                    p.setAvatar_name(fileName);
+//                }
+//                if (fileData != null) {
+//                    p.setAvatar_img(fileData);
+//                }
+//                serviceDAO.updateServices(p);
+//                pageValue(request);
+//                response.sendRedirect("ServiceControl");
+//                break;
+//            case "Cancel":
+//                pageValue(request);
+//                request.getRequestDispatcher("ServiceControl").forward(request, response);
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     // Add the necessary helper methods: getImageName, getImage, and pageValue
-
-
     /**
      * Returns a short description of the servlet.
      *
@@ -196,33 +185,6 @@ public class PetControl extends HttpServlet {
 
     private void deletePets(HttpServletRequest request, HttpServletResponse response) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private String getImageName(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        String fileName = null;
-        if (filePart != null) {
-            fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-        }
-        return fileName;
-    }
-
-    private byte[] getImage(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        byte[] fileData = null;
-        if (filePart != null) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            if (!fileName.isEmpty()) {
-                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-                filePart.write(uploadPath + File.separator + fileName);
-                fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
-            }
-        }
-        return fileData;
     }
 
     private void pageValue(HttpServletRequest request) {

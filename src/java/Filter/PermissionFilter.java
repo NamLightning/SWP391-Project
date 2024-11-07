@@ -135,38 +135,38 @@ public class PermissionFilter implements Filter {
         ServletContext context = httpRequest.getServletContext();
         log("Servlet Context: " + context.getResource(url));
 
-        if (isStaticResource(url)) {
-            chain.doFilter(request, response);
-            return;
-        }
-
-        if (role != null && isRestrictedForRole(role, url)) {
-            httpResponse.sendRedirect("/PetStore/error.jsp");
-            return;
-        }
-
-        if (role == null || !isAuthorizedForPath(role, url)) {
-            if (role.equals("Guest") || role.equals("Customer")) {
-                httpResponse.sendRedirect("/PetStore/error.jsp");
-            }
-            if (role.equals("Manager")) {
-                httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
-            }
-            return;
-        }
-
-        if (context.getResource(url) == null) {
-            if (isValidServlet(url)) {
-                if (role.equals("Guest") || role.equals("Customer")) {
-                    httpResponse.sendRedirect("/PetStore/error.jsp");
-                    return;
-                }
-                if (role.equals("Manager")) {
-                    httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
-                    return;
-                }
-            }
-        }
+//        if (isStaticResource(url)) {
+//            chain.doFilter(request, response);
+//            return;
+//        }
+//
+//        if (role != null && isRestrictedForRole(role, url)) {
+//            httpResponse.sendRedirect("/PetStore/error.jsp");
+//            return;
+//        }
+//
+//        if (role == null || !isAuthorizedForPath(role, url)) {
+//            if (role.equals("Guest") || role.equals("Customer")) {
+//                httpResponse.sendRedirect("/PetStore/error.jsp");
+//            }
+//            if (role.equals("Manager")) {
+//                httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
+//            }
+//            return;
+//        }
+//
+//        if (context.getResource(url) == null) {
+//            if (isValidServlet(url)) {
+//                if (role.equals("Guest") || role.equals("Customer")) {
+//                    httpResponse.sendRedirect("/PetStore/error.jsp");
+//                    return;
+//                }
+//                if (role.equals("Manager")) {
+//                    httpResponse.sendRedirect("/PetStore/admin/admin.jsp");
+//                    return;
+//                }
+//            }
+//        }
 
         Throwable problem = null;
         try {
@@ -276,8 +276,8 @@ public class PermissionFilter implements Filter {
                 log("PermissionFilter:Initializing filter");
             }
         }
-        roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp", "/vipPage.jsp", "/ContactUs", "/checkOut.jsp", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/bookingHistory.jsp", "/bookingHistoryDetails.jsp", "/orderHistory.jsp", "/orderHistoryDetails.jsp"));
-        roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/checkOut.jsp", "/cart.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/vipPage.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp", "/ProfileControl", "/ContactUs", "/checkOut.jsp", "/bookingHistory.jsp", "/bookingHistoryDetails.jsp", "/orderHistory.jsp", "/orderHistoryDetails.jsp"));
+        roleAccessMap.put("Guest", Arrays.asList("/CategoriesControl", "/cart.jsp", "/homePage.jsp", "/login.jsp", "/signUp.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/forgotPassword_ChangePass.jsp", "/forgotPassword_EnterCode.jsp", "/forgotPassword_EnterEmail.jsp", "/forgotPassword_Success.jsp", "/LoginControl", "/ForgotPasswordControl", "/SignUpControl", "/NewPasswordControl", "/ValidateOtp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp", "/vipPage.jsp", "/ContactUs", "/CheckOutControl", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/bookingHistory.jsp", "/bookingHistoryDetails.jsp", "/orderHistory.jsp", "/orderHistoryDetails.jsp", "/blogDetail/"));
+        roleAccessMap.put("Customer", Arrays.asList("/CategoriesControl", "/CheckOutControl", "/CartControl", "/LogOutControl", "/cart.jsp", "/homePage.jsp", "/servicePage.jsp", "/news_blog.jsp", "/error.jsp", "/contactUsPage.jsp", "/userProfile.jsp", "/newsblogDetails.jsp", "/itemDetails.jsp", "/serviceDetails.jsp", "/serviceChoose.jsp", "/failCheckOut.jsp", "/successCheckOut.jsp", "/successOrder.jsp", "/vipPage.jsp", "/booking_1.jsp", "/booking_2.jsp", "/booking_3.jsp", "/ProfileControl", "/ContactUs", "/checkOut.jsp", "/bookingHistory.jsp", "/bookingHistoryDetails.jsp", "/orderHistory.jsp", "/orderHistoryDetails.jsp", "/blogDetail/", "/CheckOutControl"));
         roleAccessMap.put("Employee", Arrays.asList("/employee/", "/CategoriesControl", "/LogOutControl"));
         roleAccessMap.put("Manager", Arrays.asList("/admin/", "/LogOutControl", "/ProductControl", "/DataServlet", "/CustomerControl"));
         roleNoAccessMap.put("Manager", Arrays.asList("/admin/updateItem.jsp", "/admin/manageItem.jsp"));

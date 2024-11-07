@@ -4,21 +4,21 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class BookedService {
+public class ServiceBooking {
 
     private int serviceId;
     private int cusId;
     private LocalDateTime serviceDate;
     private String status;
 
-    public BookedService(int serviceId, int cusId, LocalDateTime serviceDate, String status) {
+    public ServiceBooking(int serviceId, int cusId, LocalDateTime serviceDate, String status) {
         this.serviceId = serviceId;
         this.cusId = cusId;
         this.serviceDate = serviceDate;
         this.status = status;
     }
 
-    public BookedService() {
+    public ServiceBooking() {
     }
 
     public int getServiceId() {

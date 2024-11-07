@@ -5,8 +5,14 @@
  */
 package Controller;
 
+import Dao.CartItemsDAO;
+import Dao.ItemDAO;
+import Model.CartItems;
+import Model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +62,27 @@ public class CheckOutControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        
+        String[] selectedCart = request.getParameterValues("checkbox");
+        CartItemsDAO cartItemsDAO = new CartItemsDAO();
+        ItemDAO itemDAO = new  ItemDAO();
+        int totalPrice = 0;
+        ArrayList<CartItems> checkOutList = new ArrayList<>();
+        if (selectedCart != null){
+            for (String cart : selectedCart){
+                CartItems c = cartItemsDAO.checkExist(Integer.parseInt(cart.trim()));
+                Item i = itemDAO.checkExist(c.getProductID());
+                double subTotal = c.getQuantity() * i.getPrice();
+                totalPrice += subTotal;
+                checkOutList.add(c);
+            }
+        }
+        request.setAttribute("price", totalPrice);
+        request.setAttribute("checkout", checkOutList);
+        request.getRequestDispatcher("checkOut.jsp").forward(request, response);
     }
 
     /**
@@ -70,7 +96,27 @@ public class CheckOutControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        
+        String[] selectedCart = request.getParameterValues("checkbox");
+        CartItemsDAO cartItemsDAO = new CartItemsDAO();
+        ItemDAO itemDAO = new  ItemDAO();
+        int totalPrice = 0;
+        ArrayList<CartItems> checkOutList = new ArrayList<>();
+        if (selectedCart != null){
+            for (String cart : selectedCart){
+                CartItems c = cartItemsDAO.checkExist(Integer.parseInt(cart.trim()));
+                Item i = itemDAO.checkExist(c.getProductID());
+                double subTotal = c.getQuantity() * i.getPrice();
+                totalPrice += subTotal;
+                checkOutList.add(c);
+            }
+        }
+        request.setAttribute("price", totalPrice);
+        request.setAttribute("checkout", checkOutList);
+        request.getRequestDispatcher("checkOut.jsp").forward(request, response);
     }
 
     /**

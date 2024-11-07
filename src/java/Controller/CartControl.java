@@ -11,6 +11,7 @@ import Dao.ItemDAO;
 import Model.CartItems;
 import Model.Customer;
 import Model.Item;
+import Utils.Reuseable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -104,7 +105,81 @@ public class CartControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+
+        String action = request.getParameter("action");
+        String id = request.getParameter("id");
+        String Sid = request.getParameter("cid");
+        CartItemsDAO cartItemsDAO = new CartItemsDAO();
+        ItemDAO itemDAO = new ItemDAO();
+        int cartItemId;
+        CartItems cartItem = null;
+        if (request.getParameter("cid") != null) {
+            cartItemId = Integer.parseInt(Sid.trim());
+            cartItem = cartItemsDAO.checkExist(cartItemId);
+        }
+        int productId;
+        Item productItem = null;
+        if (request.getParameter("cid") != null) {
+            productId = Integer.parseInt(id.trim());
+            productItem = itemDAO.checkExist(productId);
+        }
+        HttpSession session = request.getSession();
+        
+        CustomerDAO customerDAO = new CustomerDAO();
+        String username = (String) session.getAttribute("us");
+        Customer customer = customerDAO.findCustomerByUsername(username);
+
+        if (cartItem != null && "increment".equals(action) || cartItem != null && "decrement".equals(action)) {
+            if ("increment".equals(action)) {
+                cartItem.setQuantity(cartItem.getQuantity() + 1);
+                cartItemsDAO.updateCartItems(cartItem);
+                Item i = itemDAO.checkExist(cartItem.getProductID());
+                out.print("{\"newQuantity\": " + cartItem.getQuantity() + ", \"Price\": " + i.getPrice() + "}");
+            } else if ("decrement".equals(action) && cartItem.getQuantity() > 0) {
+                if (cartItem.getQuantity() > 1) {
+                    cartItem.setQuantity(cartItem.getQuantity() - 1);
+                    Item i = itemDAO.checkExist(cartItem.getProductID());
+                    cartItemsDAO.updateCartItems(cartItem);
+                    out.print("{\"newQuantity\": " + cartItem.getQuantity() + ", \"Price\": " + i.getPrice() + "}");
+                } else if (cartItem.getQuantity() == 1) {
+                    cartItem.setQuantity(cartItem.getQuantity() - 1);
+                    Item i = itemDAO.checkExist(cartItem.getProductID());
+                    cartItemsDAO.deleteCartItems(cartItem.getCartItemID());
+                    out.print("{\"newQuantity\": " + cartItem.getQuantity() + ", \"Price\": " + i.getPrice() + "}");
+                }
+            }
+            out.flush();
+        } else if (productItem != null && "add".equals(action) || cartItem != null && "delete".equals(action)) {
+            if ("add".equals(action)) {
+                if (cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), productItem.getProductID()) == null) {
+                    CartItems c = new CartItems(customer.getCustomerID(), productItem.getProductID(), 1);
+                    CartItems cart = cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), productItem.getProductID());
+                    cartItemsDAO.registerCartItems(c);
+                    out.print("{\"Quantity\": " + c.getQuantity()
+                            + ", \"Price\": " + productItem.getPrice()
+                            + ", \"ProductName\": " + productItem.getProductName()
+                            + ", \"cartItemId\": " + cart.getCartItemID()
+                            + ", \"image\": " + Reuseable.loadImage(productItem.getAvatar_img()) + "}");
+                } else if (cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), productItem.getProductID()) != null) {
+                    CartItems c = cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), productItem.getProductID());
+                    int Quantity = c.getQuantity() + 1;
+                    c.setQuantity(Quantity);
+                    cartItemsDAO.updateCartItems(c);
+                    out.print("{\"Quantity\": " + c.getQuantity()
+                            + ", \"Price\": " + productItem.getPrice()
+                            + ", \"ProductName\": " + productItem.getProductName()
+                            + ", \"cartItemId\": " + c.getCartItemID()
+                            + ", \"image\": " + Reuseable.loadImage(productItem.getAvatar_img()) + "}");
+                }
+            } else if ("delete".equals(action) && cartItem.getQuantity() > 0) {
+                Item i = itemDAO.checkExist(cartItem.getProductID());
+                cartItemsDAO.deleteCartItems(cartItem.getCartItemID());
+                out.print("{\"newQuantity\": " + cartItem.getQuantity() + ", \"Price\": " + i.getPrice() + "}");
+            }
+            out.flush();
+        }
     }
 
     /**

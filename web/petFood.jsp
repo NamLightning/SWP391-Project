@@ -5,8 +5,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
@@ -15,7 +13,6 @@
     <center>
         <div class="left-sidebar"></div>
         <%@include file="includes/header.jsp" %>
-        <link rel="stylesheet" href="css/items.css">
         <div class="right-sidebar"></div>
         <section class="filters-cards">
             <aside class="filters">
@@ -72,7 +69,7 @@
             </aside>
             <main class="product-section">
                 <header class="product-header">
-                    <p class="results-count">Showing 12 of 12 results</p>
+                    <!--<p class="results-count">Showing 12 of 12 results</p>-->
                     <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
