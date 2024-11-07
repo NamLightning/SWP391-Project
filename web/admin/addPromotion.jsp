@@ -1,3 +1,4 @@
+<%@page import="Dao.PromotionsDAO, java.util.ArrayList, Model.Promotions"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,10 @@
     </head>
 
     <body>
+        <%
+            PromotionsDAO promotionDAO = new PromotionsDAO();
+            pageContext.setAttribute("promotionList", promotionDAO.getAllPromotions());
+        %>
         <!--navbar-->
         <div class="container">
             <%@include file="../includes/sidebar.jsp"%>
@@ -33,6 +38,7 @@
                             <h2 style="font-size: 30px; text-align:center; margin: 3% 0;">Add Promotion</h2>
                         </div>
 
+                        <form action="${pageContext.request.contextPath}/PromotionControl" method="POST" enctype="multipart/form-data">
                         <div class="search" style="justify-self: center;">
 
                             <label class="property">
@@ -68,6 +74,7 @@
 
                             </div>
                         </div>
+                        </form>
 
 
                     </div>

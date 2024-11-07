@@ -92,6 +92,7 @@
                 width: 92%;
                 flex-direction: column;
                 font-weight: 500;
+                overflow-y: scroll;
             }
 
             .coupon-card {
@@ -179,17 +180,16 @@
                     <div class="coupon-container">
                         <h2 class="coupon-title">My Coupons</h2>
                         <div class="coupon-list">
-                            <!--            <c:forEach var="coupon" items="${promotions}">
-                                                <div class="coupon-card ${coupon.remaining == 0 ? 'disabled' : ''}">
-                                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a9057ae39e6040c08355c03c9ebc9dfb89a917ef468dc6307299edb7317bbfe?placeholderIfAbsent=true&amp;apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Sale 20% coupon icon" class="coupon-icon">
-                                                    <img src="${coupon.iconUrl}" alt="${promotions.name}" class="coupon-icon"/>
-                                                    <div class="coupon-details">
-                                                        <p class="coupon-sale">${promotions.discount} OFF</p>
-                                                        <p class="coupon-remain">Remain: ${promotions.remaining}</p>
-                                                    </div>
-                                                    <input type="radio" name="coupon" class="radio-icon" ${coupon.remaining == 0 ? 'disabled' : ''}/>
-                                                </div>
-                            </c:forEach>-->
+                            <c:forEach var="coupon" items="${promotions}">
+                                <div class="coupon-card ${coupon.remaining == 0 ? 'disabled' : ''}">
+                                <!--<div class="coupon-card ${coupon.remaining == 0 ? 'disabled' : ''}">-->
+                                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a9057ae39e6040c08355c03c9ebc9dfb89a917ef468dc6307299edb7317bbfe?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="coupon-icon"/>
+                                    <div class="coupon-details">
+                                        <p class="coupon-sale">${promotions.getPromotionName()}</p>
+                                    </div>
+                                    <input type="radio" name="coupon" class="radio-icon" ${coupon.remaining == 0 ? 'disabled' : ''}/>
+                                </div>
+                            </c:forEach>
                             <div class="coupon-card">
                                 <div class="coupon-content">
                                     <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1a9057ae39e6040c08355c03c9ebc9dfb89a917ef468dc6307299edb7317bbfe?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="Sale 20% coupon icon" class="coupon-icon" />

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <%@page import="Dao.PromotionsDAO, java.util.ArrayList, Model.Promotions"%>
-<jsp:useBean id="promotions" class="Dao.PromotionsDAO" scope="page"/>
+<%--<jsp:useBean id="promotions" class="Dao.PromotionsDAO" scope="page"/>--%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,25 +53,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="p" items="${promotions}">
+                                    <c:forEach var="promotions" items="${promotions}">
                                         <c:url var="editLink" value="PromotionControl">
                                             <c:param name="pageSize" value="${pageSize}"></c:param>
                                             <c:param name="page" value="${currentPage}"></c:param>
                                             <c:param name="action" value="edit"></c:param>
-                                            <c:param name="id" value="${p.getPromotionID()}"></c:param>
+                                            <c:param name="id" value="${promotions.getPromotionID()}"></c:param>
                                         </c:url>
                                         <c:url var="deleteLink" value="PromotionControl">
                                             <c:param name="pageSize" value="${pageSize}"></c:param>
                                             <c:param name="page" value="${currentPage}"></c:param>
                                             <c:param name="action" value="delete"></c:param>
-                                            <c:param name="id" value="${p.getPromotionID()}"></c:param>
+                                            <c:param name="id" value="${promotions.getPromotionID()}"></c:param>
                                         </c:url>
                                         <tr>
-                                            <td>${p.getProductID()}</td>
-                                            <td>${p.getProductName()}</td>
-                                            <td>${p.getDiscountPercent()}</td>
-                                            <td>${p.getStartDate()}</td>
-                                            <td>${p.getEndDate()}</td>
+                                            <td>${promotions.getPromotionID()}</td>
+                                            <td>${promotions.getPromotionName()}</td>
+                                            <td>${promotions.getDiscountPercent()}</td>
+                                            <td>${promotions.getStartDate()}</td>
+                                            <td>${promotions.getEndDate()}</td>
                                             <td><button class="update" onclick="location.href = '${editLink}'">Update</button></td>
                                             <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
                                         </tr>

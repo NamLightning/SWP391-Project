@@ -1,23 +1,24 @@
-<%@page import="Dao.CategoriesDAO, java.util.ArrayList, Model.Categories"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import=" Dao.CustomerDAO, java.util.ArrayList, Model.Customer"%>
+<%--<jsp:useBean id="customer" class="Dao.CustomerDAO" scope="page"/>
+<jsp:useBean id="reuse" class="Utils.Reuseable" scope="page"/>--%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add Product</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addItem.css">
+        <title>Management Customers</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/managecus.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
+
     <body>
-        <%
-            CategoriesDAO categoriesDAO = new CategoriesDAO();
-            pageContext.setAttribute("categoryList", categoriesDAO.getAllCategories());
-        %>
+        <!--navbar-->
         <div class="container">
             <%@include file="../includes/sidebar.jsp"%>
-
+            <!--home-->
             <div class="main">
                 <div class="topbar">
                     <div class="toggle">
@@ -30,65 +31,115 @@
                 </div>
 
 
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2 style="font-size: 30px;">Add Item</h2>
+                <div class="main-content">
+                    <div class="customer-table">
+                        <div class="header">
+                            <h2 style="font-size: 20px;">All Customers</h2>
+<!--                            <button class="vip-customer-btn" 
+                                    onclick="window.location.href = '<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>-->
                         </div>
+<!--                        <div class="search-sort-bar">
+                            <input type="text" placeholder="Search customer..." class="search-input">
+                            <select class="sort-select">
+                                <option>Sort by Newest</option>
+                                <option>Sort by Oldest</option>
+                            </select>
+                        </div>-->
+                        <div class="customer-table-2" style="font-size: 13px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th>Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="p" items="${customer}">
+                                        <c:url var="editLink" value="CustomerControl">
+                                            <c:param name="pageSize" value="${pageSize}"></c:param>
+                                            <c:param name="page" value="${currentPage}"></c:param>
+                                            <c:param name="action" value="edit"></c:param>
+                                            <c:param name="id" value="${p.getCustomerID()}"></c:param>
+                                        </c:url>
+                                        <c:url var="deleteLink" value="CustomerControl">
+                                            <c:param name="pageSize" value="${pageSize}"></c:param>
+                                            <c:param name="page" value="${currentPage}"></c:param>
+                                            <c:param name="action" value="delete"></c:param>
+                                            <c:param name="id" value="${p.getCustomerID()}"></c:param>
+                                        </c:url>
+                                        <tr>
+                                            <td>${p.getFirstName()} ${p.getLastName()}</td>
+                                            <td>${p.getPhoneNumber()}</td>
+                                            <td>${p.getEmail()}</td>
+                                            <td>${p.getAddress()}</td>
+                                            <td><button class="view-btn" 
+                                                        onclick="window.location.href = '<c:url value="/admin/userDetail.jsp"/>'">View</button>
+                                            </td>
+                                        </tr> 
+                                    </c:forEach>
 
-                        <form action="${pageContext.request.contextPath}/ItemControl" method="POST" enctype="multipart/form-data">
-                            <div class="search" style="justify-self: center;">
-                                <label style="margin-bottom: 10px;">
-                                    <!--<img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="item-image" />-->
-                                    <div class="preview" id="preview"><img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" /></div>
-                                    <label>Upload Items Image: </label>
-                                    <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
-                                    <input type="file" name="image" id="image" accept="image/*"
-                                           onchange="showFileNameAndPreview()">
-                                </label>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <c:if test="${currentPage > 1}">
+                                <!--<a href="CustomerControl?page=1&size=${pageSize}" class="page-number prev-button">First</a>-->
+                            </c:if>
 
+                            <!-- Previous page link -->
+                            <c:if test="${currentPage > 1}">
+                                <a href="CustomerControl?page=${currentPage - 1}&size=${pageSize}" class="pagination-item"><</a>
+                            </c:if>
 
-                                <label class="property">
-                                    <p>Item name:</p>
-                                    <input id="productName" name="productName" type="text" placeholder="Item Name" value="">
-                                </label>
+                            <c:if test="${currentPage > totalPages - currentPage}">
+                                <!--<span class="ellipsis">...</span>-->
+                            </c:if>
+                            <c:if test="${currentPage > 3}">
+                                <span class="ellipsis">...</span>
+                            </c:if>
 
-                                <label class="property">
-                                    <p>Item description:</p>
-                                    <input id="productDesc" name="productDesc" type="text" placeholder="Item description" value="">
-                                </label>
+                            <!-- Display 5 page links with ellipsis for overflow pages -->
+                            <c:forEach begin="${startPage}" end="${endPage}" var="page">
+                                <c:choose>
+                                    <c:when test="${page == currentPage}">
+                                        <strong class="pagination-item active-page">${page}</strong>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="CustomerControl?page=${page}&size=${pageSize}" class="pagination-item">${page}</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
 
-                                <label class="property">
-                                    <p>Item price:</p>
-                                    <input id="price" name="price" type="text" placeholder="Item price" value="">
-                                </label>
+                            <!-- Ellipsis for overflow pages before and after the 5 displayed pages -->
 
-                                <label class="property">
-                                    <p>Item stock:</p>
-                                    <input id="stock" name="stock" type="text" placeholder="Item stock" value="">
-                                </label>
+                            <c:if test="${currentPage < totalPages - 2}">
+                                <span class="ellipsis">...</span>
+                            </c:if>
 
-                                <label class="property">
-                                    <p>Item category:</p>
+                            <!-- Next page link -->
+                            <c:if test="${currentPage < totalPages}">
+                                <a href="CustomerControl?page=${currentPage + 1}&size=${pageSize}" class="pagination-item">></a>
+                            </c:if>
 
-                                    <select id="categories" name="categories">
-                                        <c:forEach var="category" items="${categoryList}">
-                                            <option value="${category.getCategoryID()}">${category.getCategoryName()}</option>
-                                        </c:forEach>                                            
-                                    </select>
-                                </label>
-                                <div style="justify-self: center;">
-                                    <input name="submit" class="btn-add" type="submit" value="Add">
-                                </div>
-                            </div>
-                        </form>
+                            <!-- Last page link -->
+                            <c:if test="${currentPage < totalPages}">
+        <!--                        <a href="CustomerControl?page=${totalPages}&size=${pageSize}" class="page-number next-button">Last</a>-->
+                            </c:if>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <script src="${pageContext.request.contextPath}/js/sidebar.js"></script>
+
+
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
     </body>
+
 </html>
