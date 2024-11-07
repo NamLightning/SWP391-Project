@@ -1,12 +1,7 @@
-<%-- 
-    Document   : userProfile
-    Created on : Sep 5, 2024, 10:18:19 PM
-    Author     : Administrator
---%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Model.Customer"%>
 <%@page import="Dao.CustomerDAO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -45,11 +40,11 @@
 
         .preview img {
             max-width: 100%;
-            height: 175px;
+            height: auto;
             border: 1px solid #ddd;
-            border-radius: 100px;
+            border-radius: 5px;
             padding: 5px;
-            max-height: 500px;
+            max-height: 200px;
         }
 
         /* Hiển thị tên file đã chọn */
@@ -78,13 +73,13 @@
                         <div class="account-info">
                             <form action="ProfileControl" method="POST" class="form-fields" enctype="multipart/form-data">
                                 <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />
-                                <div class="preview" id="preview"><img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" /></div>
                                 <label style="margin-bottom: 10px;">
-                                    <input type="file" name="image" id="image" accept="image/*"
-                                           onchange="showFileNameAndPreview()">
                                     <label>Upload Items Image: </label>
                                     <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
+                                    <input type="file" name="image" id="image" accept="image/*"
+                                           onchange="showFileNameAndPreview()">
                                 </label>
+                                <div class="preview" id="preview"></div>
                                 <div class="input-group">
                                     <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
                                     <div class="form-field">
@@ -126,29 +121,25 @@
                                     <input type="text" id="lastName" class="form-input" value="${account.getLastName()}" aria-label="Last Name">
                                 </div>
                             </div>
-                            <!--                            <div class="form-group">
-                                                            <label for="address" class="form-label">Address</label>
-                                                            <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
-                                                        </div>-->
-                            <!--                            <div class="form-row">
-                                                            <div class="form-group">
-                                                                <label for="city" class="form-label">City</label>
-                                                                <div class="form-input">
-                                                                    <span>Da Nang</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="zipCode" class="form-label">Zip Code</label>
-                                                                <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
-                                                            </div>
-                                                        </div>-->
                             <div class="form-group">
-                                <!--                                <label for="phoneNumber" class="form-label">Phone Number</label>
-                                                                <input type="tel" id="phoneNumber" class="form-input" value="+1-202-555-0118" aria-label="Phone Number">-->
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" id="address" class="form-input" value="${account.getAddress()}" aria-label="Address">
+                                    <label for="city" class="form-label">City</label>
+                                    <div class="form-input">
+                                        <span>Da Nang</span>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">Zip Code</label>
+                                    <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber" class="form-label">Phone Number</label>
+                                <input type="tel" id="phoneNumber" class="form-input" value="+1-202-555-0118" aria-label="Phone Number">
                             </div>
                             <button type="submit" class="save-button">Save Changes</button>
                         </form>

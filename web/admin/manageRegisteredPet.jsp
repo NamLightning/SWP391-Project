@@ -59,8 +59,8 @@
                                         <td>Dog</td>
                                         <td>Trim & Bathe Dog’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>#12345128</td>
@@ -69,8 +69,8 @@
                                         <td>Cat</td>
                                         <td>Trim & Bathe Cat’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr> 
                                     <tr>
                                         <td>#12345128</td>
@@ -79,8 +79,8 @@
                                         <td>Dog</td>
                                         <td>Comprehensive Care For Dog</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                 </tbody>
                             </table>

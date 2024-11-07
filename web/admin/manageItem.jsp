@@ -87,8 +87,8 @@
                                                 <td><span class="status-instock active">Unavailable</span></td>
                                             </c:if>
                                             <!--<a href="${editLink}">Edit</a>-->
-                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button></td>
-                                            <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
+                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button>
+                                            <button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
