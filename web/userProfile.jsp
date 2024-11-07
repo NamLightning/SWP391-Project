@@ -77,7 +77,7 @@
                     <div class="account-settings-content">
                         <div class="account-info">
                             <form action="ProfileControl" method="POST" class="form-fields" enctype="multipart/form-data">
-                                <!--<img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />-->
+                                <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />
                                 <div class="preview" id="preview"><img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" /></div>
                                 <label style="margin-bottom: 10px;">
                                     <input type="file" name="image" id="image" accept="image/*"

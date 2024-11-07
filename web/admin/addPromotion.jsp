@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admin Dashboard</title>
-        <link rel="stylesheet" href="../css/createPro.css">
+        <link rel="stylesheet" href="../css/addItem.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -21,9 +21,8 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
                     <div class="user">
-                        <img src="#" alt="">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
-
                 </div>
                 
                 
@@ -31,7 +30,7 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2 style="font-size: 30px;">Add Promotion</h2>
+                            <h2 style="font-size: 30px; text-align:center; margin: 3% 0;">Add Promotion</h2>
                         </div>
 
                         <div class="search" style="justify-self: center;">
@@ -65,7 +64,7 @@
 
 
                             <div style="justify-self: center;">
-                                <input name="submit" class="btn-add" type="submit" value="Add">
+                                <input name="submit" class="btn-add" type="submit" value="Add"/>
 
                             </div>
                         </div>

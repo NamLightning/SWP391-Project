@@ -1,8 +1,3 @@
-<%-- 
-    Document   : updateItem
-    Created on : Oct 27, 2024, 10:46:23 PM
-    Author     : ASUS ZenBook
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -15,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JSP Page</title>
+        <title>Responsive Admin Dashboard</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addItem.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
@@ -29,7 +24,7 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
                     <div class="user">
-                        <img src="#" alt="">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
                 </div>
 
@@ -41,7 +36,7 @@
 
                         <div class="search" style="justify-self: center;">
 
-                            <form action="ProductControl" method="POST" enctype="multipart/form-data">
+                            <form action="ItemControl" method="POST" enctype="multipart/form-data">
                                 <div>
                                     <input id="productID" name="productID" type="hidden" value="${product.getProductID()}"><br>
                                     <input id="pageSize" name="pageSize" type="hidden" value="${pageSize}"><br>

@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +15,7 @@ public class OrderItem {
     private int orderID;
     private int productID;
     private int quantity;
+    private String addInfo;
     private double price;
 
     public OrderItem(int orderID, int productID, int quantity, double price) {
@@ -31,6 +33,24 @@ public class OrderItem {
         this.price = price;
     }
 
+    public OrderItem(int orderItemID, int orderID, int productID, int quantity, String addInfo, double price) {
+        this.orderItemID = orderItemID;
+        this.orderID = orderID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.addInfo = addInfo;
+        this.price = price;
+    }
+
+    public OrderItem(int orderID, int productID, int quantity, String addInfo, double price) {
+        this.orderID = orderID;
+        this.productID = productID;
+        this.quantity = quantity;
+        this.addInfo = addInfo;
+        this.price = price;
+    }
+
+    
     public int getOrderItemID() {
         return orderItemID;
     }
@@ -71,8 +91,18 @@ public class OrderItem {
         this.price = price;
     }
 
+    public String getAddInfo() {
+        return addInfo;
+    }
+
+    public void setAddInfo(String addInfo) {
+        this.addInfo = addInfo;
+    }
+
     @Override
     public String toString() {
-        return "OrderItem{" + "orderItemID=" + orderItemID + ", orderID=" + orderID + ", productID=" + productID + ", quantity=" + quantity + ", price=" + price + '}';
+        return "OrderItem{" + "orderItemID=" + orderItemID + ", orderID=" + orderID + ", productID=" + productID + ", quantity=" + quantity + ", addInfo=" + addInfo + ", price=" + price + '}';
     }
+
+
 }

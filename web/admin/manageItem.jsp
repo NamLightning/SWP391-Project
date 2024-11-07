@@ -24,7 +24,7 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
                     <div class="user">
-                        <img src="#" alt="User profile picture">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
                 </div>
                 <div class="main-content">
@@ -38,13 +38,13 @@
                                         onclick="window.location.href = '<c:url value="/admin/addItem.jsp"/>'">Create New Product</button>
                             </div>
                         </div>
-                        <div class="search-sort-bar">
+<!--                        <div class="search-sort-bar">
                             <input type="text" placeholder="Search product..." class="search-input">
                             <select class="sort-select">
                                 <option>Sort by Newest</option>
                                 <option>Sort by Oldest</option>
                             </select>
-                        </div>
+                        </div>-->
                         <div class="item-table" style="font-size: 13px;">
                             <table>
                                 <thead>
@@ -59,13 +59,13 @@
                                 </thead>
                                 <tbody>
                                     <c:forEach var="p" items="${products}">
-                                        <c:url var="editLink" value="ProductControl">
+                                        <c:url var="editLink" value="ItemControl">
                                             <c:param name="pageSize" value="${pageSize}"></c:param>
                                             <c:param name="page" value="${currentPage}"></c:param>
                                             <c:param name="action" value="edit"></c:param>
                                             <c:param name="id" value="${p.getProductID()}"></c:param>
                                         </c:url>
-                                        <c:url var="deleteLink" value="ProductControl">
+                                        <c:url var="deleteLink" value="ItemControl">
                                             <c:param name="pageSize" value="${pageSize}"></c:param>
                                             <c:param name="page" value="${currentPage}"></c:param>
                                             <c:param name="action" value="delete"></c:param>
@@ -96,12 +96,12 @@
                         </div>
                         <div class="pagination">
                             <c:if test="${currentPage > 1}">
-                                <!--<a href="ProductControl?page=1&size=${pageSize}" class="page-number prev-button">First</a>-->
+                                <!--<a href="ItemControl?page=1&size=${pageSize}" class="page-number prev-button">First</a>-->
                             </c:if>
 
                             <!-- Previous page link -->
                             <c:if test="${currentPage > 1}">
-                                <a href="ProductControl?page=${currentPage - 1}&size=${pageSize}" class="pagination-item"><</a>
+                                <a href="ItemControl?page=${currentPage - 1}&size=${pageSize}" class="pagination-item"><</a>
                             </c:if>
 
                             <c:if test="${currentPage > totalPages - currentPage}">
@@ -118,7 +118,7 @@
                                         <strong class="pagination-item active-page">${page}</strong>
                                     </c:when>
                                     <c:otherwise>
-                                        <a href="ProductControl?page=${page}&size=${pageSize}" class="pagination-item">${page}</a>
+                                        <a href="ItemControl?page=${page}&size=${pageSize}" class="pagination-item">${page}</a>
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
@@ -131,12 +131,12 @@
 
                             <!-- Next page link -->
                             <c:if test="${currentPage < totalPages}">
-                                <a href="ProductControl?page=${currentPage + 1}&size=${pageSize}" class="pagination-item">></a>
+                                <a href="ItemControl?page=${currentPage + 1}&size=${pageSize}" class="pagination-item">></a>
                             </c:if>
 
                             <!-- Last page link -->
                             <c:if test="${currentPage < totalPages}">
-        <!--                        <a href="ProductControl?page=${totalPages}&size=${pageSize}" class="page-number next-button">Last</a>-->
+        <!--                        <a href="ItemControl?page=${totalPages}&size=${pageSize}" class="page-number next-button">Last</a>-->
                             </c:if>
                         </div>
                     </div>

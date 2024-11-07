@@ -79,6 +79,7 @@
                     </select>
                 </header>
                 <div class="product-grid">
+                    <a href="itemDetails.jsp" style="text-decoration: none">
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
                             <!--<a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">-->
@@ -102,6 +103,7 @@
                                 <!--</a>-->
                             </article>
                     </c:forEach>
+                    </a>
                 </div>
                 <!--                    <article class="product-card">
                                         <img src="images/leash2.jpg" alt="Pet Collar" class="product-image">

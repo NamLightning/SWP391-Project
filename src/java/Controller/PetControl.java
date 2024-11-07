@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -9,6 +10,7 @@ import Model.Pets;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Date;
@@ -85,7 +87,7 @@ public class PetControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("manager-listPets.jsp").forward(request, response);
+            request.getRequestDispatcher("managePet.jsp").forward(request, response);
         }
     }
 
@@ -97,7 +99,6 @@ public class PetControl extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -107,69 +108,52 @@ public class PetControl extends HttpServlet {
 
         PetsDAO petsDAO = new PetsDAO();
 
-        String petsID = request.getParameter("petID").trim();
-        int petId = Integer.parseInt(petsID);
-        String managerID = request.getParameter("managerID");
-        int manageId = Integer.parseInt(managerID);
+        String petsID;
+        Integer id = null;
+
+        if (request.getParameter("petID") != null) {
+            petsID = request.getParameter("petID");
+            id = Integer.parseInt(petsID);
+        }
+
         String petName = request.getParameter("petName");
         String petType = request.getParameter("petType").trim();
-        String healthStatus = request.getParameter("healthStatus").trim();
-        String lastCheckedDate = request.getParameter("lastCheckedDate").trim();
-        
-        // Parse the lastCheckedDate to java.sql.Date
-        java.sql.Date sqlLastCheckedDate = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            java.util.Date parsedDate = sdf.parse(lastCheckedDate);
-            sqlLastCheckedDate = new java.sql.Date(parsedDate.getTime());
-        } catch (ParseException ex) {
-            Logger.getLogger(PetControl.class.getName()).log(Level.SEVERE, "Invalid date format", ex);
-        }
-        
+
+        String customerID = request.getParameter("customerID");
+        int cusID = Integer.parseInt(customerID);
 
         String action = request.getParameter("action"); // Changed to "action" for clarity
         switch (action) {
+            case "Add":
+
+                Pets i = new Pets(petName, petType, cusID);
+
+                petsDAO.addPet(i);
+                response.sendRedirect("PetControl");
+                break;
             case "Edit":
-                Pets p = petsDAO.checkExist(petId);
-                String fileName = getImageName(request);
-                byte[] fileData = getImage(request);
-                
-                // Update pet details
-                p.setPetID(petId);
-                p.setManagerID(manageId);
+                Pets p = petsDAO.checkExist(id);
+
                 p.setPetName(petName);
                 p.setPetType(petType);
-                p.setHealthStatus(healthStatus);
-                p.setLastCheckedDate(sqlLastCheckedDate); // Set the parsed date
+                p.setCustomerID(cusID);
 
-                if (fileName != null) {
-                    p.setAvatar_name(fileName);
-                }
-                if (fileData != null) {
-                    p.setAvatar_img(fileData);
-                }
-                
-                // Update pet in database
                 petsDAO.updatePet(p);
                 pageValue(request);
-                response.sendRedirect("PetsControl");
+                response.sendRedirect("PetControl");
                 break;
-                
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("PetsControl").forward(request, response);
+                request.getRequestDispatcher("PetControl").forward(request, response);
                 break;
-                
             default:
-                // Handle cases where action is not "Edit" or "Cancel"
-                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid action");
                 break;
         }
+        request.getRequestDispatcher("PetControl").forward(request, response);
+
     }
 
     // Add the necessary helper methods: getImageName, getImage, and pageValue
-
-
     /**
      * Returns a short description of the servlet.
      *
@@ -188,41 +172,24 @@ public class PetControl extends HttpServlet {
         String petsID = request.getParameter("id").trim();
         PetsDAO petsDAO = new PetsDAO();
 
-        Pets pets = petsDAO.checkExist(Integer.parseInt(petsID));
+        Pets pet = petsDAO.checkExist(Integer.parseInt(petsID));
 
-        request.setAttribute("pets", pets);
+        request.setAttribute("pet", pet);
         request.getRequestDispatcher("editPets.jsp").forward(request, response);
     }
 
-    private void deletePets(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    private void deletePets(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
-    private String getImageName(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        String fileName = null;
-        if (filePart != null) {
-            fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        String serviceID = request.getParameter("id").trim();
+        PetsDAO petDAO = new PetsDAO();
+        Pets pet = petDAO.checkExist(Integer.parseInt(serviceID));
+        if (pet != null) {
+            petDAO.deletePet(pet.getPetID());
         }
-        return fileName;
-    }
-
-    private byte[] getImage(HttpServletRequest request) throws IOException, ServletException {
-        Part filePart = request.getPart("image");
-        byte[] fileData = null;
-        if (filePart != null) {
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            if (!fileName.isEmpty()) {
-                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
-                File uploadDir = new File(uploadPath);
-                if (!uploadDir.exists()) {
-                    uploadDir.mkdir();
-                }
-                filePart.write(uploadPath + File.separator + fileName);
-                fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
-            }
-        }
-        return fileData;
+        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private void pageValue(HttpServletRequest request) {
@@ -239,8 +206,8 @@ public class PetControl extends HttpServlet {
             recordsPerPage = 12;
         }
         PetsDAO petsDao = new PetsDAO();
-        ArrayList<Pets> products = petsDao.getAllPet(currentPage, recordsPerPage);
-        request.setAttribute("products", products);
+        ArrayList<Pets> pets = petsDao.getAllPet(currentPage, recordsPerPage);
+        request.setAttribute("pets", pets);
         int rows = petsDao.getNumberOfRows();
         int nOfPages = rows / recordsPerPage;
         if (nOfPages % recordsPerPage > 0) {

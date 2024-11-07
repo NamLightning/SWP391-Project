@@ -62,7 +62,7 @@
                             }
 
                     // Call fetchData at regular intervals
-                    setInterval(fetchData, 30000); // Fetch data every 30 seconds
+                    setInterval(fetchData, 10000); // Fetch data every 30 seconds
                     }); // This closes the DOMContentLoaded event listener
         </script>
     </head>
@@ -75,7 +75,7 @@
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
                     <div class="user">
-                        <img src="#" alt="">
+<img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
                 </div>
 
@@ -100,11 +100,21 @@
                             <div class="card">
                                 <div>
                                     <div class="numbers">1,504</div>
-                                    <div class="cardName">Daily Views</div>
+                                    <div class="cardName">Services</div>
                                 </div>
 
                                 <div class="iconBx">
-                                    <ion-icon name="eye-outline"></ion-icon>
+                                    <ion-icon name="heart-outline"></ion-icon>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div>
+                                    <div class="numbers">1,504</div>
+                                    <div class="cardName">Items</div>
+                                </div>
+
+                                <div class="iconBx">
+                                    <ion-icon name="pricetag-outline"></ion-icon>
                                 </div>
                             </div>
                             <div class="card">
@@ -121,22 +131,11 @@
                             <div class="card">
                                 <div>
                                     <div class="numbers">1,504</div>
-                                    <div class="cardName">Comment</div>
+                                    <div class="cardName">Booking</div>
                                 </div>
 
                                 <div class="iconBx">
-                                    <ion-icon name="chatbubble-outline"></ion-icon>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div>
-                                    <div class="numbers">1,504</div>
-                                    <div class="cardName">Earning</div>
-                                </div>
-
-                                <div class="iconBx">
-                                    <ion-icon name="card-outline"></ion-icon>
+                                    <ion-icon name="book-outline"></ion-icon>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+body{
+    margin: 0;
+}
+
 .filters-cards {
     display: flex;
     align-items: flex-start;
@@ -229,6 +233,7 @@ input[type=range] {
     display: flex;
     flex-direction: column;
     font-family: Poppins, sans-serif;
+    width: 25px;
     color: #000;
 }
 .product-name {

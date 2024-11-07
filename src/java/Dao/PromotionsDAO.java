@@ -1,9 +1,9 @@
+
 package Dao;
 
 import ConnectDB.DBContext;
 import Model.Promotions;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -68,8 +68,7 @@ public class PromotionsDAO {
         String sql = "INSERT INTO Promotions (PromotionName, DiscountPercent, StartDate, EndDate, Descriptions) VALUES (?, ?, ?, ?, ?)";
         DBContext db = new DBContext();
 
-        try (Connection con = db.getConnection();
-             PreparedStatement statement = con.prepareStatement(sql)) {
+        try (Connection con = db.getConnection(); PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setString(1, e.getPromotionName());
             statement.setInt(2, e.getDiscountPercent());
             statement.setTimestamp(3, Timestamp.valueOf(e.StartDate()));
@@ -81,12 +80,11 @@ public class PromotionsDAO {
         }
     }
 
-     public void updatePromotion(Promotions e) {
+    public void updatePromotion(Promotions e) {
         String sql = "UPDATE Promotions SET PromotionName = ?, DiscountPercent = ?, StartDate = ?, EndDate = ?, Descriptions = ? WHERE PromotionID = ?";
         DBContext db = new DBContext();
 
-        try (Connection con = db.getConnection();
-             PreparedStatement statement = con.prepareStatement(sql)) {
+        try (Connection con = db.getConnection(); PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setString(1, e.getPromotionName());
             statement.setInt(2, e.getDiscountPercent());
             statement.setTimestamp(3, Timestamp.valueOf(e.getStartDate()));
@@ -124,13 +122,8 @@ public class PromotionsDAO {
 
             int start = currentPage * recordsPerPage - recordsPerPage;
             int end = recordsPerPage * currentPage;
-            String sql = "With prod AS\n"
-                    + "( SELECT *,\n"
-                    + "ROW_NUMBER() OVER (order by PromotionID) as RowNumber \n"
-                    + "FROM Promotions )\n"
-                    + "select *\n"
-                    + "from prod\n"
-                    + "Where RowNumber Between ? and ?";
+            String sql = "select * from Promotions ORDER BY PromotionID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, start);
             ps.setInt(2, end);
@@ -163,11 +156,10 @@ public class PromotionsDAO {
         return numOfRows;
     }
 
-   public Promotions checkExist(int id) {
+    public Promotions checkExist(int id) {
         String query = "SELECT * FROM Promotions WHERE PromotionID = ?";
         Promotions e = null;
-        try (Connection conn = new DBContext().getConnection();
-             PreparedStatement ps = conn.prepareStatement(query)) {
+        try (Connection conn = new DBContext().getConnection(); PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -178,9 +170,10 @@ public class PromotionsDAO {
         }
         return e;
     }
+
     public static void main(String[] args) {
         PromotionsDAO dao = new PromotionsDAO();
-        Promotions e = new Promotions( "sell sap san", 0, LocalDateTime.parse("2004-12-12T12:40"), LocalDateTime.parse("2004-12-12T13:40"), "mua thi dc sell");
+        Promotions e = new Promotions("sell sap san", 0, LocalDateTime.parse("2004-12-12T12:40"), LocalDateTime.parse("2004-12-12T13:40"), "mua thi dc sell");
         dao.getAllPromotions().forEach(System.out::print);
     }
 }

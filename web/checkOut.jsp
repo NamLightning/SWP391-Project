@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
                                 <div class="total-section">
-                                    <div class="total-content">
+                                    <div class="total-checkout-content">
                                         <div class="total-row">
                                             <span class="total-label">Sub-total</span>
                                             <span class="total-value">1.234.000₫</span>

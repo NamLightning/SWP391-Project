@@ -49,13 +49,13 @@
                                 <div class="form-field">
                                     <label for="firstName" class="form-label">First Name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
+                                        <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="lastName" class="form-label">Last name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
+                                        <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -63,13 +63,13 @@
                                 <div class="form-field">
                                     <label for="phoneNumber" class="form-label">Phone Number</label>
                                     <div class="form-input-wrapper">
-                                        <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
+                                        <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="email" class="form-label">Email</label>
                                     <div class="form-input-wrapper">
-                                        <input id="email" type="email" placeholder="Email" class="form-input" value="" />
+                                        <input id="email" type="email" placeholder="Email" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <div class="form-field">
                                     <label for="address" class="form-label">Address</label>
                                     <div class="form-input-wrapper" style="width: 48%;">
-                                        <input id="address" type="text" placeholder="Address" class="form-input" value="" />
+                                        <input id="address" type="text" placeholder="Address" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +90,13 @@
                                 <div class="form-field">
                                     <label for="petName" class="form-label">Pet Name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="" />
+                                        <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="petType" class="form-label">Gender</label>
                                     <div class="form-input-wrapper">
-                                        <select id="petType" name="petType" class="form-input" autocomplete="off">
+                                        <select id="petType" name="petType" class="form-input" autocomplete="off" disabled>
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>
                                         </select>
@@ -108,13 +108,13 @@
                                 <div class="form-field">
                                     <label for="petBreed" class="form-label">Breed</label>
                                     <div class="form-input-wrapper">
-                                        <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" />
+                                        <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="petAge" class="form-label">Age</label>
                                     <div class="form-input-wrapper">
-                                        <input id="petAge" type="text" placeholder="Age" class="form-input" value="" />
+                                        <input id="petAge" type="text" placeholder="Age" class="form-input" value="" readonly/>
                                     </div>
                                 </div>
                             </div>

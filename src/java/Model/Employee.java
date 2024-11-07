@@ -19,6 +19,11 @@ public class Employee {
     private String phoneNumber;
     private String avatar_name;
     private byte[] avatar_img;
+    
+    public Employee(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
 
     public Employee(String username, String password, String firstName, String lastName, String email, String phoneNumber) {
         this.username = username;

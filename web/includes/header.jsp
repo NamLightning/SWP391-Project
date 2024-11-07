@@ -246,7 +246,7 @@
                         <form class="search-container">
                             <input type="text" id="search-input" class="search-input" style="padding-left: 5%;" placeholder="  Search products...">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f54504702ed8a70ca94c77306304e000bffd092436dcd387934a645a88007bc1?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Search Icon" class="search-icon">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon" id="hoverItem2" onclick="location.href = 'cart.jsp'">
+                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/45b4a97be78e3927557d72496281145219fc1416258a4802e859df73cb06928a?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Cart Icon" class="cart-icon" id="hoverItem" onclick="location.href = 'cart.jsp'">
                             <div class="popup-hover" id="popupHover2">
                                 <c:if test="${empty us}"> <!-- <- This line is for Guest -->
                                     <%--<%@include file="cartPopup.jsp" %>--%>

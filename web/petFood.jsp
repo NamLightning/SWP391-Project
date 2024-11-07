@@ -81,6 +81,7 @@
                 </header>
                 <div class="product-grid">
                     <c:forEach var="p" items="${products}">
+                        <!--<a href="itemDetails.jsp" style="text-decoration: none">-->
                         <article class="product-card">
                             <c:url var="cartLink" value="CartControl">
                                 <c:param name="pageSize" value="${pageSize}"></c:param>
@@ -99,6 +100,7 @@
                                     </button>
                                 </div>
                             </article>
+                                        
                     </c:forEach>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">

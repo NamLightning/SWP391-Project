@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,21 +17,47 @@ public class Order {
     private int customerID;
     private double totalAmount;
     private Date orderDate;
-    private String paymentStatus;
+    private String addInfo;
+    private String orderStatus;
 
     public Order(int customerID, double totalAmount) {
         this.customerID = customerID;
         this.totalAmount = totalAmount;
     }
 
-    public Order(int orderID, int customerID, double totalAmount, Date orderDate, String paymentStatus) {
+    public Order(int orderID, int customerID, double totalAmount, Date orderDate, String orderStatus) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.totalAmount = totalAmount;
         this.orderDate = orderDate;
-        this.paymentStatus = paymentStatus;
+        this.orderStatus = orderStatus;
     }
 
+    public Order(int customerID, double totalAmount, Date orderDate, String orderStatus) {
+        this.customerID = customerID;
+        this.totalAmount = totalAmount;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+    }
+
+    public Order(int orderID, int customerID, double totalAmount, Date orderDate, String addInfo, String orderStatus) {
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.totalAmount = totalAmount;
+        this.orderDate = orderDate;
+        this.addInfo = addInfo;
+        this.orderStatus = orderStatus;
+    }
+
+    public Order(int customerID, double totalAmount, Date orderDate, String addInfo, String orderStatus) {
+        this.customerID = customerID;
+        this.totalAmount = totalAmount;
+        this.orderDate = orderDate;
+        this.addInfo = addInfo;
+        this.orderStatus = orderStatus;
+    }
+
+    
     public int getOrderID() {
         return orderID;
     }
@@ -63,16 +90,28 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public String getAddInfo() {
+        return addInfo;
+    }
+
+    public void setAddInfo(String addInfo) {
+        this.addInfo = addInfo;
     }
 
     @Override
     public String toString() {
-        return "Order{" + "orderID=" + orderID + ", customerID=" + customerID + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate + ", paymentStatus=" + paymentStatus + '}';
+        return "Order{" + "orderID=" + orderID + ", customerID=" + customerID + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate + ", addInfo=" + addInfo + ", orderStatus=" + orderStatus + '}';
     }
+
+    
+   
+
 }

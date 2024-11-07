@@ -52,10 +52,10 @@ public class ItemControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ProductControl</title>");
+            out.println("<title>Servlet ItemControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ProductControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ItemControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -140,7 +140,7 @@ public class ItemControl extends HttpServlet {
                     i.setAvatar_img(fileData1);
                 }
                 productsDAO.registerProduct(i);
-                response.sendRedirect("ProductControl");
+                response.sendRedirect("ItemControl");
                 break;
             case "Edit":
                 Item p = productsDAO.checkExist(id);
@@ -160,17 +160,17 @@ public class ItemControl extends HttpServlet {
                 }
                 productsDAO.updateProduct(p);
                 pageValue(request);
-//                request.getRequestDispatcher("ProductControl").forward(request, response);
-                response.sendRedirect("ProductControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+//                request.getRequestDispatcher("ItemControl").forward(request, response);
+                response.sendRedirect("ItemControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
                 break;
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("ProductControl").forward(request, response);
+                request.getRequestDispatcher("ItemControl").forward(request, response);
                 break;
             default:
                 break;
         }
-        request.getRequestDispatcher("ProductControl").forward(request, response);
+        request.getRequestDispatcher("ItemControl").forward(request, response);
     }
 
     /**
@@ -228,11 +228,12 @@ public class ItemControl extends HttpServlet {
         if (filePart != null) {
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
             if (!fileName.isEmpty()) {
-                String uploadPath = request.getServletContext().getRealPath("/images").replace("\\build", "");
+                String uploadPath = request.getServletContext().getRealPath("/images");
                 File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) {
                     uploadDir.mkdir();
                 }
+                System.out.println(uploadPath + File.separator + fileName);
                 filePart.write(uploadPath + File.separator + fileName);
                 fileData = Files.readAllBytes(Paths.get(uploadDir.getAbsolutePath() + File.separator + fileName));
             }

@@ -5,6 +5,7 @@
 package Controller;
 
 import Dao.PromotionsDAO;
+import Model.Item;
 import Model.Promotions;
 import java.io.File;
 import java.io.IOException;
@@ -86,7 +87,7 @@ public class PromotionControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("manager-listPromotions.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/managePromotion.jsp").forward(request, response);
         }
     }
 
@@ -110,17 +111,22 @@ public class PromotionControl extends HttpServlet {
         String promotionsID = request.getParameter("promotionID").trim();
         int promotionId = Integer.parseInt(promotionsID);
         String promotionName = request.getParameter("promotionName");
+        String descriptions = request.getParameter("promotionDecs").trim();
         int discountPercents = Integer.parseInt(request.getParameter("discount").trim());
-        String descriptions = request.getParameter("Descriptions").trim();
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         LocalDateTime startDate = LocalDateTime.parse(request.getParameter("startDate").trim(), formatter);
         LocalDateTime endDate = LocalDateTime.parse(request.getParameter("endDate").trim(), formatter);
 
         String action = request.getParameter("action");
         switch (action) {
-            case "Edit":
+            case "Add":
                 Promotions p = promotionsDAO.checkExist(promotionId);
+                p = new Promotions(promotionName, discountPercents, startDate, endDate, descriptions);
+                promotionsDAO.addPromotion(p);
+                response.sendRedirect("PromotionControl");
+                break;
+            case "Edit":
+                p = promotionsDAO.checkExist(promotionId);
 
                 p.setPromotionID(promotionId);
                 p.setPromotionName(promotionName);
@@ -131,12 +137,12 @@ public class PromotionControl extends HttpServlet {
 
                 promotionsDAO.updatePromotion(p);
                 pageValue(request);
-                response.sendRedirect("PromotionsControl");
+                response.sendRedirect("PromotionControl");
                 break;
 
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("PromotionsControl").forward(request, response);
+                request.getRequestDispatcher("PromotionControl").forward(request, response);
                 break;
 
             default:
