@@ -171,6 +171,7 @@ public class ServicesDAO {
     
     public static void main(String[] args) {
         ServicesDAO ser = new ServicesDAO();
-        ser.getAllServicess().forEach(System.out::print);
+        Services s = ser.checkExist(1);
+        System.out.println(s.getServiceName());
     }
 }

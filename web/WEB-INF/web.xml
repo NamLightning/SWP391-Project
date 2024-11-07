@@ -85,6 +85,10 @@
         <servlet-name>ServiceControl</servlet-name>
         <servlet-class>Controller.ServiceControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookedServiceControl</servlet-name>
+        <servlet-class>Controller.BookedServiceControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -161,12 +165,16 @@
         <servlet-name>ServiceControl</servlet-name>
         <url-pattern>/ServiceControl</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookedServiceControl</servlet-name>
+        <url-pattern>/BookedServiceControl</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>booking_1.jsp</welcome-file>
+        <welcome-file>landingPage.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

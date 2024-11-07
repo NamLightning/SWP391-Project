@@ -45,7 +45,6 @@
             <h2 class="section-title">Personal Information</h2>
             <form class="form-container">
                 <div class="form-row">
-                    <input type="text" name="id" class="" id="id" value="${account.getCustomerID()}" hidden readonly>
 
                     <div class="form-field">
                         <label for="firstName" class="form-label">First Name</label>
@@ -87,7 +86,10 @@
             <hr class="section-divider" />
 
             <h2 class="section-title">Pet Information</h2>
-            <form class="form-container">
+            <form class="form-container" action="${pageContext.request.contextPath}/PetControl" method="POST" >
+                <input type="text" name="customerID" class="" id="customerID" value="${account.getCustomerID()}" hidden readonly>
+                <input type="text" name="serviceID" class="" id="serviceID" value="${serbook1.getServiceID()}"  readonly>
+
                 <div class="form-row">
                     <div class="form-field">
                         <label for="petName" class="form-label">Pet Name</label>
@@ -96,35 +98,24 @@
                         </div>
                     </div>
                     <div class="form-field">
-                        <label for="petType" class="form-label">Gender</label>
+                        <label for="petType" class="form-label">Pet Type</label>
                         <div class="form-input-wrapper">
                             <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
+                                <option selected>Choose Pet Type</option> 
+                                <option value="Dog">Dog</option>
+                                <option value="Cat">Cat</option>
+                                <option value="Other">Other</option>
+
                             </select>
                         </div>
                     </div>
-
                 </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="petBreed" class="form-label">Breed</label>
-                        <div class="form-input-wrapper">
-                            <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" />
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="petAge" class="form-label">Age</label>
-                        <div class="form-input-wrapper">
-                            <input id="petAge" type="text" placeholder="Age" class="form-input" value="" />
-                        </div>
-                    </div>
+
+                <div class="footer-button" >
+                    <input name="submit" type="submit" class="continue-button" value="Countinue">
                 </div>
             </form>
 
-            <div class="footer-button" >
-                <input name="submit" type="submit" class="continue-button" value="Continue">
-            </div>
         </section>
 
         <%@include file="includes/footer.jsp"%>

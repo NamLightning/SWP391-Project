@@ -1,5 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="serDAO" class="Dao.ServicesDAO" scope="page"/>
+<%@page import="Model.Services, Utils.Reuseable, java.util.ArrayList"%>
+<%@page import="Model.Customer"%>
+<%@page import="Dao.CustomerDAO"%>
+<%@page import="Dao.ServicesDAO"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,6 +17,12 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     </head>
+    <%
+        CustomerDAO customerDAO2 = new CustomerDAO();
+        String username2 = (String) session.getAttribute("us");
+        Customer customer2 = customerDAO2.findCustomerByUsername(username2);
+        pageContext.setAttribute("cus", customer2);
+    %>
     <body>
     <center>
         <%@include file="includes/header.jsp"%>
@@ -35,45 +47,30 @@
 
             <div class="schedule-container">
                 <h2 class="schedule-title">Schedule Date & Time</h2>
-                <div class="content-wrapper">
+                <form class="time-set" action="${pageContext.request.contextPath}/BookedServiceControl" method="POST">
+                    <input type="text" name="serID" class="" id="serID" value="${sao}"  readonly>
+                    <input type="text" name="cusID" class="" id="cusID" value="${cus.getCustomerID()}"  readonly>
+
+                    <div class="content-wrapper">
 
 
-                    <form class="time-set">
                         <div class="form-field">
                             <label for="date-input" class="form-label">Date</label>
-                            <input type="date" id="date-input" class="form-input" value="" required>
+                            <input type="date" id="date-input" name="date" class="form-input" value="" required>
                         </div>
                         <div class="form-field">
                             <label for="time-input" class="form-label">Time</label>
-                            <input type="time" id="time-input" class="form-input" value="" required>
-                        </div>
-<!--
-                        <div class="form-field">
-                            <label class="form-label"></label>
-                            <div class="form-select">
-                                <select id="clinic" name="clinic" class="form-input">
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                </select>
-                            </div>
+                            <input type="time" id="time-input" name="time" class="form-input" value="" required>
                         </div>
 
-                        <div class="form-field">
-                            <label for="clinic" class="form-label">Consultation with</label>
-                            <div class="form-select">
-                                <select id="Consultation" name="Consultation" class="form-input">
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                </select>
-                            </div>
-                        </div>-->
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="footer-button" >
+                        <input name="submit" type="submit" class="continue-button" value="Continue">
+                    </div>
+                </form>
             </div>
 
-            <div class="footer-button" >
-                <input name="submit" type="submit" class="continue-button" value="Continue">
-            </div>
         </section>
 
         <%@include file="includes/footer.jsp"%>

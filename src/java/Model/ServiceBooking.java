@@ -18,6 +18,17 @@ public class ServiceBooking {
         this.status = status;
     }
 
+    public ServiceBooking(int serviceID, int customerID, LocalDateTime serviceDate) {
+        this.serviceID = serviceID;
+        this.customerID = customerID;
+        this.serviceDate = serviceDate;
+    }
+
+    public ServiceBooking(int serviceID, int customerID) {
+        this.serviceID = serviceID;
+        this.customerID = customerID;
+    }
+
     public ServiceBooking() {
     }
 
@@ -47,12 +58,12 @@ public class ServiceBooking {
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
-    public String getStartDate() {
+    public String getServiceDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
         return sdf.format(this.serviceDate);
     }
 
-    public void setStartDate(String serviceDate) {
+    public void setServiceDate(String serviceDate) {
         this.serviceDate = LocalDateTime.parse(serviceDate, DATE_TIME_FORMATTER);
     }
 

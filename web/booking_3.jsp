@@ -1,3 +1,10 @@
+<%@page import="Model.Customer"%>
+<%@page import="Dao.CustomerDAO"%>
+<jsp:useBean id="reuses" class="Utils.Reuseable" scope="page"/>
+<jsp:useBean id="cusDAO" class="Dao.CustomerDAO" scope="page"/>
+<jsp:useBean id="serDAO" class="Dao.ServicesDAO" scope="page"/>
+<jsp:useBean id="petDAO" class="Dao.PetsDAO" scope="page"/>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -43,18 +50,19 @@
                                  alt="VN Pay" class="payment-icon">
                         </div>
                         <h2 class="section-title">Personal Information</h2>
+
                         <div class="form-container">
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="firstName" class="form-label">First Name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="firstName" type="text" placeholder="First Name" class="form-input" value="" />
+                                        <input id="firstName" type="text" placeholder="First Name" class="form-input" value="${cus.getFirstName()}" />
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="lastName" class="form-label">Last name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="lastName" type="text" placeholder="Last name" class="form-input" value="" />
+                                        <input id="lastName" type="text" placeholder="Last name" class="form-input" value="${cus.getLastName()}" />
                                     </div>
                                 </div>
                             </div>
@@ -62,13 +70,13 @@
                                 <div class="form-field">
                                     <label for="phoneNumber" class="form-label">Phone Number</label>
                                     <div class="form-input-wrapper">
-                                        <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="" />
+                                        <input id="phoneNumber" type="tel" placeholder="Phone Number" class="form-input" value="${cus.getPhoneNumber()}" />
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="email" class="form-label">Email</label>
                                     <div class="form-input-wrapper">
-                                        <input id="email" type="email" placeholder="Email" class="form-input" value="" />
+                                        <input id="email" type="email" placeholder="Email" class="form-input" value="${cus.getEmail()}" />
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +84,7 @@
                                 <div class="form-field">
                                     <label for="address" class="form-label">Address</label>
                                     <div class="form-input-wrapper" style="width: 48%;">
-                                        <input id="address" type="text" placeholder="Address" class="form-input" value="" />
+                                        <input id="address" type="text" placeholder="Address" class="form-input" value="${cus.getAddress()}" />
                                     </div>
                                 </div>
                             </div>
@@ -84,69 +92,52 @@
                         <hr class="section-divider" />
 
                         <h2 class="section-title">Pet Information</h2>
-                        <div class="form-container">
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label for="petName" class="form-label">Pet Name</label>
-                                    <div class="form-input-wrapper">
-                                        <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="" />
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <label for="petType" class="form-label">Gender</label>
-                                    <div class="form-input-wrapper">
-                                        <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                        </select>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label for="petBreed" class="form-label">Breed</label>
-                                    <div class="form-input-wrapper">
-                                        <input id="petBreed" type="text" placeholder="Breed" class="form-input" value="" />
-                                    </div>
-                                </div>
-                                <div class="form-field">
-                                    <label for="petAge" class="form-label">Age</label>
-                                    <div class="form-input-wrapper">
-                                        <input id="petAge" type="text" placeholder="Age" class="form-input" value="" />
-                                    </div>
+                        <div class="form-container">
+                            <div class="form-field">
+                                <label for="petName" class="form-label">Pet Name</label>
+                                <div class="form-input-wrapper">
+                                    <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetName()}" />
                                 </div>
                             </div>
+
+                            <div class="form-field">
+                                <label for="petType" class="form-label">Pet Type</label>
+                                <div class="form-input-wrapper">
+<!--                                    <select id="petType" name="petType" class="form-input" autocomplete="off">
+                                        <option value="" ${pet.getPetType() == null ? "selected" : ""}>Choose Pet Type</option>
+                                        <option value="Dog" ${pet.getPetType() == "Dog" ? "selected" : ""}>Dog</option>
+                                        <option value="Cat" ${pet.getPetType() == "Cat" ? "selected" : ""}>Cat</option>
+                                        <option value="Other" ${pet.getPetType() == "Other" ? "selected" : ""}>Other</option>
+                                    </select>-->
+                                    <input id="petType" type="text" placeholder="Pet Type" class="form-input" value="${pet.getPetType()}" />
+                                </div>
+                            </div>
+
                         </div>
                         <hr class="section-divider" />
-                        
+
                         <h2 class="section-title">Booking Information</h2>
+
                         <div class="form-container">
                             <div class="form-row">
                                 <div class="form-field">
                                     <label for="serviceName" class="form-label" >Service Name</label>
                                     <div class="form-input-wrapper">
-                                        <input id="serviceName" type="text" placeholder="Service Name" class="form-input" value="" readonly/>
+                                        <input id="serviceName" type="text" placeholder="Service Name" class="form-input" value="${ser.getServiceName()}" readonly/>
                                     </div>
                                 </div>
+
                                 <div class="form-field">
-                                    <label for="bookingDate" class="form-label" >Booking Date</label>
+                                    <label for="startDate" class="form-label" >Service period</label>
                                     <div class="form-input-wrapper">
-                                        <input id="bookingDate" type="text" placeholder="Booking Date" class="form-input" value="" readonly/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label for="startDate" class="form-label" >Start Date</label>
-                                    <div class="form-input-wrapper">
-                                        <input id="startDate" type="text" placeholder="Start Date" class="form-input" value="" readonly/>
+                                        <input id="startDate" type="text" placeholder="Service period" class="form-input" value="${date.toLocalTime()}  ${date.toLocalDate()}" readonly/>
                                     </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="price" class="form-label" >Price</label>
                                     <div class="form-input-wrapper">
-                                        <input id="price" type="text" placeholder="Price" class="form-input" value="" readonly/>
+                                        <input id="price" type="text" placeholder="Price" class="form-input" value="${ser.getPrice()}" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -155,7 +146,6 @@
                 </div>
             </div>
 
-            </form>
             <div class="footer-button" >
                 <button class="continue-button" onclick="windows.location.href = 'vnPay.jsp'">Confirm</button>
             </div>

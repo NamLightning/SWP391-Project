@@ -118,10 +118,15 @@ public class PetControl extends HttpServlet {
         String petName = request.getParameter("petName");
         String petType = request.getParameter("petType").trim();
 
-        String customerID = request.getParameter("customerID");
-        int cusID = Integer.parseInt(customerID);
+        String customerID;
+        Integer cusID = null;
 
-        String action = request.getParameter("action"); // Changed to "action" for clarity
+        if (request.getParameter("customerID") != null) {
+            customerID = request.getParameter("customerID");
+            cusID = Integer.parseInt(customerID);
+        }
+
+        String action = request.getParameter("submit"); // Changed to "action" for clarity
         switch (action) {
             case "Add":
 
@@ -140,6 +145,22 @@ public class PetControl extends HttpServlet {
                 petsDAO.updatePet(p);
                 pageValue(request);
                 response.sendRedirect("PetControl");
+                break;
+            case "Countinue":
+
+                String serviceID;
+                Integer serID = null;
+
+                if (request.getParameter("serviceID") != null) {
+                    serviceID = request.getParameter("serviceID");
+                    serID = Integer.parseInt(serviceID);
+                }
+
+                Pets pet = new Pets(petName, petType, cusID);
+                petsDAO.addPet(pet);
+                
+                request.setAttribute("sao", serID);
+                request.getRequestDispatcher("booking_2.jsp").forward(request, response);
                 break;
             case "Cancel":
                 pageValue(request);

@@ -32,6 +32,32 @@ public class ServiceBookingDAO {
         }
     }
 
+    public static void main(String[] args) {
+        ServiceBookingDAO s = new ServiceBookingDAO();
+
+        s.registerServiceBooking(new ServiceBooking(1, 1, LocalDateTime.now(), "Pending"));
+    }
+
+    public void updateServiceBooking(ServiceBooking c) {
+        String sql = "UPDATE [Services] SET "
+                + "ServiceDate = COALESCE(?, ServiceDate), "
+                + "Status = COALESCE(?, Status), "
+                + "WHERE ServiceID = ? AND CustomerID = ?";
+        Connection con = null;
+        try {
+            con = DBContext.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setTimestamp(1, Timestamp.valueOf(c.ServiceDate()));
+            ps.setString(2, c.getStatus());
+            ps.setInt(3, c.getServiceID());
+            ps.setInt(4, c.getCustomerID());
+            ps.execute();
+            new DBContext().close(con, ps, null);
+        } catch (Exception ex) {
+            Logger.getLogger(ServicesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void deleteServiceBooking(int serID, int cusID) {
         Connection con = null;
         try {
@@ -74,7 +100,7 @@ public class ServiceBookingDAO {
     }
 
     public ArrayList<ServiceBooking> getAllServiceBookings() {
-        String query = "select * from ServiceDetail\n";
+        String query = "select * from [Services]\n";
         ArrayList<ServiceBooking> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
@@ -91,6 +117,47 @@ public class ServiceBookingDAO {
             Logger.getLogger(ServiceBookingDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return list;
+    }
+
+    public ArrayList<ServiceBooking> getAllServiceBooking(int currentPage, int recordsPerPage) {
+        DBContext db = new DBContext();
+        ArrayList<ServiceBooking> list = new ArrayList<>();
+        try {
+            Connection con = db.getConnection();
+
+            String sql = "select * from [Services] ORDER BY ServiceID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, currentPage);
+            ps.setInt(2, recordsPerPage);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                LocalDateTime serviceDate = rs.getTimestamp(3).toLocalDateTime();
+
+                ServiceBooking p = new ServiceBooking(rs.getInt(1), rs.getInt(2), serviceDate, rs.getString(4));
+                list.add(p);
+            }
+            new DBContext().close(con, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(ServicesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public Integer getNumberOfRows() {
+        DBContext db = new DBContext();
+        Integer numOfRows = 0;
+        try {
+            Connection con = db.getConnection();
+            String sql = "SELECT * FROM [Services]";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                numOfRows++;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ServicesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return numOfRows;
     }
 
 }
