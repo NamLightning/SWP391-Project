@@ -5,8 +5,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="bootstrap/bootstrap.css">
-        <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/items.css">
@@ -71,20 +69,23 @@
                 </section>
             </aside>
             <main class="product-section">
-                <header class="product-header">
-                    <!--<p class="results-count">Showing 12 of 12 results</p>-->
+<!--                <header class="product-header">
+                    <p class="results-count">Showing 12 of 12 results</p>
                     <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
                         <option value="latest">Sort by latest</option>
                         <option value="ascendant">Sort by price ascendant</option>
                         <option value="descendant">Sort by price descendant</option>
                     </select>
-                </header>
+                </header>-->
                 <div class="product-grid">
+                    <a href="itemDetails.jsp" style="text-decoration: none">
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
+                            <a href="itemDetails.jsp" style="text-decoration: none">
                             <c:url var="cartLink" value="CartControl">
                                 <c:param name="pageSize" value="${pageSize}"></c:param>
                                 <c:param name="pageNumber" value="${currentPage}"></c:param>
+                                <c:param name="page" value="cloth"></c:param>
                                 <c:param name="action" value="add"></c:param>
                                 <c:param name="id" value="${p.getProductID()}"></c:param>
                             </c:url>
@@ -93,13 +94,14 @@
                                 <div class="product-details">
                                     <h3 class="product-name">${p.getProductName()}</h3>
                                     <p class="product-price">${p.getPrice()}₫</p>
-                                </div>
+                                </div></a>
                                 <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
                                             <ion-icon name="cart-outline"></ion-icon>
                                         </button>
                                 </div>
                             </article>
                     </c:forEach>
+                    </a>
                 </div>
                 <!--                    <article class="product-card">
                                         <img src="images/catcloth2.jpg" alt="Cat Sweater" class="product-image">

@@ -154,6 +154,8 @@
     align-items: flex-start;
     gap: 24px;
     font-weight: 600;
+    cursor: pointer;
+
 }
 @media (max-width: 991px) {
     .page-buttons {
@@ -172,6 +174,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .page-button {
@@ -190,6 +193,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .page-button-outline {
@@ -208,6 +212,7 @@
     color: #6c757d;
     font-weight: 500;
     padding: 8px 16px;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .next-button {
@@ -219,6 +224,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .next-button-content {

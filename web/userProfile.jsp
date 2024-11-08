@@ -77,14 +77,14 @@
                     <div class="account-settings-content">
                         <div class="account-info">
                             <form action="ProfileControl" method="POST" class="form-fields" enctype="multipart/form-data">
-                                <img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" />
+                                <div class="preview" id="preview"><img src="${reuse.loadImage(account.getAvatar_img())}" alt=" " class="profile-image" /></div>
                                 <label style="margin-bottom: 10px;">
                                     <label>Upload Items Image: </label>
                                     <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                     <input type="file" name="image" id="image" accept="image/*"
                                            onchange="showFileNameAndPreview()">
                                 </label>
-                                <div class="preview" id="preview"></div>
+                                
                                 <div class="input-group">
                                     <input type="text" name="id" class="form-control" id="id" value="${account.getCustomerID()}" hidden readonly>
                                     <div class="form-field">

@@ -1,5 +1,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="<c:url value="/css/sidebar.css"/>">
+<style>
+    /* Styling the hover trigger item */
+    .hover-item {
+        display: inline-block;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    /* Styling the popup */
+    .popup-hover {
+        width: 150px;
+        position: absolute;
+        top: 45px; /* Adjust based on the desired popup position */
+        right: 10px;
+        z-index: 100;
+    }
+/*    .popup-hover img{
+        width: 50px;
+        height: 50px;
+    }*/
+</style>
 <div class="navigation">
     <ul>
         <li>
@@ -44,7 +69,7 @@
             </a>
         </li>
         <li>
-            <a href="<c:url value="/admin/manageService.jsp"/>">
+            <a href="<c:url value="/ServiceControl"/>">
                 <span class="icon">
                     <ion-icon name="settings-outline"></ion-icon>
                 </span>
@@ -77,3 +102,38 @@
         </li>
     </ul>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const hoverItem = document.getElementById('hoverItem');
+            const popupHover = document.getElementById('popupHover');
+            // Function to show popup
+                    function showPopup() {
+                    popupHover.style.display = 'block';
+                    }
+
+            // Function to hide popup
+            function hidePopup() {
+            popupHover.style.display = 'none';
+            }
+
+            // Show popup when mouse enters hoverItem or popupHover
+            hoverItem.addEventListener('mouseenter', showPopup);
+                    popupHover.addEventListener('mouseenter', showPopup);
+                    // Hide popup when mouse leaves both hoverItem and popupHover
+                    hoverItem.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                    if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
+                    hidePopup();
+                    }
+                    }, 100); // Small delay to allow mouse to move between elements
+                    });
+                    popupHover.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                    if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
+                    hidePopup();
+                    }
+                    }, 100);
+                    });
+            });
+</script>

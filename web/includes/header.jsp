@@ -435,7 +435,7 @@
                                                             <span class="quantity-popup" id="quantity-popup-${c.getCartItemID()}">${c.getQuantity()}</span> <span>x</span> <span class="price-popup" id="price-popup-${c.getCartItemID()}">${pDAO.checkExist(c.getProductID()).getPrice()}₫</span>
                                                         </div>
                                                     </div>
-                                                    <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart" type="button" onclick="updateQuantityXHR(${c.getCartItemID()}, 'delete')"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="remove-icon" /></button>
+                                                    <button class="remove-item" aria-label="Remove Canon EOS 1500D from cart" type="button" onclick="window.location.href = '${deleteLink}'"><img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c91e37402f51849aa5fb805e073a5241b50541d17ba1bfd5a828b560ec357a1f?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="remove-icon" /></button>
                                                 </article>
                                                 <c:set var="itemTotal" value="${pDAO.checkExist(c.getProductID()).getPrice() * c.getQuantity()}" />
                                                 <c:set var="totalPrice" value="${totalPrice + itemTotal}" />

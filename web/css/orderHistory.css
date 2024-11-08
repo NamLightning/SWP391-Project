@@ -177,6 +177,7 @@
     height: 40px;
     margin: auto 0;
     padding: 8px;
+    cursor: pointer;
 }
 .pagination-icon {
     aspect-ratio: 1;

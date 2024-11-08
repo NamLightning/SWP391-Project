@@ -3,11 +3,9 @@ package Dao;
 import ConnectDB.DBContext;
 import Model.Pets;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,26 +57,26 @@ public class PetsDAO {
     }
 
     public void addPet(Pets p) {
-        String sql = "INSERT INTO Pets (PetID"
-                + "           ,PetName"
+        String sql = "INSERT INTO Pets (PetName"
                 + "           ,PetType"
-                + "           ,customerID) VALUES (?, ?, ?, ?);";
-        DBContext db = new DBContext();
-
-        Connection con;
+                + "           ,customerID) VALUES (?, ?, ?);";
 
         try {
-            con = db.getConnection();
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setInt(1, p.getPetID());
-            statement.setString(2, p.getPetName());
-            statement.setString(3, p.getPetType());
-            statement.setInt(4, p.getCustomerID());
-            statement.execute();
-            db.close(con, statement, null);
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, p.getPetName());
+            ps.setString(2, p.getPetType());
+            ps.setInt(3, p.getCustomerID());
+            ps.execute();
+            new DBContext().close(conn, ps, null);
         } catch (Exception ex) {
             Logger.getLogger(OrderDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static void main(String[] args) {
+        PetsDAO p = new PetsDAO();
+        p.addPet(new Pets("cho", "meo", 1));
     }
 
     public void updatePet(Pets e) {
@@ -161,6 +159,25 @@ public class PetsDAO {
     public Pets checkExist(int id) {
         String query = "select * from Pets\n"
                 + "where PetID = ?\n";
+        Pets e = null;
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                e = new Pets(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+            }
+            new DBContext().close(conn, ps, rs);
+        } catch (Exception ex) {
+            Logger.getLogger(PetsDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
+
+    public Pets checkExistByCusID(int id) {
+        String query = "select * from Pets\n"
+                + "where customerID = ?\n";
         Pets e = null;
         try {
             Connection conn = new DBContext().getConnection();

@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Admine Dashboard</title>
-        <link rel="stylesheet" href="../css/createPro.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/addItem.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
@@ -20,10 +20,10 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
-
+                    <%@include file="adminMenu.jsp"%>
                 </div>
 
 

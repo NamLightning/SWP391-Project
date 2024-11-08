@@ -108,6 +108,7 @@
                                     <h3 class="summary-title">Order Summary</h3>
                                     <div class="product-list">
                                         <c:forEach var="c" items="${checkout}">
+                                            <input type="text" name="id" value="${c.getCartItemID()}" hidden/>
                                             <div class="product-item">
                                                 <img src="${reuse.loadImage(pDAO.checkExist(c.getProductID()).getAvatar_img())}" alt="..." class="product-image">
                                                 <div class="product-details">
@@ -140,7 +141,12 @@
                                                                                     </div>-->
                                         </div>
                                         <div class="total-divider"></div>
-                                        <input id="amount" name="amount" type="text" value="${price}" hidden/>
+                                        <c:if test="${not empty price}">
+                                            <input id="amount" name="amount" type="text" value="${price}" hidden/>
+                                        </c:if>
+                                        <c:if test="${empty price}">
+                                            <input id="amount" name="amount" type="text" value="50000" hidden/>
+                                        </c:if>
                                         <div class="grand-total">
                                             <span class="grand-total-label">Total</span>
                                             <span class="grand-total-value">${price}₫</span>
@@ -192,7 +198,7 @@
                                 window.location.href = x.data;
 //                                vnpay.open({width: 768, height: 600, url: x.data});
                             } else {
-                                location.href = x.data;
+                                window.location.href = x.data;
                             }
                             return false;
                         } else {

@@ -95,6 +95,7 @@
     letter-spacing: 0.17px;
     line-height: 48px;
     justify-content: center;
+    cursor: pointer;
 }
 
 .back-home-button {
@@ -107,6 +108,7 @@
     color: var(--Primary-500, #fa8232);
     padding: 0 24px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 @media (max-width: 991px) {
@@ -122,11 +124,13 @@
     width: 20px;
     align-self: stretch;
     margin: auto 0;
+    cursor: pointer;
 }
 
 .button-label {
     align-self: stretch;
     margin: auto 0;
+    cursor: pointer;
 }
 
 .view-order-button {
@@ -140,6 +144,7 @@
     padding: 0 24px;
     text-decoration: none;
     height: 52px;
+    cursor: pointer;
 }
 
 @media (max-width: 991px) {

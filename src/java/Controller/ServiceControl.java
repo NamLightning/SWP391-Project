@@ -4,8 +4,8 @@
  */
 package Controller;
 
-import Dao.CustomerDAO;
-import Model.Customer;
+import Dao.ServicesDAO;
+import Model.Services;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,8 @@ import javax.servlet.http.Part;
  *
  * @author DELL
  */
-public class CustomerControl extends HttpServlet {
+@MultipartConfig
+public class ServiceControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +44,10 @@ public class CustomerControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CustomerControl</title>");
+            out.println("<title>Servlet ServiceControl</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CustomerControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServiceControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,17 +73,17 @@ public class CustomerControl extends HttpServlet {
             switch (action) {
                 case "edit":
                     pageValue(request);
-                    editCustomer(request, response);
+                    editServices(request, response);
                     break;
                 case "delete":
-                    deleteCustomer(request, response);
+                    deleteServices(request, response);
                     break;
                 default:
                     break;
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("admin/manageCustomer.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageService.jsp").forward(request, response);
         }
     }
 
@@ -100,45 +102,44 @@ public class CustomerControl extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        CustomerDAO customerDAO = new CustomerDAO();
+        ServicesDAO serviceDAO = new ServicesDAO();
 
-        String customerID = request.getParameter("customerID").trim();
-        int id = Integer.parseInt(customerID);
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String firstName = request.getParameter("firstName").trim();
-        String lastName = request.getParameter("lastName").trim();
-        String email = request.getParameter("email").trim();
-        String phoneNumber = request.getParameter("phoneNumber").trim();
-        String address = request.getParameter("address").trim();
+        String serviceID;
+        Integer id = null;
+
+        if (request.getParameter("serviceID") != null) {
+            serviceID = request.getParameter("serviceID");
+            id = Integer.parseInt(serviceID);
+        }
+
+        String serviceName = request.getParameter("serviceName");
+        double prices = Double.parseDouble(request.getParameter("price").trim());
+
+        String serviceDesc = request.getParameter("serviceDes").trim();
 
         String submit = request.getParameter("submit");
         switch (submit) {
             case "Add":
                 String fileName1 = getImageName(request);
                 byte[] fileData1 = getImage(request);
-                Customer i = new Customer(username,password,firstName,lastName,email,phoneNumber,address);
+                Services i = new Services(serviceName, prices, serviceDesc);
                 if (fileName1 != null) {
                     i.setAvatar_name(fileName1);
                 }
                 if (fileData1 != null) {
                     i.setAvatar_img(fileData1);
                 }
-                customerDAO.registerCustomer(i);
-                response.sendRedirect("CustomerControl");
+                serviceDAO.registerServices(i);
+                response.sendRedirect("ServiceControl");
                 break;
             case "Edit":
-                Customer p = customerDAO.checkExist(id);
+                Services p = serviceDAO.checkExist(id);
                 String fileName = getImageName(request);
                 byte[] fileData = getImage(request);
-                
-                p.setUsername(username);
-                p.setPassword(password);
-                p.setFirstName(firstName);
-                p.setLastName(lastName);
-                p.setEmail(email);
-                p.setPhoneNumber(phoneNumber);
-                p.setAddress(address);
+
+                p.setServiceName(serviceName);
+                p.setPrice(prices);
+                p.setServiceDesc(serviceDesc);
 
                 if (fileName != null) {
                     p.setAvatar_name(fileName);
@@ -146,18 +147,18 @@ public class CustomerControl extends HttpServlet {
                 if (fileData != null) {
                     p.setAvatar_img(fileData);
                 }
-                customerDAO.updateCustomer(p);
+                serviceDAO.updateServices(p);
                 pageValue(request);
-                response.sendRedirect("CustomerControl");
+                response.sendRedirect("ServiceControl");
                 break;
             case "Cancel":
                 pageValue(request);
-                request.getRequestDispatcher("CustomerControl").forward(request, response);
+                request.getRequestDispatcher("ServiceControl").forward(request, response);
                 break;
             default:
                 break;
         }
-        request.getRequestDispatcher("CustomerControl").forward(request, response);
+        request.getRequestDispatcher("ServiceControl").forward(request, response);
     }
 
     /**
@@ -170,33 +171,33 @@ public class CustomerControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void editCustomer(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
+    private void editServices(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String customerID = request.getParameter("customerID").trim();
-        CustomerDAO customerDAO = new CustomerDAO();
+        String serviceID = request.getParameter("id");
+        ServicesDAO serviceDAO = new ServicesDAO();
 
-        Customer customer = customerDAO.checkExist(Integer.parseInt(customerID));
+        Services service = serviceDAO.checkExist(Integer.parseInt(serviceID));
         pageValue(request);
 
-        request.setAttribute("customer", customer);
-        request.getRequestDispatcher("admin/editCustomer.jsp").forward(request, response);
+        request.setAttribute("service", service);
+        request.getRequestDispatcher("admin/updateService.jsp").forward(request, response);
     }
 
-    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+    private void deleteServices(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String customerID = request.getParameter("customerID").trim();
-        CustomerDAO productsDAO = new CustomerDAO();
-        Customer customer = productsDAO.checkExist(Integer.parseInt(customerID));
-        if (customer != null){
-            productsDAO.deleteCustomer(customer.getCustomerID());
+        String serviceID = request.getParameter("id").trim();
+        ServicesDAO productsDAO = new ServicesDAO();
+        Services service = productsDAO.checkExist(Integer.parseInt(serviceID));
+        if (service != null) {
+            productsDAO.deleteServices(service.getServiceID());
         }
-        response.sendRedirect("CustomerControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private String getImageName(HttpServletRequest request) throws IOException, ServletException {
@@ -227,32 +228,27 @@ public class CustomerControl extends HttpServlet {
     }
 
     private void pageValue(HttpServletRequest request) {
-        int pageNumber;
-        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
-            pageNumber = Integer.parseInt(request.getParameter("page"));
+        int currentPage;
+        if (request.getParameter("currentPage") != null && !request.getParameter("currentPage").isEmpty()) {
+            currentPage = Integer.parseInt(request.getParameter("currentPage"));
         } else {
-            pageNumber = 1;
+            currentPage = 1;
         }
-        int pageSize;
-        if (request.getParameter("pageSize") != null && !request.getParameter("pageSize").isEmpty()) {
-            pageSize = Integer.parseInt(request.getParameter("pageSize"));
+        int recordsPerPage;
+        if (request.getParameter("recordsPerPage") != null && !request.getParameter("recordsPerPage").isEmpty()) {
+            recordsPerPage = Integer.parseInt(request.getParameter("recordsPerPage"));
         } else {
-            pageSize = 12;
+            recordsPerPage = 12;
         }
-        int offset = (pageNumber - 1) * pageSize;
-        
-        CustomerDAO customerDao = new CustomerDAO();
-        ArrayList<Customer> products = customerDao.getAllCustomer(offset, pageSize);
-        request.setAttribute("customer", products);
-        int rows = customerDao.getNumberOfRows();
-        int totalPages = (int) Math.ceil((double) rows / pageSize);
-        int startPage = Math.max(1, pageNumber - 2);
-        int endPage = Math.min(totalPages, pageNumber + 2);
 
-        request.setAttribute("currentPage", pageNumber);
-        request.setAttribute("totalPages", totalPages);
-        request.setAttribute("pageSize", pageSize);
-        request.setAttribute("startPage", startPage);
-        request.setAttribute("endPage", endPage);
+        int offset = (currentPage - 1) * recordsPerPage;
+        ServicesDAO serviceDao = new ServicesDAO();
+        ArrayList<Services> products = serviceDao.getAllServices(offset, recordsPerPage);
+        request.setAttribute("services", products);
+        int rows = serviceDao.getNumberOfRows();
+        int totalPages = (int) Math.ceil((double) rows / recordsPerPage);
+        request.setAttribute("noOfPages", totalPages);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("recordsPerPage", recordsPerPage);
     }
 }

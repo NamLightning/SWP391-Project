@@ -23,21 +23,15 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="User profile picture">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
+                    <%@include file="adminMenu.jsp"%>
                 </div>
                 <div class="main-content">
                     <div class="pet-table">
                         <div class="header">
                             <h2 style="font-size: 20px; margin-right: 30%;">Registered Pets</h2>
-                        </div>
-                        <div class="search-sort-bar">
-                            <input type="text" placeholder="Search pet..." class="search-input">
-                            <select class="sort-select">
-                                <option>Sort by Newest</option>
-                                <option>Sort by Oldest</option>
-                            </select>
                         </div>
                         <div class="pet-table" style="font-size: 13px;">
                             <table>
@@ -59,8 +53,8 @@
                                         <td>Dog</td>
                                         <td>Trim & Bathe Dog’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                     <tr>
                                         <td>#12345128</td>
@@ -69,8 +63,8 @@
                                         <td>Cat</td>
                                         <td>Trim & Bathe Cat’s Fur</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr> 
                                     <tr>
                                         <td>#12345128</td>
@@ -79,8 +73,8 @@
                                         <td>Dog</td>
                                         <td>Comprehensive Care For Dog</td>
                                         <td><button class="update" 
-                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button></td>
-                                        <td><button class="delete">Delete</button></td>
+                                                    onclick="window.location.href = '<c:url value="/admin/updateItem.jsp"/>'">Update</button>
+                                        <button class="delete">Delete</button></td>
                                     </tr>
                                 </tbody>
                             </table>

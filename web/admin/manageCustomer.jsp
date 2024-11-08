@@ -21,10 +21,10 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
-
+                    <%@include file="adminMenu.jsp"%>
                 </div>
 
 
@@ -32,16 +32,8 @@
                     <div class="customer-table">
                         <div class="header">
                             <h2 style="font-size: 20px;">All Customers</h2>
-                            <button class="vip-customer-btn" 
-                                    onclick="window.location.href = '<c:url value="/admin/manageVIPCustomer.jsp"/>'">View VIP Customer</button>
                         </div>
-                        <div class="search-sort-bar">
-                            <input type="text" placeholder="Search customer..." class="search-input">
-                            <select class="sort-select">
-                                <option>Sort by Newest</option>
-                                <option>Sort by Oldest</option>
-                            </select>
-                        </div>
+                        
                         <div class="customer-table-2" style="font-size: 13px;">
                             <table>
                                 <thead>
@@ -82,13 +74,49 @@
                             </table>
                         </div>
                         <div class="pagination">
-                            <a href="#" class="pagination-item">&lt;</a>
-                            <a href="#" class="pagination-item active">1</a>
-                            <a href="#" class="pagination-item">2</a>
-                            <a href="#" class="pagination-item">3</a>
-                            <a href="#" class="pagination-item">4</a>
-                            <span class="pagination-item">...</span>
-                            <a href="#" class="pagination-item">&gt;</a>
+                            <c:if test="${currentPage > 1}">
+                                <!--<a href="CustomerControl?page=1&size=${pageSize}" class="page-number prev-button">First</a>-->
+                            </c:if>
+
+                            <!-- Previous page link -->
+                            <c:if test="${currentPage > 1}">
+                                <a href="CustomerControl?page=${currentPage - 1}&size=${pageSize}" class="pagination-item"><</a>
+                            </c:if>
+
+                            <c:if test="${currentPage > totalPages - currentPage}">
+                                <!--<span class="ellipsis">...</span>-->
+                            </c:if>
+                            <c:if test="${currentPage > 3}">
+                                <span class="ellipsis">...</span>
+                            </c:if>
+
+                            <!-- Display 5 page links with ellipsis for overflow pages -->
+                            <c:forEach begin="${startPage}" end="${endPage}" var="page">
+                                <c:choose>
+                                    <c:when test="${page == currentPage}">
+                                        <strong class="pagination-item active-page">${page}</strong>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="CustomerControl?page=${page}&size=${pageSize}" class="pagination-item">${page}</a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+
+                            <!-- Ellipsis for overflow pages before and after the 5 displayed pages -->
+
+                            <c:if test="${currentPage < totalPages - 2}">
+                                <span class="ellipsis">...</span>
+                            </c:if>
+
+                            <!-- Next page link -->
+                            <c:if test="${currentPage < totalPages}">
+                                <a href="CustomerControl?page=${currentPage + 1}&size=${pageSize}" class="pagination-item">></a>
+                            </c:if>
+
+                            <!-- Last page link -->
+                            <c:if test="${currentPage < totalPages}">
+        <!--                        <a href="CustomerControl?page=${totalPages}&size=${pageSize}" class="page-number next-button">Last</a>-->
+                            </c:if>
                         </div>
                     </div>
                 </div>

@@ -240,7 +240,8 @@ public class CartControl extends HttpServlet {
         Customer customer = customerDAO.findCustomerByUsername(username.trim());
         String Sid = request.getParameter("cid").trim();
         int id = Integer.parseInt(Sid);
-        Item i = itemDAO.checkExist(id);
+        CartItems cart = cartItemsDAO.checkExist(id);
+        Item i = itemDAO.checkExist(cart.getProductID());
         if (cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), i.getProductID()) != null) {
             CartItems c = cartItemsDAO.findCartItemsByCustomer(customer.getCustomerID(), i.getProductID());
             if (c.getQuantity() > 1) {

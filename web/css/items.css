@@ -1,4 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body{
+    margin: 0;
+}
 
 .filters-cards {
     display: flex;
@@ -144,14 +149,15 @@ input[type=range] {
 }
 
 .product-header {
-    display: flex;
+    /*display: flex;*/
     width: 100%;
-    max-width: 97%;
-    align-items: flex-start;
+    /*max-width: 97%;*/
+    align-items: flex-end;
+    text-align: right;
     justify-content: space-between;
     flex-wrap: wrap;
     font: 500 20px Poppins, sans-serif;
-    margin-bottom: 2%;
+    /*margin-bottom: 2%;*/
 }
 
 .results-count{
@@ -182,6 +188,7 @@ input[type=range] {
     gap: 24px;
     justify-content: flex-start;
     flex-wrap: wrap;
+    margin-left: 1%;
 }
 
 /*product-link{
@@ -203,6 +210,7 @@ input[type=range] {
     justify-content: flex-start;
     flex-grow: 1;
     width: 245px;
+    cursor: pointer;
 }
 
 .product-image img{
@@ -251,6 +259,7 @@ input[type=range] {
     height: 40px;
     padding: 0;
     border-style: hidden;
+    cursor: pointer;
 }
 
 ion-icon{
@@ -305,6 +314,7 @@ ion-icon{
     color: #6c757d;
     font-weight: 500;
     padding: 8px 16px;
+    cursor: pointer;
 }
 .next-icon {
     width: 24px;
@@ -394,7 +404,7 @@ width: 70%;
     align-items: flex-start;
     gap: 40px 56px;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     padding-top: 5%;
 }
 @media (max-width: 991px) {
@@ -700,6 +710,7 @@ width: 70%;
     /*justify-content: flex-start;*/
     flex-wrap: wrap;
     font: 700 16px Public Sans, sans-serif;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .buttons {
@@ -719,8 +730,9 @@ width: 70%;
     font-weight: 400;
     white-space: nowrap;
     text-align: center;
-    width: 120px;
-    padding: 16px 20px;
+    width: 110px;
+    padding: 16px 20px 16px 10px;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .button-1 {
@@ -760,7 +772,8 @@ width: 70%;
     line-height: 56px;
     justify-content: center;
     /*width: 200px;*/
-    padding: 0 32px;
+    padding: 0 28px;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .button-2 {
@@ -789,6 +802,7 @@ width: 70%;
     line-height: 56px;
     padding: 0 32px;
     border: 2px solid rgba(253, 126, 20, 1);
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .button-3 {
@@ -1006,4 +1020,3 @@ width: 70%;
     justify-content: flex-start;
     flex-grow: 1;
 }
-

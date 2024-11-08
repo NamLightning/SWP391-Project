@@ -23,9 +23,10 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="User profile picture">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
+                    <%@include file="adminMenu.jsp"%>
                 </div>
                 <div class="main-content">
                     <div class="promotion-table">
@@ -33,13 +34,6 @@
                             <h2 style="font-size: 20px; margin-right: 30%;">All Promotions</h2>
                             <button class="new-promotion-btn" 
                                     onclick="window.location.href = '<c:url value="/admin/createPromotion.jsp"/>'">Create New Promotion</button>
-                        </div>
-                        <div class="search-sort-bar">
-                            <input type="text" placeholder="Search promotion..." class="search-input">
-                            <select class="sort-select">
-                                <option>Sort by Newest</option>
-                                <option>Sort by Oldest</option>
-                            </select>
                         </div>
                         <div class="promotion-table" style="font-size: 13px;">
                             <table>

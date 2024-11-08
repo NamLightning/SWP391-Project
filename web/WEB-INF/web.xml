@@ -89,6 +89,14 @@
         <servlet-name>ContactUs</servlet-name>
         <servlet-class>Controller.ContactUs</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookedServiceControl</servlet-name>
+        <servlet-class>Controller.BookedServiceControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServiceControl</servlet-name>
+        <servlet-class>Controller.ServiceControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -192,6 +200,14 @@
     <servlet-mapping>
         <servlet-name>vnpayRefund</servlet-name>
         <url-pattern>/vnpayrefund/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookedServiceControl</servlet-name>
+        <url-pattern>/BookedServiceControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceControl</servlet-name>
+        <url-pattern>/ServiceControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

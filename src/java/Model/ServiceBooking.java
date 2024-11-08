@@ -6,35 +6,46 @@ import java.time.format.DateTimeFormatter;
 
 public class ServiceBooking {
 
-    private int serviceId;
-    private int cusId;
+    private int serviceID;
+    private int customerID;
     private LocalDateTime serviceDate;
     private String status;
 
-    public ServiceBooking(int serviceId, int cusId, LocalDateTime serviceDate, String status) {
-        this.serviceId = serviceId;
-        this.cusId = cusId;
+    public ServiceBooking(int serviceID, int customerID, LocalDateTime serviceDate, String status) {
+        this.serviceID = serviceID;
+        this.customerID = customerID;
         this.serviceDate = serviceDate;
         this.status = status;
+    }
+
+    public ServiceBooking(int serviceID, int customerID, LocalDateTime serviceDate) {
+        this.serviceID = serviceID;
+        this.customerID = customerID;
+        this.serviceDate = serviceDate;
+    }
+
+    public ServiceBooking(int serviceID, int customerID) {
+        this.serviceID = serviceID;
+        this.customerID = customerID;
     }
 
     public ServiceBooking() {
     }
 
-    public int getServiceId() {
-        return serviceId;
+    public int getServiceID() {
+        return serviceID;
     }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
+    public void setServiceID(int serviceID) {
+        this.serviceID = serviceID;
     }
 
-    public int getCusId() {
-        return cusId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCusId(int cusId) {
-        this.cusId = cusId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public LocalDateTime ServiceDate() {
@@ -66,7 +77,7 @@ public class ServiceBooking {
 
     @Override
     public String toString() {
-        return "BookedService{" + "serviceId=" + serviceId + ", cusId=" + cusId + ", serviceDate=" + serviceDate + ", status=" + status + '}';
+        return "ServiceBooking{" + "serviceID=" + serviceID + ", customerID=" + customerID + ", serviceDate=" + serviceDate + ", status=" + status + '}';
     }
 
 }

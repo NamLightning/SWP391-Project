@@ -24,9 +24,10 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="User profile picture">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
+                    <%@include file="adminMenu.jsp"%>
                 </div>
                 <div>
                     <h1>Revenue Reports</h1>
@@ -36,13 +37,6 @@
                     <div class="revenue-table">
                         <div class="header">
                             <h2 style="font-size: 20px; margin-right: 30%;">Income Statement</h2>
-                        </div>
-                        <div class="search-sort-bar">
-                            <input type="text" placeholder="Search revenue..." class="search-input">
-                            <select class="sort-select">
-                                <option>Sort by Newest</option>
-                                <option>Sort by Oldest</option>
-                            </select>
                         </div>
                         <div class="bg-all-university" >
                             <div class="div">

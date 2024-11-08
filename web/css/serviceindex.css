@@ -97,7 +97,7 @@ body{
 .main-details-content{
     background-color: #ffffff;
     margin: 1%;
-    width: 70%;
+    width: 100%;
 }
 
 /*.image-container {
@@ -244,12 +244,12 @@ body{
 }
 .pet-type-dog {
     width: 312px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .duration {
     width: 312px;
-    margin-top: 3%;
-    font-size: 18px;
+    margin: 3% 0;
+    font-size: 16px;
 }
 
 .content {
@@ -292,7 +292,7 @@ body{
     font-weight: 400;
     line-height: 20px;
     margin-top: 12px;
-    width: 80%;
+    width: 70%;
 }
 @media (max-width: 991px) {
     .description p {
@@ -351,6 +351,7 @@ body{
     width: 200px;
     padding: 0 32px;
     margin: 2% 0;
+    cursor: pointer;
 }
 @media (max-width: 991px) {
     .button-book {
@@ -365,7 +366,7 @@ body{
 .content {
     position: relative;
     display: flex;
-    margin-top: 0;
+    margin-top: 5%;
     width: 100%;
     max-width: 648px;
     padding-bottom: 8px;
@@ -452,7 +453,9 @@ body{
     width: 1296px;
     height: 502px;
     display: flex;
-    gap: 20px;
+    gap: 45px;
+    /*justify-container: center;*/
+    
 }
 
 .related-item-card{

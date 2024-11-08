@@ -23,9 +23,10 @@
                     <div class="toggle">
                         <ion-icon name="menu-outline"></ion-icon>
                     </div>
-                    <div class="user">
-                        <img src="#" alt="User profile picture">
+                    <div class="user hover-item" id="hoverItem">
+                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9994c0a1b936c2427317594bc441b8fcc98af8133e59027568749dfd2cb1ae?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="User avatar" class="user-avatar" />
                     </div>
+                    <%@include file="adminMenu.jsp"%>
                 </div>
                 <div class="main-content">
                     <div class="item-table">
@@ -38,13 +39,7 @@
                                         onclick="window.location.href = '<c:url value="/admin/addItem.jsp"/>'">Create New Product</button>
                             </div>
                         </div>
-                        <div class="search-sort-bar">
-                            <input type="text" placeholder="Search product..." class="search-input">
-                            <select class="sort-select">
-                                <option>Sort by Newest</option>
-                                <option>Sort by Oldest</option>
-                            </select>
-                        </div>
+
                         <div class="item-table" style="font-size: 13px;">
                             <table>
                                 <thead>
@@ -87,8 +82,8 @@
                                                 <td><span class="status-instock active">Unavailable</span></td>
                                             </c:if>
                                             <!--<a href="${editLink}">Edit</a>-->
-                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button></td>
-                                            <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
+                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button>
+                                            <button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
