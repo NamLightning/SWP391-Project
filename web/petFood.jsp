@@ -69,38 +69,43 @@
                 </section>
             </aside>
             <main class="product-section">
-<!--                <header class="product-header">
-                    <p class="results-count">Showing 12 of 12 results</p>
-                    <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
-                        <option value="latest">Sort by latest</option>
-                        <option value="ascendant">Sort by price ascendant</option>
-                        <option value="descendant">Sort by price descendant</option>
-                    </select>
-                </header>-->
+                <!--                <header class="product-header">
+                                    <p class="results-count">Showing 12 of 12 results</p>
+                                    <select class="sort-drop" style="padding: 5px; border-radius: 10px;">
+                                        <option value="latest">Sort by latest</option>
+                                        <option value="ascendant">Sort by price ascendant</option>
+                                        <option value="descendant">Sort by price descendant</option>
+                                    </select>
+                                </header>-->
                 <div class="product-grid">
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
-                            <a href="itemDetails.jsp" style="text-decoration: none">
-                            <c:url var="cartLink" value="CartControl">
+                            <c:url var="itemDetailLink" value="itemDetails.jsp">
                                 <c:param name="pageSize" value="${pageSize}"></c:param>
                                 <c:param name="pageNumber" value="${currentPage}"></c:param>
-                                <c:param name="action" value="add"></c:param>
                                 <c:param name="id" value="${p.getProductID()}"></c:param>
                             </c:url>
-                            <img src="${reuse.loadImage(p.getAvatar_img())}" alt="..." class="product-image">
-                            <div class="product-info">
-                                <div class="product-details">
-                                    <h3 class="product-name">${p.getProductName()}</h3>
-                                    <p class="product-price">${p.getPrice()}₫</p>
-                                </div>
+                            <a href="${itemDetailLink}" style="text-decoration: none">
+                                <c:url var="cartLink" value="CartControl">
+                                    <c:param name="pageSize" value="${pageSize}"></c:param>
+                                    <c:param name="pageNumber" value="${currentPage}"></c:param>
+                                    <c:param name="action" value="add"></c:param>
+                                    <c:param name="id" value="${p.getProductID()}"></c:param>
+                                </c:url>
+                                <img src="${reuse.loadImage(p.getAvatar_img())}" alt="..." class="product-image">
+                                <div class="product-info">
+                                    <div class="product-details">
+                                        <h3 class="product-name">${p.getProductName()}</h3>
+                                        <p class="product-price">${p.getPrice()}₫</p>
+                                    </div>
                             </a>
-                                <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
-                                        <ion-icon name="cart-outline"></ion-icon>
-                                    </button>
-                                </div>
-                            </article>
-                                        
-                    </c:forEach>
+                            <button class="add-to-cart" aria-label="Add to cart" type="button" <c:if test="${not empty us}">onclick="window.location.href = '${cartLink}'"</c:if>>
+                                    <ion-icon name="cart-outline"></ion-icon>
+                                </button>
+                        </div>
+                        </article>
+
+                </c:forEach>
                 </div>
                 <nav class="pagination" aria-label="Product page navigation">
                     <div class="page-numbers">

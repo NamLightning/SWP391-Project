@@ -126,7 +126,7 @@ public class CartControl extends HttpServlet {
             productItem = itemDAO.checkExist(productId);
         }
         HttpSession session = request.getSession();
-        
+
         CustomerDAO customerDAO = new CustomerDAO();
         String username = (String) session.getAttribute("us");
         Customer customer = customerDAO.findCustomerByUsername(username);
@@ -218,10 +218,16 @@ public class CartControl extends HttpServlet {
             c.setQuantity(Quantity);
             cartItemsDAO.updateCartItems(c);
         }
-        if (request.getParameter("page") != null) {
+        if (request.getParameter("page") != null && request.getParameter("pageNumber") != null && request.getParameter("pageSize") != null) {
             response.sendRedirect("CategoriesControl?action=" + request.getParameter("page") + "&page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        } else if (request.getParameter("page") != null) {
+            response.sendRedirect("CategoriesControl?action=" + request.getParameter("page"));
         }
-        response.sendRedirect("CategoriesControl?page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        if (request.getParameter("pageNumber") != null && request.getParameter("pageSize") != null) {
+            response.sendRedirect("CategoriesControl?page=" + request.getParameter("pageNumber") + "&pageSize=" + request.getParameter("pageSize"));
+        } else {
+            response.sendRedirect("CategoriesControl");
+        }
     }
 
     private void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {

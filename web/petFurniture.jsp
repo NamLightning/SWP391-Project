@@ -83,7 +83,13 @@
                     <a href="itemDetails.jsp" style="text-decoration: none">
                     <c:forEach var="p" items="${products}">
                         <article class="product-card">
-                            <a href="itemDetails.jsp" style="text-decoration: none">
+                            <c:url var="itemDetailLink" value="itemDetails.jsp">
+                                <c:param name="pageSize" value="${pageSize}"></c:param>
+                                <c:param name="pageNumber" value="${currentPage}"></c:param>
+                                <c:param name="page" value="furniture"></c:param>
+                                <c:param name="id" value="${p.getProductID()}"></c:param>
+                            </c:url>
+                            <a href="${itemDetailLink}" style="text-decoration: none">
                             <c:url var="cartLink" value="CartControl">
                                 <c:param name="pageSize" value="${pageSize}"></c:param>
                                 <c:param name="pageNumber" value="${currentPage}"></c:param>

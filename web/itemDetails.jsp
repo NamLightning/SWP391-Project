@@ -1,5 +1,8 @@
+<%@page import="Dao.CategoriesDAO, Dao.ItemDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<jsp:useBean id="reuse" class="Utils.Reuseable" scope="page"/>--%>
+<jsp:useBean id="iDAO" class="Dao.ItemDAO" scope="page"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +16,32 @@
     </head>
     <body>
     <center>
+        <%
+            if (request.getParameter("pageSize") != null) {
+                String pageSize = request.getParameter("pageSize");
+                pageContext.setAttribute("pageSize", pageSize);
+            }
+            if (request.getParameter("pageNumber") != null) {
+                String pageNumber = request.getParameter("pageNumber");
+                pageContext.setAttribute("currentPage", pageNumber);
+            }
+            int productId = Integer.parseInt(request.getParameter("id"));
+            Item i = iDAO.checkExist(productId);
+            pageContext.setAttribute("item", i);
+            if (request.getParameter("page") != null) {
+                String page1 = request.getParameter("page");
+                pageContext.setAttribute("category", page1);
+                if (page1.equals("furniture")) {
+                    pageContext.setAttribute("productList", iDAO.getAllProductsWithCategory(3));
+                } else if (page1.equals("accessory")) {
+                    pageContext.setAttribute("productList", iDAO.getAllProductsWithCategory(4));
+                } else if (page1.equals("cloth")) {
+                    pageContext.setAttribute("productList", iDAO.getAllProductsWithCategory(2));
+                }
+            } else {
+                pageContext.setAttribute("productList", iDAO.getAllProductsWithCategory(1));
+            }
+        %>
         <%@include file="includes/header.jsp"%>
         <div class="detail-container">
             <div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1224px;"></div>
@@ -20,7 +49,7 @@
                 <!--item-->
                 <div data-layername="itemDetail" class="item-detail">
                     <div data-layername="itemPreview" class="item-preview">
-                        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f1c837f9249f1b85a2ccfc655313bcdd79f2ad1ed65c270f2189244d2d2dad1c?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img" alt="Item preview" />
+                        <img loading="lazy" src="${reuse.loadImage(item.getAvatar_img())}" class="img" alt="${item.getProductName()}" />
                     </div>
                     <div data-layername="itemDetail" class="item-detail-2">
                         <div data-layername="itemContent" class="item-content">
@@ -36,7 +65,7 @@
                                     <div data-layername="47StarRating" class="star-rating">4.7 Star Rating</div>
                                 </div>
                                 <div data-layername="petBackPackForDogCatSpaceGray" class="pet-back-pack-for-dog-cat-space-gray">
-                                    Pet BackPack For Dog & Cat - Space Gray
+                                    ${item.getProductName()}
                                 </div>
                             </div>
                             <div data-layername="funFact" class="fun-fact">
@@ -54,20 +83,25 @@
                                             Availability:
                                         </span>
                                         <span style="font-family: Public Sans, -apple-system, Roboto, Helvetica, sans-serif; font-weight: 600; color: rgba(45, 178, 36, 1);">
-                                            In Stock
+                                            <c:if test="${item.getStockQuantity() == 0}">
+                                                Out Of Stock
+                                            </c:if>
+                                            <c:if test="${item.getStockQuantity() > 0}">
+                                                In Stock
+                                            </c:if>
                                         </span>
                                     </div>
                                 </div>
                                 <div data-layername="row" class="row-2">
                                     <div data-layername="brandKorePack" class="brand-kore-pack">Brand: KorePack</div>
                                     <div data-layername="categoryPetAccessories" class="category-pet-accessories">
-                                        Category: Pet Accessories
+                                        Category: Pet <c:if test="${empty category}">Food</c:if> <c:if test="${not empty category}">${category}</c:if>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div data-layername="prices" class="prices">
-                            <div data-layername="price" class="price">319.000₫</div>
+                            <div data-layername="prices" class="prices">
+                                    <div data-layername="price" class="price">${item.getPrice()}₫</div>
                         </div>
                         <div data-layername="devider" class="devider"></div>
                         <!--                        <div data-layername="form" class="form">
@@ -94,16 +128,31 @@
                                                     </div>
                                                 </div>-->
                         <div data-layername="buttons" class="buttons">
-                            <div data-layername="button" class="button-1">
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba388e0eabad954235024ee887707edd5d6e5c8af2f51cf95d84f47e8d6d2fd9?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-8" alt="Decrease quantity" onclick="decreaseQuantity()" />
-                                <div data-layername="01" class="quantity-01" id="quantity">01</div>
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4ef0281caf6e16bf01681ba248222d77473d0422e9e910a1484d63287f291cf?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-9" alt="Increase quantity" onclick="increaseQuantity()" />
-                            </div>
-                            <div data-layername="button" class="button-2">
-                                <div data-layername="label" class="label">Add to card</div>
-                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d9af30ce1a36a775b4f5729bdd83ffc8c0a0ad06905d325ab867481971ba7e00?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-10" alt="Add to card icon" />
-                            </div>
-                            <div data-layername="button" class="button-3">Buy now</div>
+                            <c:if test="${not empty us}">
+                                <div data-layername="button" class="button-1">
+                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ba388e0eabad954235024ee887707edd5d6e5c8af2f51cf95d84f47e8d6d2fd9?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-8" alt="Decrease quantity" onclick="decreaseQuantity()" />
+                                    <div data-layername="01" class="quantity-01" id="quantity">01</div>
+                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c4ef0281caf6e16bf01681ba248222d77473d0422e9e910a1484d63287f291cf?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-9" alt="Increase quantity" onclick="increaseQuantity()" />
+                                </div>
+                            </c:if>
+                            <c:url var="cartLink" value="CartControl">
+                                <c:if test="${not empty pageSize}"><c:param name="pageSize" value="${pageSize}"></c:param></c:if>
+                                <c:if test="${not empty currentPage}"><c:param name="pageNumber" value="${currentPage}"></c:param></c:if>
+                                <c:param name="action" value="add"></c:param>
+                                <c:if test="${not empty category}">
+                                    <c:param name="page" value="${category}"></c:param>
+                                </c:if>
+                                <c:param name="id" value="${item.getProductID()}"></c:param>
+                            </c:url>
+                            <c:if test="${not empty us}">
+                                <div data-layername="button" class="button-2" onclick="window.location.href = '${cartLink}'">
+                                    <div data-layername="label" class="label">Add to card</div>
+                                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/d9af30ce1a36a775b4f5729bdd83ffc8c0a0ad06905d325ab867481971ba7e00?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="img-10" alt="Add to card icon" />
+                                </div>
+                            </c:if>
+                            <c:if test="${not empty us}">
+                                <div data-layername="button" class="button-3">Buy now</div>
+                            </c:if>
                         </div>
                         <div data-layername="content" class="content">
                             <div data-layername="100GuaranteeSafeCHeckout" class="guarantee-safe-checkout-100">
@@ -127,7 +176,8 @@
                         <article class="pet-thing-description">
                             <h2 class="section-title">Description</h2>
                             <p class="description-text">
-                                Travel in style and comfort with the Pet Thing for Dog & Cat in Space Gray. Designed for pet lovers who are always on the go, this pet thing combines functionality and modern aesthetics to keep your furry friend safe and comfortable. Featuring a spacious interior, breathable mesh panels for optimal ventilation, and a transparent window for your pet to enjoy the view, it's perfect for walks, hikes, or any adventure. The pet thing's ergonomic design, including padded shoulder straps and a sturdy base, ensures a comfortable experience for both you and your pet. Make every journey a breeze with this stylish and durable pet carrier.
+                                <c:if test="${not empty item.getDescription()}">${item.getDescription()}</c:if>
+                                <c:if test="${empty item.getDescription()}">Travel in style and comfort with the Pet Thing for Dog & Cat in Space Gray. Designed for pet lovers who are always on the go, this pet thing combines functionality and modern aesthetics to keep your furry friend safe and comfortable. Featuring a spacious interior, breathable mesh panels for optimal ventilation, and a transparent window for your pet to enjoy the view, it's perfect for walks, hikes, or any adventure. The pet thing's ergonomic design, including padded shoulder straps and a sturdy base, ensures a comfortable experience for both you and your pet. Make every journey a breeze with this stylish and durable pet carrier.</c:if>
                             </p>
                         </article>
                         <div class="pet-thing-features">
@@ -185,61 +235,74 @@
                         <h1>Related Item</h1>
                         <div class="related-item-menu">
                             <div class="related-item-container">
-                                <div class="related-item-card">
-                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                                        <div class="product-info">
-                                            <div class="product-details">
-                                                <h3 class="product-name">Dog House</h3>
-                                                <p class="product-price">599.000₫</p>
-                                            </div>
+                                <c:forEach var="i" items="${productList}">
+                                    <c:if test="${item.getProductID() != i.getProductID()}">
+                                        <c:url var="itemDetailLink" value="itemDetails.jsp">
+                                            <c:if test="${not empty pageSize}"><c:param name="pageSize" value="${pageSize}"></c:param></c:if>
+                                            <c:if test="${not empty currentPage}"><c:param name="pageNumber" value="${currentPage}"></c:param></c:if>
+                                            <c:if test="${not empty category}">
+                                                <c:param name="page" value="${category}"></c:param>
+                                            </c:if>
+                                            <c:param name="id" value="${i.getProductID()}"></c:param>
+                                        </c:url>
+                                        <div class="related-item-card">
+                                            <a href="${itemDetailLink}" style="text-decoration: none; color: #000;display: block;">
+                                                <img src="${reuse.loadImage(i.getAvatar_img())}" alt="${i.getProductName()}" class="product-image">
+                                                <div class="product-info">
+                                                    <div class="product-details">
+                                                        <h3 class="product-name">${i.getProductName()}</h3>
+                                                        <p class="product-price">${i.getPrice()}₫</p>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="related-item-card">
-                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                                        <div class="product-info">
-                                            <div class="product-details">
-                                                <h3 class="product-name">Dog House</h3>
-                                                <p class="product-price">599.000₫</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="related-item-card">
-                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                                        <div class="product-info">
-                                            <div class="product-details">
-                                                <h3 class="product-name">Dog House</h3>
-                                                <p class="product-price">599.000₫</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>    
-                                <div class="related-item-card">
-                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                                        <div class="product-info">
-                                            <div class="product-details">
-                                                <h3 class="product-name">Dog House</h3>
-                                                <p class="product-price">599.000₫</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>  
-                                <div class="related-item-card">
-                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
-                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
-                                        <div class="product-info">
-                                            <div class="product-details">
-                                                <h3 class="product-name">Dog House</h3>
-                                                <p class="product-price">599.000₫</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                    </c:if>
+                                </c:forEach>
+                                <!--                                <div class="related-item-card">
+                                                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
+                                                                        <div class="product-info">
+                                                                            <div class="product-details">
+                                                                                <h3 class="product-name">Dog House</h3>
+                                                                                <p class="product-price">599.000₫</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="related-item-card">
+                                                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
+                                                                        <div class="product-info">
+                                                                            <div class="product-details">
+                                                                                <h3 class="product-name">Dog House</h3>
+                                                                                <p class="product-price">599.000₫</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>    
+                                                                <div class="related-item-card">
+                                                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
+                                                                        <div class="product-info">
+                                                                            <div class="product-details">
+                                                                                <h3 class="product-name">Dog House</h3>
+                                                                                <p class="product-price">599.000₫</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                
+                                                                <div class="related-item-card">
+                                                                    <a href="itemDetails.jsp" style="text-decoration: none; color: #000;display: block;">
+                                                                        <img src="images/fur1.jpg" alt="Dog House" class="product-image">
+                                                                        <div class="product-info">
+                                                                            <div class="product-details">
+                                                                                <h3 class="product-name">Dog House</h3>
+                                                                                <p class="product-price">599.000₫</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>-->
                             </div>
                         </div>
                     </div>

@@ -92,7 +92,7 @@
         </c:if>
         <div class="user-info">
             <h3 class="user-name">${us}</h3>
-            <p class="user-points">VIP Points: 20</p>
+            <!--<p class="user-points">VIP Points: 20</p>-->
         </div>
     </a>
     <a href="orderHistory.jsp" class="nav-item">
@@ -107,10 +107,10 @@
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cdf0d742ca5baa978843bb22697173634a874b5ffa22f6d12fc3f533cdd8af4a?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="nav-icon" />
         <span class="nav-text">Shopping Cart</span>
     </a>
-    <a href="vipPage.jsp" class="nav-item">
+<!--    <a href="vipPage.jsp" class="nav-item">
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/48db08d440d91cdb57b2d69f653e30dca394bf6601dd8d8bfd640729a29054f8?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" class="nav-icon" alt="Content image" />
         <span class="nav-text">VIP Points</span>
-    </a>
+    </a>-->
     <a href="${pageContext.request.contextPath}/LogOutControl" class="nav-item">
         <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/36688a5e1071d984f472990a15ab664beea02593b49f48d74f5239b4a1dddecc?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8" alt="" class="nav-icon" />
         <span class="nav-text">Log-out</span>
