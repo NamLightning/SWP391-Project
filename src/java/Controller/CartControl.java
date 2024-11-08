@@ -249,7 +249,7 @@ public class CartControl extends HttpServlet {
                 c.setQuantity(Quantity);
                 cartItemsDAO.updateCartItems(c);
             } else if (c.getQuantity() == 1) {
-                cartItemsDAO.deleteCartItems(c.getCartItemID());
+//                cartItemsDAO.deleteCartItems(c.getCartItemID());
             }
         }
         response.sendRedirect("cart.jsp");

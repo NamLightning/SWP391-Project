@@ -42,7 +42,9 @@ public class ajaxServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        
+        
+        //Below is for VnPay only
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";

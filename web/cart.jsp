@@ -143,8 +143,8 @@
                                     <h2 class="card-heading">Shopping Cart (${carts.size()})</h2>
                                     <div class="card-subheading">
                                         <span class="products-label">Products</span>
-                                        <span class="price-label">Price</span>
-                                        <span class="quantity-label">Quantity</span>
+                                        <span class="price-label" style="width: 9%;">Price</span>
+                                        <span class="quantity-label" style="width: 20%;">Quantity</span>
                                         <span class="subtotal-label">Sub-Total</span>
                                     </div>
                                     <div class="product-list">
