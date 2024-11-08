@@ -42,15 +42,14 @@ public class ServiceBookingDAO {
         String sql = "UPDATE [Services] SET "
                 + "ServiceDate = COALESCE(?, ServiceDate), "
                 + "Status = COALESCE(?, Status), "
-                + "WHERE ServiceID = ? AND CustomerID = ?";
+                + "WHERE ServiceBookedID = ?";
         Connection con = null;
         try {
             con = DBContext.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setTimestamp(1, Timestamp.valueOf(c.ServiceDate()));
             ps.setString(2, c.getStatus());
-            ps.setInt(3, c.getServiceID());
-            ps.setInt(4, c.getCustomerID());
+            ps.setInt(3, c.getServiceBookedID());
             ps.execute();
             new DBContext().close(con, ps, null);
         } catch (Exception ex) {
@@ -58,15 +57,14 @@ public class ServiceBookingDAO {
         }
     }
 
-    public void deleteServiceBooking(int serID, int cusID) {
+    public void deleteServiceBooking(int serBookedID) {
         Connection con = null;
         try {
             PreparedStatement statement;
             con = DBContext.getConnection();
-            String sql = "DELETE FROM [Services] WHERE ServiceID=? AND CustomerID=? ";
+            String sql = "DELETE FROM [Services] WHERE ServiceBookedID = ?";
             statement = con.prepareStatement(sql);
-            statement.setInt(1, serID);
-            statement.setInt(1, cusID);
+            statement.setInt(1, serBookedID);
 
             statement.execute();
             statement.close();
@@ -75,22 +73,45 @@ public class ServiceBookingDAO {
         }
     }
 
-    public ServiceBooking checkExist(int serID, int cusID) {
+    public ServiceBooking checkExist(int serBookedID, int cusID) {
         String query = "select * from [Services]\n"
-                + "where ServiceID = ? AND CustomerID = ?\n";
+                + "where ServiceBookedID = ? AND CustomerID = ?\n";
         ServiceBooking c = null;
         Connection conn = null;
         try {
             conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, serID);
+            ps.setInt(1, serBookedID);
             ps.setInt(2, cusID);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                LocalDateTime serviceDate = rs.getTimestamp(3).toLocalDateTime();
+                LocalDateTime serviceDate = rs.getTimestamp(4).toLocalDateTime();
 
-                c = new ServiceBooking(rs.getInt(1), rs.getInt(2), serviceDate, rs.getString(4));
+                c = new ServiceBooking(rs.getInt(1), rs.getInt(2), rs.getInt(3), serviceDate, rs.getString(5));
+            }
+            new DBContext().close(conn, ps, rs);
+        } catch (Exception e) {
+            Logger.getLogger(ServiceBookingDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return c;
+    }
+    
+       public ServiceBooking checkExist(int serBookedID) {
+        String query = "select * from [Services]\n"
+                + "where ServiceBookedID = ?\n";
+        ServiceBooking c = null;
+        Connection conn = null;
+        try {
+            conn = DBContext.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, serBookedID);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                LocalDateTime serviceDate = rs.getTimestamp(4).toLocalDateTime();
+
+                c = new ServiceBooking(rs.getInt(1), rs.getInt(2), rs.getInt(3),serviceDate, rs.getString(5));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {
@@ -107,9 +128,9 @@ public class ServiceBookingDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                LocalDateTime serviceDate = rs.getTimestamp(3).toLocalDateTime();
+                LocalDateTime serviceDate = rs.getTimestamp(4).toLocalDateTime();
 
-                ServiceBooking p = new ServiceBooking(rs.getInt(1), rs.getInt(2), serviceDate, rs.getString(4));
+                ServiceBooking p = new ServiceBooking(rs.getInt(1), rs.getInt(2), rs.getInt(3), serviceDate, rs.getString(5));
                 list.add(p);
             }
             new DBContext().close(conn, ps, rs);
@@ -125,15 +146,15 @@ public class ServiceBookingDAO {
         try {
             Connection con = db.getConnection();
 
-            String sql = "select * from [Services] ORDER BY ServiceID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
+            String sql = "select * from [Services] ORDER BY ServiceBookedID OFFSET ? Rows FETCH NEXT ? ROWS ONLY;\n";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, currentPage);
             ps.setInt(2, recordsPerPage);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                LocalDateTime serviceDate = rs.getTimestamp(3).toLocalDateTime();
+                LocalDateTime serviceDate = rs.getTimestamp(4).toLocalDateTime();
 
-                ServiceBooking p = new ServiceBooking(rs.getInt(1), rs.getInt(2), serviceDate, rs.getString(4));
+                ServiceBooking p = new ServiceBooking(rs.getInt(1), rs.getInt(2), rs.getInt(3), serviceDate, rs.getString(5));
                 list.add(p);
             }
             new DBContext().close(con, ps, rs);

@@ -86,7 +86,7 @@ public class PetControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("managePet.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageRegistedPet.jsp").forward(request, response);
         }
     }
 
@@ -195,7 +195,7 @@ public class PetControl extends HttpServlet {
         Pets pet = petsDAO.checkExist(Integer.parseInt(petsID));
 
         request.setAttribute("pet", pet);
-        request.getRequestDispatcher("editPets.jsp").forward(request, response);
+        request.getRequestDispatcher("updatePets.jsp").forward(request, response);
     }
 
     private void deletePets(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
@@ -209,7 +209,7 @@ public class PetControl extends HttpServlet {
         if (pet != null) {
             petDAO.deletePet(pet.getPetID());
         }
-        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+        response.sendRedirect("PetControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private void pageValue(HttpServletRequest request) {

@@ -13,20 +13,21 @@ public class Inventory {
     private int inventoryID;
     private int productID;
     private int quantity;
-    private int managerID;
 
-    public Inventory(int productID, int quantity, int managerID) {
-        this.productID = productID;
-        this.quantity = quantity;
-        this.managerID = managerID;
-    }
-
-    public Inventory(int inventoryID, int productID, int quantity, int managerID) {
+    public Inventory(int inventoryID, int productID, int quantity) {
         this.inventoryID = inventoryID;
         this.productID = productID;
         this.quantity = quantity;
-        this.managerID = managerID;
     }
+
+    public Inventory() {
+    }
+
+    public Inventory(int productID, int quantity) {
+        this.productID = productID;
+        this.quantity = quantity;
+    }
+
 
     public int getInventoryID() {
         return inventoryID;
@@ -52,16 +53,10 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public int getManagerID() {
-        return managerID;
-    }
-
-    public void setManagerID(int managerID) {
-        this.managerID = managerID;
-    }
-
     @Override
     public String toString() {
-        return "Inventory{" + "inventoryID=" + inventoryID + ", productID=" + productID + ", quantity=" + quantity + ", managerID=" + managerID + '}';
+        return "Inventory{" + "inventoryID=" + inventoryID + ", productID=" + productID + ", quantity=" + quantity + '}';
     }
+
+
 }

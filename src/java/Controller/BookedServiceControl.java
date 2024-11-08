@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -73,6 +74,10 @@ public class BookedServiceControl extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
+                case "edit":
+                    pageValue(request);
+                    editServices(request, response);
+                    break;
                 case "delete":
                     deleteServiceBooking(request, response);
                     break;
@@ -158,7 +163,14 @@ public class BookedServiceControl extends HttpServlet {
                 LocalTime time = LocalTime.parse(timeString, timeFormatter);
 
                 LocalDateTime serviceDate = LocalDateTime.of(dates, time);
-                ServiceBooking sb = serviceDAO.checkExist(serid, cusid);
+                ArrayList<ServiceBooking> list = serviceDAO.getAllServiceBookings();
+                ArrayList<Integer> l = new ArrayList<>();
+                
+                for (ServiceBooking li : list) {
+                    l.add(li.getServiceBookedID());
+                }
+                
+                ServiceBooking sb = serviceDAO.checkExist(Collections.max(l), cusid);
                 sb.setServiceDate(serviceDate);
 
                 serviceDAO.updateServiceBooking(sb);
@@ -189,19 +201,33 @@ public class BookedServiceControl extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void editServices(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        String serviceID = request.getParameter("id");
+        ServiceBookingDAO serviceDAO = new ServiceBookingDAO();
+
+        ServiceBooking service = serviceDAO.checkExist(Integer.parseInt(serviceID));
+        pageValue(request);
+
+        request.setAttribute("serviceBooked", service);
+        request.getRequestDispatcher("admin/updateServiceBooked.jsp").forward(request, response);
+    }
 
     private void deleteServiceBooking(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String serviceID = request.getParameter("serviceID").trim();
-        String customerID = request.getParameter("customerID").trim();
+        String serviceID = request.getParameter("serviceBookedID").trim();
 
         ServiceBookingDAO productsDAO = new ServiceBookingDAO();
-        ServiceBooking service = productsDAO.checkExist(Integer.parseInt(serviceID), Integer.parseInt(customerID));
+        ServiceBooking service = productsDAO.checkExist(Integer.parseInt(serviceID));
         if (service != null) {
-            productsDAO.deleteServiceBooking(service.getServiceID(), service.getCustomerID());
+            productsDAO.deleteServiceBooking(service.getServiceBookedID());
         }
         response.sendRedirect("BookedServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }

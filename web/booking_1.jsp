@@ -88,7 +88,7 @@
             <h2 class="section-title">Pet Information</h2>
             <form class="form-container" action="${pageContext.request.contextPath}/PetControl" method="POST" >
                 <input type="text" name="customerID" class="" id="customerID" value="${account.getCustomerID()}" hidden readonly>
-                <input type="text" name="serviceID" class="" id="serviceID" value="${serbook1.getServiceID()}"  readonly>
+                <input type="text" name="serviceID" class="" id="serviceID" value="${serbook1.getServiceID()}" hidden readonly>
 
                 <div class="form-row">
                     <div class="form-field">

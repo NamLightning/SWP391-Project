@@ -74,15 +74,15 @@
                                             <td>${p.getServiceName()}</td>
                                             <td>${p.getPrice()}₫</td>
 
-                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button></td>
-                                            <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
+                                            <td><button class="update" onclick="location.href = '${editLink}'">Update</button>
+                                                <button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
-                                
+
                             </table>
                         </div>
-                         <div class="pagination">
+                        <div class="pagination">
                             <c:if test="${currentPage > 1}">
                                 <!--<a href="ProductControl?page=1&size=${pageSize}" class="page-number prev-button">First</a>-->
                             </c:if>

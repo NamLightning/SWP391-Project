@@ -89,6 +89,10 @@
         <servlet-name>BookedServiceControl</servlet-name>
         <servlet-class>Controller.BookedServiceControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InventoryDAO</servlet-name>
+        <servlet-class>Controller.InventoryDAO</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
@@ -168,6 +172,10 @@
     <servlet-mapping>
         <servlet-name>BookedServiceControl</servlet-name>
         <url-pattern>/BookedServiceControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InventoryDAO</servlet-name>
+        <url-pattern>/InventoryDAO</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
