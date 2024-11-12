@@ -11,9 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>PetHub</title>
-        <link rel="stylesheet" href="css/serviceindex.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}css/serviceindex.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}css/footer.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     </head>
@@ -41,7 +41,7 @@
     <center>
         <%@include file="includes/header.jsp"%>
         <div class="detail-container">
-            <!--<div class="left-sidebar" style="background-color: #ffffff; width:290px; height: 1920px;"></div>-->
+
             <div class="main-details-content">
                 <!--item-->
 
@@ -67,7 +67,7 @@
                                         <div class="star-rating">4.7 Star Rating</div>
                                     </div>
                                     <h1 class="dog-full-grooming">
-                                        <span>Dog</span>
+                                        <!--<span>Dog</span>-->
                                         <span>${sao.getServiceName()}</span>
                                     </h1>
                                 </div>
@@ -84,18 +84,17 @@
                                 </div>
                             </div>
                             <div class="description">
-                                <h2>Description</h2>
+                                <h2 >Description</h2>
                                 <p>${sao.getServiceDesc()}</p>
                             </div>
                             <div data-layername="prices" class="prices">
-                                <div data-layername="price" class="price">${sao.getPrice()}</div>
+                                <div data-layername="price" class="price">${sao.getPrice()}₫ </div>
                             </div>
                             <div data-layername="devider" class="devider"></div>
 
-                            <div data-layername="button" class="button-book">
+                            <div data-layername="button" class="">
                                 <input name="submit" type="submit" class="label" value="Booking now">
 
-                                <!--<a href="booking_1.jsp" style="text-decoration: none; color:#ffffff;"><div data-layername="label" class="label">Booking now</div></a>-->
                             </div>
                         </form>
 
@@ -118,33 +117,36 @@
                             </div>
                         </div>
                     </div>
-                    <!--related service-->
-                    <div class="item-container" style="flex: 1;width: 1296px; height: 700px">
-                        <div class="related-item" id="best_seller">
-                            <h1>Related Item</h1>
-                            <div class="related-item-menu">
-                                <div class="related-item-container">
-                                    <c:forEach var="s" items="${serDAO.getAllServicess()}">
 
-                                        <a href="serviceDetails.jsp?serghfgfgf=${s.getServiceID()}" style="text-decoration: none; color: #000;display: block;">
-                                            <article class="service-card">
-                                                <img src="${reuses.loadImage(s.getAvatar_img())}" alt="${s.getServiceName()}" class="service-image" />
-                                                <div class="service-content">
-                                                    <h3>${s.getServiceName()}</h3>
-                                                    <p>${s.getServiceDesc()}</p>
-                                                </div>
-                                            </article>
-                                        </a>
-                                    </c:forEach>
+                </div>
+                <!--related service-->
 
-                                </div>
+                <div class="item-container" style="flex: 1;width: 1296px; height: 700px">
+                    <div class="related-item" id="best_seller">
+                        <h1>Related Item</h1>
+                        <div class="related-item-menu">
+                            <div class="related-item-container">
+                                <c:forEach var="s" items="${serDAO.getAllServicess()}">
+
+                                    <a href="serviceDetails.jsp?serghfgfgf=${s.getServiceID()}" style="text-decoration: none; color: #000;display: block;">
+                                        <article class="service-card">
+                                            <img src="${reuses.loadImage(s.getAvatar_img())}" alt="${s.getServiceName()}" class="service-image" />
+                                            <div class="service-content">
+                                                <h3>${s.getServiceName()}</h3>
+                                                <p>${s.getServiceDesc()}</p>
+                                            </div>
+                                        </article>
+                                    </a>
+                                </c:forEach>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--<div class="right-sidebar" style="background-color: #ffffff;width:290px;height: 1920px;"></div>-->
             </div>
-            <%@include file="includes/footer.jsp"%>
+        </div>
+        <%@include file="includes/footer.jsp"%>
+
     </center>
 </body>
 </html>

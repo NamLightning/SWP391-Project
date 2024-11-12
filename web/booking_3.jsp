@@ -97,6 +97,8 @@
                             <div class="form-field">
                                 <label for="petName" class="form-label">Pet Name</label>
                                 <div class="form-input-wrapper">
+                                    <input id="petid" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetID()}" />
+
                                     <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetName()}" />
                                 </div>
                             </div>
@@ -104,12 +106,12 @@
                             <div class="form-field">
                                 <label for="petType" class="form-label">Pet Type</label>
                                 <div class="form-input-wrapper">
-<!--                                    <select id="petType" name="petType" class="form-input" autocomplete="off">
-                                        <option value="" ${pet.getPetType() == null ? "selected" : ""}>Choose Pet Type</option>
-                                        <option value="Dog" ${pet.getPetType() == "Dog" ? "selected" : ""}>Dog</option>
-                                        <option value="Cat" ${pet.getPetType() == "Cat" ? "selected" : ""}>Cat</option>
-                                        <option value="Other" ${pet.getPetType() == "Other" ? "selected" : ""}>Other</option>
-                                    </select>-->
+                                    <!--                                    <select id="petType" name="petType" class="form-input" autocomplete="off">
+                                                                            <option value="" ${pet.getPetType() == null ? "selected" : ""}>Choose Pet Type</option>
+                                                                            <option value="Dog" ${pet.getPetType() == "Dog" ? "selected" : ""}>Dog</option>
+                                                                            <option value="Cat" ${pet.getPetType() == "Cat" ? "selected" : ""}>Cat</option>
+                                                                            <option value="Other" ${pet.getPetType() == "Other" ? "selected" : ""}>Other</option>
+                                                                        </select>-->
                                     <input id="petType" type="text" placeholder="Pet Type" class="form-input" value="${pet.getPetType()}" />
                                 </div>
                             </div>

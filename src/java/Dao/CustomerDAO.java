@@ -252,6 +252,6 @@ public class CustomerDAO {
 
     public static void main(String[] args) {
         CustomerDAO cus = new CustomerDAO();
-        cus.registerCustomer(new Customer("Hung", "123", "hung", "hung", "hungtn@gmail.com", "0909"));
+        cus.registerCustomer(new Customer("nhi", "123", "nhu", "nhi", "nhi@gmail.com", "09090909"));
     }
 }
