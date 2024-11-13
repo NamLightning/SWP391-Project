@@ -20,10 +20,10 @@
         right: 10px;
         z-index: 100;
     }
-/*    .popup-hover img{
-        width: 50px;
-        height: 50px;
-    }*/
+    /*    .popup-hover img{
+            width: 50px;
+            height: 50px;
+        }*/
 </style>
 <div class="navigation">
     <ul>
@@ -52,14 +52,14 @@
                 <span class="title">Customer</span>
             </a>
         </li>
-        <li>
-            <a href="<c:url value="/admin/manageEmployee.jsp"/>">
-                <span class="icon">
-                    <ion-icon name="people-circle-outline"></ion-icon>
-                </span>
-                <span class="title">Employee</span>
-            </a>
-        </li>
+        <!--        <li>
+                    <a href="<c:url value="/admin/manageEmployee.jsp"/>">
+                        <span class="icon">
+                            <ion-icon name="people-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title">Employee</span>
+                    </a>
+                </li>-->
         <li>
             <a href="<c:url value="/ProductControl"/>">
                 <span class="icon">
@@ -84,56 +84,59 @@
                 <span class="title">Pet</span>
             </a>
         </li>
-        <li>
-            <a href="<c:url value="/admin/manageRevenue.jsp"/>">
-                <span class="icon">
-                    <ion-icon name="analytics-outline"></ion-icon>
-                </span>
-                <span class="title">Revenue</span>
-            </a>
-        </li>
-        <li>
-            <a href="<c:url value="/admin/managePromotion.jsp"/>">
-                <span class="icon">
-                    <ion-icon name="pricetags-outline"></ion-icon>
-                </span>
-                <span class="title">Promotion</span>
-            </a>
-        </li>
+        <!--        <li>
+                    <a href="<c:url value="/admin/manageRevenue.jsp"/>">
+                        <span class="icon">
+                            <ion-icon name="analytics-outline"></ion-icon>
+                        </span>
+                        <span class="title">Revenue</span>
+                    </a>
+                </li>-->
+        <!--        <li>
+                    <a href="<c:url value="/admin/managePromotion.jsp"/>">
+                        <span class="icon">
+                            <ion-icon name="pricetags-outline"></ion-icon>
+                        </span>
+                        <span class="title">Promotion</span>
+                    </a>
+                </li>-->
     </ul>
 </div>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
-    const hoverItem = document.getElementById('hoverItem');
-            const popupHover = document.getElementById('popupHover');
-            // Function to show popup
-                    function showPopup() {
-                    popupHover.style.display = 'block';
+            document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const hoverItem = document.getElementById('hoverItem');
+                    const popupHover = document.getElementById('popupHover');
+                    // Function to show popup
+                            function showPopup() {
+                            popupHover.style.display = 'block';
+                            }
+
+                    // Function to hide popup
+                    function hidePopup() {
+                    popupHover.style.display = 'none';
                     }
 
-            // Function to hide popup
-            function hidePopup() {
-            popupHover.style.display = 'none';
-            }
-
-            // Show popup when mouse enters hoverItem or popupHover
-            hoverItem.addEventListener('mouseenter', showPopup);
-                    popupHover.addEventListener('mouseenter', showPopup);
-                    // Hide popup when mouse leaves both hoverItem and popupHover
-                    hoverItem.addEventListener('mouseleave', () => {
-                    setTimeout(() => {
-                    if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
-                    hidePopup();
-                    }
-                    }, 100); // Small delay to allow mouse to move between elements
+                    // Show popup when mouse enters hoverItem or popupHover
+                    hoverItem.addEventListener('mouseenter', showPopup);
+                            popupHover.addEventListener('mouseenter', showPopup);
+                            // Hide popup when mouse leaves both hoverItem and popupHover
+                            hoverItem.addEventListener('mouseleave', () => {
+                            setTimeout(() => {
+                            if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
+                            hidePopup();
+                            }
+                            }, 500); // Small delay to allow mouse to move between elements
+                            });
+                            popupHover.addEventListener('mouseleave', () => {
+                            setTimeout(() => {
+                            if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
+                            hidePopup();
+                            }
+                            }, 500);
+                            });
                     });
-                    popupHover.addEventListener('mouseleave', () => {
-                    setTimeout(() => {
-                    if (!popupHover.matches(':hover') && !hoverItem.matches(':hover')) {
-                    hidePopup();
-                    }
-                    }, 100);
-                    });
-            });
 </script>

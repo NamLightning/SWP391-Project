@@ -137,10 +137,10 @@
                                         <span>Da Nang</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+<!--                                <div class="form-group">
                                     <label for="zipCode" class="form-label">Zip Code</label>
                                     <input type="text" id="zipCode" class="form-input" value="500000" aria-label="Zip Code">
-                                </div>
+                                </div>-->
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber" class="form-label">Phone Number</label>

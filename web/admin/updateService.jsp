@@ -52,8 +52,7 @@
                                         </div>
 
                                         <label>Upload Service Image: </label>
-                                        <label class="custom-upload-button" onclick="document.getElementById('image').click()">Chọn
-                                            ảnh</label>
+                                        <label class="custom-upload-button" onclick="document.getElementById('image').click()">Choose picture</label>
                                         <input type="file" name="image" id="image" accept="image/*"
                                                onchange="showFileNameAndPreview()">
                                     </label>

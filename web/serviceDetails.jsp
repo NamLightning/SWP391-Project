@@ -99,7 +99,7 @@
                             </c:if>
                             <c:if test="${empty us}">
                                 <div data-layername="button" class="">
-                                    <input name="button" onclick="window.location.href = 'login.jsp'" class="label" value="Login now to book">
+                                    <input name="submit" onclick="window.location.href = 'login.jsp'" class="label" value="Booking now">
                                 </div>
                             </c:if>
                         </form>

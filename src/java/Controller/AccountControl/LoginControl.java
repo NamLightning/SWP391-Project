@@ -80,21 +80,21 @@ public class LoginControl extends HttpServlet {
 
                 Customer account = new Customer();
                 account.setUsername(name);
-                account.setPassword("");
                 account.setFirstName(removeAccents(user.getGiven_name().trim()));
                 account.setLastName(removeAccents(user.getFamily_name().trim()));
                 account.setEmail(user.getEmail().trim());
-                account.setPassword("");
+                account.setPassword("123456789");
+                account.setPhoneNumber("09");
                 CustomerDAO accountDAO = new CustomerDAO();
                 Customer emailExist = accountDAO.findByEmail(account);
                 if (emailExist == null) {
-                    accountDAO.addnewAccountWithGoogle(account);
-                    accountDAO.registerCustomer(accountDAO.findByEmail(account));
+//                    accountDAO.addnewAccountWithGoogle(account);
+                    accountDAO.registerCustomer(account);
                     session.setAttribute("us", name);
-                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                    response.sendRedirect("homePage.jsp");
                 } else {
                     session.setAttribute("us", emailExist.getUsername());
-                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                    response.sendRedirect("homePage.jsp");
                 }
             } else {
                 response.sendRedirect("login.jsp?mess=Cannot get access token");
@@ -121,25 +121,6 @@ public class LoginControl extends HttpServlet {
         try {
             String code = request.getParameter("code");
             if (code != null && !code.isEmpty()) {
-//                String accessToken = GoogleUtils.getToken(code);
-//                GooglePojo user = GoogleUtils.getUserInfo(accessToken);
-//                System.out.println(user);
-//                List<Account> listUser =new ArrayList<>(); 
-//                String avatar = user.getPicture();
-//                Account account = new Account();
-////                account.setEmail(email);
-//                account.setAvatar(avatar);
-//
-////                listUser = generalImplement.findByEmail(account);
-//                //list trống thì thêm tài khoản vào database
-//                if (listUser.isEmpty()) {
-//                    generalImplement.addnewAccountWithGoogle(account);
-//                }
-//
-//                HttpSession session = request.getSession();
-//                session.setAttribute("email", email);
-//                session.setAttribute("avatar", avatar);
-//                request.getRequestDispatcher("Scr_Profile_CustomerProfile.jsp").forward(request, response);
             } else {
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
@@ -156,19 +137,8 @@ public class LoginControl extends HttpServlet {
                     request.setAttribute("mess", "Wrong Username or Password");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
-//                    Cookie u = new Cookie("user", username);
-//                    Cookie p = new Cookie("pass", password);
-//                    u.setMaxAge(7 * 24 * 60 * 60);
-//                    if (remember != null) {
-//                        p.setMaxAge(7 * 24 * 60 * 60);
-//                    } else {
-//                        p.setMaxAge(0);
-//                    }
-//                    response.addCookie(u);
-//                    response.addCookie(p);
                     CookieUtils.add("user", username, 24, response);
                     session.setAttribute("us", username.trim());
-//                    session.setAttribute("pw", password);
                     if (a != null) {
                         response.sendRedirect("homePage.jsp");
                     }

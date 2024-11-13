@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="Model.Pets"%>
+<%@page import="Model.Pets, Model.Customer, Model.Services, Model.ServiceBooking"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -49,7 +49,6 @@
                                         <th>Pet Name</th>
                                         <th>Pet Type</th>
                                         <th>Pet Owner</th>
-                                        <th>Registered Service</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -66,7 +65,6 @@
                                             <td>${p.getPetName()}</td>
                                             <td>${p.getPetType()}</td>
                                             <td>${cusDAO.checkExist(p.getCustomerID()).getFirstName()} ${cusDAO.checkExist(p.getCustomerID()).getLastName()}</td>
-                                            <td>${serDAO.checkExist(cusDAO.checkExist(p.getCustomerID()).getServiceID()).getServiceName()}</td>
 
                                             <td><button class="delete" onclick="location.href = '${deleteLink}'">Delete</button></td>
 

@@ -135,7 +135,7 @@
                             <p>We are committed to having the best service
                                 and ensuring the best quality for your pet.
                             </p>
-                            <button class="learn-more-button" onclick="window.location.href = 'servicePage.jsp'">Learn More</button>
+                            <button class="learn-more-button" onclick="window.location.href = 'CategoriesControl'">Learn More</button>
                         </div>
                     </div>
                 </center>

@@ -48,7 +48,7 @@
                                     <input id="pageSize" name="pageSize" type="hidden" value="${pageSize}"><br>
                                     <input id="page" name="page" type="hidden" value="${currentPage}"><br>
                                     <c:if test="${not empty product.getAvatar_img()}">
-                                        <div class="preview">
+                                        <div class="preview" id="preview" style="margin-bottom: 10px;">
                                             <img src="${reuse.loadImage(product.getAvatar_img())}" alt="..."><br>
                                         </div>
                                     </c:if>
@@ -59,7 +59,7 @@
                                                onchange="showFileNameAndPreview()">
                                     </label>
 
-                                    <div class="preview" id="preview"></div>
+                                    <!--<div class="preview" id="preview"></div>-->
 
                                     <label class="property">
                                         <p>Item name:</p>

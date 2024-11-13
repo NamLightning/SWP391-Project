@@ -28,7 +28,7 @@
                     <header class="form-header">
                         <h1 class="form-title">Login</h1>
                     </header>
-                    <button class="google-login" onclick="location.href = 'https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PetStore/LoginControl&response_type=code&client_id=697015326499-mehleirgoloeb1m97o29jueu5rduj277.apps.googleusercontent.com&approval_prompt=force'">
+                    <button class="google-login" onclick="location.href = 'https://accounts.google.com/o/oauth2/auth?scope=email%20profile&redirect_uri=http://localhost:8084/PetStore/LoginControl&response_type=code&client_id=715968084917-a54od419lgf4gkubgn63n3ktaq6v53bd.apps.googleusercontent.com&approval_prompt=force'">
                         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cf47c35d74c53c72dd3d1ba19ef7edf3496c88f1a4ff111a7c6596b0373776b?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" class="google-icon" alt="Google logo" />
                         <span class="google-text">Continue with Google</span>
                     </button>

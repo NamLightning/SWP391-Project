@@ -48,13 +48,13 @@
                             </label>
                             <span class="category-count" data-count="food"></span>
                         </li>
-                        <li class="category-item">
+<!--                        <li class="category-item">
                             <label class="checkbox-label">
                                 <input type="checkbox" class="checkbox" data-url="error.jsp">
                                 Sale
                             </label>
                             <span class="category-count" data-count="sale"></span>
-                        </li>
+                        </li>-->
                     </ul>
                     <script src="js/checkbox.js"></script>
                 </div>

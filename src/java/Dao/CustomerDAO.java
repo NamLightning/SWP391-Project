@@ -173,7 +173,7 @@ public class CustomerDAO {
     }
 
     public Customer findByEmail(Customer account) {
-        String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Account WHERE Email=?";
+        String sqlQuerry_find = "SELECT CustomerID, Username, Email FROM Customers WHERE Email=?";
         String check_email = account.getEmail();
         Customer a = null;
         Connection con = null;
@@ -194,7 +194,7 @@ public class CustomerDAO {
 
     public void addnewAccountWithGoogle(Customer account) {
         String email = account.getEmail();
-        String sqlQuerry_add = "insert into Account(Username,Password,Email) values(?,?,?);";
+        String sqlQuerry_add = "insert into Customers(Username,[Password],Email) values(?,?,?);";
         try {
             Connection conn = DBContext.getConnection();
             PreparedStatement ps = conn.prepareStatement(sqlQuerry_add);
