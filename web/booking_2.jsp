@@ -48,8 +48,8 @@
             <div class="schedule-container">
                 <h2 class="schedule-title">Schedule Date & Time</h2>
                 <form class="time-set" action="${pageContext.request.contextPath}/BookedServiceControl" method="POST">
-                    <input type="text" name="serID" class="" id="serID" value="${sao}"  readonly>
-                    <input type="text" name="cusID" class="" id="cusID" value="${cus.getCustomerID()}"  readonly>
+                    <input type="text" name="serID" class="" id="serID" value="${sao}" hidden readonly>
+                    <input type="text" name="cusID" class="" id="cusID" value="${cus.getCustomerID()}" hidden readonly>
 
                     <div class="content-wrapper">
 

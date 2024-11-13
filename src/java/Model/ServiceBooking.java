@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ServiceBooking {
-
+    
+    private int serviceBookedID;
     private int serviceID;
     private int customerID;
     private LocalDateTime serviceDate;
@@ -24,6 +25,14 @@ public class ServiceBooking {
         this.serviceDate = serviceDate;
     }
 
+    public ServiceBooking(int serviceBookedID, int serviceID, int customerID, LocalDateTime serviceDate, String status) {
+        this.serviceBookedID = serviceBookedID;
+        this.serviceID = serviceID;
+        this.customerID = customerID;
+        this.serviceDate = serviceDate;
+        this.status = status;
+    }
+    
     public ServiceBooking(int serviceID, int customerID) {
         this.serviceID = serviceID;
         this.customerID = customerID;
@@ -31,6 +40,15 @@ public class ServiceBooking {
 
     public ServiceBooking() {
     }
+
+    public int getServiceBookedID() {
+        return serviceBookedID;
+    }
+
+    public void setServiceBookedID(int serviceBookedID) {
+        this.serviceBookedID = serviceBookedID;
+    }
+    
 
     public int getServiceID() {
         return serviceID;
@@ -77,7 +95,7 @@ public class ServiceBooking {
 
     @Override
     public String toString() {
-        return "ServiceBooking{" + "serviceID=" + serviceID + ", customerID=" + customerID + ", serviceDate=" + serviceDate + ", status=" + status + '}';
+        return "ServiceBooking{" + "serviceBookedID=" + serviceBookedID + ", serviceID=" + serviceID + ", customerID=" + customerID + ", serviceDate=" + serviceDate + ", status=" + status + '}';
     }
 
 }

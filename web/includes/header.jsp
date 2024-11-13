@@ -394,7 +394,7 @@
                     <nav class="main-nav">
                         <div class="brand">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/414bc3aa4ba1b0e046c9120ca0cecefee610e27e98072a299dbc81848a1ae88c?placeholderIfAbsent=true&apiKey=1d890b3ac32c4e0faad33073d6425f1b" alt="Pet Hub logo" class="brand-logo" />
-                            <a href="homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
+                            <a href="${pageContext.request.contextPath}/homePage.jsp" style="color: #000;text-decoration: none;">Pet Hub</a>
                         </div>
                         <ul class="nav-menu">
                             <li class="nav-item"><a href="${pageContext.request.contextPath}/CategoriesControl">Items</a></li>

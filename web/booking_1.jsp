@@ -88,13 +88,13 @@
             <h2 class="section-title">Pet Information</h2>
             <form class="form-container" action="${pageContext.request.contextPath}/PetControl" method="POST" >
                 <input type="text" name="customerID" class="" id="customerID" value="${account.getCustomerID()}" hidden readonly>
-                <input type="text" name="serviceID" class="" id="serviceID" value="${serbook1.getServiceID()}"  readonly>
+                <input type="text" name="serviceID" class="" id="serviceID" value="${serbook1.getServiceID()}" hidden readonly>
 
                 <div class="form-row">
                     <div class="form-field">
                         <label for="petName" class="form-label">Pet Name</label>
                         <div class="form-input-wrapper">
-                            <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="" />
+                            <input id="petName" name="petName" type="text" placeholder="Pet Name" class="form-input" value="" />
                         </div>
                     </div>
                     <div class="form-field">
@@ -105,14 +105,13 @@
                                 <option value="Dog">Dog</option>
                                 <option value="Cat">Cat</option>
                                 <option value="Other">Other</option>
-
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="footer-button" >
-                    <input name="submit" type="submit" class="continue-button" value="Countinue">
+                    <input name="submit" type="submit" class="continue-button" value="Continue">
                 </div>
             </form>
 

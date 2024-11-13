@@ -184,7 +184,7 @@ public class PetsDAO {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 e = new Pets(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
             }
             new DBContext().close(conn, ps, rs);

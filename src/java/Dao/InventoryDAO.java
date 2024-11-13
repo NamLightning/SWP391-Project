@@ -20,21 +20,20 @@ import java.util.logging.Logger;
  * @author Administrator
  */
 public class InventoryDAO {
-//    public void registerInventory(Inventory i) {
-//        String query = "insert into Inventory(ProductID, Quantity, ManagerID)\n"
-//                + "values(?, ?, ?)";
-//        try {
-//            Connection conn = new DBContext().getConnection();
-//            PreparedStatement ps = conn.prepareStatement(query);
-//            ps.setInt(1, c.getEmployeeID());
-//            ps.setInt(2, c.getRequestID());
-//            ps.setString(3, c.getResponse());
-//            ps.execute();
-//            new DBContext().close(conn, ps, null);
-//        } catch (Exception e) {
-//            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//    }
+    public void registerInventory(Inventory i) {
+        String query = "insert into Inventory(ProductID, Quantity)\n"
+                + "values(?, ?)";
+        try {
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, i.getProductID());
+            ps.setInt(2, i.getQuantity());
+            ps.execute();
+            new DBContext().close(conn, ps, null);
+        } catch (Exception e) {
+            Logger.getLogger(InventoryDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
 
 //    public ArrayList<Inventory> findAllInventoryByEmployeeID(int employeeID) {
 //        String query = "select * from Inventory\n"
@@ -56,17 +55,17 @@ public class InventoryDAO {
 //        return list;
 //    }
     
-    public ArrayList<Inventory> findAllInventoryByRequestID(int requestID) {
+    public ArrayList<Inventory> findAllInventoryByID(int inventoryID ) {
         String query = "select * from Inventory\n"
-                + "where RequestID = ?\n";
+                + "where InventoryID = ?\n";
         ArrayList<Inventory> list = new ArrayList<>();
         try {
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, requestID);
+            ps.setInt(1, inventoryID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Inventory i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+                Inventory i = new Inventory(rs.getInt(1), rs.getInt(2));
                 list.add(i);
             }
             new DBContext().close(conn, ps, rs);
@@ -117,7 +116,7 @@ public class InventoryDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+                i = new Inventory(rs.getInt(1), rs.getInt(2), rs.getInt(3));
             }
             new DBContext().close(conn, ps, rs);
         } catch (Exception e) {

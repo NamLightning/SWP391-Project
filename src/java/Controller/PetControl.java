@@ -86,7 +86,7 @@ public class PetControl extends HttpServlet {
             }
         } else {
             pageValue(request);
-            request.getRequestDispatcher("managePet.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manageRegisteredPet.jsp").forward(request, response);
         }
     }
 
@@ -127,50 +127,49 @@ public class PetControl extends HttpServlet {
         }
 
         String action = request.getParameter("submit"); // Changed to "action" for clarity
-        switch (action) {
-            case "Add":
+        if (action != null) {
+            switch (action) {
+                case "Add":
 
-                Pets i = new Pets(petName, petType, cusID);
+                    Pets i = new Pets(petName, petType, cusID);
 
-                petsDAO.addPet(i);
-                response.sendRedirect("PetControl");
-                break;
-            case "Edit":
-                Pets p = petsDAO.checkExist(id);
+                    petsDAO.addPet(i);
+                    response.sendRedirect("PetControl");
+                    break;
+                case "Edit":
+                    Pets p = petsDAO.checkExist(id);
 
-                p.setPetName(petName);
-                p.setPetType(petType);
-                p.setCustomerID(cusID);
+                    p.setPetName(petName);
+                    p.setPetType(petType);
+                    p.setCustomerID(cusID);
 
-                petsDAO.updatePet(p);
-                pageValue(request);
-                response.sendRedirect("PetControl");
-                break;
-            case "Countinue":
+                    petsDAO.updatePet(p);
+                    pageValue(request);
+                    response.sendRedirect("PetControl");
+                    break;
+                case "Continue":
+                    String serviceID;
+                    Integer serID = null;
 
-                String serviceID;
-                Integer serID = null;
+                    if (request.getParameter("serviceID") != null) {
+                        serviceID = request.getParameter("serviceID");
+                        serID = Integer.parseInt(serviceID);
+                    }
 
-                if (request.getParameter("serviceID") != null) {
-                    serviceID = request.getParameter("serviceID");
-                    serID = Integer.parseInt(serviceID);
-                }
+                    Pets pet = new Pets(petName, petType, cusID);
+                    petsDAO.addPet(pet);
 
-                Pets pet = new Pets(petName, petType, cusID);
-                petsDAO.addPet(pet);
-                
-                request.setAttribute("sao", serID);
-                request.getRequestDispatcher("booking_2.jsp").forward(request, response);
-                break;
-            case "Cancel":
-                pageValue(request);
-                request.getRequestDispatcher("PetControl").forward(request, response);
-                break;
-            default:
-                break;
+                    request.setAttribute("sao", serID);
+                    request.getRequestDispatcher("booking_2.jsp").forward(request, response);
+                    break;
+                case "Cancel":
+                    pageValue(request);
+                    response.sendRedirect("PetControl");
+                    break;
+                default:
+                    break;
+            }
         }
-        request.getRequestDispatcher("PetControl").forward(request, response);
-
     }
 
     // Add the necessary helper methods: getImageName, getImage, and pageValue
@@ -195,7 +194,7 @@ public class PetControl extends HttpServlet {
         Pets pet = petsDAO.checkExist(Integer.parseInt(petsID));
 
         request.setAttribute("pet", pet);
-        request.getRequestDispatcher("editPets.jsp").forward(request, response);
+        request.getRequestDispatcher("updatePets.jsp").forward(request, response);
     }
 
     private void deletePets(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
@@ -209,7 +208,7 @@ public class PetControl extends HttpServlet {
         if (pet != null) {
             petDAO.deletePet(pet.getPetID());
         }
-        response.sendRedirect("ServiceControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
+        response.sendRedirect("PetControl?page=" + request.getParameter("page") + "&pageSize=" + request.getParameter("pageSize"));
     }
 
     private void pageValue(HttpServletRequest request) {

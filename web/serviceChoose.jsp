@@ -25,7 +25,7 @@
 
                             <c:forEach var="s" items="${serDAO.getAllServicess()}">
 
-                                <a href="serviceDetails.jsp?serghfgfgf=${s.getServiceID()}" style="text-decoration: none; color: #000;display: block;">
+                                <a href="serviceDetails.jsp?serID=${s.getServiceID()}" style="text-decoration: none; color: #000;display: block;">
                                     <article class="service-card">
                                         <img src="${reuses.loadImage(s.getAvatar_img())}" alt="${s.getServiceName()}" class="service-image" />
                                         <div class="service-content">
