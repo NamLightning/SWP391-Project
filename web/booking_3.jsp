@@ -10,19 +10,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+        <meta name="description" content="">
+        <meta name="author" content="">
         <title>PetHub</title>
         <link rel="stylesheet" href="./css/booking_3.css">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/footer.css">
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     </head>
     <body>
     <center>
         <%@include file="includes/header.jsp"%>
-
         <section class="booking-frame">
+
             <nav class="thread" aria-label="Booking steps">
                 <a href="booking_1.jsp" class="step-item" role="button">
                     <span class="step-number step-number-inactive" aria-current="step">1</span>
@@ -43,7 +49,7 @@
             <div class="schedule-container">
                 <h2 class="schedule-title">Confirm Booking Information</h2>
                 <div class="content-wrapper">
-                    <form class="confirm-set">
+                    <form class="confirm-set" action="vnpayajax" method="POST" id="frmCreateOrder">
                         <div class="form-field">
                             <label class="payment-label">Payment method</label>
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfc5e32f1af95709ba6194b582da6f745934d8eff3ec5130c386760116cb51ff?placeholderIfAbsent=true&apiKey=5ab9b8f40f3f4c73bf963337551ad1d8"
@@ -97,7 +103,7 @@
                             <div class="form-field">
                                 <label for="petName" class="form-label">Pet Name</label>
                                 <div class="form-input-wrapper">
-                                    <input id="petid" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetID()}" />
+                                    <input id="petid" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetID()}" hidden/>
 
                                     <input id="petName" type="text" placeholder="Pet Name" class="form-input" value="${pet.getPetName()}" />
                                 </div>
@@ -139,19 +145,20 @@
                                 <div class="form-field">
                                     <label for="price" class="form-label" >Price</label>
                                     <div class="form-input-wrapper">
-                                        <input id="price" type="text" placeholder="Price" class="form-input" value="${ser.getPrice()}" readonly/>
+                                        <input id="price" name="amount" type="text" placeholder="Price" class="form-input" value="${price}" readonly/>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="footer-button" >
+                            <button class="continue-button">Confirm</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="footer-button" >
-                <button class="continue-button" onclick="windows.location.href = 'vnPay.jsp'">Confirm</button>
-            </div>
         </section>
+
 
         <%@include file="includes/footer.jsp"%>
 
@@ -159,5 +166,34 @@
     <script src="./js/sidebar.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet" />
+    <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+    <script type="text/javascript">
+        $("#frmCreateOrder").submit(function () {
+            var postData = $("#frmCreateOrder").serialize();
+            var submitUrl = $("#frmCreateOrder").attr("action");
+            $.ajax({
+                type: "POST",
+                url: submitUrl,
+                data: postData,
+                dataType: 'JSON',
+                success: function (x) {
+                    if (x.code === '00') {
+                        if (window.vnpay) {
+                            window.location.href = x.data;
+                            //                                vnpay.open({width: 768, height: 600, url: x.data});
+                        } else {
+                            window.location.href = x.data;
+                        }
+                        return false;
+                    } else {
+                        alert(x.Message);
+                    }
+                }
+            });
+            return false;
+        });
+    </script>
 </body>
 </html>

@@ -9,6 +9,7 @@ import Dao.PetsDAO;
 import Dao.ServiceBookingDAO;
 import Dao.ServicesDAO;
 import Model.ServiceBooking;
+import Model.Services;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -172,10 +173,14 @@ public class BookedServiceControl extends HttpServlet {
                 
                 ServiceBooking sb = serviceDAO.checkExist(Collections.min(l), cusid);
                 sb.setServiceDate(serviceDate);
+                
+                int price = 0;
+                price += serDAO.checkExist(serid).getPrice();
 
                 serviceDAO.updateServiceBooking(sb);
                 request.setAttribute("cus", cusDAO.checkExist(cusid));
                 request.setAttribute("ser", serDAO.checkExist(serid));
+                request.setAttribute("price", price);
                 request.setAttribute("pet", petDAO.checkExistByCusID(cusid));
                 request.setAttribute("date", sb.ServiceDate());
 
