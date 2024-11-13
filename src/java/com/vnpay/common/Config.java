@@ -21,11 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class Config {
 
-    public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8084/PetStore/orderHistory.jsp";
-    public static String vnp_TmnCode = "XL9GZ0FP";
-    public static String secretKey = "W4QW5YJI25H8K537YIZ5027QFGFN8K98";
-    public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
+
 
     public static String md5(String message) {
         String digest = null;
